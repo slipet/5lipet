@@ -246,35 +246,35 @@ markdown_extensions: # markdown extensions
 nav: 
   - HOME: 
       - "index.md"
-      - ABOUT: "./HOME/about.md"
-      - SPONSORSHIP: "./HOME/sponsorship.md"
-  - CS: 
-      - "./CS/CS.md"
-  - CODING: 
-      - "./CODING/coding.md"
-  - EMBEDDED-SYS: 
-      - "./EMBEDDED-SYS/embedded-sys.md"
-  - DSP: 
-      - "./DSP/dsp.md"
-  - PERCEPTION: 
-      - "./PERCEPTION/perception.md"
-  - ACTUATION: 
-      - "./ACTUATION/actuation.md"
-      - ROS: "./ACTUATION/ROS/ros.md"
-  - IOT: 
-      - "./IOT/iot.md"
-  - CLOUD: 
-      - "./CLOUD/cloud.md"
-      - CLOUD-TECH: "./CLOUD/CLOUD-TECH/cloud-tech.md"
-      - HANDS-ON:
-          - Have A Server: "./CLOUD/HANDS-ON/001-HAVE-A-SERVER/have-a-server.md"
-          - Server Configuration: "./CLOUD/HANDS-ON/002-SERVER-CONFIG/server-config.md"
-          - Get A Domain Name: "./CLOUD/HANDS-ON/003-DOMAIN-NAME/domain-name.md"
-  - AI: 
-      - "./AI/ai.md"
-  - RESEARCH: 
-      - "./RESEARCH/research.md"
-  - PROJECT: 
-      - "./PROJECT/project.md"
-      - TECH-BLOG: "./PROJECT/TECH-BLOG/mkdocs_and_material.md"
+  #    - ABOUT: "./HOME/about.md"
+  #    - SPONSORSHIP: "./HOME/sponsorship.md"
+  #- CS: 
+  #    - "./CS/CS.md"
+  #- CODING: 
+  #    - "./CODING/coding.md"
+  #- EMBEDDED-SYS: 
+  #    - "./EMBEDDED-SYS/embedded-sys.md"
+  #- DSP: 
+  #    - "./DSP/dsp.md"
+  #- PERCEPTION: 
+  #    - "./PERCEPTION/perception.md"
+  #- ACTUATION: 
+  #    - "./ACTUATION/actuation.md"
+  #    - ROS: "./ACTUATION/ROS/ros.md"
+  #- IOT: 
+  #    - "./IOT/iot.md"
+  #- CLOUD: 
+  #    - "./CLOUD/cloud.md"
+  #    - CLOUD-TECH: "./CLOUD/CLOUD-TECH/cloud-tech.md"
+  #    - HANDS-ON:
+  #        - Have A Server: "./CLOUD/HANDS-ON/001-HAVE-A-SERVER/have-a-server.md"
+  #        - Server Configuration: "./CLOUD/HANDS-ON/002-SERVER-CONFIG/server-config.md"
+  #        - Get A Domain Name: "./CLOUD/HANDS-ON/003-DOMAIN-NAME/domain-name.md"
+  #- AI: 
+  #    - "./AI/ai.md"
+  #- RESEARCH: 
+  #    - "./RESEARCH/research.md"
+  #- PROJECT: 
+  #    - "./PROJECT/project.md"
+  #    - TECH-BLOG: "./PROJECT/TECH-BLOG/mkdocs_and_material.md"
 
