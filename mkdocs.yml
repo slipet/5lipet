@@ -83,15 +83,15 @@ theme:
 
 # Plugins
 plugins:
-  - tags # 标签功能插件
-  - blog # 博客功能插件
-  - rss: # rss订阅插件 - 不太懂是干嘛的目前
-      match_path: blog/posts/.* 
-      date_from_meta:
-        as_creation: date
-      categories:
-        - categories
-        - tags 
+  #- tags # 标签功能插件
+  #- blog # 博客功能插件
+  #- rss: # rss订阅插件 - 不太懂是干嘛的目前
+  #    match_path: blog/posts/.* 
+  #    date_from_meta:
+  #      as_creation: date
+  #    categories:
+  #      - categories
+  #      - tags 
   # - social # 目前我开启会报错，还没研究透 
   - search: # 搜索插件
       separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])' # 分隔符
@@ -139,27 +139,27 @@ plugins:
 
 # 额外配置项
 extra:
-  generator: false # 是否显示生成器
-  status: # 不是很懂有什么用
-    new: Recently added
-    deprecated: Deprecated
-  analytics: # 分析工具， 我反正没用到
-    provider: google
-    property: !ENV GOOGLE_ANALYTICS_KEY
-    feedback: # feedback form
-      title: Was this page helpful?
-      ratings:
-        - icon: material/thumb-up-outline
-          name: This page was helpful
-          data: 1
-          note: >-
-            Thanks for your feedback!
-        - icon: material/thumb-down-outline
-          name: This page could be improved
-          data: 0
-          note: >- 
-            Thanks for your feedback! Help us improve this page by
-            using our <a href="..." target="_blank" rel="noopener">feedback form</a>.
+  #generator: false # 是否显示生成器
+  #status: # 不是很懂有什么用
+  #  new: Recently added
+  #  deprecated: Deprecated
+  #analytics: # 分析工具， 我反正没用到
+  #  provider: google
+  #  property: !ENV GOOGLE_ANALYTICS_KEY
+  #  feedback: # feedback form
+  #    title: Was this page helpful?
+  #    ratings:
+  #      - icon: material/thumb-up-outline
+  #        name: This page was helpful
+  #        data: 1
+  #        note: >-
+  #          Thanks for your feedback!
+  #      - icon: material/thumb-down-outline
+  #        name: This page could be improved
+  #        data: 0
+  #        note: >- 
+  #          Thanks for your feedback! Help us improve this page by
+  #          using our <a href="..." target="_blank" rel="noopener">feedback form</a>.
   # alternate: # 由上面那个i18n插件提供的多语言功能，这个似乎就不需要了。 这个是官方文档的例子，但是官方没有提供很详细的例子，所以我也不知道怎么用。
   #   - name: English
   #     link: /en/ 
@@ -241,7 +241,7 @@ markdown_extensions: # markdown extensions
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
-
+  
 # 导航树 - 请按照我的做法来做，否则可能无法正常工作。引号可以省略。开头的点和斜杠也可以省略 ("./HOME/about.md" 或 Home/about.md) 。注意，导航树这里的文件名是 filename.md 这样的，但在文件夹中，它实际上被命名为 filename.en.md 和 filename.zh.md。我猜测默认是英文，所以, index.en.md 和 index.md 是一样的。i18n插件会自动识别文件名，然后根据文件名的后缀来切换语言。所以，如果你想添加一个新页面，你需要添加两个文件，一个是 filename.en.md，另一个是 filename.zh.md。其中，filename.en.md 也可以被命名为 filename.md，但是 filename.zh.md 不能被命名为 filename.md，否则会导致无法识别。
 nav: 
   - HOME: 
@@ -278,5 +278,3 @@ nav:
       - "./PROJECT/project.md"
       - TECH-BLOG: "./PROJECT/TECH-BLOG/mkdocs_and_material.md"
 
-extra_css:
-  - overrides/hide-banner.css

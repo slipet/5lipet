@@ -25,44 +25,44 @@
 // ----------------------------------------------------------------------------
 
 // Banner for announcements and warnings
-.md-banner {
-  overflow: auto;
-  color: var(--md-footer-fg-color);
-  background-color: var(--md-footer-bg-color);
+// .md-banner {
+//   overflow: auto;
+//   color: var(--md-footer-fg-color);
+//   background-color: var(--md-footer-bg-color);
 
-  // [print]: Hide banner
-  @media print {
-    display: none;
-  }
+//   // [print]: Hide banner
+//   @media print {
+//     display: none;
+//   }
 
-  // Banner with warning
-  &--warning {
-    color: var(--md-warning-fg-color);
-    background-color: var(--md-warning-bg-color);
-  }
+//   // Banner with warning
+//   &--warning {
+//     color: var(--md-warning-fg-color);
+//     background-color: var(--md-warning-bg-color);
+//   }
 
-  // Banner wrapper
-  &__inner {
-    padding: 0 px2rem(16px);
-    margin: px2rem(12px) auto;
-    font-size: px2rem(14px);
-  }
+//   // Banner wrapper
+//   &__inner {
+//     padding: 0 px2rem(16px);
+//     margin: px2rem(12px) auto;
+//     font-size: px2rem(14px);
+//   }
 
-  // Banner button
-  &__button {
-    float: inline-end;
-    color: inherit;
-    cursor: pointer;
-    transition: opacity 250ms;
+//   // Banner button
+//   &__button {
+//     float: inline-end;
+//     color: inherit;
+//     cursor: pointer;
+//     transition: opacity 250ms;
 
-    // [no-js]: Hide button
-    .no-js & {
-      display: none;
-    }
+//     // [no-js]: Hide button
+//     .no-js & {
+//       display: none;
+//     }
 
-    // Button on hover
-    &:hover {
-      opacity: 0.7;
-    }
-  }
-}
+//     // Button on hover
+//     &:hover {
+//       opacity: 0.7;
+//     }
+//   }
+// }
