@@ -245,39 +245,32 @@ markdown_extensions: # markdown extensions
       custom_checkbox: true
   - pymdownx.tilde
   
-# 导航树 - 请按照我的做法来做，否则可能无法正常工作。引号可以省略。开头的点和斜杠也可以省略 ("./HOME/about.md" 或 Home/about.md) 。注意，导航树这里的文件名是 filename.md 这样的，但在文件夹中，它实际上被命名为 filename.en.md 和 filename.zh.md。我猜测默认是英文，所以, index.en.md 和 index.md 是一样的。i18n插件会自动识别文件名，然后根据文件名的后缀来切换语言。所以，如果你想添加一个新页面，你需要添加两个文件，一个是 filename.en.md，另一个是 filename.zh.md。其中，filename.en.md 也可以被命名为 filename.md，但是 filename.zh.md 不能被命名为 filename.md，否则会导致无法识别。
 nav: 
   - HOME: 
       - "index.md"
-  #    - ABOUT: "./HOME/about.md"
-  #    - SPONSORSHIP: "./HOME/sponsorship.md"
-  #- CS: 
-  #    - "./CS/CS.md"
-  #- CODING: 
-  #    - "./CODING/coding.md"
-  #- EMBEDDED-SYS: 
-  #    - "./EMBEDDED-SYS/embedded-sys.md"
-  #- DSP: 
-  #    - "./DSP/dsp.md"
-  #- PERCEPTION: 
-  #    - "./PERCEPTION/perception.md"
-  #- ACTUATION: 
-  #    - "./ACTUATION/actuation.md"
-  #    - ROS: "./ACTUATION/ROS/ros.md"
-  #- IOT: 
-  #    - "./IOT/iot.md"
-  #- CLOUD: 
-  #    - "./CLOUD/cloud.md"
-  #    - CLOUD-TECH: "./CLOUD/CLOUD-TECH/cloud-tech.md"
-  #    - HANDS-ON:
-  #        - Have A Server: "./CLOUD/HANDS-ON/001-HAVE-A-SERVER/have-a-server.md"
-  #        - Server Configuration: "./CLOUD/HANDS-ON/002-SERVER-CONFIG/server-config.md"
-  #        - Get A Domain Name: "./CLOUD/HANDS-ON/003-DOMAIN-NAME/domain-name.md"
-  #- AI: 
-  #    - "./AI/ai.md"
-  #- RESEARCH: 
-  #    - "./RESEARCH/research.md"
-  #- PROJECT: 
-  #    - "./PROJECT/project.md"
-  #    - TECH-BLOG: "./PROJECT/TECH-BLOG/mkdocs_and_material.md"
+  - Review: 
+      - "./review/Review.md"
+  - Stat:
+      - Leetcode: "./stat/leetcode.md"
+      - Codeforces: "./stat/codeforces.md"
+      - Mixed: "./stat/mixed.md"
+  #- Data Structure: #DS
+  - Search:
+    - DFS: "./search/dfs.md"
+    - BFS: "./search/bfs.md"
+    - Meet in middle: "./search/meet_in_middle.md"
+  # - Binary search:
+  - String:
+    - KMP: "./string/kmp.md"
+    - Z-algorithm: "./string/z_algorithm.md"
+    - Subseq automation: "./string/subseq_automation.md"
+  # - Graph:
+  # - Math:
+  # - DP:
+  # - Others:
+  # - C++:
+  # - Python:
+  
+
+
 
