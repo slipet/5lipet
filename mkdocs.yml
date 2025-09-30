@@ -1,6 +1,6 @@
 # 项目信息
 site_name: 5lipet # 项目名称
-site_url: https://localhost:8000/
+site_url: https://slipet.github.io/5lipet/
 # https://slipet.github.io/5lipet/ # 我在nginx中使用的是8000端口，如果你使用的是80端口，可以直接写成https://localhost/。
 # https://localhost:8000/
 site_author: 5lipet # 作者
