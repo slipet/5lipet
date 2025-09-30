@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
     <url>
-        <loc>https://localhost:8000/</loc>
+        <loc>https://slipet.github.io/5lipet/</loc>
         <lastmod>2025-09-30</lastmod>
         <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://slipet.github.io/5lipet/"/>
     </url>
     <url>
-        <loc>https://localhost:8000/blog/</loc>
+        <loc>https://slipet.github.io/5lipet/blog/</loc>
         <lastmod>2025-09-30</lastmod>
         <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/blog/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://slipet.github.io/5lipet/blog/"/>
     </url>
 </urlset>
