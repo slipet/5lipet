@@ -111,29 +111,29 @@ plugins:
           name: English
           build: true # 是否构建
           # site_name: Infinity
-        - locale: zh
-          name: 简体中文
-          build: true
-          nav_translations: # 导航栏翻译，不可以有缩进
-            HOME: 首頁
-            ABOUT: 关于
-            SPONSORSHIP: 赞助
-            CS: 计算机
-            CODING: 编程
-            EMBEDDED-SYS: 嵌入式系统
-            DSP: 数字信号处理
-            PERCEPTION: 感知
-            ACTUATION: 执行
-            IOT: 物联网
-            CLOUD: 云
-            CLOUD-TECH: 云技术
-            HANDS-ON: 上手实践
-            Have A Server: 拥有一台服务器
-            Server Configuration: 服务器配置
-            Get A Domain Name: 获得一个域名
-            AI: 人工智能
-            RESEARCH: 研究
-            PROJECT: 项目
+      #  - locale: zh
+      #    name: 简体中文
+      #    build: true
+      #    nav_translations: # 导航栏翻译，不可以有缩进
+      #      HOME: 首頁
+      #      ABOUT: 关于
+      #      SPONSORSHIP: 赞助
+      #      CS: 计算机
+      #      CODING: 编程
+      #      EMBEDDED-SYS: 嵌入式系统
+      #      DSP: 数字信号处理
+      #      PERCEPTION: 感知
+      #      ACTUATION: 执行
+      #      IOT: 物联网
+      #      CLOUD: 云
+      #      CLOUD-TECH: 云技术
+      #      HANDS-ON: 上手实践
+      #      Have A Server: 拥有一台服务器
+      #      Server Configuration: 服务器配置
+      #      Get A Domain Name: 获得一个域名
+      #      AI: 人工智能
+      #      RESEARCH: 研究
+      #      PROJECT: 项目
 # Hooks - 讲真，这个东西我还没搞懂
 # hooks:
 #   - material/overrides/hooks/shortcodes.py
