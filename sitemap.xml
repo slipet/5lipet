@@ -12,4 +12,64 @@
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/blog/"/>
     </url>
+    <url>
+        <loc>https://localhost:8000/review/Review/</loc>
+        <lastmod>2025-09-30</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/review/Review/"/>
+    </url>
+    <url>
+        <loc>https://localhost:8000/search/bfs/</loc>
+        <lastmod>2025-09-30</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/search/bfs/"/>
+    </url>
+    <url>
+        <loc>https://localhost:8000/search/dfs/</loc>
+        <lastmod>2025-09-30</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/search/dfs/"/>
+    </url>
+    <url>
+        <loc>https://localhost:8000/search/meet_in_middle/</loc>
+        <lastmod>2025-09-30</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/search/meet_in_middle/"/>
+    </url>
+    <url>
+        <loc>https://localhost:8000/stat/codeforces/</loc>
+        <lastmod>2025-09-30</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/stat/codeforces/"/>
+    </url>
+    <url>
+        <loc>https://localhost:8000/stat/leetcode/</loc>
+        <lastmod>2025-09-30</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/stat/leetcode/"/>
+    </url>
+    <url>
+        <loc>https://localhost:8000/stat/mixed/</loc>
+        <lastmod>2025-09-30</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/stat/mixed/"/>
+    </url>
+    <url>
+        <loc>https://localhost:8000/string/kmp/</loc>
+        <lastmod>2025-09-30</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/string/kmp/"/>
+    </url>
+    <url>
+        <loc>https://localhost:8000/string/subseq_automation/</loc>
+        <lastmod>2025-09-30</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/string/subseq_automation/"/>
+    </url>
+    <url>
+        <loc>https://localhost:8000/string/z_algorithm/</loc>
+        <lastmod>2025-09-30</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/string/z_algorithm/"/>
+    </url>
 </urlset>
