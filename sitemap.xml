@@ -5,27 +5,11 @@
         <lastmod>2025-09-30</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/"/>
-        <xhtml:link rel="alternate" hreflang="zh" href="https://localhost:8000/zh/"/>
     </url>
     <url>
         <loc>https://localhost:8000/blog/</loc>
         <lastmod>2025-09-30</lastmod>
         <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/blog/"/>
-        <xhtml:link rel="alternate" hreflang="zh" href="https://localhost:8000/zh/blog/"/>
-    </url>
-    <url>
-        <loc>https://localhost:8000/zh/</loc>
-        <lastmod>2025-09-30</lastmod>
-        <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="zh" href="https://localhost:8000/zh/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/"/>
-    </url>
-    <url>
-        <loc>https://localhost:8000/zh/blog/</loc>
-        <lastmod>2025-09-30</lastmod>
-        <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="zh" href="https://localhost:8000/zh/blog/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/blog/"/>
     </url>
 </urlset>
