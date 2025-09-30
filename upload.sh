@@ -12,7 +12,7 @@ git status
 git commit -m 'auto update 5lipet'
 echo '--------commit successfully--------'
 
-git push -f https://github.com/slipet/5lipet.git/ main
+git push -f https://github.com/slipet/5lipet.git/ gh-pages
 # git push -u https://github.com/slipet/5lipet.git/ main
 # git remote add origin https://github.com/slipet/5lipet.git/
 # git push -u origin main
