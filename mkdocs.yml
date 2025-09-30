@@ -1,6 +1,8 @@
 # 项目信息
 site_name: 5lipet # 项目名称
-site_url: https://slipet.github.io/5lipet/ # 我在nginx中使用的是8000端口，如果你使用的是80端口，可以直接写成https://localhost/。
+site_url: https://localhost:8000/
+# https://slipet.github.io/5lipet/ # 我在nginx中使用的是8000端口，如果你使用的是80端口，可以直接写成https://localhost/。
+# https://localhost:8000/
 site_author: 5lipet # 作者
 site_description: >- # 项目描述
   Welcome to 5lipet's Note. This is a shelf for competitive programing note.
@@ -10,7 +12,7 @@ repo_name: slipet/5lipet # 仓库名称
 repo_url: https://github.com/slipet/5lipet.git/ # 仓库地址
 
 # 版权信息
-copyright: Copyright &copy; 2023 ~ now | 🚀 5lipet
+copyright: Copyright &copy; 2025 ~ now | 🚀 5lipet
 
 # 配置
 theme:
