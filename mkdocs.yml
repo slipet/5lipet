@@ -249,7 +249,7 @@ nav:
   - HOME: 
       - "index.md"
   - Review: 
-      - "./review/Review.md"
+      - "./review/review.md"
   - Stat:
       - Leetcode: "./stat/leetcode.md"
       - Codeforces: "./stat/codeforces.md"
