@@ -7,7 +7,6 @@ echo '--------upload files start--------'
 # cd ./
 
 # git init
-git add .
 git status
 git commit -m 'auto update 5lipet'
 echo '--------commit successfully--------'
