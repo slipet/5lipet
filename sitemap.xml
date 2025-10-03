@@ -13,6 +13,12 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/blog/"/>
     </url>
     <url>
+        <loc>https://localhost:8000/problems/codeforces/</loc>
+        <lastmod>2025-10-03</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/problems/codeforces/"/>
+    </url>
+    <url>
         <loc>https://localhost:8000/problems/leetcode/</loc>
         <lastmod>2025-10-03</lastmod>
         <changefreq>daily</changefreq>
