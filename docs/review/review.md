@@ -38,9 +38,9 @@
 - [Lazy Heap](https://www.notion.so/Heap-Priority_queue-20913ccc8c6280c3b4cad93995a1ecfd?pvs=21)
 - Trie
 
-[kth-element(Qick select)](https://www.notion.so/kth-element-Qick-select-25a13ccc8c628086aad9cdcd1141f1f8?pvs=21)
+* [kth-element(Qick select)](https://www.notion.so/kth-element-Qick-select-25a13ccc8c628086aad9cdcd1141f1f8?pvs=21)
 
-[Union Find](https://www.notion.so/Union-Find-25a13ccc8c6280ddae0cea6f4e79716a?pvs=21)
+* [Union Find](https://www.notion.so/Union-Find-25a13ccc8c6280ddae0cea6f4e79716a?pvs=21)
 
 - [**simplest fraction**](https://www.notion.so/Math-1e013ccc8c6280bcb64bf60eab73b770?pvs=21)
 
