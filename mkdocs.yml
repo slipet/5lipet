@@ -266,6 +266,7 @@ nav:
     - Subseq automation: "./string/subseq_automation.md"
   - Problems:
     - Leetcode: ./problems/leetcode.md
+    - Codeforces: ./problems/codeforces.md
   # - Graph:
   # - Math:
   # - DP:
