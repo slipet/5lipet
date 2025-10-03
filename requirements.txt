@@ -1,0 +1,5 @@
+mkdocs
+mkdocs-material
+mkdocs-rss-plugin
+mkdocs-minify-plugin
+mkdocs-static-i18n
