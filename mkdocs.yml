@@ -244,7 +244,9 @@ markdown_extensions: # markdown extensions
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
-  
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
 nav: 
   - HOME: 
       - "index.md"
