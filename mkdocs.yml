@@ -265,8 +265,11 @@ nav:
     - Z-algorithm: "./string/z_algorithm.md"
     - Subseq automation: "./string/subseq_automation.md"
   - Problems:
-    - Leetcode: ./problems/leetcode.md
-    - Codeforces: ./problems/codeforces.md
+    - Leetcode: "./problems/leetcode.md"
+    - Codeforces: "./problems/codeforces.md"
+  - Contest:
+    - Leetcode: "./contest/leetcode.md"
+    - Codeforces: "./contest/codeforces.md"
   # - Graph:
   # - Math:
   # - DP:
