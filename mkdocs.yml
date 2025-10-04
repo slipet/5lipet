@@ -268,8 +268,10 @@ nav:
     - Leetcode: "./problems/leetcode.md"
     - Codeforces: "./problems/codeforces.md"
   - Contest:
-    - Leetcode: "./contest/leetcode.md"
-    - Codeforces: "./contest/codeforces.md"
+    - Leetcode:
+      - 2025: "./contest/leetcode/2025.md"
+    - Codeforces: 
+      - 2025: "./contest/codeforces/2025.md"
 
   # - Graph:
   # - Math:
