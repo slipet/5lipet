@@ -13,22 +13,16 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/blog/"/>
     </url>
     <url>
-        <loc>https://localhost:8000/contest/codeforces/</loc>
-        <lastmod>2025-10-04</lastmod>
-        <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/contest/codeforces/"/>
-    </url>
-    <url>
-        <loc>https://localhost:8000/contest/leetcode/</loc>
-        <lastmod>2025-10-04</lastmod>
-        <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/contest/leetcode/"/>
-    </url>
-    <url>
         <loc>https://localhost:8000/contest/codeforces/2025/</loc>
         <lastmod>2025-10-04</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/contest/codeforces/2025/"/>
+    </url>
+    <url>
+        <loc>https://localhost:8000/contest/leetcode/2025/</loc>
+        <lastmod>2025-10-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/contest/leetcode/2025/"/>
     </url>
     <url>
         <loc>https://localhost:8000/problems/codeforces/</loc>
