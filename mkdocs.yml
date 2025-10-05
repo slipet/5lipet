@@ -269,6 +269,7 @@ nav:
   - Problems:
     - Leetcode: "./problems/leetcode.md"
     - Codeforces: "./problems/codeforces.md"
+    - Todo: "./problems/todo/list.md"
   - Contest:
     - Leetcode:
       - 2025: "./contest/leetcode/2025.md"
