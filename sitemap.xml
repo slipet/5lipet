@@ -37,6 +37,12 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/problems/leetcode/"/>
     </url>
     <url>
+        <loc>https://localhost:8000/problems/todo/list/</loc>
+        <lastmod>2025-10-05</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/problems/todo/list/"/>
+    </url>
+    <url>
         <loc>https://localhost:8000/review/review/</loc>
         <lastmod>2025-10-05</lastmod>
         <changefreq>daily</changefreq>
