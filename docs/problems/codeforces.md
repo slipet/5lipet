@@ -1,9 +1,16 @@
 # Codeforces
 
-## Practice Round 1052
+## Practice Round [#1052](https://codeforces.com/contest/2146)
 
-### A.
+### A - Equal Occurrences
 
-* Cost time:
+??? note "Details"    
+    
+    * Thought in the contest:
+        
 
-### B.
+### B - Merging the Sets
+
+### C - Wrong Binary Search
+
+### D - Max Sum OR (Easy Version)
