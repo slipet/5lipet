@@ -25,6 +25,12 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/contest/leetcode/2025/"/>
     </url>
     <url>
+        <loc>https://localhost:8000/dp/digits_counting/</loc>
+        <lastmod>2025-10-07</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/dp/digits_counting/"/>
+    </url>
+    <url>
         <loc>https://localhost:8000/problems/codeforces/</loc>
         <lastmod>2025-10-07</lastmod>
         <changefreq>daily</changefreq>
