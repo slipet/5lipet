@@ -10,7 +10,7 @@
 
 - [ ] [C. Incremental Stay](https://codeforces.com/contest/2151/problem/C), round 1053 C, 過程很重要
 
-- [ ] [C. Monocarp's String](https://codeforces.com/contest/2145/problem/C), round 183 C, 有想對方向但是最後沒做出來!
+- [x] [C. Monocarp's String](https://codeforces.com/contest/2145/problem/C), round 183 C, 有想對方向但是最後沒做出來!
 
 #### wait to do
 
