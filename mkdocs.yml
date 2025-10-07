@@ -266,6 +266,8 @@ nav:
     - KMP: "./string/kmp.md"
     - Z-algorithm: "./string/z_algorithm.md"
     - Subseq automation: "./string/subseq_automation.md"
+  - DP:
+    - Digits counting: "./dp/digits_counting.md"
   - Problems:
     - Leetcode: "./problems/leetcode.md"
     - Codeforces: "./problems/codeforces.md"
