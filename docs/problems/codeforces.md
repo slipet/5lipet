@@ -59,57 +59,69 @@
 
 ### D - Grid Counting
 
-## ??? note "Details"
+??? note "Details"
 
-* Thought in the contest:
+    * Thought in the contest:
 
-    完全沒有理解題目，還需要多熟悉閱讀題目。
+        完全沒有理解題目，還需要多熟悉閱讀題目。
 
-* Solution:
+    * Solution:
 
-    [參考解說](https://www.bilibili.com/video/BV1wEn4zmESD?spm_id_from=333.788.videopod.episodes&vd_source=caaccd1459c5ece44b5e2d37804871b8&p=4)
+        [參考解說](https://www.bilibili.com/video/BV1wEn4zmESD?spm_id_from=333.788.videopod.episodes&vd_source=caaccd1459c5ece44b5e2d37804871b8&p=4)
 
-    可以先考慮把題目的圖畫出來看看
+        可以先考慮把題目的圖畫出來看看
 
-    每個欄位分別對應:
-    
-    $max(x, y) = k / max(x, n + 1 - y) = k$ 
+        每個欄位分別對應:
+        
+        $max(x, y) = k / max(x, n + 1 - y) = k$ 
 
-    | x \\ y | 1      | 2      | 3      | 4      | 5      |
-    |:------:|:------:|:------:|:------:|:------:|:------:|
-    | 1      | 1 // 5 | 2 // 4 | 3 // 3 | 4 // 2 | 5 // 1 |
-    | 2      | 2 // 5 | 2 // 4 | 3 // 3 | 4 // 2 | 5 // 2 |
-    | 3      | 3 // 5 | 3 // 4 | 3 // 3 | 4 // 3 | 5 // 3 |
-    | 4      | 4 // 5 | 4 // 4 | 4 // 4 | 4 // 4 | 5 // 4 |
-    | 5      | 5 // 5 | 5 // 5 | 5 // 5 | 5 // 5 | 5 // 5 |
+        | x \\ y | 1      | 2      | 3      | 4      | 5      |
+        |:------:|:------:|:------:|:------:|:------:|:------:|
+        | 1      | 1 // 5 | 2 // 4 | 3 // 3 | 4 // 2 | 5 // 1 |
+        | 2      | 2 // 5 | 2 // 4 | 3 // 3 | 4 // 2 | 5 // 2 |
+        | 3      | 3 // 5 | 3 // 4 | 3 // 3 | 4 // 3 | 5 // 3 |
+        | 4      | 4 // 5 | 4 // 4 | 4 // 4 | 4 // 4 | 5 // 4 |
+        | 5      | 5 // 5 | 5 // 5 | 5 // 5 | 5 // 5 | 5 // 5 |
 
-    可以發現:
-    
-    * 當 max(x, y) = 1, 時我們只有 (1, 1) 可以選擇 -> 此時 max(1, 1) = 1, max(1, 5 + 1 - 1) = 5
+        可以發現:
+        
+        * 當 max(x, y) = 1, 時我們只有 (1, 1) 可以選擇 -> 此時 max(1, 1) = 1, max(1, 5 + 1 - 1) = 5
 
-    * 當 max(x, n + 1 - y) = 1, 時我們只有 (1, 5) 可以選擇 -> 此時 max(1, 5) = 5, max(1, 5 + 1 - 5) = 1
+        * 當 max(x, n + 1 - y) = 1, 時我們只有 (1, 5) 可以選擇 -> 此時 max(1, 5) = 5, max(1, 5 + 1 - 5) = 1
 
-    那我們可以聯想到應該是要選擇點 $(x_i, y_i)$ 使得
+        那我們可以聯想到應該是要選擇點 $(x_i, y_i)$ 使得
 
-    * $max(x_i, y_i) = 1, 2, 3, 4, 5$
-    * $max(x_i, n + 1 - y_i)$ = 1, 2, 3, 4, 5
+        * $max(x_i, y_i) = 1, 2, 3, 4, 5$
+        * $max(x_i, n + 1 - y_i)$ = 1, 2, 3, 4, 5
 
-    選 (1, 1) 時會使得剩下這些要被選
+        選 (1, 1) 時會使得剩下這些要被選
 
-    * $max(x_i, y_i) = \textcolor{red}{1}, 2, 3, 4, 5$
-    * $max(x_i, n + 1 - y_i) = 1, 2, 3, 4, \textcolor{red}{5}$
+        * $max(x_i, y_i) = \textcolor{red}{1}, 2, 3, 4, 5$
+        * $max(x_i, n + 1 - y_i) = 1, 2, 3, 4, \textcolor{red}{5}$
 
-    此時 $max(x_i, n + 1 - y_i) = 5$ 會使得 所有 $max(x_i, n + 1 - y_i) = 5$ 都不能被選擇
+        此時 $max(x_i, n + 1 - y_i) = 5$ 會使得 所有 $max(x_i, n + 1 - y_i) = 5$ 都不能被選擇
 
-    選 (1, 5) 時會使得剩下這些要被選
+        選 (1, 5) 時會使得剩下這些要被選
 
-    * $max(x_i, y_i) = \textcolor{red}{1}, 2, 3, 4, \textcolor{yellow}{5}$
-    * $max(x_i, n + 1 - y_i) = \textcolor{yellow}{1}, 2, 3, 4, \textcolor{red}{5}$
+        * $max(x_i, y_i) = \textcolor{red}{1}, 2, 3, 4, \textcolor{yellow}{5}$
+        * $max(x_i, n + 1 - y_i) = \textcolor{yellow}{1}, 2, 3, 4, \textcolor{red}{5}$
 
-    此時 $max(x_i, y_i) = 5$ 會使得 所有 $max(x_i, n + 1 - y_i) = 5$ 都不能被選擇
+        此時 $max(x_i, y_i) = 5$ 會使得 所有 $max(x_i, n + 1 - y_i) = 5$ 都不能被選擇
 
-    以此類推我們可以得到這張圖
+        以此類推我們可以得到這張圖
 
-    ![sdad](attachment:0224e07b-e073-410c-8199-52295ba4035f:image.png)
+        ![photo](../assets/imgs/D_Grid Counting.png)
+
+        可以發現選完 k = 1, k = 5 後 只剩 (1, 2), (2, 2) 可以選，而選完這兩個其中一個後只能選 (1, 4), (2, 4) 此時會剩下
+
+        * $max(x_i, y_i) = \textcolor{red}{1}, \textcolor{green}{2}, 3, \textcolor{green}{4}, \textcolor{yellow}{5}$
+        * $max(x_i, n + 1 - y_i) = \textcolor{yellow}{1}, \textcolor{green}{2}, 3, \textcolor{green}{4}, \textcolor{red}{5}$
+
+        所以可以知道能選的只有圖上圈起來的地方。
+
+        可以使用組合數計算答案
+
+        * <span style="color:red">實作的時候有一個錯誤卡很久，原因是在讀取答案的時候，判斷不合法時直接返回使得沒有處理完全部輸入 -> 以後在處理輸入時處理東西的話要讓全部輸入都完成才行，不能中途返回</span>
+        * <span style="color:red">要使得 1 <= k <= n 都恰好有一個的話，必須使 sum(a) == n 比這多或少都會使得 n 不合法</span>
 
 
