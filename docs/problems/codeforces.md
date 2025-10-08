@@ -48,6 +48,7 @@
 ??? note "Details"
 
     * Thought in the contest:
+    
         一開始也是用貪心的想法，但是沒有找到對的方向想。
     
     * Solution:
@@ -57,3 +58,58 @@
         可以參考這個寫法學習一下怎麼寫比較漂亮 [code](https://codeforces.com/contest/2151/submission/342031350)
 
 ### D - Grid Counting
+
+## ??? note "Details"
+
+* Thought in the contest:
+
+    完全沒有理解題目，還需要多熟悉閱讀題目。
+
+* Solution:
+
+    [參考解說](https://www.bilibili.com/video/BV1wEn4zmESD?spm_id_from=333.788.videopod.episodes&vd_source=caaccd1459c5ece44b5e2d37804871b8&p=4)
+
+    可以先考慮把題目的圖畫出來看看
+
+    每個欄位分別對應:
+    
+    $max(x, y) = k / max(x, n + 1 - y) = k$ 
+
+    | x \\ y | 1      | 2      | 3      | 4      | 5      |
+    |:------:|:------:|:------:|:------:|:------:|:------:|
+    | 1      | 1 // 5 | 2 // 4 | 3 // 3 | 4 // 2 | 5 // 1 |
+    | 2      | 2 // 5 | 2 // 4 | 3 // 3 | 4 // 2 | 5 // 2 |
+    | 3      | 3 // 5 | 3 // 4 | 3 // 3 | 4 // 3 | 5 // 3 |
+    | 4      | 4 // 5 | 4 // 4 | 4 // 4 | 4 // 4 | 5 // 4 |
+    | 5      | 5 // 5 | 5 // 5 | 5 // 5 | 5 // 5 | 5 // 5 |
+
+    可以發現:
+    
+    * 當 max(x, y) = 1, 時我們只有 (1, 1) 可以選擇 -> 此時 max(1, 1) = 1, max(1, 5 + 1 - 1) = 5
+
+    * 當 max(x, n + 1 - y) = 1, 時我們只有 (1, 5) 可以選擇 -> 此時 max(1, 5) = 5, max(1, 5 + 1 - 5) = 1
+
+    那我們可以聯想到應該是要選擇點 $(x_i, y_i)$ 使得
+
+    * $max(x_i, y_i) = 1, 2, 3, 4, 5$
+    * $max(x_i, n + 1 - y_i)$ = 1, 2, 3, 4, 5
+
+    選 (1, 1) 時會使得剩下這些要被選
+
+    * $max(x_i, y_i) = \textcolor{red}{1}, 2, 3, 4, 5$
+    * $max(x_i, n + 1 - y_i) = 1, 2, 3, 4, \textcolor{red}{5}$
+
+    此時 $max(x_i, n + 1 - y_i) = 5$ 會使得 所有 $max(x_i, n + 1 - y_i) = 5$ 都不能被選擇
+
+    選 (1, 5) 時會使得剩下這些要被選
+
+    * $max(x_i, y_i) = \textcolor{red}{1}, 2, 3, 4, \textcolor{yellow}{5}$
+    * $max(x_i, n + 1 - y_i) = \textcolor{yellow}{1}, 2, 3, 4, \textcolor{red}{5}$
+
+    此時 $max(x_i, y_i) = 5$ 會使得 所有 $max(x_i, n + 1 - y_i) = 5$ 都不能被選擇
+
+    以此類推我們可以得到這張圖
+
+    ![sdad](attachment:0224e07b-e073-410c-8199-52295ba4035f:image.png)
+
+

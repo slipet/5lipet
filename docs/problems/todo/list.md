@@ -8,7 +8,7 @@
 
 - [ ] [B. Incremental Path](https://codeforces.com/contest/2151/problem/B), round 1053 B, 過程很重要
 
-- [ ] [C. Incremental Stay](https://codeforces.com/contest/2151/problem/C), round 1053 C, 過程很重要
+- [x] [C. Incremental Stay](https://codeforces.com/contest/2151/problem/C), round 1053 C, 過程很重要
 
 - [x] [C. Monocarp's String](https://codeforces.com/contest/2145/problem/C), round 183 C, 有想對方向但是最後沒做出來!
 
