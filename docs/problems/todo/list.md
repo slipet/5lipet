@@ -20,4 +20,4 @@
 
 - [ ] [D. A and B](https://codeforces.com/contest/2149/problem/D), round 1054 D.
 
-- [ ] [D. Grid Counting](https://codeforces.com/contest/2151/problem/D), round 1053 D.
+- [x] [D. Grid Counting](https://codeforces.com/contest/2151/problem/D), round 1053 D.
