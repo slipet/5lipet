@@ -124,4 +124,16 @@
         * <span style="color:red">實作的時候有一個錯誤卡很久，原因是在讀取答案的時候，判斷不合法時直接返回使得沒有處理完全部輸入 -> 以後在處理輸入時處理東西的話要讓全部輸入都完成才行，不能中途返回</span>
         * <span style="color:red">要使得 1 <= k <= n 都恰好有一個的話，必須使 sum(a) == n 比這多或少都會使得 n 不合法</span>
 
+## Practice Round [#1054](https://codeforces.com/contest/2149) (Div.3)
+
+### A - 
+
+??? note "Details"
+
+    
+### B - 
+
+### C - 
+
+### D - 
 

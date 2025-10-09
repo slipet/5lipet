@@ -18,6 +18,6 @@
 
 - [ ] [D. Division Versus Addition](https://codeforces.com/contest/2152/problem/D), round 1055 D.
 
-- [ ] [D. A and B](https://codeforces.com/contest/2149/problem/D), round 1054 D.
+- [x] [D. A and B](https://codeforces.com/contest/2149/problem/D), round 1054 D.
 
 - [x] [D. Grid Counting](https://codeforces.com/contest/2151/problem/D), round 1053 D.
