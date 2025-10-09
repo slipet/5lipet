@@ -21,3 +21,5 @@
 - [x] [D. A and B](https://codeforces.com/contest/2149/problem/D), round 1054 D.
 
 - [x] [D. Grid Counting](https://codeforces.com/contest/2151/problem/D), round 1053 D.
+
+- [ ] [E. Hidden Knowledge of the Ancients](https://codeforces.com/contest/2149/problem/E) , round 1054 E. rating 1500

@@ -126,14 +126,11 @@
 
 ## Practice Round [#1054](https://codeforces.com/contest/2149) (Div.3)
 
-### A - 
-
-??? note "Details"
-
+### A - Be Positive
     
-### B - 
+### B - Unconventional Pairs
 
-### C - 
+### C - MEX rose
 
-### D - 
+### D - A and B
 
