@@ -154,7 +154,7 @@
 
         * [code](https://codeforces.com/contest/2149/submission/342669253)
 
-    2. 另一種更為直觀的貪心想法，基本上最小的開銷為將所有的 a 或 b 往中間聚在一起，所以最小的開銷為中為數貪心的方式計算貢獻 $\sum{a_i - a_{mid}}$，<span style="color:red">這裡有個小陷阱，往中間靠的時候每個元素都要佔據一個位置，所以要分別減去對應的位置</span>。
+    2. 另一種更為直觀的貪心想法，基本上最小的開銷為將所有的 a 或 b 往中間聚在一起，所以最小的開銷為中為數貪心的方式計算貢獻 $\sum{|a_i - a_{mid}|}$，<span style="color:red">這裡有個小陷阱，往中間靠的時候每個元素都要佔據一個位置，所以要分別減去對應的位置</span>。
     
         $\sum{|a_i - a_{mid}|} - \frac{left_a \times (left_a + 1)}{2} - \frac{right_a \times (right_a + 1)}{2}$
 
@@ -164,6 +164,22 @@
 
         * [code](https://codeforces.com/contest/2149/submission/342785403)
 
-    3. 第三種想法是看到 [jiazhichen844](https://codeforces.com/contest/2149/submission/340391056), [exgcd](https://codeforces.com/contest/2149/submission/340386200), [Misuki](https://codeforces.com/contest/2149/submission/340393665)，這些人的寫法感到好奇，但是在網路上搜索很久之後幾乎找不到這種做法的講解，頂多是又找到了其他前綴和計算貢獻的方式而不是這種一次計算最後取 min 得方式，因此嘗試使用 [CHAT-GPT](https://chatgpt.com/s/t_68e7df5b40308191a5f42d6aa9d39982) 解釋看看，
+    3. 第三種想法是看到 [jiazhichen844](https://codeforces.com/contest/2149/submission/340391056), [exgcd](https://codeforces.com/contest/2149/submission/340386200), [Misuki](https://codeforces.com/contest/2149/submission/340393665)，這些人的寫法感到好奇，但是在網路上搜索很久之後幾乎找不到這種做法的講解，頂多是又找到了其他前綴和計算貢獻的方式而不是這種一次計算最後取 min 得方式，因此嘗試使用 [CHAT-GPT](https://chatgpt.com/s/t_68e7df5b40308191a5f42d6aa9d39982) 解釋看看。
+    
+        基本得想法是每個位置 i 有往左或往右兩種選擇，假設我們想構造出連續 a 的 subarray，那在每個位置的 b 都必須往左或往右移動，往兩側移動的開銷可以看作要跨越多少的 a，取最小的開銷 $min(left_a, right_a)$，可以得到在 b 位置上的 cost，最後累加所有 b 的 cost 可以得到 構造出連續 a 的 subarray 的 cost。
+
+        一個會卡住的點是 以 ababab 為例子，第一個 b 的 $cost = min(1, 2) = 1$，往左的開銷很直觀為 1，往右的開銷卻是 2，看起來很像錯的因為看起來走兩步還是無法跨過 a 到達右側 ex. a[ ]ab[<span style="color:red">b</span>]ab，但是考慮到下一個 b 可以發現 aba[b]ab 若是先往右走可以到達右側使得 a 可以聚集在一起 abaa[b]b，這時
+        第一個 b 只要走兩步就可以到達。
+
+        這個方法可以看成上面方法的反向思考，思考不合法的元素該如何移動造成的開銷。
+
+        比較直觀的想法應該是 gpt 的這個想法:
+
+        <span style="color:red">相鄰交換要讓 a（或 b）成段，等價於讓每個 b（或 a）往某一側移到區塊外，並跨過必要的 a（或 b）次數。</span>
+
         * [code](https://codeforces.com/contest/2149/submission/342669253)
+
+        延伸思考:
+            或許可以加上逆序對幫助思考? 或是利用逆序對變成延伸題目?
+            
 
