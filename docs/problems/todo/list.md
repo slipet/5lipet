@@ -16,6 +16,8 @@
 
 - [x] [C. Monocarp's String](https://codeforces.com/contest/2145/problem/C), round 183 C, 有想對方向但是最後沒做出來!
 
+- [ ] [[Tutorial] Problems about swapping adjacent elements](https://codeforces.com/blog/entry/92130?utm_source=chatgpt.com)
+
 #### wait to do
 
 - [ ] [F. Jee, You See?](https://codeforces.com/problemset/problem/1670/F), 2025/10/05
