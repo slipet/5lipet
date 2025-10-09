@@ -134,15 +134,36 @@
 
 ### D - A and B
 
-??? note "Details"
+####??? note "Details"
 
-    * Thought in the contest:
+* Thought in the contest:
 
-        這個題目是經典的<span style="color:red">中位數對齊</span>題目，一開始我的想法是將 a / b 轉換成 0, 1 思考，並且思考只需要枚舉一半的情況，另一半可以將 a, b 交換然後再次重覆計算就可以得到另一半，一開始想的是對於枚舉所有的情況 ，左邊的 a 的個數會從 0 ~ cnta 變化，而只要能夠 $O(1)$ 或是 $O(\log{N})$ 得到 cost，就可以得到答案。
+    這個題目是經典的<span style="color:red">中位數對齊</span>題目，一開始我的想法是將 a / b 轉換成 0, 1 思考，並且思考只需要枚舉一半的情況，另一半可以將 a, b 交換然後再次重覆計算就可以得到另一半，一開始想的是對於枚舉所有的情況 ，左邊的 a 的個數會從 $[0, cnt_a]$ 變化，而只要能夠 $O(1)$ 或是 $O(\log{N})$ 得到 cost，就可以得到答案。
 
-        當已知左右的 a 的個數時
+    當已知左右的 a 的個數 $left_a, right_a$ 時我們可以得到對應的目標區間 $[l, r]$，利用前綴和分別可以知道 $[0, l), (r, 0]$ 的 b 的下標貢獻。此時對於 $[l, r]$ 中的 a 下標貢獻要分成兩部分，分給左半邊跟分給右半邊，這裡我使用二分 lower_bound 找到 $\le l$ 的第一個 a 開始的下標，使用前綴和計算分給左右兩邊的貢獻。
+    
+    * <span style="color:red">理論上這個方法可以使用指針的方式得到 $\le l$ 的第一個 a 開始的下標，但是當時思考太混雜決定用 lower_bound 簡化處理。</span>
 
-        前綴和的方式得到區間內的 a 的下標
+    * <span style="color:red">一開始其實有想到要使用下標 $a_i - t_i$ 方式出發，但是想到計算會有負數時卡住了，沒有繼續往下走，應該可以繼續的但是思考方式不太對，加上絕對值有機會可以往下走</span>
 
-    * Solution:
+    [code](https://codeforces.com/contest/2149/submission/342666432)
+
+* Solution:
+
+    1. [官方解答](https://codeforces.com/blog/entry/146793)為目標 subarray 開始的第一個下標為 $t_0$，所以答案為 $\sum{|a_i - (t_0 + i)|}$，移項後可以得到 $\sum{|(a_i - i) - t_0|} = \sum{|F_i - t_0|} \text{, for } F_i = a_i - i$，可以看成在一堆新座標 $F_i$ 中 我們要減去一個座標得到最小值 $min(\sum{|F_i - t_0|})$，這是經典的中位數貪心(或是這種題目可以叫[中位數對齊](https://slipet.github.io/5lipet/greedy/greedy/#median-alignment))
+
+        * [code](https://codeforces.com/contest/2149/submission/342669253)
+
+    2. 另一種更為直觀的貪心想法，基本上最小的開銷為將所有的 a 或 b 往中間聚在一起，所以最小的開銷為中為數貪心的方式計算貢獻 $\sum{a_i - a_{mid}}$，<span style="color:red">這裡有個小陷阱，往中間靠的時候每個元素都要佔據一個位置，所以要分別減去對應的位置</span>。
+    
+        $\sum{|a_i - a_{mid}|} - \frac{left_a \times (left_a + 1)}{2} - \frac{right_a \times (right_a + 1)}{2}$
+
+
+
+        * [video](https://www.bilibili.com/video/BV1y6n8zFEKW/?spm_id_from=333.337.search-card.all.click&vd_source=caaccd1459c5ece44b5e2d37804871b8)
+
+        * [code](https://codeforces.com/contest/2149/submission/342785403)
+
+    3. 第三種想法是看到 [jiazhichen844](https://codeforces.com/contest/2149/submission/340391056), [exgcd](https://codeforces.com/contest/2149/submission/340386200), [Misuki](https://codeforces.com/contest/2149/submission/340393665)，這些人的寫法感到好奇，但是在網路上搜索很久之後幾乎找不到這種做法的講解，頂多是又找到了其他前綴和計算貢獻的方式而不是這種一次計算最後取 min 得方式，因此嘗試使用 [CHAT-GPT](https://chatgpt.com/s/t_68e7df5b40308191a5f42d6aa9d39982) 解釋看看，
+        * [code](https://codeforces.com/contest/2149/submission/342669253)
 
