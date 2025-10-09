@@ -134,52 +134,52 @@
 
 ### D - A and B
 
-####??? note "Details"
+??? note "Details"
 
-* Thought in the contest:
+    * Thought in the contest:
 
-    這個題目是經典的<span style="color:red">中位數對齊</span>題目，一開始我的想法是將 a / b 轉換成 0, 1 思考，並且思考只需要枚舉一半的情況，另一半可以將 a, b 交換然後再次重覆計算就可以得到另一半，一開始想的是對於枚舉所有的情況 ，左邊的 a 的個數會從 $[0, cnt_a]$ 變化，而只要能夠 $O(1)$ 或是 $O(\log{N})$ 得到 cost，就可以得到答案。
+        這個題目是經典的<span style="color:red">中位數對齊</span>題目，一開始我的想法是將 a / b 轉換成 0, 1 思考，並且思考只需要枚舉一半的情況，另一半可以將 a, b 交換然後再次重覆計算就可以得到另一半，一開始想的是對於枚舉所有的情況 ，左邊的 a 的個數會從 $[0, cnt_a]$ 變化，而只要能夠 $O(1)$ 或是 $O(\log{N})$ 得到 cost，就可以得到答案。
 
-    當已知左右的 a 的個數 $left_a, right_a$ 時我們可以得到對應的目標區間 $[l, r]$，利用前綴和分別可以知道 $[0, l), (r, 0]$ 的 b 的下標貢獻。此時對於 $[l, r]$ 中的 a 下標貢獻要分成兩部分，分給左半邊跟分給右半邊，這裡我使用二分 lower_bound 找到 $\le l$ 的第一個 a 開始的下標，使用前綴和計算分給左右兩邊的貢獻。
-    
-    * <span style="color:red">理論上這個方法可以使用指針的方式得到 $\le l$ 的第一個 a 開始的下標，但是當時思考太混雜決定用 lower_bound 簡化處理。</span>
+        當已知左右的 a 的個數 $left_a, right_a$ 時我們可以得到對應的目標區間 $[l, r]$，利用前綴和分別可以知道 $[0, l), (r, 0]$ 的 b 的下標貢獻。此時對於 $[l, r]$ 中的 a 下標貢獻要分成兩部分，分給左半邊跟分給右半邊，這裡我使用二分 lower_bound 找到 $\le l$ 的第一個 a 開始的下標，使用前綴和計算分給左右兩邊的貢獻。
+        
+        * <span style="color:red">理論上這個方法可以使用指針的方式得到 $\le l$ 的第一個 a 開始的下標，但是當時思考太混雜決定用 lower_bound 簡化處理。</span>
 
-    * <span style="color:red">一開始其實有想到要使用下標 $a_i - t_i$ 方式出發，但是想到計算會有負數時卡住了，沒有繼續往下走，應該可以繼續的但是思考方式不太對，加上絕對值有機會可以往下走</span>
+        * <span style="color:red">一開始其實有想到要使用下標 $a_i - t_i$ 方式出發，但是想到計算會有負數時卡住了，沒有繼續往下走，應該可以繼續的但是思考方式不太對，加上絕對值有機會可以往下走</span>
 
-    [code](https://codeforces.com/contest/2149/submission/342666432)
+        [code](https://codeforces.com/contest/2149/submission/342666432)
 
-* Solution:
+    * Solution:
 
-    1. [官方解答](https://codeforces.com/blog/entry/146793)為目標 subarray 開始的第一個下標為 $t_0$，所以答案為 $\sum{|a_i - (t_0 + i)|}$，移項後可以得到 $\sum{|(a_i - i) - t_0|} = \sum{|F_i - t_0|} \text{, for } F_i = a_i - i$，可以看成在一堆新座標 $F_i$ 中 我們要減去一個座標得到最小值 $min(\sum{|F_i - t_0|})$，這是經典的中位數貪心(或是這種題目可以叫[中位數對齊](https://slipet.github.io/5lipet/greedy/greedy/#median-alignment))
+        1. [官方解答](https://codeforces.com/blog/entry/146793)為目標 subarray 開始的第一個下標為 $t_0$，所以答案為 $\sum{|a_i - (t_0 + i)|}$，移項後可以得到 $\sum{|(a_i - i) - t_0|} = \sum{|F_i - t_0|} \text{, for } F_i = a_i - i$，可以看成在一堆新座標 $F_i$ 中 我們要減去一個座標得到最小值 $min(\sum{|F_i - t_0|})$，這是經典的中位數貪心(或是這種題目可以叫[中位數對齊](https://slipet.github.io/5lipet/greedy/greedy/#median-alignment))
 
-        * [code](https://codeforces.com/contest/2149/submission/342669253)
+            * [code](https://codeforces.com/contest/2149/submission/342669253)
 
-    2. 另一種更為直觀的貪心想法，基本上最小的開銷為將所有的 a 或 b 往中間聚在一起，所以最小的開銷為中為數貪心的方式計算貢獻 $\sum{|a_i - a_{mid}|}$，<span style="color:red">這裡有個小陷阱，往中間靠的時候每個元素都要佔據一個位置，所以要分別減去對應的位置</span>。
-    
-        $\sum{|a_i - a_{mid}|} - \frac{left_a \times (left_a + 1)}{2} - \frac{right_a \times (right_a + 1)}{2}$
+        2. 另一種更為直觀的貪心想法，基本上最小的開銷為將所有的 a 或 b 往中間聚在一起，所以最小的開銷為中為數貪心的方式計算貢獻 $\sum{|a_i - a_{mid}|}$，<span style="color:red">這裡有個小陷阱，往中間靠的時候每個元素都要佔據一個位置，所以要分別減去對應的位置</span>。
+        
+            $\sum{|a_i - a_{mid}|} - \frac{left_a \times (left_a + 1)}{2} - \frac{right_a \times (right_a + 1)}{2}$
 
 
 
-        * [video](https://www.bilibili.com/video/BV1y6n8zFEKW/?spm_id_from=333.337.search-card.all.click&vd_source=caaccd1459c5ece44b5e2d37804871b8)
+            * [video](https://www.bilibili.com/video/BV1y6n8zFEKW/?spm_id_from=333.337.search-card.all.click&vd_source=caaccd1459c5ece44b5e2d37804871b8)
 
-        * [code](https://codeforces.com/contest/2149/submission/342785403)
+            * [code](https://codeforces.com/contest/2149/submission/342785403)
 
-    3. 第三種想法是看到 [jiazhichen844](https://codeforces.com/contest/2149/submission/340391056), [exgcd](https://codeforces.com/contest/2149/submission/340386200), [Misuki](https://codeforces.com/contest/2149/submission/340393665)，這些人的寫法感到好奇，但是在網路上搜索很久之後幾乎找不到這種做法的講解，頂多是又找到了其他前綴和計算貢獻的方式而不是這種一次計算最後取 min 得方式，因此嘗試使用 [CHAT-GPT](https://chatgpt.com/s/t_68e7df5b40308191a5f42d6aa9d39982) 解釋看看。
-    
-        基本得想法是每個位置 i 有往左或往右兩種選擇，假設我們想構造出連續 a 的 subarray，那在每個位置的 b 都必須往左或往右移動，往兩側移動的開銷可以看作要跨越多少的 a，取最小的開銷 $min(left_a, right_a)$，可以得到在 b 位置上的 cost，最後累加所有 b 的 cost 可以得到 構造出連續 a 的 subarray 的 cost。
+        3. 第三種想法是看到 [jiazhichen844](https://codeforces.com/contest/2149/submission/340391056), [exgcd](https://codeforces.com/contest/2149/submission/340386200), [Misuki](https://codeforces.com/contest/2149/submission/340393665)，這些人的寫法感到好奇，但是在網路上搜索很久之後幾乎找不到這種做法的講解，頂多是又找到了其他前綴和計算貢獻的方式而不是這種一次計算最後取 min 得方式，因此嘗試使用 [CHAT-GPT](https://chatgpt.com/s/t_68e7df5b40308191a5f42d6aa9d39982) 解釋看看。
+        
+            基本得想法是每個位置 i 有往左或往右兩種選擇，假設我們想構造出連續 a 的 subarray，那在每個位置的 b 都必須往左或往右移動，往兩側移動的開銷可以看作要跨越多少的 a，取最小的開銷 $min(left_a, right_a)$，可以得到在 b 位置上的 cost，最後累加所有 b 的 cost 可以得到 構造出連續 a 的 subarray 的 cost。
 
-        一個會卡住的點是 以 ababab 為例子，第一個 b 的 $cost = min(1, 2) = 1$，往左的開銷很直觀為 1，往右的開銷卻是 2，看起來很像錯的因為看起來走兩步還是無法跨過 a 到達右側 ex. a[ ]ab[<span style="color:red">b</span>]ab，但是考慮到下一個 b 可以發現 aba[b]ab 若是先往右走可以到達右側使得 a 可以聚集在一起 abaa[b]b，這時
-        第一個 b 只要走兩步就可以到達。
+            一個會卡住的點是 以 ababab 為例子，第一個 b 的 $cost = min(1, 2) = 1$，往左的開銷很直觀為 1，往右的開銷卻是 2，看起來很像錯的因為看起來走兩步還是無法跨過 a 到達右側 ex. a[ ]ab[<span style="color:red">b</span>]ab，但是考慮到下一個 b 可以發現 aba[b]ab 若是先往右走可以到達右側使得 a 可以聚集在一起 abaa[b]b，這時
+            第一個 b 只要走兩步就可以到達。
 
-        這個方法可以看成上面方法的反向思考，思考不合法的元素該如何移動造成的開銷。
+            這個方法可以看成上面方法的反向思考，思考不合法的元素該如何移動造成的開銷。
 
-        比較直觀的想法應該是 gpt 的這個想法:
+            比較直觀的想法應該是 gpt 的這個想法:
 
-        <span style="color:red">相鄰交換要讓 a（或 b）成段，等價於讓每個 b（或 a）往某一側移到區塊外，並跨過必要的 a（或 b）次數。</span>
+            <span style="color:red">相鄰交換要讓 a（或 b）成段，等價於讓每個 b（或 a）往某一側移到區塊外，並跨過必要的 a（或 b）次數。</span>
 
-        * [code](https://codeforces.com/contest/2149/submission/342669253)
+            * [code](https://codeforces.com/contest/2149/submission/342669253)
 
-        延伸思考:
-            或許可以加上逆序對幫助思考? 或是利用逆序對變成延伸題目?
-            
+            延伸思考:
+                或許可以加上逆序對幫助思考? 或是利用逆序對變成延伸題目?
+
 
