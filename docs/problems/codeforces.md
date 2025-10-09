@@ -110,7 +110,7 @@
 
         以此類推我們可以得到這張圖
 
-        ![photo](../assets/imgs/D_Grid Counting.png)
+        ![photo](../assets/imgs/D_Grid_Counting.png)
 
         可以發現選完 k = 1, k = 5 後 只剩 (1, 2), (2, 2) 可以選，而選完這兩個其中一個後只能選 (1, 4), (2, 4) 此時會剩下
 
