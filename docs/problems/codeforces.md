@@ -2,9 +2,9 @@
 
 ## Practice Round [#1052](https://codeforces.com/contest/2146)
 
-### A - Equal Occurrences
+A. Equal Occurrences
 
-### B - Merging the Sets
+### B. Merging the Sets
 
 ??? note "Details"    
     
@@ -22,15 +22,15 @@
 
         
 
-### C - Wrong Binary Search
+C. Wrong Binary Search
 
-### D - Max Sum OR (Easy Version)
+D. Max Sum OR (Easy Version)
 
 ## Practice Round [#1053](https://codeforces.com/contest/2151) (Div.2)
 
-### A - Incremental Subarray
+A. - Incremental Subarray
 
-### B - Incremental Path
+### B. Incremental Path
 
 ??? note "Details"
 
@@ -43,7 +43,7 @@
         似乎是要使用模擬範例來觀察如何得到答案。關注點應該是 i-th 和 (i - 1)-th 如何變化
 
 
-### C - Incremental Stay
+### C. Incremental Stay
 
 ??? note "Details"
 
@@ -57,7 +57,7 @@
 
         可以參考這個寫法學習一下怎麼寫比較漂亮 [code](https://codeforces.com/contest/2151/submission/342031350)
 
-### D - Grid Counting
+### D. Grid Counting
 
 ??? note "Details"
 
@@ -126,13 +126,13 @@
 
 ## Practice Round [#1054](https://codeforces.com/contest/2149) (Div.3)
 
-### A - Be Positive
+A. Be Positive
     
-### B - Unconventional Pairs
+B. Unconventional Pairs
 
-### C - MEX rose
+C. MEX rose
 
-### D - A and B
+### D. A and B
 
 ??? note "Details"
 
