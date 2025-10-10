@@ -8,9 +8,9 @@
 
 #### wait to note
 
-- [ ] [C. MEX rose](https://codeforces.com/contest/2149/problem/C), round 1054 B, 不算粗心，算沒想到
+- [x] [C. MEX rose](https://codeforces.com/contest/2149/problem/C), round 1054 B, 不算粗心，算沒想到
 
-- [ ] [B. Incremental Path](https://codeforces.com/contest/2151/problem/B), round 1053 B, 過程很重要
+- [x] [B. Incremental Path](https://codeforces.com/contest/2151/problem/B), round 1053 B, 過程很重要
 
 - [x] [C. Incremental Stay](https://codeforces.com/contest/2151/problem/C), round 1053 C, 過程很重要
 

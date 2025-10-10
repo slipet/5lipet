@@ -273,12 +273,15 @@ nav:
   - Problems:
     - Leetcode: "./problems/leetcode.md"
     - Codeforces: "./problems/codeforces.md"
-    - Todo: "./problems/todo/list.md"
   - Contest:
     - Leetcode:
       - 2025: "./contest/leetcode/2025.md"
     - Codeforces: 
       - 2025: "./contest/codeforces/2025.md"
+
+  - To-do list: 
+    - To-do: "./todo/list.md"
+  
   # - Graph:
   # - Math:
   # - DP:
