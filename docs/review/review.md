@@ -9,7 +9,7 @@
 
 ## DP
 
-- [Digit counting](https://www.notion.so/Digit-Counting-2792067ae21f48d08ba6f4d052d57b71?pvs=21)
+- [Digit counting](https://slipet.github.io/5lipet/dp/digits_counting/)
 
 ## String
 
