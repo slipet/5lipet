@@ -18,6 +18,8 @@
 
 - [ ] [[Tutorial] Problems about swapping adjacent elements](https://codeforces.com/blog/entry/92130?utm_source=chatgpt.com)
 
+- [ ] [B. Random Teams](https://codeforces.com/problemset/problem/478/B), 用 connected component 去分析!
+
 #### wait to do
 
 - [ ] [F. Jee, You See?](https://codeforces.com/problemset/problem/1670/F), 2025/10/05
