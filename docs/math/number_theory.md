@@ -16,7 +16,7 @@ bool isPrimes(int n){
 
 ## Seieve of prime
 
-* 樸素寫法
+* 埃式篩
 
 * $O(n\log{\log{(n)}})$
 
