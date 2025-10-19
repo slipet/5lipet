@@ -4,6 +4,8 @@
 
 - [ ] [1703. Minimum Adjacent Swaps for K Consecutive Ones](https://leetcode.cn/problems/minimum-adjacent-swaps-for-k-consecutive-ones/description/)
 
+- [ ] SegmentTree, LazySegmentTree
+
 ### Codeforces
 
 #### wait to note
@@ -20,6 +22,8 @@
 
 - [ ] [B. Random Teams](https://codeforces.com/problemset/problem/478/B), 用 connected component 去分析!
 
+- [ ] round [#1059]
+
 #### wait to do
 
 - [ ] [F. Jee, You See?](https://codeforces.com/problemset/problem/1670/F), 2025/10/05
@@ -31,3 +35,14 @@
 - [x] [D. Grid Counting](https://codeforces.com/contest/2151/problem/D), round 1053 D.
 
 - [ ] [E. Hidden Knowledge of the Ancients](https://codeforces.com/contest/2149/problem/E) , round 1054 E. rating 1500
+
+### luogu
+
+- [ ] [HH 的项链](https://www.luogu.com.cn/problem/P1972)
+
+- [ ] [模板](https://www.luogu.com.cn/problem/list?keyword=%E6%A8%A1%E6%9D%BF&page=1)
+
+- [ ] [洛谷热门题目](https://www.luogu.com.cn/training/491073)
+
+- [ ] [CF 題單](https://www.luogu.com.cn/training/465300)
+
