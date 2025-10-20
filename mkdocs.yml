@@ -256,7 +256,8 @@ nav:
       - Leetcode: "./stat/leetcode.md"
       - Codeforces: "./stat/codeforces.md"
       - Mixed: "./stat/mixed.md"
-  #- Data Structure: #DS
+  - Data Structure: #DS
+    - Segment Tree: "./ds/seg_tree.md"
   - Search:
     - DFS: "./search/dfs.md"
     - BFS: "./search/bfs.md"
