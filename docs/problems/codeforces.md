@@ -1,10 +1,7 @@
 # Codeforces
 
-## Practice Round [#1052](https://codeforces.com/contest/2146)
 
-A. Equal Occurrences
-
-### B. Merging the Sets
+### 2146B. Merging the Sets
 
 ??? note "Details"    
     
@@ -20,17 +17,12 @@ A. Equal Occurrences
 
         官解為計算選擇 n - 1 和 n 個 S 的方案有多少個，這個比較像是逆向思維，一開始想到如果全選的話就可以知道可不可能構造出解答，然後想到只需要構造出方案 A, B, A + B 就好，因此若是移除一個 S 就看看是否仍然可以構造出答案，計算 n - 1 個 S 能構造出答案的有幾個。
 
-        
 
-C. Wrong Binary Search
+### 2146D1. Max Sum OR (Easy Version)
 
-D. Max Sum OR (Easy Version)
+### 2146D2. Max Sum OR (Easy Version)
 
-## Practice Round [#1053](https://codeforces.com/contest/2151) (Div.2)
-
-A. - Incremental Subarray
-
-### B. Incremental Path
+### 2151B. Incremental Path
 
 ??? note "Details"
 
@@ -43,7 +35,7 @@ A. - Incremental Subarray
         似乎是要使用模擬範例來觀察如何得到答案。關注點應該是 i-th 和 (i - 1)-th 如何變化
 
 
-### C. Incremental Stay
+### 2151C. Incremental Stay
 
 ??? note "Details"
 
@@ -57,7 +49,7 @@ A. - Incremental Subarray
 
         可以參考這個寫法學習一下怎麼寫比較漂亮 [code](https://codeforces.com/contest/2151/submission/342031350)
 
-### D. Grid Counting
+### 2151D. Grid Counting
 
 ??? note "Details"
 
@@ -124,15 +116,7 @@ A. - Incremental Subarray
         * <span style="color:red">實作的時候有一個錯誤卡很久，原因是在讀取答案的時候，判斷不合法時直接返回使得沒有處理完全部輸入 -> 以後在處理輸入時處理東西的話要讓全部輸入都完成才行，不能中途返回</span>
         * <span style="color:red">要使得 1 <= k <= n 都恰好有一個的話，必須使 sum(a) == n 比這多或少都會使得 n 不合法</span>
 
-## Practice Round [#1054](https://codeforces.com/contest/2149) (Div.3)
-
-A. Be Positive
-    
-B. Unconventional Pairs
-
-C. MEX rose
-
-### D. A and B
+### 2149D. A and B
 
 ??? note "Details"
 
