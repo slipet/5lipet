@@ -275,7 +275,6 @@ nav:
     - Number theory: "./math/number_theory.md"
   - Conclusion:
     - Conclusion: "./conclusion/conclusion.md"
-
   - Problems:
     - Leetcode: "./problems/leetcode.md"
     - Codeforces: "./problems/codeforces.md"
