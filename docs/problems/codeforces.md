@@ -263,3 +263,15 @@
     * <span style="color:red">分類討論的能力不構</span> 
 
     * <span style="color:red">中間有想用dp的方式解，但是定義區間的能力不足</span> 
+
+### 5C. Longest Regular Bracket Sequence
+
+??? note "Details"
+
+    這題有解出來，但是想記錄一下漏掉的思路，這題我一開始簡單的思考將 '(' 與 ')' 匹配，沒有考量到可以有多個連續的 '(((((' 可以將合法的 '()' 隔開，導致連續未匹配的 '(((((' 的狀態必須取決於後面的 ')'。
+    因此我使用 stack 進行鄰項消除將 stack 的頂端維持 '(' >= ')' ，利用這個來更新答案。
+
+    另一個思路是將 stack 紀錄 i 的位置紀錄上一個未匹配的 '(' index，這樣可以快速地算出長度，這個是我沒考量到的部分，因為已經配對好的 '()' 是我們不關心的部分，我們只關心尚未配對的 '(' 及起始位置，這個方法不需要上面的鄰項消除會比較快一點。
+
+    [code1](https://codeforces.com/contest/5/submission/348258767)
+    [code2](https://codeforces.com/contest/5/submission/348436738)
