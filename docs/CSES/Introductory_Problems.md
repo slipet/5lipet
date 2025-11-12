@@ -91,3 +91,30 @@ void solve() {
     cout<< ans << endl;
 }
 ```
+
+### 5. Permutations
+
+* 注意 1 是合法的答案
+
+```cpp
+void solve() {
+    int n;
+    cin >> n;
+    if(n > 1 && n <= 3) {
+        cout<<"NO SOLUTION";
+    } else {
+        int odd = n - ((n & 1) == 0);
+        int even = n - (n & 1);
+
+        for(int i = odd; i > 0; i -= 2) {
+            if(i != odd) cout<<' ';
+            cout<<i;
+        }
+        for(int i = even; i > 0; i -= 2) {
+            cout<<' ';
+            cout<<i;
+        }
+    }
+    cout<<endl;
+}
+```
