@@ -4,6 +4,8 @@
 
 簡單模擬
 
+* <span style="color:red"> 沒有注意到乘 3 可能導致的 overflow </span>
+
 ```cpp
 void solve() {
     int n;
