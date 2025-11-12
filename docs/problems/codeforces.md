@@ -311,4 +311,6 @@
     否則第二位玩家可以從任意元素中選擇(*至少有兩個非空元素)
     此時 S 減少 2，而每一元素仍然不超過 S / 2。
 
+    * <span style="color:red">這是從0開始的反向思考，要嘗試學習看看</span> 
+
     [§1.8 相邻不同](https://leetcode.cn/discuss/post/3091107/fen-xiang-gun-ti-dan-tan-xin-ji-ben-tan-k58yb/)
