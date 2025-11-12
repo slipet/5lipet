@@ -276,7 +276,7 @@ nav:
   - Conclusion:
     - Conclusion: "./conclusion/conclusion.md"
   - CSES:
-    
+    - Introductory Problems: "./CSES/Introductory_Problems.md"
   - Problems:
     - Leetcode: "./problems/leetcode.md"
     - Codeforces: "./problems/codeforces.md"
