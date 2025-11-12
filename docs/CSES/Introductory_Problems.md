@@ -71,7 +71,7 @@ void solve() {
 }
 ```
 
-### 4. Repetitions
+### 4. Increasing Array
 
 1. 要注意 overflow 的情況
 
