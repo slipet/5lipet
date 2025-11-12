@@ -118,3 +118,21 @@ void solve() {
     cout<<endl;
 }
 ```
+
+### 5. Number Spiral
+
+```cpp
+void solve() {
+    long long x, y;
+    cin >> y >> x;
+    long long mx = max(x, y);
+    long long base = mx * mx - (mx - 1);
+    long long ans;
+    if(mx == y) {
+        ans = base + (mx & 1 ? -1 : 1) * (mx - x);
+    } else {
+        ans = base + (mx & 1 ? 1 : -1) * (mx - y);
+    }
+    cout<<ans<<endl;
+}
+```
