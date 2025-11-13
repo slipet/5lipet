@@ -153,3 +153,42 @@ void solve() {
     }
 }
 ```
+
+### 8. Two Sets
+
+* <span style="color:red"> 沒有注意到正確時要輸出 "YES" </span>
+
+```cpp
+void solve() {
+    long long n;
+    cin >> n;
+    long long sum = (n + 1) * n / 2;
+    if(sum & 1) {
+        cout<<"NO";
+    } else {
+        vector<int> left, right;
+        long long half = sum / 2;
+        for(int i = n; i; --i) {
+            if(half >= i) {
+                left.push_back(i);
+                half -= i;
+            } else{
+                right.push_back(i);
+            }
+        }
+        cout<<"YES"<<endl;
+        cout<<left.size()<<endl;
+        for(int i = 0; i < left.size(); ++i) {
+            if(i) cout<<' ';
+            cout<<left[i];
+        }
+        cout<<endl;
+        cout<<right.size()<<endl;
+        for(int i = 0; i < right.size(); ++i) {
+            if(i) cout<<' ';
+            cout<<right[i];
+        }
+    }
+    cout<<endl;
+}
+```
