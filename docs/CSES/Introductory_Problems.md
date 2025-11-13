@@ -119,7 +119,7 @@ void solve() {
 }
 ```
 
-### 5. Number Spiral
+### 6. Number Spiral
 
 ```cpp
 void solve() {
@@ -134,5 +134,22 @@ void solve() {
         ans = base + (mx & 1 ? 1 : -1) * (mx - y);
     }
     cout<<ans<<endl;
+}
+```
+
+### 7. Two Knights
+
+* <span style="color:red"> 沒有注意到 square * (square - 1) 可能導致的 overflow </span>
+
+```cpp
+void solve() {
+    long long n;
+    cin >> n;
+    for(int k = 1; k <= n; ++k) {
+        long long square = k * k;
+        long long w = k - 1;
+        long long h = k - 2;
+        cout << square * (square - 1) / 2 - w * h * 2 * 2 << endl;
+    }
 }
 ```
