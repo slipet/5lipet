@@ -31,6 +31,8 @@ void solve() {
 
 題目 n 的上限是 $2 * n^5$ 有可能超過 int 索性直接開 long long 算。
 
+
+
 ```cpp
 void solve() {
     int n, x;
@@ -44,6 +46,27 @@ void solve() {
     cout<< need - sum <<endl;
 }
 ```
+
+#### xor solution
+
+不用開 long long ，避免 overflow 。
+
+```cpp
+void solve() {
+    int n, x;
+    cin >> n;
+    long long xor = 0, all = 0;
+    for(int i = 1; i <= n - 1; ++i) {
+        cin >> x;
+        xor ^= x;
+        all ^= i;
+    }
+    cout<< all ^ xor ^ n <<endl;
+}
+```
+
+[ref](https://hackmd.io/p53aGB5DQBGRwSCBd9Fc-Q?view#%E6%83%B3%E6%B3%95-3-2%EF%BC%9AXOR-%E7%89%88)
+
 
 ### 3. Repetitions
 
