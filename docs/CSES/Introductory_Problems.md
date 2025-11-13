@@ -215,3 +215,19 @@ void solve() {
     cout<<endl;
 }
 ```
+
+### 9. Bit Strings
+
+```cpp
+const int MOD = 1'000'000'000 + 7;
+void solve() {
+    int n;
+    cin >> n;
+    int ans = 1;
+    for(int i = 0; i < n; ++i) {
+        ans = (ans << 1) % MOD;
+    }
+    cout<< ans << endl;
+}
+```
+
