@@ -230,4 +230,97 @@ void solve() {
     cout<< ans << endl;
 }
 ```
+### 10. Trailing Zeros
 
+直覺地想到是要找階乘中 2 和 5 的因子個數。
+
+* 錯誤的想法﹕
+
+一開始直覺的思考計算　n / 10 * 2 + (n % 10 >= 5) 計算。但是這個方法會漏掉 $5^2$, $5^3$  這種數。
+
+* Solution:
+
+接著思考如何得到階乘中 2 和 5 的因子個數。
+對於 5 的倍數的個數可以由 $\lfloor \frac{n}{5} \rfloor$ 得到，而 $5^2$ 可以由 $\lfloor \frac{n}{25} \rfloor$ 得到。
+所以對於 $n!$ 中 5 的因子個數 $cnt_5(n!)$ 可以由 $cnt_5(n!) = \lfloor \frac{n}{5} \rfloor + \lfloor \frac{n}{5^2} \rfloor + \lfloor \frac{n}{5^3} \rfloor ...$
+
+同理，所以對於 $n!$ 中 2 的因子個數 $cnt_2(n!)$ 可以由 $cnt_2(n!) = \lfloor \frac{n}{2} \rfloor + \lfloor \frac{n}{2^2} \rfloor + \lfloor \frac{n}{2^3} \rfloor ...$
+
+我們要找的是 2 * 5 的個數為 $min(cnt_5(n!), cnt_2(n!))$
+
+```cpp
+void solve() {
+    int n;
+    cin >> n;
+    long long pow5 = 1, pow2 = 1;
+    int cnt5 = 0, cnt2 = 0;
+    while(pow5 * 5 <= n) {
+        pow5 *= 5;
+        cnt5 += (n / pow5);
+    }
+    while(pow2 * 2 <= n) {
+        pow2 *= 2;
+        cnt2 += (n / pow2);
+    }
+    cout << min(cnt2, cnt5) << endl;
+}
+```
+
+由其他人的寫法發現直接計算 $cnt_5(n!)$ 就可以，一開始我也直覺地想到 $n!$ 中 5 的因子個數 $cnt_5(n!)$ 直覺上會少於 $cnt_2(n!)$，但是寫題目的時候懶得仔細去思考證明，所以同時計算 2 和 5 並且取最小值。
+
+證明:
+
+由上述可知:
+
+$cnt_5(n!) = \lfloor \frac{n}{5} \rfloor + \lfloor \frac{n}{5^2} \rfloor + \lfloor \frac{n}{5^3} \rfloor + ... + \lfloor \frac{n}{5^k} \rfloor, \quad k \le \log_5{(n)}$
+
+$cnt_2(n!) = \lfloor \frac{n}{2} \rfloor + \lfloor \frac{n}{2^2} \rfloor + \lfloor \frac{n}{2^3} \rfloor + ... + \lfloor \frac{n}{2^p} \rfloor, \quad p \le \log_2{(n)}$
+
+可以寫成:
+
+\[
+\left\{ 
+\begin{array}{ll}
+    cnt_5(n!) = n\sum_{i = 1}^{k} \lfloor \frac{1}{5^i} \rfloor\\
+    cnt_2(n!) = n\sum_{j = 1}^{p} \lfloor \frac{1}{2^j} \rfloor
+\end{array}
+\right.
+\]
+
+觀察當項數 i = j = 1, 2, ... 時，$\frac{1}{5} \le \frac{1}{2}$, $\frac{1}{5^2} \le \frac{1}{2^2}$ ...。
+
+且 $k \le p$，表示 $cnt_2(n!)$ 的項數會比 $cnt_5(n!)$ 多，也就可以知道 $cnt_5(n!) \le cnt_2(n!)$。
+
+
+```cpp
+void solve() {
+    int n;
+    cin >> n;
+    int cnt = 0;
+    while(n >= 5) {
+        cnt += (n / 5);
+        n /= 5;
+    }
+    cout << cnt << endl;
+}
+```
+
+### 11. Coin Piles
+
+解聯立方程即可。
+
+```cpp
+void solve() {
+    int a, b;
+    cin >> a >> b;
+    
+    int x = 2 * a - b;
+    int y = 2 * b - a;
+    if(x < 0 || y < 0 || x % 3 != 0 || y % 3 != 0)
+        cout<<"NO";
+    else
+        cout<<"YES";
+
+    cout<<endl;
+}
+```
