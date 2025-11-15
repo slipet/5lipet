@@ -324,3 +324,39 @@ void solve() {
     cout<<endl;
 }
 ```
+
+### 12. Palindrome Reorder
+
+
+```cpp
+void solve() {
+    string s;
+    cin >> s;
+    unordered_map<char, int> fq;
+    for(auto &c: s) fq[c]++;
+    int odd = 0;
+    char mid = 0;
+    for(auto &[x, c]: fq) {
+        if(c & 1) {
+            odd++;
+            mid = x;
+        }
+    }
+    if(odd > 1) {
+        cout<<"NO SOLUTION"<<endl;
+        return;
+    }
+    string half = "";
+    for(auto &[x, c]: fq) {
+        if(c / 2)
+            half += string(c / 2, x);
+    }
+    string rev = half;
+    ranges::reverse(rev);
+    if(odd) {
+        cout<<half + mid + rev <<endl;
+    } else {
+        cout<<half + rev <<endl;
+    }
+}
+```
