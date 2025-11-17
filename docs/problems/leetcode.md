@@ -36,7 +36,7 @@
 
 * Date: 2025/10/07
 
-* [link](https://leetcode.cn/problems/super-washing-machines/solutions/1023234/acmjin-pai-ti-jie-tan-xin-bian-cheng-xio-mp7n/)|
+* [link](https://leetcode.cn/problems/super-washing-machines/solutions/1023234/acmjin-pai-ti-jie-tan-xin-bian-cheng-xio-mp7n/)
 
 * Comment:
 
@@ -50,7 +50,7 @@
 
 * Date: 2025/10/22
 
-* [link](https://leetcode.cn/problems/check-if-it-is-possible-to-split-array/description/)|
+* [link](https://leetcode.cn/problems/check-if-it-is-possible-to-split-array/description/)
 
 * Comment: 
 沒有認真去思考，有想到關鍵點是當長度為二時，若是和小於 m 可能沒辦法切分，但是因為範例三可以透過其他陣列幫助切分，所以沒有想到是當所有長度為二的子陣列都小於二時才會無法切分，沒有觀察到問題的本質
