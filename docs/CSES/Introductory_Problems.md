@@ -384,3 +384,39 @@ void solve() {
     }
 }
 ```
+### 14. Tower of Hanoi
+
+* 河內塔，結果反而不會寫了。
+
+* 主要思考的方向應該是要看做一個整體，並且使用反向思考。
+
+* 對於最後一個元素一定是由 1 -> 3，則代表 2 會有所有其他的元素。
+
+* 所以可以得到:
+
+    1. 將 n - 1 個元素由 1 -> 2(繼續遞迴，使用3作為輔助)
+
+    2. 將第 n 個元素 1 -> 3
+
+    3. 將 n - 1 個元素由 2 -> 3
+
+```cpp
+void solve() {
+    int n;
+    cin >> n;
+    vector<vector<int>> ans;
+    auto dfs = [&](auto &&dfs, int n, char from, char to, char mid) -> void {
+        if(n == 1)  {
+            ans.push_back({from, to});
+            return;
+        } else {
+            dfs(dfs, n - 1, from, mid, to);
+            ans.push_back({from, to});
+            dfs(dfs, n - 1, mid, to, from);
+        }
+    };
+    dfs(dfs, n, '1', '3', '2');
+    cout<<ans.size()<<endl;
+    for(auto &p: ans) cout<<(char)p[0]<<' '<<(char)p[1]<<endl;
+}
+```
