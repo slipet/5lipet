@@ -360,3 +360,27 @@ void solve() {
     }
 }
 ```
+
+### 13. Gray Code
+
+* gray code 特殊寫法 i ^ (i >> 1)
+
+```cpp
+void solve() {
+    int n;
+    cin >> n;
+    int limit = 1 << n;
+    int x = 0;
+    for(int i = 0; i < limit; ++i) {
+        x = i ^ (i >> 1);
+        vector<int> d(n);
+        int j = n - 1;
+        while(x) {
+            d[j--] = x & 1;
+            x >>= 1;
+        }
+        for(auto &x: d) cout<<x;
+        cout<<endl;
+    }
+}
+```
