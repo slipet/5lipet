@@ -420,3 +420,58 @@ void solve() {
     for(auto &p: ans) cout<<(char)p[0]<<' '<<(char)p[1]<<endl;
 }
 ```
+
+### 15. Creating Strings
+
+兩種寫法，注意兩種寫法都需要使用 sort
+
+1. next_permutation
+
+```cpp
+void solve() {
+    string s;
+    cin>>s;
+    
+    ranges::sort(s);
+    vector<string> ans;
+    
+    do {
+        ans.push_back(s);
+    } while(next_permutation(s.begin(), s.end()));
+    
+    cout<<ans.size()<<endl;
+    for(auto &a: ans) cout<<a<<endl;
+}
+```
+
+2. 暴力枚舉，遞迴
+
+```cpp
+void solve() {
+    string s;
+    cin>>s;
+    unordered_map<char, int> cnt;
+    for(auto &c: s) cnt[c]++;
+    string cur = "";
+    int n = s.length();
+    vector<string> ans;
+    auto dfs = [&](auto&& dfs, int i) -> void {
+        if(i == n) {
+            ans.push_back(cur);
+            return;
+        }
+        for(auto &[ch, c]: cnt) {
+            if(c == 0) continue;
+            c--;
+            cur += ch;
+            dfs(dfs, i + 1);
+            cur.pop_back();
+            c++;
+        }
+    };
+    dfs(dfs, 0);
+    cout<<ans.size()<<endl;
+    ranges::sort(ans);
+    for(auto &a: ans) cout<<a<<endl;
+}
+```
