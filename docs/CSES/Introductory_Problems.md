@@ -475,3 +475,57 @@ void solve() {
     for(auto &a: ans) cout<<a<<endl;
 }
 ```
+
+### 16. Apple Division
+
+二進制枚舉
+
+我使用的是比較好寫的枚舉的方式會比較慢
+
+1. $O(n2^n)$
+比較慢
+
+```cpp
+void solve() {
+    int n;
+    cin>>n;
+    vector<int> a(n);
+    long long tot = 0;
+    for(int i = 0; i < n; ++i) {
+        cin >> a[i];
+        tot += a[i];
+    }
+    int u = 1 << n;
+    long long ans = INT_MAX;
+    for(int s = 0; s < u; ++s) {
+        long long sum = 0;
+        for(int i = 0; i < n; ++i) {
+            if(s >> i & 1) sum += a[i];
+        }
+        ans = min(ans, abs(sum * 2 - tot));
+    }
+    cout<<ans<<endl;
+}
+```
+
+2. 遞迴枚舉 $O(2^n)$
+
+```cpp
+void solve() {
+    int n;
+    cin>>n;
+    vector<int> a(n);
+    long long tot = 0;
+    for(int i = 0; i < n; ++i) {
+        cin >> a[i];
+        tot += a[i];
+    }
+    auto dfs = [&](auto&& dfs, int i, long long l, long long r) -> long long {
+        if(i == n) {
+            return abs(l - r);
+        }
+        return min(dfs(dfs, i + 1, l + a[i], r), dfs(dfs, i + 1, l, r + a[i]));
+    };
+    cout<<dfs(dfs, 0, 0, 0)<<endl;
+}
+```
