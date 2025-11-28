@@ -179,14 +179,14 @@ ex. [1, 1000000000] -> 一次一次減會導致 TLE
 把 x ≤ sum 为止（不能减成 0 或者负数），也就是计算:
 
 
-    \[
-    \left.
-        \begin{array}{ll}
-            x mod sum, \quad x mod sum > 0 \\
-            sum, \quad x mod sum = 0
-        \end{array}
-    \right.
-    \]
+\[
+\left.
+    \begin{array}{ll}
+        x mod sum, \quad x mod sum > 0 \\
+        sum, \quad x mod sum = 0
+    \end{array}
+\right.
+\]
  
 
 * <span style="color:red">这等价于 (x−1) mod sum + 1</span> 
