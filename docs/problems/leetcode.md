@@ -153,3 +153,40 @@
 若是最後才 * 2 的序列會是這樣 X -> .... T + K, T + K - 1, T + K - 2, ... T, 2 * T, ... Y 此時會需要 K + 1
 
 所以對於偶數來說 Y / 2 會是更好的選擇。
+
+### 1354. 多次求和构造目标数组 
+
+* Score: 2015
+
+* Quality: 8
+
+* Date: 2025/11/28
+
+* [link](https://leetcode.cn/problems/construct-target-array-with-multiple-sums/solutions/3832109/ni-xiang-si-wei-pythonjavacgojsrust-by-e-0701/)
+
+* Comment:
+
+調了很多次才過，沒有清楚定義問題的本質，這題的重點在如何找出最大的元素以及如何維護陣列和 sum 。
+
+考慮最後一步，會將其中一元素改為陣列和，所以陣列中最大元素勢必是上一次的陣列和，我們可以透過減去剩餘陣列和 $rest = sum - mx$ 還原最大值 $mx - rest$，但是這個步驟可以做不只一次。
+
+ex. [1, 1000000000] -> 一次一次減會導致 TLE
+
+所以要利用 mod 計算減到 > rest 。
+
+* 小結論
+
+把 x ≤ sum 为止（不能减成 0 或者负数），也就是计算:
+
+
+    \[
+    \left.
+        \begin{array}{ll}
+            x mod sum, \quad x mod sum > 0 \\
+            sum, \quad x mod sum = 0
+        \end{array}
+    \right.
+    \]
+ 
+
+* <span style="color:red">这等价于 (x−1) mod sum + 1</span> 
