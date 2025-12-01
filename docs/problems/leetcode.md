@@ -190,3 +190,31 @@ ex. [1, 1000000000] -> 一次一次減會導致 TLE
  
 
 * <span style="color:red">這等價於 (x−1) mod sum + 1</span> 
+
+2543. 判断一个点是否可以到达
+
+* Score: 2221
+
+* Quality: 9
+
+* Date: 2025/11/29
+
+* [link](https://leetcode.cn/problems/check-if-point-is-reachable/solutions/2073036/wen-ti-zhuan-huan-gcdju-ti-gou-zao-fang-0plx0/)
+
+* Comment:
+
+3307. 找出第 K 个字符 II
+
+* Score: 2232
+
+* Quality: 8
+
+* Date: 2025/12/01
+
+* [link](https://leetcode.cn/problems/find-the-k-th-character-in-string-game-ii/solutions/2934284/liang-chong-zuo-fa-di-gui-die-dai-python-5f6z/)
+
+* Comment:
+
+沒有認真地思考問題的本質，思考不夠清楚，然後用 try & error 的方式 wa 了很多次。
+
+本質上相當於遍歷 k - 1 二進制的每個 bit ，累加對應的 operations[i] 。
