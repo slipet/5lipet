@@ -1,5 +1,19 @@
 # Number theory
 
+## 公因數
+
+### 求公因數
+
+* 即輾轉相除法
+
+$g = gcd(x, y)$
+
+* 常見題目類型
+
+1. (x, y) 透過操作達到 (x - y, y), (x, y - x)
+
+[2543. 判断一个点是否可以到达](https://leetcode.cn/problems/check-if-point-is-reachable/description/)
+
 ## 判斷質數
 
 * $O(\sqrt{n})$
