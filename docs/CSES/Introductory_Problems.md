@@ -529,3 +529,56 @@ void solve() {
     cout<<dfs(dfs, 0, 0, 0)<<endl;
 }
 ```
+
+### 17. Chessboard and Queens
+
+用遞迴暴力枚舉所有可能
+
+```cpp
+void solve() {
+    const int n = 8;
+    vector<string> board(n);
+    for(int i = 0; i < n; ++i) {
+        cin>>board[i];
+    }
+    int col = 0, diag = 0, inv_diag = 0;
+    int ans = 0;
+    auto set = [&](int r, int c) -> int {
+        if(col >> c & 1) return 0;
+        //diag: k = r - c + (n - 1)
+        int k = r - c + (n - 1);
+        if(diag >> k & 1) return 0;
+        //inv_diag: r + c = k
+        int inv_k = r + c;
+        if(inv_diag >> inv_k & 1) return 0;
+        diag |= (1 << k);
+        col |= (1 << c);
+        inv_diag |= (1 << inv_k);
+        return 1;
+    };
+    auto unset = [&](int r, int c) -> void {
+        col &= ~(1 << c);
+        //diag: k = r - c + (n - 1)
+        int k = r - c + (n - 1);
+        diag &= ~(1 << k);
+        //inv_diag: r + c = k
+        int inv_k = r + c;
+        inv_diag &= ~(1 << inv_k);
+    };
+    auto dfs = [&](auto&& dfs, int i) -> void {
+        if(i == n) {
+            ans++;
+            return;
+        }
+        for(int j = 0; j < n; ++j) {
+            if(board[i][j] == '*') continue;
+            if(set(i, j)) {
+                dfs(dfs, i + 1);
+                unset(i, j);
+            }
+        }
+    };
+    dfs(dfs, 0);
+    cout<<ans<<endl;
+}
+```
