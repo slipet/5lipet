@@ -243,3 +243,17 @@ ex. [1, 1000000000] -> 一次一次減會導致 TLE
 沒有認真地思考問題的本質，思考不夠清楚，然後用 try & error 的方式 wa 了很多次。
 
 本質上相當於遍歷 k - 1 二進制的每個 bit ，累加對應的 operations[i] 。
+
+### 3614. 用特殊操作处理字符串 II
+
+* Score: 2011
+
+* Quality: 8
+
+* Date: 2025/12/02
+
+* [link](https://leetcode.cn/problems/process-string-with-special-operations-ii/solutions/3722462/ni-xiang-si-wei-pythonjavacgo-by-endless-26al/)
+
+* Comment:
+
+這題只卡在產生的字串中有可能變為空字串，所以一開始計算長度的時候要加 max，才能正確的統計最終產生的長度
