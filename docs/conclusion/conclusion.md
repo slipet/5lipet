@@ -31,3 +31,31 @@
 x = k * y + t
 
 * t = x % y
+
+### Minimax path(最小化最大路徑)
+
+1. 二分 + DFS/BFS
+
+二分猜最大邊的值，DFS/BFS 走 <= upperbound，判斷能否走完
+
+總複雜度：O((n+m)logW)，W 是權重範圍（或最大值）
+
+適合：單次 s→t 查詢，圖不一定是樹。
+2 dijkstra
+
+把普通的 dijkstra 中 + 改成 max
+
+主要的想法是 <span style="color:red">走到 v 的路徑最大邊權 = max(走到 u 的最大邊權, u→v 這條邊)</span>
+
+接著只有小於當前 <span style="color:red">走到 v 的路徑最大邊權</span> 我們才需要將 v 加入堆當中嘗試能否得到更好的解
+
+* <span style="color:red"> 更高層次的說，dis cost 表達的是走當前路徑，若是有下一次同樣走到 v 想更新 v 表示是走不同的路徑到 v </span>
+
+複雜度：O(mlogn)
+適合：單次 s→t 查詢，圖不一定是樹。
+
+3. MST + LCA
+
+適合：多次 pair 查詢
+
+還沒遇過這種題目先放著
