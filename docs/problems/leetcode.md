@@ -257,3 +257,32 @@ ex. [1, 1000000000] -> 一次一次減會導致 TLE
 * Comment:
 
 這題只卡在產生的字串中有可能變為空字串，所以一開始計算長度的時候要加 max，才能正確的統計最終產生的長度
+
+
+### 3419. 图的最大边权的最小值
+
+* Score: 2243
+
+* Quality: 0
+
+* Date: 2025/12/03
+
+* [link](https://leetcode.cn/problems/minimize-the-maximum-edge-weight-of-graph/)
+
+* Comment:
+
+沒想清楚問題!
+
+由於問題問的是從其他節點到原點，一開始就可以將路徑反向從原點出發至其他節點。
+
+對於問題的 treshold 約束，若是能夠不重複地走完所有節點，則可以滿足 threshold 的限制 -> threshold 是多餘的。
+
+有兩種方法
+
+1. 二分+DFS
+
+二分猜最大邊的值，DFS走 <= upperbound，判斷能否走完
+
+2 dijkstra
+
+把普通的 dijkstra 中 + 改成 max
