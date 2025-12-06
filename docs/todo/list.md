@@ -8,9 +8,9 @@
 
 ### Codeforces
 
-- [ ] 交互題模板
+- [ ] [2173D](https://codeforces.com/contest/2173/problem/D)
 
-- [ ] DBG output
+- [ ] [2170E](https://codeforces.com/contest/2170/problem/E)
 
 #### wait to note
 
