@@ -12,6 +12,8 @@
 
 - [ ] [2170E](https://codeforces.com/contest/2170/problem/E)
 
+- [ ] practice the problem with dp involving bits, not digit counting
+
 #### wait to note
 
 - [ ] [[Tutorial] Problems about swapping adjacent elements](https://codeforces.com/blog/entry/92130?utm_source=chatgpt.com)
