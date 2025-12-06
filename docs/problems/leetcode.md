@@ -286,3 +286,23 @@ ex. [1, 1000000000] -> 一次一次減會導致 TLE
 2 dijkstra
 
 把普通的 dijkstra 中 + 改成 max
+
+### 3609. 到达目标点的最小移动次数
+
+* Score: 2419
+
+* Quality: 0
+
+* Date: 2025/12/05
+
+* [link](https://leetcode.cn/problems/minimum-moves-to-reach-target-in-grid/solutions/3716440/ni-xiang-si-wei-fen-lei-tao-lun-yan-ge-z-m5cc/)
+
+* Comment:
+
+    這題同樣是逆向思維，但是想的時候沒想清楚，分類討論的部分沒處理好。
+
+    由題目的限制可以發現，只有每次的增加量為 max(x, y)，從 (x, y) -> (x + m, y) or (x, y + m)，所以可以知道增加後的 x + m, y + m 仍然會是最大值。
+
+    所以由反向逆推，每次都從當前最大的 x/y 想辦法往回走，而對於 x = y 的部分則要另外的分類討論。
+
+    
