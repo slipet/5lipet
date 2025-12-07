@@ -585,6 +585,7 @@ void solve() {
 
 ### 18. Raab Game I
 
+重點在找到不會變動的元素個數
 
 ```cpp
 void solve() {
