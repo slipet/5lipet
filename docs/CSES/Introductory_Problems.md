@@ -582,3 +582,57 @@ void solve() {
     cout<<ans<<endl;
 }
 ```
+
+### 18. Raab Game I
+
+
+```cpp
+void solve() {
+    int n, a, b;
+    cin >> n >> a >> b;
+    vector<int> arr(n);
+    int exchange = 0;
+    if(a < b) {
+        swap(a, b);
+        exchange = 1;
+    }
+    if(a + b > n || a >= n || b >= n || (b == 0 && a != 0)) {
+        cout<<"NO"<<endl;
+        return;
+    }
+    iota(arr.begin(), arr.end() , 1);
+    int rest = n - a - b;
+    int end = n - rest;
+    int cur = 1;
+    for(int i = b; i < end; ++i) {
+        arr[i] = cur++;
+    }
+    for(int i = 0; i < b; ++i) {
+        arr[i] = cur++;
+    }
+
+    cout<<"YES"<<endl;
+    auto printa = [&]() -> void {
+        for(int i = 0; i < n; ++i) {
+            if(i > 0) cout<<' ';
+            cout<<i + 1;
+        }
+        cout<<endl;
+    };
+    auto printb = [&]() -> void {
+        for(int i = 0; i < n; ++i) {
+            if(i > 0) cout<<' ';
+            cout<<arr[i];
+        }
+        cout<<endl;
+    };
+    if(exchange) {
+        printb();
+        printa();
+    } else {
+        printa();
+        printb();
+    }
+    
+}
+```
