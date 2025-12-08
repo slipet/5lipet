@@ -637,3 +637,72 @@ void solve() {
     
 }
 ```
+
+### 19. Mex Grid Construction
+
+1. 樸素解法，維護一個有序結構。
+
+```cpp
+void solve() {
+    int n;
+    cin >> n;
+    
+    vii mat(n, vi(n, 0));
+    
+    int mx = 0;
+    for(int i = 0; i < n; ++i) {
+        set<int> available, row;
+        for(int x = 0; x < mx; ++x) {
+            available.insert(x);
+        }
+        for(int j = 0; j < n; ++j) {
+            //delete
+            for(int k = i - 1; k >= 0; --k) {
+                int &x = mat[k][j];
+                available.erase(x);
+            }
+            if(available.empty()) {
+                available.insert(mx);
+                mx++;
+            }
+            int x = *available.begin();
+            mat[i][j] = x;
+            available.erase(x);
+            row.insert(x);
+            //add
+            for(int k = i - 1; k >= 0; --k) {
+                int &x = mat[k][j];
+                if(!row.contains(x))
+                    available.insert(x);
+            }
+        }
+    }
+    for(int i = 0; i < n; ++i) {
+        for(int j = 0; j < n; ++j) {
+            if(j > 0) cout<<' ';
+            cout<<mat[i][j];
+        }
+        cout<<endl;
+    }
+ 
+}
+```
+
+2. 當 n > 10^9  時，上面的方法不再適用，簡單講一下結論 i ^ j
+
+```cpp
+
+void solve() {
+    int n;
+    cin>>n;
+    
+    for(int i = 0; i < n; ++i) {
+        for(int j = 0; j < n; ++j) {
+            if(j > 0) cout<<' ';
+            cout<<(i ^ j);
+        }
+        cout<<endl;
+    }
+}
+
+```
