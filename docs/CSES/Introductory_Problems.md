@@ -773,3 +773,55 @@ void solve() {
     }
 }
 ```
+
+### 21. Grid Coloring I
+
+一開始想的是 bfs, dfs ，結果做了一個dfs然後超時。
+
+接著用網格順序遍歷單純的判斷可以選的字母就好了。真正會限制的只有自己，左，上三種，所以一定有可以選的字母
+
+```cpp
+vector<pii> dirs = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+
+void solve() {
+    int n, m;
+    cin >> n >> m;
+    vs board;
+    for(int i = 0; i < n; ++i) {
+        string s;
+        cin >> s;
+        board.pb(s);
+    }
+    vector<vector<char>> ans(n, vector<char>(m, 0));
+    
+    for(int i = 0; i < n; ++i) {
+        for(int j = 0; j < m; ++j) {
+            int used = 1 << (board[i][j] - 'A');
+            if(i == 0 && j == 0) {
+                for(int k = 0; k < 4; ++k) {
+                    if((used >> k & 1) == 0) {
+                        ans[i][j] = 'A' + k;
+                        cout<<(char)ans[i][j];
+                        break;
+                    }
+                }
+                continue;
+            }
+            if(i - 1 >= 0) {
+                used |= 1 << (ans[i - 1][j] - 'A');
+            }
+            if(j - 1 >= 0) {
+                used |= 1 << (ans[i][j - 1] - 'A');
+            }
+            for(int k = 0; k < 4; ++k) {
+                if((used >> k & 1) == 0) {
+                    ans[i][j] = 'A' + k;
+                    cout<<(char)ans[i][j];
+                    break;
+                }
+            }
+        }
+        cout<<endl;
+    } 
+}
+```
