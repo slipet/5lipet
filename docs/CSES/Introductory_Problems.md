@@ -702,7 +702,6 @@ key words: grandy number, nimber, game theory
 [gpt](https://chatgpt.com/share/6936bd46-4264-8010-8c93-40c7d3d00cc6)
 
 ```cpp
-
 void solve() {
     int n;
     cin>>n;
@@ -715,5 +714,62 @@ void solve() {
         cout<<endl;
     }
 }
+```
 
+### 20. Knight Moves Grid
+
+bfs 把整個棋盤走完。
+
+證明 knight 可以從任何點抵達左上角，也就是反過來說證明從左上角原點可以抵達 n * n 棋盤的任何位置
+
+1. 首先構造出 4 x 4 的棋盤
+
+| 0 | 3 | 2 | 5 |
+|:-:|:-:|:-:|:-:|
+| 3 | 4 | 1 | 2 |
+| 2 | 1 | 4 | 3 |
+| 5 | 2 | 3 | 2 |
+
+2. 接著由 4 x 4 構造出 (4 + 1) x (4 + 1) 的棋盤
+
+| 0 | 3 | 2 | 5 | 2 |
+|:-:|:-:|:-:|:-:|:-:|
+| 3 | 4 | 1 | 2 | 3 |
+| 2 | 1 | 4 | 3 | 2 |
+| 5 | 2 | 3 | 2 | 3 |
+| 2 | 3 | 3 | 3 | 4 |
+
+這不是 optimal 的棋盤但是透過這種方式可以構造出 n x n 的棋盤且每個位置都可以遍歷到。
+
+```cpp
+vector<pii> dirs = {{2, 1}, {1, 2}, {2, -1}, {1, -2}, {-2, 1}, {-1, 2}, {-2, -1}, {-1, -2}};
+
+void solve() {
+    int n;
+    cin >> n;
+    vii board(n, vi(n, -1));
+    board[0][0] = 0;
+    vector<pii> q;
+    q.emplace_back(0, 0);
+    while(!q.empty()) {
+        vector<pii> nxt;
+        for(auto &[r, c]: q) {
+            for(auto &[dr, dc]: dirs) {
+                int nr = r + dr, nc = c + dc;
+                if(nr < 0 || nc < 0 || nr >= n || nc >= n) continue;
+                if(board[nr][nc] >= 0) continue;
+                board[nr][nc] = board[r][c] + 1;
+                nxt.emplace_back(nr, nc);
+            }
+        }
+        q = move(nxt);
+    }
+    for(int i = 0; i < n; ++i) {
+        for(int j = 0; j < n; ++j) {
+            if(j > 0) cout<<' ';
+            cout<<board[i][j];
+        }
+        cout<<endl;
+    }
+}
 ```
