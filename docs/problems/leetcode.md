@@ -316,3 +316,22 @@ ex. [1, 1000000000] -> 一次一次減會導致 TLE
     當 x = y = 0 則 x, y 都不可能增加 -> 無解
 
     若 != 0, 則可將其中一個 x or y 改為 0 後再計算 (x, 0)
+
+### 1775. 通过最少操作次数使数组的和相等
+
+* Score: 1850
+
+* Quality: 0
+
+* Date: 2025/12/08
+
+* [link](https://leetcode.cn/problems/equal-sum-arrays-with-minimum-number-of-operations/solutions/2009786/mei-xiang-ming-bai-yi-ge-dong-hua-miao-d-ocuu/)
+
+* Comment:
+
+    這題是貢獻法
+    
+    題目的核心為如何儘快的減少兩個陣列和的差距。如果想到這，那很簡單的部分就是將其中一個陣列往上加，另一個往下減，同時兩個陣列都是使用當前可以對差距最大的貢獻。
+
+    解法為在貢獻上的雙指針。一個陣列從 1 開始 一個陣列從 6 開始，此時對差距的貢獻皆為 -5 ，可以參考題解的寫法。
+    
