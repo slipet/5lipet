@@ -690,6 +690,17 @@ void solve() {
 
 2. 當 n > 10^9  時，上面的方法不再適用，簡單講一下結論 i ^ j
 
+這題的詳細解釋先跳過，目前程度還沒有辦法深入理解
+
+key words: grandy number, nimber, game theory
+
+
+[source](https://nthu-cp.github.io/NTHU-CPP/misc/nim_and_sg_value.html)
+
+[video](https://www.youtube.com/watch?v=cRHe4Ig3JnE&t=6446s)
+
+[gpt](https://chatgpt.com/share/6936bd46-4264-8010-8c93-40c7d3d00cc6)
+
 ```cpp
 
 void solve() {
