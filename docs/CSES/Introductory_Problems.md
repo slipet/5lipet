@@ -853,3 +853,54 @@ void solve() {
     cout<< s[k] <<endl;
 }
 ```
+
+### 23. String Reorder
+
+這題沒有做出來，在最後的構造答案的部分因為沒辦法很好的安排而卡住。
+
+這題的核心在於，對於相鄰貪心這種要兩兩配對的題目，常用的套路就是判斷最多頻率的元素是否超過整體長度的 $\frac{1}{2}$。
+
+然而這題的難點在構造的時候要儘可能的維持字典序最小。雖然我中途有想到使用交替的方式按照字典序填字母，但是在最後有可能會導致某個字母沒辦法填完一邊，必須將剩下的填另一邊，這會導致兩個重複字母相鄰。
+
+
+
+```cpp
+void solve() {
+    string s;
+    cin >> s;
+    int cnt[26]{};
+    int mx = 0, n = s.length();
+    for(auto &c: s) {
+        cnt[c - 'A']++;
+        chmax(mx, cnt[c - 'A']);
+    }
+    
+    if(mx > (n + 1) / 2) {
+        cout<<"-1"<<endl;
+    } else {
+        string ans;
+        int last = -1;
+        auto check = [&](int n, int c) -> int {
+            if(cnt[c] > n - cnt[c] + 1) return false;
+            for(int i = 0; i < 26; ++i) {
+                if(i != c && cnt[i] > n - cnt[i]) return false;
+            }
+            return true;
+        };
+        auto nxt = [&](int n, int pre) -> int {
+            for(int i = 0; i < 26; ++i) {
+                if(cnt[i] && i != pre && check(n, i)) return i;
+            }
+            return -1;
+        };
+        while(n) {
+            int i = nxt(n, last);
+            last = i;
+            ans += ('A' + i);
+            cnt[i]--;
+            n--;
+        }
+        cout<<ans<<endl;
+    }
+}
+```
