@@ -828,6 +828,8 @@ void solve() {
 
 ### 22. Digit Queries
 
+想清楚如何一步一步減少 k ，並且定位出對應的 num 應該是多少。
+
 ```cpp
 void solve() {
     long long k;
