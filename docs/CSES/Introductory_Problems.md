@@ -825,3 +825,29 @@ void solve() {
     } 
 }
 ```
+
+### 22. Digit Queries
+
+```cpp
+void solve() {
+    long long k;
+    cin >> k;
+    long long pow10 = 1LL;
+    long long range = 0;
+    int len = 1;
+    for(; ;len++) {//find start
+        range = 9 * pow10 * len;
+        if(k > range) {
+            k -= range;
+        } else break;
+        pow10 *= 10;
+    }
+    long long start = pow10;
+    long long idx = (k - 1) / len;
+    long long num = start + idx;
+    k -= len * idx;//map to num
+    k--;//0-indexed
+    string s = to_string(num);
+    cout<< s[k] <<endl;
+}
+```
