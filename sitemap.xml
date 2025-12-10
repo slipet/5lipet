@@ -13,6 +13,12 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/CSES/Introductory_Problems/"/>
     </url>
     <url>
+        <loc>https://localhost:8000/CSES/Sorting_and_Searching/</loc>
+        <lastmod>2025-12-10</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/CSES/Sorting_and_Searching/"/>
+    </url>
+    <url>
         <loc>https://localhost:8000/blog/</loc>
         <lastmod>2025-12-10</lastmod>
         <changefreq>daily</changefreq>
