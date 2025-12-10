@@ -2,6 +2,8 @@
 
 ### 1. Weird Algorithm
 
+---
+
 簡單模擬
 
 * <span style="color:red"> 沒有注意到乘 3 可能導致的 overflow </span>
@@ -26,6 +28,8 @@ void solve() {
 ```
 
 ### 2. Missing Number
+
+---
 
 原本想用排序或是hash table 但是感覺有點醜，想了一下發現可以用 need - sum = x 找不在的元素。
 
@@ -70,6 +74,8 @@ void solve() {
 
 ### 3. Repetitions
 
+---
+
 基本的技巧
 
 1. 如何處理結尾情況
@@ -96,6 +102,8 @@ void solve() {
 
 ### 4. Increasing Array
 
+---
+
 1. 要注意 overflow 的情況
 
 2. max 的技巧可以避免 x > pre 的情況。
@@ -116,6 +124,8 @@ void solve() {
 ```
 
 ### 5. Permutations
+
+---
 
 * 注意 1 是合法的答案
 
@@ -144,6 +154,8 @@ void solve() {
 
 ### 6. Number Spiral
 
+---
+
 ```cpp
 void solve() {
     long long x, y;
@@ -162,6 +174,8 @@ void solve() {
 
 ### 7. Two Knights
 
+---
+
 * <span style="color:red"> 沒有注意到 square * (square - 1) 可能導致的 overflow </span>
 
 ```cpp
@@ -178,6 +192,8 @@ void solve() {
 ```
 
 ### 8. Two Sets
+
+---
 
 * <span style="color:red"> 沒有注意到正確時要輸出 "YES" </span>
 
@@ -218,6 +234,8 @@ void solve() {
 
 ### 9. Bit Strings
 
+---
+
 ```cpp
 const int MOD = 1'000'000'000 + 7;
 void solve() {
@@ -230,7 +248,10 @@ void solve() {
     cout<< ans << endl;
 }
 ```
+
 ### 10. Trailing Zeros
+
+---
 
 直覺地想到是要找階乘中 2 和 5 的因子個數。
 
@@ -307,6 +328,8 @@ void solve() {
 
 ### 11. Coin Piles
 
+---
+
 解聯立方程即可。
 
 ```cpp
@@ -327,6 +350,7 @@ void solve() {
 
 ### 12. Palindrome Reorder
 
+---
 
 ```cpp
 void solve() {
@@ -363,6 +387,8 @@ void solve() {
 
 ### 13. Gray Code
 
+---
+
 * gray code 特殊寫法 i ^ (i >> 1)
 
 ```cpp
@@ -385,6 +411,8 @@ void solve() {
 }
 ```
 ### 14. Tower of Hanoi
+
+---
 
 * 河內塔，結果反而不會寫了。
 
@@ -422,6 +450,8 @@ void solve() {
 ```
 
 ### 15. Creating Strings
+
+---
 
 兩種寫法，注意兩種寫法都需要使用 sort
 
@@ -478,6 +508,8 @@ void solve() {
 
 ### 16. Apple Division
 
+---
+
 二進制枚舉
 
 我使用的是比較好寫的枚舉的方式會比較慢
@@ -532,6 +564,8 @@ void solve() {
 
 ### 17. Chessboard and Queens
 
+---
+
 用遞迴暴力枚舉所有可能
 
 ```cpp
@@ -584,6 +618,8 @@ void solve() {
 ```
 
 ### 18. Raab Game I
+
+---
 
 重點在找到不會變動的元素個數
 
@@ -639,6 +675,8 @@ void solve() {
 ```
 
 ### 19. Mex Grid Construction
+
+---
 
 1. 樸素解法，維護一個有序結構。
 
@@ -718,6 +756,8 @@ void solve() {
 
 ### 20. Knight Moves Grid
 
+---
+
 bfs 把整個棋盤走完。
 
 證明 knight 可以從任何點抵達左上角，也就是反過來說證明從左上角原點可以抵達 n * n 棋盤的任何位置
@@ -776,6 +816,8 @@ void solve() {
 
 ### 21. Grid Coloring I
 
+---
+
 一開始想的是 bfs, dfs ，結果做了一個dfs然後超時。
 
 接著用網格順序遍歷單純的判斷可以選的字母就好了。真正會限制的只有自己，左，上三種，所以一定有可以選的字母
@@ -828,6 +870,8 @@ void solve() {
 
 ### 22. Digit Queries
 
+---
+
 想清楚如何一步一步減少 k ，並且定位出對應的 num 應該是多少。
 
 ```cpp
@@ -855,6 +899,8 @@ void solve() {
 ```
 
 ### 23. String Reorder
+
+---
 
 這題沒有做出來，在最後的構造答案的部分因為沒辦法很好的安排而卡住。
 
@@ -924,6 +970,8 @@ void solve() {
 ```
 
 ### 24. Grid Path Description
+
+---
 
 這題本質上是暴搜 + 剪枝，但是這個剪枝技巧很難想到，參考 [video]()。
 
