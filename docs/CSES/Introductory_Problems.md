@@ -2,7 +2,6 @@
 
 ### 1. Weird Algorithm
 
----
 
 簡單模擬
 
@@ -27,14 +26,14 @@ void solve() {
 }
 ```
 
+---
+
 ### 2. Missing Number
 
----
 
 原本想用排序或是hash table 但是感覺有點醜，想了一下發現可以用 need - sum = x 找不在的元素。
 
 題目 n 的上限是 $2 * n^5$ 有可能超過 int 索性直接開 long long 算。
-
 
 
 ```cpp
@@ -71,10 +70,9 @@ void solve() {
 
 [ref](https://hackmd.io/p53aGB5DQBGRwSCBd9Fc-Q?view#%E6%83%B3%E6%B3%95-3-2%EF%BC%9AXOR-%E7%89%88)
 
+---
 
 ### 3. Repetitions
-
----
 
 基本的技巧
 
@@ -100,9 +98,9 @@ void solve() {
 }
 ```
 
-### 4. Increasing Array
-
 ---
+
+### 4. Increasing Array
 
 1. 要注意 overflow 的情況
 
@@ -123,9 +121,9 @@ void solve() {
 }
 ```
 
-### 5. Permutations
-
 ---
+
+### 5. Permutations
 
 * 注意 1 是合法的答案
 
@@ -152,9 +150,9 @@ void solve() {
 }
 ```
 
-### 6. Number Spiral
-
 ---
+
+### 6. Number Spiral
 
 ```cpp
 void solve() {
@@ -172,9 +170,9 @@ void solve() {
 }
 ```
 
-### 7. Two Knights
-
 ---
+
+### 7. Two Knights
 
 * <span style="color:red"> 沒有注意到 square * (square - 1) 可能導致的 overflow </span>
 
@@ -191,9 +189,9 @@ void solve() {
 }
 ```
 
-### 8. Two Sets
-
 ---
+
+### 8. Two Sets
 
 * <span style="color:red"> 沒有注意到正確時要輸出 "YES" </span>
 
@@ -232,9 +230,9 @@ void solve() {
 }
 ```
 
-### 9. Bit Strings
-
 ---
+
+### 9. Bit Strings
 
 ```cpp
 const int MOD = 1'000'000'000 + 7;
@@ -249,9 +247,9 @@ void solve() {
 }
 ```
 
-### 10. Trailing Zeros
-
 ---
+
+### 10. Trailing Zeros
 
 直覺地想到是要找階乘中 2 和 5 的因子個數。
 
@@ -326,9 +324,9 @@ void solve() {
 }
 ```
 
-### 11. Coin Piles
-
 ---
+
+### 11. Coin Piles
 
 解聯立方程即可。
 
@@ -348,9 +346,9 @@ void solve() {
 }
 ```
 
-### 12. Palindrome Reorder
-
 ---
+
+### 12. Palindrome Reorder
 
 ```cpp
 void solve() {
@@ -385,9 +383,9 @@ void solve() {
 }
 ```
 
-### 13. Gray Code
-
 ---
+
+### 13. Gray Code
 
 * gray code 特殊寫法 i ^ (i >> 1)
 
@@ -410,9 +408,10 @@ void solve() {
     }
 }
 ```
-### 14. Tower of Hanoi
 
 ---
+
+### 14. Tower of Hanoi
 
 * 河內塔，結果反而不會寫了。
 
@@ -449,9 +448,9 @@ void solve() {
 }
 ```
 
-### 15. Creating Strings
-
 ---
+
+### 15. Creating Strings
 
 兩種寫法，注意兩種寫法都需要使用 sort
 
@@ -506,9 +505,9 @@ void solve() {
 }
 ```
 
-### 16. Apple Division
-
 ---
+
+### 16. Apple Division
 
 二進制枚舉
 
@@ -562,9 +561,9 @@ void solve() {
 }
 ```
 
-### 17. Chessboard and Queens
-
 ---
+
+### 17. Chessboard and Queens
 
 用遞迴暴力枚舉所有可能
 
@@ -617,9 +616,9 @@ void solve() {
 }
 ```
 
-### 18. Raab Game I
-
 ---
+
+### 18. Raab Game I
 
 重點在找到不會變動的元素個數
 
@@ -674,9 +673,9 @@ void solve() {
 }
 ```
 
-### 19. Mex Grid Construction
-
 ---
+
+### 19. Mex Grid Construction
 
 1. 樸素解法，維護一個有序結構。
 
@@ -754,9 +753,9 @@ void solve() {
 }
 ```
 
-### 20. Knight Moves Grid
-
 ---
+
+### 20. Knight Moves Grid
 
 bfs 把整個棋盤走完。
 
@@ -814,9 +813,9 @@ void solve() {
 }
 ```
 
-### 21. Grid Coloring I
-
 ---
+
+### 21. Grid Coloring I
 
 一開始想的是 bfs, dfs ，結果做了一個dfs然後超時。
 
@@ -868,9 +867,9 @@ void solve() {
 }
 ```
 
-### 22. Digit Queries
-
 ---
+
+### 22. Digit Queries
 
 想清楚如何一步一步減少 k ，並且定位出對應的 num 應該是多少。
 
@@ -898,9 +897,9 @@ void solve() {
 }
 ```
 
-### 23. String Reorder
-
 ---
+
+### 23. String Reorder
 
 這題沒有做出來，在最後的構造答案的部分因為沒辦法很好的安排而卡住。
 
@@ -969,9 +968,9 @@ void solve() {
 }
 ```
 
-### 24. Grid Path Description
-
 ---
+
+### 24. Grid Path Description
 
 這題本質上是暴搜 + 剪枝，但是這個剪枝技巧很難想到，參考 [video]()。
 
