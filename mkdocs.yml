@@ -277,6 +277,7 @@ nav:
     - Conclusion: "./conclusion/conclusion.md"
   - CSES:
     - Introductory Problems: "./CSES/Introductory_Problems.md"
+    - Sorting and Searching: "./CSES/Sorting_and_Searching.md"
   - Problems:
     - Leetcode: "./problems/leetcode.md"
     - Codeforces: "./problems/codeforces.md"
