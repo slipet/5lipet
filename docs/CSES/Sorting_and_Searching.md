@@ -48,3 +48,61 @@ void solve() {
     cout<<ans<<endl;
 }
 ```
+
+### 3. Ferris Wheel
+
+雙指針
+
+```cpp
+void solve() {
+    int n, mx;
+    cin >> n >> mx;
+    vector<int> p(n);
+    for(int i = 0; i < n; ++i) cin >> p[i];
+    ranges::sort(p);
+    int l = 0, r = n - 1, ans = 0;
+    while(l <= r) {
+        if(l != r && p[l] + p[r] <= mx) {
+            l++;
+            ans++;
+        } else if(p[r] <= mx) {
+            ans++;
+        }
+        r--;
+    }
+    cout<<ans<<endl;
+}
+```
+
+### 4. Ferris Wheel
+
+multiset 的運用，iterator 可以做加減，不能找 idx
+
+```cpp
+#define readv(sz, var) for(int i = 0; i < n; ++i) cin >> var;
+#define readv2(sz, var, stmt) do {          \
+            for(int i = 0; i < n; ++i) {    \
+                cin >> var;                 \
+                stmt;                       \
+            }                               \
+        } while(0)
+
+void solve() {
+    int n, m, x;
+    cin>> n >> m;
+    vector<int> queries(m), ans;
+    multiset<int> prices;
+    readv2(n, x, prices.insert(x));
+    readv(m, queries[i]);
+    for(auto &q: queries) {
+        auto it = prices.upper_bound(q);
+        if(it == prices.begin()) {
+            cout<<-1<<endl;
+        } else {
+            it--;
+            cout<<*it<<endl;
+            prices.erase(it);
+        }
+    }
+}
+```
