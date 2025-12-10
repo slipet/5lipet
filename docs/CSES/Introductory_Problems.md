@@ -950,18 +950,12 @@ void solve() {
     };
     
     auto dfs = [&](auto &&dfs, int r, int c, int i) -> void {
-        //check pattern
-        // x o
-        // o c
+        //check pattern, 4 condition
+        // x o | o x | c o | o c
+        // o c | c o | o x | x o
         if(r >= 1 && c >= 1 && !isEmpty(r - 1, c - 1) && isEmpty(r - 1, c) && isEmpty(r, c - 1)) return;
-        // o x
-        // c o
         if(r >= 1 && c <= n - 2 && !isEmpty(r - 1, c + 1) && isEmpty(r - 1, c) && isEmpty(r, c + 1)) return;
-        // c o
-        // o x
         if(r <= n - 2 && c <= n - 2 && !isEmpty(r + 1, c + 1) && isEmpty(r + 1, c) && isEmpty(r, c + 1)) return;
-        // o c
-        // x o
         if(r <= n - 2 && c >= 1 && !isEmpty(r + 1, c - 1) && isEmpty(r + 1, c) && isEmpty(r, c - 1)) return;
         //check horizontal
         if(isEmpty(r + 1, c) && isEmpty(r - 1, c) && !isEmpty(r, c + 1) && !isEmpty(r, c - 1)) return;
