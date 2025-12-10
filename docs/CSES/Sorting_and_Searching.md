@@ -19,3 +19,32 @@ void solve() {
     cout<<a.size()<<endl;
 }
 ```
+
+### 2. Apartments
+
+看錯題目以為公寓可以容納無限人，結果是一人只能分配一個公寓，那就是兩個陣列排序後，貪心的從最小的取。
+
+```cpp
+void solve() {
+    ll n, m, k;
+    cin >> n >> m >> k;
+    vector<ll> applicants(n), apartments(m);
+    for(int i = 0; i < n; ++i) cin >> applicants[i];
+    for(int i = 0; i < m; ++i) cin >> apartments[i];
+    ranges::sort(applicants);
+    ranges::sort(apartments);
+    int j = 0;
+    int ans = 0;
+    for(auto &x: apartments) {
+        ll start = x - k, end = x + k;
+        while(j < n && applicants[j] < start) {
+            j++;
+        }
+        if(j < n && applicants[j] <= end) {
+            ans++;
+            j++;
+        }
+    }
+    cout<<ans<<endl;
+}
+```
