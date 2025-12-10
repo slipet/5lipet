@@ -1015,3 +1015,27 @@ void solve() {
     return;
 }
 ```
+
+3. 另一種剪枝方式，判斷是否能將九宮格劃分出至少兩個 connected component，這裡在計算的時候用到了差分，計算 1->0 , 0->1 的次數來判斷可以劃分出多少個 connected component。
+
+| o | x | o |
+|:-:|:-:|:-:|
+| o | c | o |
+| x | o | o |
+
+```cpp
+int eight[8]{};
+int change = 0;
+int nxt = 0;
+for(int j = 0; j < eight_dirs.size(); ++j) {
+    auto &[dr, dc] = eight_dirs[j];
+    int nr = r + dr, nc = c + dc;
+    eight[j] = isEmpty(nr, nc);
+}
+for (int j = 0; j < 8; j++) {
+    change+=(eight[j] != eight[(j+1)%8]);
+}
+if(change > 2) return;
+```
+
+* 這裡剪枝的技巧 1, 2 可以一起使用，3 在意義上其實跟 1, 2 是相同的剪枝方式，所以可以擇一使用。
