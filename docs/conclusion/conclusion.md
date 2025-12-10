@@ -6,6 +6,8 @@
 
 * $a | b = a + b - (a \& b)$
 
+---
+
 ## Others
 
 ### 找中位數
@@ -18,6 +20,8 @@
 
 可以在 O(1) 找到中位數
 
+---
+
 ### 找區域中位數
 
 1. 莫隊 + 對頂堆
@@ -26,11 +30,15 @@
 
 [3762. 使数组元素相等的最小操作次数](https://leetcode.cn/problems/minimum-operations-to-equalize-subarrays/description/)
 
+---
+
 ### 快速計算 x 減去 y 的倍數
 
 x = k * y + t
 
 * t = x % y
+
+---
 
 ### Minimax path(最小化最大路徑)
 
