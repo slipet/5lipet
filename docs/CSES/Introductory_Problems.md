@@ -922,3 +922,69 @@ void solve() {
     }
 }
 ```
+
+### 24. Grid Path Description
+
+這題本質上是暴搜 + 剪枝，但是這個剪枝技巧很難想到，參考 [video]()。
+
+簡單來說若是走過的路徑若是把剩下的空位切成兩個 connected component 則勢必有一邊是最後走不過去的，所以要避免這種情況。
+
+
+```cpp
+unordered_map<char, pii> dirs = {
+    {'D', {1, 0}}, 
+    {'U', {-1, 0}}, 
+    {'R', {0, 1}},  
+    {'L', {0, -1}}
+};
+
+void solve() {
+    const int n = 7;
+    string s;
+    cin >> s;
+    vector board(n, vi(n, 0));
+    int ans = 0;
+    auto isEmpty = [&](int r, int c) -> int {
+        if((min(r, c) < 0 || max(r, c) >= n)) return false;
+        return !board[r][c];
+    };
+    
+    auto dfs = [&](auto &&dfs, int r, int c, int i) -> void {
+        //check pattern
+        // x o
+        // o c
+        if(r >= 1 && c >= 1 && !isEmpty(r - 1, c - 1) && isEmpty(r - 1, c) && isEmpty(r, c - 1)) return;
+        // o x
+        // c o
+        if(r >= 1 && c <= n - 2 && !isEmpty(r - 1, c + 1) && isEmpty(r - 1, c) && isEmpty(r, c + 1)) return;
+        // c o
+        // o x
+        if(r <= n - 2 && c <= n - 2 && !isEmpty(r + 1, c + 1) && isEmpty(r + 1, c) && isEmpty(r, c + 1)) return;
+        // o c
+        // x o
+        if(r <= n - 2 && c >= 1 && !isEmpty(r + 1, c - 1) && isEmpty(r + 1, c) && isEmpty(r, c - 1)) return;
+        //check horizontal
+        if(isEmpty(r + 1, c) && isEmpty(r - 1, c) && !isEmpty(r, c + 1) && !isEmpty(r, c - 1)) return;
+        //check vertical
+        if(!isEmpty(r + 1, c) && !isEmpty(r - 1, c) && isEmpty(r, c + 1) && isEmpty(r, c - 1)) return;
+        
+        if(r == n - 1 && c == 0) {
+            ans += (i == n * n - 1);
+            return;
+        }
+        board[r][c] = true;
+        for(auto &[ch, dir]: dirs) {
+            auto &[dr, dc] = dir;
+            if(s[i] != '?' && s[i] != ch) continue;
+            int nr = r + dr, nc = c + dc;
+            if(min(nr, nc) < 0 || max(nr, nc) >= n) continue;
+            if(board[nr][nc]) continue;
+            dfs(dfs, nr, nc, i + 1);
+        }
+        board[r][c] = false;
+    };
+    dfs(dfs, 0, 0, 0);
+    cout<<ans<<endl;
+    return;
+}
+```
