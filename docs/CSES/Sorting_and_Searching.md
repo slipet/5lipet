@@ -79,9 +79,9 @@ void solve() {
 multiset 的運用，iterator 可以做加減，不能找 idx
 
 ```cpp
-#define readv(sz, var) for(int i = 0; i < n; ++i) cin >> var;
+#define readv(sz, var) for(int i = 0; i < sz; ++i) cin >> var;
 #define readv2(sz, var, stmt) do {          \
-            for(int i = 0; i < n; ++i) {    \
+            for(int i = 0; i < sz; ++i) {   \
                 cin >> var;                 \
                 stmt;                       \
             }                               \
