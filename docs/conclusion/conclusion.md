@@ -41,7 +41,6 @@ x = k * y + t
 總複雜度：O((n+m)logW)，W 是權重範圍（或最大值）
 
 適合：單次 s→t 查詢，圖不一定是樹。
-
 2 dijkstra
 
 把普通的 dijkstra 中 + 改成 max

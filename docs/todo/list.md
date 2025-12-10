@@ -12,6 +12,8 @@
 
 - [ ] [2170E](https://codeforces.com/contest/2170/problem/E)
 
+- [ ] Educational Codeforces Round #185
+
 - [ ] practice the problem with dp involving bits, not digit counting
 
 #### wait to note
