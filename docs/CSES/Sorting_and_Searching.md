@@ -188,7 +188,9 @@ void solve() {
 
 ### 7. Sum of Two Values
 
-經典 2 sum，但是
+經典 2 sum，但是一開始寫的時候看錯，要印的答案是 index，所以錯了一次。
+
+1. 雙指針，要開 2n 的空間存 index
 
 ```cpp
 void solve() {
@@ -212,11 +214,18 @@ void solve() {
 }
 ```
 
+2. hash table, O(n) 空間, 要注意會因為 1. hash collision attack 2. rehash 次數太多 或是 3. memory 太大/ cache miss 導致性能劇烈下降。
+
+可以先用 reserve 先確定所需的空間解決。
+
+reserve 是從 [GPT](https://chatgpt.com/share/693c17eb-5c40-8010-9930-c66d5aaf2079) 學到的。
+
 ```cpp
 void solve() {
     int n, x, y;
     cin >> n >> x;
-    map<int, int> dict;
+    unordered_map<int, int> dict;
+    dict.reserve(n * 2); 
     int a = 0, b = 0;
     for(int i = 0; i < n; ++i) {
         cin >> y;
@@ -232,4 +241,5 @@ void solve() {
         cout<<"IMPOSSIBLE"<<endl;
     }
 }
+
 ```
