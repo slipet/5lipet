@@ -220,6 +220,8 @@ void solve() {
 
 reserve 是從 [GPT](https://chatgpt.com/share/693c17eb-5c40-8010-9930-c66d5aaf2079) 學到的。
 
+更詳細 [Blowing up unordered_map, and how to stop getting hacked on it](https://codeforces.com/blog/entry/62393)
+
 ```cpp
 void solve() {
     int n, x, y;
