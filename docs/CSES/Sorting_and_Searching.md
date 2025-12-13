@@ -308,3 +308,26 @@ void solve() {
     cout<<ans<<endl;
 }
 ```
+
+### 8. Stick Lengths
+
+中位數貪心 $min(|a_i - b_i|), b_i = median(a_i)$
+
+```cpp
+void solve() {
+    ll n, sum, x;
+    cin >> n;
+    int mid = n / 2;
+    vl a(n), pre(n + 1);
+    
+    for(int i = 0; i < n; ++i) {
+        cin >> a[i];
+    }
+    ranges::sort(a);
+    partial_sum(a.begin(), a.end(), pre.begin() + 1);
+    
+    x = a[mid];
+    sum = pre[n] - pre[mid + 1] - x * (n - (mid + 1)) + x * (mid + 1)- (pre[mid + 1]);
+    cout<<sum<<endl;
+}
+```
