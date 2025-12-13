@@ -116,7 +116,7 @@ void solve() {
 
 差分，要注意區間重疊的時候是開區間還是必區間，這題開始和離開是開區間。
 
-1. 使用 map 統計不同時間點的變化
+(1) 使用 map 統計不同時間點的變化
 
 ```cpp
 void solve() {
@@ -139,7 +139,7 @@ void solve() {
 }
 ```
 
-2. 這種方式是看到其他人有速度更快的做法
+(2) 這種方式是看到其他人有速度更快的做法
 
 同樣是差分的思想，但是要注意的是排序後因為 -1 會先計算，所以變化量會被限制住，不會超過餐廳的人數。
 
@@ -190,7 +190,7 @@ void solve() {
 
 經典 2 sum，但是一開始寫的時候看錯，要印的答案是 index，所以錯了一次。
 
-1. 雙指針，要開 2n 的空間存 index
+(1) 雙指針，要開 2n 的空間存 index
 
 ```cpp
 void solve() {
@@ -214,7 +214,7 @@ void solve() {
 }
 ```
 
-2. hash table, O(n) 空間, 要注意會因為 1. hash collision attack 2. rehash 次數太多 或是 3. memory 太大/ cache miss 導致性能劇烈下降 $O(n^2)$。
+(2) hash table, O(n) 空間, 要注意會因為 1. hash collision attack 2. rehash 次數太多 或是 3. memory 太大/ cache miss 導致性能劇烈下降 $O(n^2)$。
 
 可以先用 reserve 先確定所需的空間解決。
 
@@ -268,7 +268,7 @@ void solve() {
 
 經典的最大區間和有兩種做法
 
-1. prefix sum
+(1) prefix sum
 
 前綴和一定要注意最一開始陣列為空的時候的狀態，因為 mn 的關係 wa 了一次。
 
@@ -290,7 +290,7 @@ void solve() {
 }
 ```
 
-2. dp
+(2) dp
 
 ```cpp
 void solve() {
