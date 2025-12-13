@@ -311,7 +311,7 @@ void solve() {
 
 ### 8. Stick Lengths
 
-中位數貪心 $min(|a_i - b_i|), b_i = median(a_i)$
+中位數貪心 $min(|a_i - b_i|), b_i = med(a_i)$
 
 ```cpp
 void solve() {
