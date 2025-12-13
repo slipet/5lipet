@@ -309,7 +309,7 @@ void solve() {
 }
 ```
 
-### 8. Stick Lengths
+### 9. Stick Lengths
 
 中位數貪心 $min(|a_i - b_i|), b_i = med(a_i)$
 
@@ -329,5 +329,42 @@ void solve() {
     x = a[mid];
     sum = pre[n] - pre[mid + 1] - x * (n - (mid + 1)) + x * (mid + 1)- (pre[mid + 1]);
     cout<<sum<<endl;
+}
+```
+
+### 10. Missing Coin Sum
+
+這題一開始看到會聯想到背包問題，背包問題有一種優化的方式是利用 bit 操作在值域上，但是這題的值域為 $n^9$ ，如果直接宣告 bitset 可能會造成 MLE。
+
+接著思考 bit 操作的優化方式:
+
+對於背包問題我們可以遍歷陣列中的元素，每遇到一個元素 x 可以把當前的值域 S 向左 shift x 距離，而 S | (S << x) 中所有 bit 為 1 的位置皆為可以構造的答案。
+
+ex. nums = [1, 2, 2, 7]
+
+0000 -> 0001 -> 0111 -> 11111 -> 1111 1000 0101 1111
+                               
+如何連結到本問題?
+
+本題求的是 $MEX(nums)$，觀察上面的例子，可以知道所有 $\le MEX(nums)$ 位置的 bit 皆為 1，而當某個位置的 bit 為 0 的時候表示無法用當前元素構造出這個數字。
+
+
+
+```cpp
+void solve() {
+    int n;
+    ll sum = 0;
+    cin >> n;
+    vl a(n);
+    readv(n, a[i]);
+    ranges::sort(a);
+    
+    for(auto &x: a) {
+        if(sum + 1 < x) {
+            break;
+        }
+        sum += x;
+    }
+    cout<< sum + 1 << endl;
 }
 ```
