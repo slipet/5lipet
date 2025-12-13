@@ -214,7 +214,7 @@ void solve() {
 }
 ```
 
-2. hash table, O(n) 空間, 要注意會因為 1. hash collision attack 2. rehash 次數太多 或是 3. memory 太大/ cache miss 導致性能劇烈下降。
+2. hash table, O(n) 空間, 要注意會因為 1. hash collision attack 2. rehash 次數太多 或是 3. memory 太大/ cache miss 導致性能劇烈下降 $O(n^2)$。
 
 可以先用 reserve 先確定所需的空間解決。
 
@@ -222,12 +222,31 @@ reserve 是從 [GPT](https://chatgpt.com/share/693c17eb-5c40-8010-9930-c66d5aaf2
 
 更詳細 [Blowing up unordered_map, and how to stop getting hacked on it](https://codeforces.com/blog/entry/62393)
 
+讀完上面那篇文章後發現單純用 reserve 是沒辦法解決 hacking 的問題。需要自己寫一個 hash function
+
 ```cpp
+struct chash {
+    #include <chrono>
+    static uint64_t splitmix64(uint64_t x) {
+        // source: http://xorshift.di.unimi.it/splitmix64.c
+        x += 0x9e3779b97f4a7c15ULL;
+        x = (x ^ (x >> 30)) * 0xbf58476d1ce4e5b9ULL;
+        x = (x ^ (x >> 27)) * 0x94d049bb133111ebULL;
+        return x ^ (x >> 31);
+    }
+
+    // for long long / int
+    size_t operator()(uint64_t x) const {
+        // Use a fixed random seed (combining time and memory address) for this hash functor
+        static const uint64_t FIXED_RANDOM = (long long)(make_unique<char>().get()) ^ chrono::steady_clock::now().time_since_epoch().count();
+        return splitmix64(x + FIXED_RANDOM);
+    }
+};
+
 void solve() {
     int n, x, y;
     cin >> n >> x;
-    unordered_map<int, int> dict;
-    dict.reserve(n * 2); 
+    unordered_map<int, int, chash> dict;
     int a = 0, b = 0;
     for(int i = 0; i < n; ++i) {
         cin >> y;
@@ -243,5 +262,4 @@ void solve() {
         cout<<"IMPOSSIBLE"<<endl;
     }
 }
-
 ```
