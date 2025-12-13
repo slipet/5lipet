@@ -263,3 +263,48 @@ void solve() {
     }
 }
 ```
+
+### 8. Maximum Subarray Sum
+
+經典的最大區間和有兩種做法
+
+1. prefix sum
+
+前綴和一定要注意最一開始陣列為空的時候的狀態，因為 mn 的關係 wa 了一次。
+
+```cpp
+void solve() {
+    
+    int n, x;
+    cin >> n;
+    ll pre = 0, mn = 0;
+    ll ans = -infll;
+    
+    for(int i = 0; i < n; ++i) {
+        cin >> x;
+        pre += x;
+        ans = max(ans, pre - mn);
+        mn = min(mn, pre);
+    }
+    cout<<ans<<endl;
+}
+```
+
+2. dp
+
+```cpp
+void solve() {
+    
+    int n;
+    cin >> n;
+    ll pre = 0, mn = 0, x;
+    ll ans = -infll;
+    
+    for(int i = 0; i < n; ++i) {
+        cin >> x;
+        pre = max(x, pre + x);
+        ans = max(ans, pre);
+    }
+    cout<<ans<<endl;
+}
+```
