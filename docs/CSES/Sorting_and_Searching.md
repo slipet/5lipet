@@ -376,5 +376,20 @@ void solve() {
 ### 11. Collecting Numbers
 
 ```cpp
-
+void solve() {
+    int n, x;
+    cin >> n;
+    
+    vector<int> a(n);
+    for(int i = 0; i < n; ++i) {
+        cin >> x;
+        a[x - 1] = i;
+    }
+    int ans = 0;
+    for(int x = 0; x < n; ++x) {
+        if(x > 0 && a[x - 1] <= a[x]) continue;
+        ans++;
+    }
+    cout<<ans<<endl;
+}
 ```
