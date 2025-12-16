@@ -375,6 +375,8 @@ void solve() {
 
 ### 11. Collecting Numbers
 
+一開始看錯題意，以為是單純按照升序選數字，把 n 個數選完，結果用 LIS greedy 的想法做了一次後 wa，回去重新讀題後發現是要按照順序選 1 ~ n。
+
 ```cpp
 void solve() {
     int n, x;
@@ -391,5 +393,36 @@ void solve() {
         ans++;
     }
     cout<<ans<<endl;
+}
+```
+
+* 這是一開始想錯的題意，不過可以當作題目的 follow-up
+
+Q: 按照升序選數字，把 n 個數選完，最少需要選多少次
+
+在「所有數互不相同」的序列中，
+
+最少幾條嚴格遞增子序列可以把它拆完 = 這個序列的最長'非'嚴格遞減子序列的長度。
+
+在 LIS 中，把比較方向改成相反（或用 -a[i]）可得。
+
+這個部分可以用圖像的方式理解:
+
+todo
+
+
+```cpp
+void solve() {
+    int n, x;
+    cin >> n;
+    
+    vector<int> a;
+    for(int i = 0; i < n; ++i) {
+        cin >> x;
+        auto it = ranges::upper_bound(a, -x);
+        if(it == a.end()) a.push_back(-x);
+        else *it = -x;
+    }
+    cout<<a.size()<<endl;
 }
 ```
