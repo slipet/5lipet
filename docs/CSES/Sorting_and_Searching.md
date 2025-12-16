@@ -406,10 +406,15 @@ Q: 按照升序選數字，把 n 個數選完，最少需要選多少次
 
 在 LIS 中，把比較方向改成相反（或用 -a[i]）可得。
 
-這個部分可以用圖像的方式理解:
+證明:
+
+[Erdős–Szekeres theorem](https://en.wikipedia.org/wiki/Erd%C5%91s%E2%80%93Szekeres_theorem)
+
+[GPT](https://chatgpt.com/share/69417726-3d64-8010-8682-43ae7a15d9d9)
+
+[other material](https://math.stackexchange.com/questions/1284972/proof-for-erd%C5%91s-szekeres-theorem-using-dilworths-theorem)
 
 todo
-
 
 ```cpp
 void solve() {
