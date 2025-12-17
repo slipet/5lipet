@@ -408,13 +408,15 @@ Q: 按照升序選數字，把 n 個數選完，最少需要選多少次
 
 證明:
 
-[Erdős–Szekeres theorem](https://en.wikipedia.org/wiki/Erd%C5%91s%E2%80%93Szekeres_theorem)
-
-[GPT](https://chatgpt.com/share/69417726-3d64-8010-8682-43ae7a15d9d9)
+這是一個在偏序集中的經典引理 - dilworth theorem
 
 [material 1](https://math.stackexchange.com/questions/1284972/proof-for-erd%C5%91s-szekeres-theorem-using-dilworths-theorem)
 
 [material 2](https://math.stackexchange.com/questions/1208735/understanding-dilworths-theorem)
+
+[material 2](https://chengzhaoxi.xyz/2bffd40.html)
+
+[video](https://www.bilibili.com/video/BV1VNCGY3ERK/?spm_id_from=333.337.search-card.all.click&vd_source=caaccd1459c5ece44b5e2d37804871b8)
 
 todo
 
