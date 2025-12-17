@@ -412,7 +412,9 @@ Q: 按照升序選數字，把 n 個數選完，最少需要選多少次
 
 [GPT](https://chatgpt.com/share/69417726-3d64-8010-8682-43ae7a15d9d9)
 
-[other material](https://math.stackexchange.com/questions/1284972/proof-for-erd%C5%91s-szekeres-theorem-using-dilworths-theorem)
+[material 1](https://math.stackexchange.com/questions/1284972/proof-for-erd%C5%91s-szekeres-theorem-using-dilworths-theorem)
+
+[material 2](https://math.stackexchange.com/questions/1208735/understanding-dilworths-theorem)
 
 todo
 
