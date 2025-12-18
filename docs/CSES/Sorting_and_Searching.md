@@ -408,7 +408,7 @@ Q: 按照升序選數字，把 n 個數選完，最少需要選多少次
 
 證明:
 
-這是一個在偏序集中的經典引理 - dilworth theorem
+這是一個在偏序集中的經典定理 - dilworth theorem
 
 [material 1](https://math.stackexchange.com/questions/1284972/proof-for-erd%C5%91s-szekeres-theorem-using-dilworths-theorem)
 
