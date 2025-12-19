@@ -516,3 +516,23 @@ void solve() {
     cout<<ans<<endl;
 }
 ```
+
+### 14. Towers
+
+Dilworth theorem 
+
+```cpp
+void solve() {
+    int n, x;
+    cin >> n;
+
+    vector<int> a;
+    for(int i = 0; i < n; ++i) {
+        cin >> x;
+        auto it = ranges::upper_bound(a, x);
+        if(it == a.end()) a.push_back(x);
+        else *it = x;
+    }
+    cout<<a.size()<<endl;
+}
+```
