@@ -467,3 +467,52 @@ void solve() {
     }
 }
 ```
+
+### 13. Collecting Numbers II
+
+左閉右開滑窗，注意 default unordered_map 會 TLE，可以加上 customized hash 或是用 map
+
+```cpp
+struct chash {
+    #include <chrono>
+    static uint64_t splitmix64(uint64_t x) {
+        // source: http://xorshift.di.unimi.it/splitmix64.c
+        x += 0x9e3779b97f4a7c15ULL;
+        x = (x ^ (x >> 30)) * 0xbf58476d1ce4e5b9ULL;
+        x = (x ^ (x >> 27)) * 0x94d049bb133111ebULL;
+        return x ^ (x >> 31);
+    }
+
+    // for long long / int
+    size_t operator()(uint64_t x) const {
+        // Use a fixed random seed (combining time and memory address) for this hash functor
+        static const uint64_t FIXED_RANDOM = (long long)(make_unique<char>().get()) ^ chrono::steady_clock::now().time_since_epoch().count();
+        return splitmix64(x + FIXED_RANDOM);
+    }
+};
+
+void solve() {
+    int n;
+    cin >> n;
+    unordered_map<int, int, chash> cnt;
+    vector<int> a(n);
+    for(int i = 0; i < n; ++i) {
+        cin >> a[i];
+    }
+    int ans = 0, invalid = 0;
+    for(int r = 0, l = 0; r < n;) {
+        int &x = a[r++];
+        if(cnt[x] == 1) {
+            invalid++;
+        }
+        cnt[x]++;
+        while(l < r && invalid) {
+            int del = a[l++];
+            if(cnt[del] == 2) invalid--;
+            cnt[del]--;
+        }
+        ans = max(ans, r - l);
+    }
+    cout<<ans<<endl;
+}
+```
