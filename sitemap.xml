@@ -43,6 +43,12 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/contest/leetcode/2025/"/>
     </url>
     <url>
+        <loc>https://localhost:8000/cpp/function/</loc>
+        <lastmod>2025-12-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/cpp/function/"/>
+    </url>
+    <url>
         <loc>https://localhost:8000/dp/digits_counting/</loc>
         <lastmod>2025-12-19</lastmod>
         <changefreq>daily</changefreq>
