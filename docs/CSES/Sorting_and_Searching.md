@@ -429,3 +429,39 @@ void solve() {
     cout<<a.size()<<endl;
 }
 ```
+
+### 12. Collecting Numbers II
+
+前一題的 follow-up，每次都會交換一對 pair 的位置，因此必須維護當前總共有多少段遞增的 subarray，每次交換都判斷前後的貢獻變化。
+
+```cpp
+void solve() {
+    int n, m;
+    cin >> n >> m;
+    
+    vector<int> a(n + 1), idx(n + 1);
+    for(int i = 1; i <= n; ++i) {
+        cin >> idx[i];
+        a[idx[i]] = i;
+    }
+    int ans = 1;
+    for(int i = 1; i < n; ++i) {
+        ans += (a[i] > a[i + 1]);
+    }
+    auto check = [&](int x) -> int {
+        if(x < 1 || x >= n) return 0;
+        return a[x] > a[x + 1];
+    };
+    while(m--) {
+        int i0, i1;
+        cin >> i0 >> i1;
+        int ia = idx[i0], ib = idx[i1];
+        set<int> st = {ia - 1, ia, ib - 1, ib};
+        for(int x: st) ans -= check(x);
+        swap(a[ia], a[ib]);
+        swap(idx[i0], idx[i1]);
+        for(int x: st) ans += check(x);
+        cout << ans << "\n";
+    }
+}
+```
