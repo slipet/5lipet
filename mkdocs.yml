@@ -290,6 +290,9 @@ nav:
 
   - To-do list: 
     - To-do: "./todo/list.md"
+
+  - Resources:
+    - Resources: "./resources/list.md"
   
   # - Graph:
   # - Math:
