@@ -434,6 +434,8 @@ void solve() {
 
 前一題的 follow-up，每次都會交換一對 pair 的位置，因此必須維護當前總共有多少段遞增的 subarray，每次交換都判斷前後的貢獻變化。
 
+<span style="color:red">在 CSES 上連續輸出使用 '\n' 比 endl 快很多</span>
+
 ```cpp
 void solve() {
     int n, m;
