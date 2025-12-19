@@ -289,7 +289,7 @@ nav:
       - 2025: "./contest/leetcode/2025.md"
 
   - CPP:
-    -CPP: "./cpp/function.md"
+    - CPP: "./cpp/function.md"
     
   - To-do list: 
     - To-do: "./todo/list.md"
