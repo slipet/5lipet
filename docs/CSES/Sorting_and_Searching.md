@@ -410,12 +410,6 @@ Q: 按照升序選數字，把 n 個數選完，最少需要選多少次
 
 這是一個在偏序集中的經典定理 - Dilworth theorem
 
-[material 1](https://math.stackexchange.com/questions/1284972/proof-for-erd%C5%91s-szekeres-theorem-using-dilworths-theorem)
-
-[material 2](https://math.stackexchange.com/questions/1208735/understanding-dilworths-theorem)
-
-[material 3](https://chengzhaoxi.xyz/2bffd40.html)
-
 [video](https://www.bilibili.com/video/BV1VNCGY3ERK/?spm_id_from=333.337.search-card.all.click&vd_source=caaccd1459c5ece44b5e2d37804871b8)
 
 todo
