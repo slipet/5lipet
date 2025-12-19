@@ -288,8 +288,8 @@ nav:
     - Leetcode:
       - 2025: "./contest/leetcode/2025.md"
 
-  - C++:
-    -C++: "./cpp/function.md"
+  - CPP:
+    -CPP: "./cpp/function.md"
     
   - To-do list: 
     - To-do: "./todo/list.md"
