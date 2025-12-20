@@ -139,3 +139,33 @@ auto init = []() {
     * [完全平方数的祖先个数总和](https://leetcode.cn/problems/sum-of-perfect-square-ancestors/description/)
 
     * [完全子集的最大元素和](https://leetcode.cn/problems/maximum-element-sum-of-a-complete-subset-of-indices/description/)
+
+## 斐蜀定理/貝祖定理(Bézout's lemma)
+
+Let $a,b \in Z$, not both zero.
+
+Let $d = gcd(a, b)$.
+
+Then there exist integers $x,y \in Z$ such that
+
+$$ax + by = d$$
+
+Equivalently, the set of all integer linear combinations,
+
+$$S = \{ax + by | x, y \in Z \}$$
+
+假設每次都從 a = 0 開始走 b 步，可以到達的位置集合
+
+$$\{tb \text{ mod } l | t \in Z \}$$
+
+集合大小
+
+$$\frac{n}{gcd(l, b)}$$
+
+是否對任意位置 $x$，存在整數 $t$ 使
+
+$$tb \equiv x (\text{mod } l)$$
+
+這等價於：
+
+$$tb + ly = x$$
