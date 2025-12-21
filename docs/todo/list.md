@@ -6,6 +6,12 @@
 
 - [ ] SegmentTree, LazySegmentTree
 
+- [ ] review #481
+
+- [ ] biweekly Q4
+
+- [ ] reroot
+
 ### Codeforces
 
 - [ ] [2173D](https://codeforces.com/contest/2173/problem/D)
