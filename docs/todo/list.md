@@ -22,6 +22,8 @@
 
 - [ ] practice the problem with dp involving bits, not digit counting
 
+- [ ] global #31
+
 #### wait to note
 
 - [ ] [[Tutorial] Problems about swapping adjacent elements](https://codeforces.com/blog/entry/92130?utm_source=chatgpt.com)
@@ -29,6 +31,11 @@
 - [ ] [B. Random Teams](https://codeforces.com/problemset/problem/478/B), 用 connected component 去分析!
 
 - [ ] round [#1059]
+
+- [ ] C++ view split ' '
+
+- [ ] Bezout's theorem
+
 
 #### wait to do
 
