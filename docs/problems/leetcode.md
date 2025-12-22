@@ -406,3 +406,19 @@ ex. [1, 1000000000] -> 一次一次減會導致 TLE
     * 結論: 若該電池電量超過 $\lfloor \frac{sum}{n} \rfloor$，則將其供給一台電腦，問題縮減為 n − 1 台電腦的子問題。
 
     * 這題與 [CSES/String Reorder](https://cses.fi/problemset/task/1743) 類似，要在子問題維護配對貪心的性質。
+
+### 2576. 求出最多标记下标
+
+* Score: 1843
+
+* Quality: 8
+
+* Date: 2025/12/22
+
+* [link](https://leetcode.cn/problems/find-the-maximum-number-of-marked-indices/solutions/2134078/er-fen-da-an-pythonjavacgo-by-endlessche-t9f5/)
+
+* Comment:
+
+    這題一開始沒思考清楚，以及被題目的例題帶偏，想用同向雙指針盡可能的將比較大的元素進行配對，但是這會造成比較大的元素用完後，剩下的元素的無法配對。
+
+    ex. 2 3 5 10 這個例子 10, 5 配對後剩下的 3,2 無法進行配對。所以顯然必須使用前半和後半元素進行配對。先由小至大排序，想像前半和後半兩條序列進行一對一配對，若是前半最小的元素 * 2 比後半最小元素還要小那就表示匹配，若是比後半還大那就把後半匹配的位置往後移一位。
