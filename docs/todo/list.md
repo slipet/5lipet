@@ -6,8 +6,6 @@
 
 - [ ] SegmentTree, LazySegmentTree
 
-- [ ] review #481
-
 - [ ] biweekly Q4
 
 - [ ] reroot
