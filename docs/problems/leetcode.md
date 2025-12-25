@@ -180,14 +180,13 @@ ex. [1, 1000000000] -> 一次一次減會導致 TLE
 
 
 \[
-\left.
-    \begin{array}{ll}
-        x mod sum, \quad x mod sum > 0 \\
-        sum, \quad x mod sum = 0
-    \end{array}
+\left\{
+\begin{array}{ll}
+    x \pmod{sum} , \quad x \pmod{sum}  > 0 \\
+    sum, \quad x \pmod{sum} = 0
+\end{array}
 \right.
 \]
- 
 
 * <span style="color:red">這等價於 (x−1) mod sum + 1</span> 
 
@@ -439,4 +438,23 @@ ex. [1, 1000000000] -> 一次一次減會導致 TLE
 
     [貪心解法](https://leetcode.cn/problems/minimum-array-sum/solutions/2998867/jiao-ni-yi-bu-bu-si-kao-dpcong-ji-yi-hua-0pc5/):
 
-    首先有一個直觀的貪心方法，對於
+    首先有一個直觀的貪心方法，對於 op2 會有固定的貢獻 k，那 op1 要如何操作會使得貢獻可以優於 op2 呢? 設 nums[i] = x ， 則 
+    
+    \[
+    \begin{array}{ll}
+    x - \frac{(x + 1)}{2} \ge k \\
+    \rightarrow \frac{(x - 1)}{2} \ge k \\
+    \rightarrow x \ge 2k + 1
+    \end{array}
+    \]
+
+    當 $[2k + 1, \inf)$ 時先做 op1 再做 op2 可以得到更好的貢獻，因此可以先有一些初步的貪心作法
+
+    1. $[2k + 1, \inf)$ 時先做 op1 再做 op2。
+
+    2. $[k, 2k + 1)$ 先放著等等再討論。
+
+    3. $[1, k)$ 只能使用 op1
+
+    對於 2. 的區間，勢必只能先做 op2 再做 op1 那怎麼去操作可以有更好的複雜度呢?
+
