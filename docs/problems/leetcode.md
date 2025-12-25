@@ -434,3 +434,9 @@ ex. [1, 1000000000] -> 一次一次減會導致 TLE
 * [link](https://leetcode.cn/problems/minimum-array-sum/solutions/2998867/jiao-ni-yi-bu-bu-si-kao-dpcong-ji-yi-hua-0pc5/)
 
 * Comment:
+
+    這題的普通解法是 O(n * op1 * op2) 的 DP 解法，是很直觀的 DP 題型。
+
+    [貪心解法](https://leetcode.cn/problems/minimum-array-sum/solutions/2998867/jiao-ni-yi-bu-bu-si-kao-dpcong-ji-yi-hua-0pc5/):
+
+    首先有一個直觀的貪心方法，對於
