@@ -12,15 +12,11 @@
 
 ### Codeforces
 
-- [ ] [2173D](https://codeforces.com/contest/2173/problem/D)
-
 - [ ] [2170E](https://codeforces.com/contest/2170/problem/E)
 
 - [ ] Educational Codeforces Round #185
 
 - [ ] practice the problem with dp involving bits, not digit counting
-
-- [ ] global #31
 
 #### wait to note
 
