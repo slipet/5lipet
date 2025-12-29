@@ -26,8 +26,6 @@
 
 - [ ] round [#1059]
 
-- [ ] C++ view split ' '
-
 - [ ] Bezout's theorem
 
 
