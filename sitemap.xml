@@ -31,10 +31,10 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/conclusion/conclusion/"/>
     </url>
     <url>
-        <loc>https://localhost:8000/contest/codeforces/2025/</loc>
+        <loc>https://localhost:8000/contest/codeforces/2025_S4/</loc>
         <lastmod>2026-01-01</lastmod>
         <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/contest/codeforces/2025/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/contest/codeforces/2025_S4/"/>
     </url>
     <url>
         <loc>https://localhost:8000/contest/leetcode/2025_S4/</loc>
