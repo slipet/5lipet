@@ -284,7 +284,7 @@ nav:
     - Codeforces: "./problems/codeforces.md"
   - Contest:
     - Codeforces: 
-      - 2025: "./contest/codeforces/2025.md"
+      - 2025 S4: "./contest/codeforces/2025_S4.md"
     - Leetcode:
       - 2025 S4: "./contest/leetcode/2025_S4.md"
       - 2026 S1: "./contest/leetcode/2026_S1.md"
