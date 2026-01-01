@@ -146,6 +146,10 @@ auto init = []() {
 
 $$gcd(a^m - b^m, a^n - b^n) = a^{gcd(m, n)} - b^{gcd(m, n)}$$
 
+F 為 fibonacci 數列 $F_1 = F_2 = 1, \text{ 且 } F_n = F_{n - 1} + F_{n - 2}$ ，有以下結論:
+
+$$gcd(F_m, F_n) = F_{gcd(m, n)}$$
+
 ## 斐蜀定理/貝祖定理(Bézout's lemma)
 
 Let $a,b \in Z$, not both zero.
