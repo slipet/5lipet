@@ -146,6 +146,8 @@ auto init = []() {
 
 $$gcd(a^m - b^m, a^n - b^n) = a^{gcd(m, n)} - b^{gcd(m, n)}$$
 
+$$gcd(a^m - 1, a^n - 1) = a^{gcd(m, n)} - 1$$
+
 F 為 fibonacci 數列 $F_1 = F_2 = 1, \text{ 且 } F_n = F_{n - 1} + F_{n - 2}$ ，有以下結論:
 
 $$gcd(F_m, F_n) = F_{gcd(m, n)}$$
