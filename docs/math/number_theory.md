@@ -142,6 +142,8 @@ auto init = []() {
 
 ## 歐幾里得算法/帶餘數除法
 
+[video](https://www.bilibili.com/video/BV1eK4y1L7hq/?spm_id_from=333.1387.search.video_card.click&vd_source=caaccd1459c5ece44b5e2d37804871b8)
+
 $$gcd(a^{m - n}, b^{m - n}) = a^{gcd(m, n)} - b^{gcd(m, n)}$$
 
 ## 斐蜀定理/貝祖定理(Bézout's lemma)
