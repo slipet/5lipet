@@ -140,6 +140,10 @@ auto init = []() {
 
     * [完全子集的最大元素和](https://leetcode.cn/problems/maximum-element-sum-of-a-complete-subset-of-indices/description/)
 
+## 歐幾里得算法/帶餘數除法
+
+$$gcd(a^{m - n}, b^{m - n}) = a^{gcd(m, n)} - b^{gcd(m, n)}$$
+
 ## 斐蜀定理/貝祖定理(Bézout's lemma)
 
 Let $a,b \in Z$, not both zero.
