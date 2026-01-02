@@ -6,8 +6,6 @@
 
 - [ ] SegmentTree, LazySegmentTree
 
-- [ ] biweekly Q4
-
 - [ ] reroot
 
 ### Codeforces
