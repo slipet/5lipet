@@ -16,6 +16,8 @@
 
 - [ ] practice the problem with dp involving bits, not digit counting
 
+- [ ] practice more dp question with prefix sum optimization
+
 #### wait to note
 
 - [ ] [[Tutorial] Problems about swapping adjacent elements](https://codeforces.com/blog/entry/92130?utm_source=chatgpt.com)
