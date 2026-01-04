@@ -14,11 +14,13 @@
 
 樸素的作法
 
-維護兩個對頂堆(heap, priority_queue, multiset)
+1. 維護兩個對頂堆(heap, priority_queue, multiset)
 
 插入操作需要 O(log(n))
 
 可以在 O(1) 找到中位數
+
+2. 二分，算 <= x 有幾個
 
 ---
 
