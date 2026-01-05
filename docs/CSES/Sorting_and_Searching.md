@@ -537,7 +537,7 @@ void solve() {
 }
 ```
 
-### 15. Towers
+### 15. Traffic Lights
 
 題目沒說清楚沒有路燈的長度是如何計算的，所以認為是單純計算沒有路燈的連續元素，結果發現是計算包含路燈的半開區間。
 
@@ -620,5 +620,53 @@ void solve() {
         chmax(mx, nxt - pre);
     }
     for(auto &p: ans) cout<<p<<" ";
+}
+```
+
+### 16. Distinct Values Subarrays
+
+滑動窗口
+
+```cpp
+void solve() {
+    int n;
+    cin >> n;
+    vector<int> a(n);
+    for(int i = 0; i < n; ++i) cin >> a[i];
+    htb(int, int) dict;
+    ll ans = 0;
+    for(int l = 0, r = 0; r < n; ++r) {
+        int x = a[r];
+        dict[x]++;
+        while(l <= r && dict[x] > 1) {
+            dict[a[l++]]--;
+        }
+        ans += (r - l + 1);
+    }
+    cout<<ans<<endl;
+}
+
+```
+
+利用貢獻法，計算 x 和左端點內的元素可以產生的貢獻
+
+```cpp
+void solve() {
+    int n;
+    cin >> n;
+
+    htb(int, int) last_pos;
+    int left_pos = 1;
+    ll count = 0;
+
+    for (int i = 1; i <= n; i++) {
+        int x;
+        cin >> x;
+        left_pos = max(left_pos, last_pos[x] + 1);
+        count += i - left_pos + 1;
+        last_pos[x] = i;
+    }
+
+    cout << count << "\n";
 }
 ```
