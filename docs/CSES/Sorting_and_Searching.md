@@ -543,7 +543,7 @@ void solve() {
 
 分別使用 set 跟 multiset ， set 維護目前的端點數量，multiset 維護當前合法區間長度。
 
-使用
+不斷的往 pos 中加入元素，使用 upper_bound 找到對應的區間進行切分。
 
 ```cpp
 void solve() {
@@ -579,7 +579,7 @@ void solve() {
 
 這個方法的另一個難點在處理 linked list，因為我這邊分別使用了離散化和 left, right 模擬雙向鏈結串列。
 
-要注意的是 left[p], right[p] 內存的元素要當作下一個指標才行，我一開始卡在 right[p - 1] = right[p]; 這種寫法，沒辦法正確的指到下一個指標。
+要注意的是 left[p], right[p] 內的元素要當作下一個指標才行，我一開始卡在 right[p - 1] = right[p]; 這種寫法，沒辦法正確的指到下一個指標。
 
 ```cpp
 void solve() {
