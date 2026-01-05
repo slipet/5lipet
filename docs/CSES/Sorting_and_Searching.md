@@ -544,3 +544,81 @@ void solve() {
 分別使用 set 跟 multiset ， set 維護目前的端點數量，multiset 維護當前合法區間長度。
 
 使用
+
+```cpp
+void solve() {
+    int x, n;
+    cin >> x >> n;
+    vi a(n);
+    for(int i = 0; i < n; ++i) {
+        cin >> a[i];
+    }
+    set<int> pos;
+    multiset<int> len;
+    pos.insert(0);
+    pos.insert(x);
+    len.insert(x);
+    for(auto &p: a) {
+        auto it = pos.upper_bound(p);
+        int nxt = *it;
+        int pre = *(--it);
+        
+        len.erase(len.find(nxt - pre));
+        len.insert(p - pre);
+        len.insert(nxt - p);
+        pos.insert(p);
+        cout<<*len.rbegin()<<" ";
+    }
+    
+}
+```
+
+第二種方法是使用 linked list 的方式，我一開始想用這種方式由前往後切開區間，但是卡在離散化和發現沒辦法維護當前最大區間。假設同時有三個相同最大長度的區間，當你斷開其中一個區間後你需要維護剩下兩個最大的區間，由順序的方式會很難維護。
+
+所以這種方式必定要由後往前進行合併，因為是由小區間合併成大區間，所以合併的過程必定會經過最大區間。
+
+這個方法的另一個難點在處理 linked list，因為我這邊分別使用了離散化和 left, right 模擬雙向鏈結串列。
+
+要注意的是 left[p], right[p] 內存的元素要當作下一個指標才行，我一開始卡在 right[p - 1] = right[p]; 這種寫法，沒辦法正確的指到下一個指標。
+
+```cpp
+void solve() {
+    int x, n;
+    cin >> x >> n;
+    vi a(n + 2);
+    htb(int, int) dict;
+    for(int i = 1; i <= n; ++i) {
+        cin >> a[i];
+    }
+    a[0] = 0;
+    a[n + 1] = x;
+    vector<int> idx(n + 2);
+    iota(idx.begin(), idx.end(), 0);
+    ranges::sort(idx, {}, [&](const auto& i) { return a[i]; });
+    for(int i = 0; i <= n + 1; ++i) {
+        dict[a[idx[i]]] = i;
+    }
+    
+    vector<int> left(n + 2), right(n + 2);
+    iota(left.begin(), left.end(), -1);
+    iota(right.begin(), right.end(), 1);
+    left[0] = 0;
+    right.back() = n + 1;
+    vector<int> ans(n);
+    int mx = 0;
+    for(int i = 1; i <= n + 1; ++i) {
+        chmax(mx, a[idx[i]] - a[idx[i - 1]]);
+    }
+    for(int i = n; i >= 1; --i) {
+        int p = dict[a[i]];
+        ans[i - 1] = mx;
+        right[left[p]] = right[p];
+        left[right[p]] = left[p];
+        int pre = a[idx[left[p]]];
+        int nxt = a[idx[right[p]]];
+        
+        chmax(mx, nxt - pre);
+    }
+    for(auto &p: ans) cout<<p<<" ";
+}
+```
