@@ -693,3 +693,48 @@ void solve() {
     cout<<ans - 1<<endl;
 }
 ```
+
+### 18. Josephus Problem I
+
+約瑟夫問題，用 linked list 解，也可以用 queue, deque。
+
+```cpp
+void solve() {
+    int n;
+    cin >> n;
+    deque<int> dq;
+    for(int i = 1; i <= n; ++i) {
+        dq.pb(i);
+    }
+    while(!dq.empty()) {
+        int x = dq.front();
+        dq.pop_front();
+        if(dq.size() > 0) {
+            int y = dq.front();
+            dq.pop_front();
+            cout<<y<<" ";
+            dq.pb(x);
+        } else {
+            cout<<x;
+        }
+    }    
+}
+```
+
+```cpp
+void solve() {
+    int n;
+    cin >> n;
+    vector<int> nxt(n + 1, -1);
+    iota(nxt.begin(), nxt.end(), 1);
+    nxt[n] = 1;
+    int cur = 1;
+    while(nxt[cur] > 0) {
+        cout<<nxt[cur]<<" ";
+        int j = nxt[cur];
+        nxt[cur] = nxt[j];
+        cur = nxt[cur];
+        nxt[j] = 0;
+    }
+}
+```
