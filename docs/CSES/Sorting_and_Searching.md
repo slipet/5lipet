@@ -670,3 +670,24 @@ void solve() {
     cout << count << "\n";
 }
 ```
+
+### 17. Distinct Values Subsequences
+
+這題沒做出來，一直想用貢獻法或DP的方式計算，但是對於重複元素的貢獻一直沒辦法很好的去重。
+
+這題需要使用完全不同的方向，
+
+```cpp
+const int MOD = 1'000'000'000 + 7;
+void solve() {
+    int n, x;
+    cin >> n;
+    htb(int, int) dict;
+    readv2(n, x, dict[x]++);
+    ll ans = 1;
+    for(auto &[_, cnt]: dict) {
+        ans = (ans * (cnt + 1)) % MOD;
+    }
+    cout<<ans - 1<<endl;
+}
+```
