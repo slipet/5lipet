@@ -738,3 +738,58 @@ void solve() {
     }
 }
 ```
+
+---
+
+### 19. Josephus Problem II
+
+有幾種寫法:
+
+1. 線段樹/BIT 二分 O(nlogn)
+
+用長為 n + 1 的陣列表示哪寫元素還在對列中，可以透過觀察發現每次取第 idx + k 大的元素，若是超過當前列表長度 sz 需要模 sz
+
+可以得到 $idx = (idx + k) \pmod sz%，如果 %idx + k = sz% 會取到第 0 大元素，所以要對前式進行變形 $idx = (idx + k - 1) \pmod sz + 1%
+
+```cpp
+class Fenwick {
+    vector<int> tree;
+    int sz;
+public:
+    Fenwick(int n): tree(n + 1, 0), sz(n) {}
+    void update(int i, int val) {
+        for(; i < tree.size(); i += (i & -i)) {
+            tree[i] += val;
+        }
+    }
+    int kth(int k) {
+        int idx = 0;
+        int step = 1;
+        int hi = 1 << bit_width((unsigned)sz) - 1;
+        for(; hi; hi >>= 1) {
+            int nxt = idx + hi;
+            if(nxt <= sz && tree[nxt] < k) {
+                k -= tree[nxt];
+                idx = nxt;
+            }
+        }
+        return idx + 1;
+    }
+};
+
+void solve() {
+    int n, k;
+    cin >> n >> k;
+    Fenwick t(n);
+    for(int i = 1; i <= n; ++i) t.update(i, 1);
+    int cur = 1;
+    int left = n;
+    while(left) {
+        cur = (cur + k - 1) % left + 1;
+        int pos = t.kth(cur);
+        cout<<pos<<" ";
+        t.update(pos, -1);
+        left--;
+    }
+}
+```
