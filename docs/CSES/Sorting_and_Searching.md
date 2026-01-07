@@ -749,7 +749,7 @@ void solve() {
 
 用長為 n + 1 的陣列表示哪寫元素還在對列中，可以透過觀察發現每次取第 idx + k 大的元素，若是超過當前列表長度 sz 需要模 sz
 
-可以得到 $idx = (idx + k) \pmod sz%，如果 %idx + k = sz% 會取到第 0 大元素，所以要對前式進行變形 $idx = (idx + k - 1) \pmod sz + 1%
+可以得到 $idx = idx + k \pmod{size}$，如果 $idx + k = sz$ 會取到第 0 大元素，所以要對前式進行變形 $idx = idx + k - 1 \pmod{size} + 1$
 
 ```cpp
 class Fenwick {
@@ -794,4 +794,4 @@ void solve() {
 }
 ```
 
-2. 分塊 $O(n\sqrt(n))$
+2. 分塊 $O(n\sqrt{n})$
