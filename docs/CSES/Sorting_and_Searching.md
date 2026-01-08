@@ -796,7 +796,7 @@ void solve() {
 
 2. 分塊 $O(n\sqrt{n})$
 
-把長度為 n 的陣列切成 $\sqrt{n}$ 的大小進行運算，由 $k \pmod{n - i}$ 算出要從當前 col 往後走幾步。找到對應元素後把它從當前 row 刪除($O(\sqrt{n})$)。
+把長度為 n 的陣列切成 $\sqrt{n}$ 的大小進行運算，由 $k \pmod{n - i}$ 算出要從當前 col 往後走幾步。找到對應元素後把它從當前 row 刪除($O(\sqrt{n})$。
 
 ```cpp
 void solve() {
