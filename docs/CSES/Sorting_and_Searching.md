@@ -795,3 +795,43 @@ void solve() {
 ```
 
 2. 分塊 $O(n\sqrt{n})$
+
+把長度為 n 的陣列切成 $\sqrt{n}$ 的大小進行運算，由 $k \pmod{n - i}$ 算出要從當前 col 往後走幾步。找到對應元素後把它從當前 row 刪除($O(\sqrt{n})$)。
+
+```cpp
+void solve() {
+    int n, k;
+    cin >> n >> k;
+    int m = sqrt(n);
+    vector<vector<int>> g;
+    for(int i = 1; i <= n; ) {
+        vector<int> tmp;
+        while(tmp.size() < m && i <= n) {
+            tmp.pb(i++);
+        }
+        g.pb(tmp);
+    }
+    int r = 0, c = 0;
+    for(int i = 0; i < n; ++i) {
+        int j = k % (n - i);
+        while(j) {
+            if(c + j < g[r].size()) {
+                c += j;
+                j = 0;
+            } else {
+                j -= g[r].size() - c;
+                c = 0;
+                r = (r + 1) % g.size();
+            }
+        }
+        while(c >= g[r].size()) {
+            c = 0;
+            r = (r + 1) % g.size();
+        }
+        cout<<g[r][c]<<" ";
+        if(i < n - 1) {
+            g[r].erase(g[r].begin() + c);
+        }
+    }
+}
+```
