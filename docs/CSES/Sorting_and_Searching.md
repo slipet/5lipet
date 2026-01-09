@@ -844,6 +844,8 @@ void solve() {
 
 包含的關係也是利用排序後 $a_i \le a_{i + 1}$ 的性質，但是透過逆序遍歷，我們可以發現假設有右端點比當前區間的右端點還要小的話，那表示當前區間包含著其他區間，因為逆序的關係可以知道 $a_i \le a_j$ ，而又有 $b_i \ge b_j$ (假設 $0 \le i < j < n$)。
 
+[講解](https://codeforces.com/blog/entry/98629)
+
 ```cpp
 void solve() {
     int n, l, r;
