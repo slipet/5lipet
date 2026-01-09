@@ -835,3 +835,44 @@ void solve() {
     }
 }
 ```
+
+### 20. Nested Ranges Check
+
+```cpp
+void solve() {
+    int n, l, r;
+    cin >> n;
+    vector<pii> a;
+    vector<int> inner(n, 0), outer(n, 0), idx(n, 0);
+    for(int i = 0; i < n; ++i)  {
+        cin >> l >> r;
+        a.emplace_back(l, r);
+        idx[i] = i;
+    }
+    ranges::sort(idx, [&](const auto &x, const auto &y) {
+        if(a[x].first == a[y].first) return a[x].second > a[y].second;
+        return a[x].first < a[y].first;
+    });
+    int mn = INT_MAX;
+    for(int j = n - 1; j >= 0; --j) {
+        auto &[s, e] = a[idx[j]];
+        if(mn <= e) {
+            outer[idx[j]] = 1;
+        }
+        chmin(mn, e);
+    }
+    int mx = INT_MIN;
+
+    for(int j = 0; j < n; ++j) {
+        auto &[s, e] = a[idx[j]];
+        if(mx >= e) {
+            inner[idx[j]] = 1;
+        }
+        chmax(mx, e);
+    }
+    for(auto &x: outer) cout<<x<<" ";
+    cout<<endl;
+    for(auto &x: inner) cout<<x<<" ";
+    cout<<endl;
+}
+```
