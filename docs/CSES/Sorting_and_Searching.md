@@ -960,3 +960,38 @@ void solve() {
     cout<<endl;
 }
 ```
+
+### 22. Room Allocation
+
+經典 schedule 問題，用優先佇列解。
+
+```
+void solve() {
+    int n;
+    cin >> n;
+    vector<tiii> times(n);
+    for(int i = 0; i < n; ++i) {
+        auto &[l, r, idx] = times[i];
+        cin >> l >> r;
+        idx = i;
+    }
+    int sz = 1, cur = 0;
+    priority_queue<pii> occupied;
+    ranges::sort(times);
+    vector<int> ans(n);
+    for(auto &[l, r, idx]: times) {
+        chmax(cur, l);
+        if(!occupied.empty() && -occupied.top().first < cur) {
+            auto [_, i] = occupied.top();
+            occupied.pop();
+            ans[idx] = i;
+            occupied.emplace(-r, i);
+        } else {
+            ans[idx] = sz;
+            occupied.emplace(-r, sz++);
+        }
+    }
+    cout<<sz - 1<<endl;
+    for(auto &x: ans) cout<<x<<" ";
+}
+```
