@@ -74,4 +74,4 @@ x = k * y + t
 
 對於區間 $[l_1, r_1]$ 其關係可以如下:
 
-[!range](https://codeforces.com/predownloaded/f0/bc/f0bc055b37bc44373c14a2fd0b8c09492d63c46a.png)
+![range](https://codeforces.com/predownloaded/f0/bc/f0bc055b37bc44373c14a2fd0b8c09492d63c46a.png)
