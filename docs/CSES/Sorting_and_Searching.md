@@ -884,3 +884,79 @@ void solve() {
     cout<<endl;
 }
 ```
+
+* 另一種做法是利用 BIT 算排序後的區間，相當於下一題的特例，判斷對應的前綴和是否大於 0 。
+
+### 20. Nested Ranges Count
+
+基本思路跟上一題類似，分別逆序/順序遍歷排序後的區間，計算對應的前綴和。
+
+```cpp
+class Fenwick {
+    vector<int> tree;
+public:
+    Fenwick(int n): tree(n + 1) {}
+    void clear() {
+        fill(tree.begin(), tree.end(), 0);
+    }
+    void update(int i, int val) {
+        for(; i < tree.size(); i += (i & -i)) {
+            tree[i] += val;
+        }
+    }
+    int pre(int i) {
+        int res = 0;
+        for(; i; i -= (i & -i)) {
+            res += tree[i];
+        }
+        return res;
+    }
+};
+
+void solve() {
+    int n;
+    map<int, int> disc;
+    cin >> n;
+    vector<pii> intervals(n);
+    vector<int> inner(n), outer(n), idx(n);
+    Fenwick t(2 * n);
+    for(int i = 0; i < n; ++i) {
+        auto &[l, r] = intervals[i];
+        cin >> l >> r;
+        disc[l] = 0;
+        disc[r] = 0;
+        idx[i] = i;
+    }
+    int sz = 0;
+    for(auto &[_, i]: disc) i = sz++;
+    for(auto &[l, r]: intervals) {
+        l = disc[l];
+        r = disc[r];
+    }
+    ranges::sort(idx, [&](const auto &a, const auto &b) {
+        auto &[la, ra] = intervals[a];
+        auto &[lb, rb] = intervals[b];
+        if(la == lb) return ra > rb;
+        return la < lb;
+    });
+    
+    for(int i = n - 1; i >= 0; --i) {
+        int j = idx[i];
+        auto &[l, r] = intervals[j];
+        outer[j] = (t.pre(r));
+        t.update(r, 1);
+    }
+    t.clear();
+    int sum = 0;
+    for(auto &j: idx) {
+        auto &[l, r] = intervals[j];
+        inner[j] = (sum - t.pre(r));
+        t.update(r + 1, 1);
+        sum++;
+    }
+    for(auto &x: outer) cout<<x<<" ";
+    cout<<endl;
+    for(auto &x: inner) cout<<x<<" ";
+    cout<<endl;
+}
+```
