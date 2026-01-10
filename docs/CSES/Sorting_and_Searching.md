@@ -1052,11 +1052,11 @@ void solve() {
 \[
 \begin{array}{ll}
     \sum{d_i} - \sum{min(f_i)} \\
-    =  \sum{d_i} - n \times t_1 - (n - 1) \times t_2 - ... - 1 \times t_n\\
+    =  \sum{d_i} - n \times t_1 - (n - 1) \times t_2 ... - 1 \times t_n\\
 \end{array}
 \]
 
-所以對於 $- n \times t_1 - (n - 1) \times t_2 - ... - 1 \times t_n$ 我們必須由小至大處理任務。
+所以對於 $- n \times t_1 - (n - 1) \times t_2 ... - 1 \times t_n$ 我們必須由小至大處理任務。
 
 
 ```cpp
