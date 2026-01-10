@@ -1106,3 +1106,94 @@ void solve() {
     }
 }
 ```
+
+### 26. Sum of Three Values
+### 27. Sum of Four Values
+
+經典 K sum 題，記得做剪枝。
+
+```cpp
+void solve() {
+    int n, t;
+    cin >> n >> t;
+    int N = 4;
+    vector<int> a(n), idx(n, 0);
+    readv2(n, a[i], idx[i] = i);
+    ranges::sort(idx, {}, [&](const auto &i) { return a[i]; });
+
+    vector<int> ans(N);
+    auto twoSum = [&] (int l, ll tar) -> int {
+        int r = n - 1;
+        while(l < r) {
+            ll sum = a[idx[l]] + a[idx[r]];
+            if(sum > tar) {
+                int &x = a[idx[r]];
+                while(l < r && x == a[idx[r]]) r--;
+            } else if(sum < tar) {
+                int &x = a[idx[l]];
+                while(l < r && x == a[idx[l]]) l++;
+            } else {
+                ans[0] = idx[l] + 1;
+                ans[1] = idx[r] + 1;
+                return 2;
+            }
+        }
+        return 0;
+    };
+    auto kSum = [&](auto&& kSum, int k, int l, ll tar) -> int {
+        ll avg = tar / k;
+        if(a[idx[l]] > avg || avg > a[idx[n - 1]]) return 0;
+
+        if(k == 2) {
+            return twoSum(l, tar);
+        }
+        
+        for(int i = l; i < n - (k - 1); ++i) {
+            if(i > l && a[idx[i]] == a[idx[i - 1]]) continue;
+            int res = kSum(kSum, k - 1, i + 1, tar - a[idx[i]]);
+            
+            if(res > 0) {
+                ans[k - 1] = idx[i] + 1;
+                return k;
+            }
+        }
+        return 0;
+    };
+
+    int len = kSum(kSum, N, 0, t);
+    if(len == N) {
+        for(auto &x: ans) cout<<x<<" ";
+    } else {
+        cout<<"IMPOSSIBLE";
+    }
+}
+```
+
+另一種用 hash table 的寫法
+
+```cpp
+void solve() {
+    ll n, tar;
+    cin >> n >> tar;
+    htb(ll, vector<pii>) pre;
+    vl a(n);
+    for(int i = 0; i < n; ++i) {
+        cin >> a[i];
+        for(int j = 0; j < i; ++j) {
+            ll sum = a[i] + a[j];
+            if(sum >= tar) continue;
+            if(pre.contains(tar - sum)) {
+                for(auto &[x, y]: pre[tar - sum]) {
+                    if(x != i && y != i && x != j && y != j) {
+                        cout<<x + 1<<" "<<y + 1<<" "<<j + 1<<" "<<i + 1<<endl;
+                        return;
+                    }
+                }
+            } else {
+                pre[sum].emplace_back(j, i);
+            }
+        }
+    }
+    cout<<"IMPOSSIBLE"<<endl;
+}
+```
