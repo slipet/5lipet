@@ -1022,3 +1022,57 @@ void solve() {
     cout<<r<<endl;
 }
 ```
+
+### 24. Tasks and Deadlines
+
+這題的要緊抓題目給的 d - f 進行式子的拆分，可以知道需要計算 $\sum{max(d_i - f_i)}$，$d_i$ 可以提出來得到 $\sum{d_i} - \sum{min(f_i)}$，此時的 i 為處理任務的順序不是一開始陣列的順序，假設 $f_0$ 是一開始的初始時間為 0 ， $f_i$ 為處理第 i 個任務的結束時間， $t_i$ 為第 i 個任務的處理時間。
+
+\[
+\begin{array}{ll}
+    f_1 = f_0 + t_1 \\
+    f_2 = f_1 + t_2 \\
+    ... ...         \\
+    f_n = f_{n - 1} + t_{n}
+\end{array}
+\]
+
+可以將 $f_i$ 拆解成 $t_i$ 的和:
+
+\[
+\begin{array}{ll}
+    f_1 = t_1 \\
+    f_2 = t_1 + t_2 \\
+    ... ...         \\
+    f_n = \sum_{i = 1}^{n}{t_i}
+\end{array}
+\]
+
+透過上面的式子可以得到:
+
+\[
+\begin{array}{ll}
+    \sum{d_i} - \sum{min(f_i)} \\
+    =  \sum{d_i} - n \times t_1 - (n - 1) \times t_2 - ... - 1 \times t_n\\
+\end{array}
+\]
+
+所以對於 $- n \times t_1 - (n - 1) \times t_2 - ... - 1 \times t_n$ 我們必須由小至大處理任務。
+
+
+```cpp
+void solve() {
+    int n, d;
+    cin >> n;
+    ll ans = 0;
+    vector<int> times(n);
+    for(int i = 0; i < n; ++i) {
+        cin >> times[i] >> d;
+        ans += d;
+    }
+    ranges::sort(times);
+    for(auto &t: times) {
+        ans -= (1LL * t * (n--));
+    }
+    cout<<ans<<endl;
+}
+```
