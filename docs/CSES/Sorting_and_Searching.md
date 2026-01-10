@@ -965,7 +965,7 @@ void solve() {
 
 經典 schedule 問題，用優先佇列解。
 
-```
+```cpp
 void solve() {
     int n;
     cin >> n;
@@ -993,5 +993,32 @@ void solve() {
     }
     cout<<sz - 1<<endl;
     for(auto &x: ans) cout<<x<<" ";
+}
+```
+
+### 23. Factory Machines
+
+二分，注意上下界，以及值域範圍
+
+```cpp
+void solve() {
+    ll n, t;
+    cin >> n >> t;
+    vector<int> a(n);
+    readv(n, a[i]);
+    auto [mn, mx] = ranges::minmax(a);
+    ll l = t / n * mn - 1, r = (t - 1 + n)/ n * mx + 1;
+    auto check = [&](ll limit) -> ll {
+        ll cnt = 0;
+        for(auto &x: a) {
+            cnt += limit / x;
+        }
+        return cnt >= t;
+    };
+    while(l + 1 < r) {
+        ll m = l + (r - l) / 2;
+        (check(m) ? r : l) = m;
+    }
+    cout<<r<<endl;
 }
 ```
