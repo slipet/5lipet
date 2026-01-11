@@ -8,6 +8,8 @@
 
 - [ ] reroot
 
+- [ ] bit 試填法
+
 ### Codeforces
 
 - [ ] [2170E](https://codeforces.com/contest/2170/problem/E)
