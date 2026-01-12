@@ -1197,3 +1197,24 @@ void solve() {
     cout<<"IMPOSSIBLE"<<endl;
 }
 ```
+
+---
+
+### 28. Sum of Four Values
+
+```cpp
+void solve() {
+    int n;
+    cin >> n;
+    vector<int> a(n + 1), st;
+    st.pb(0);
+    for(int i = 1; i <= n; ++i) {
+        cin >> a[i];
+        while(a[i] <= a[st.back()]) {
+            st.pop_back();
+        }
+        cout<< st.back() << " ";
+        st.pb(i);
+    }
+}
+```
