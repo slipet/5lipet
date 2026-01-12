@@ -1200,7 +1200,9 @@ void solve() {
 
 ---
 
-### 28. Sum of Four Values
+### 28. Nearest Smaller Values
+
+monotonic stack 
 
 ```cpp
 void solve() {
@@ -1216,5 +1218,55 @@ void solve() {
         cout<< st.back() << " ";
         st.pb(i);
     }
+}
+```
+
+### 29. Subarray Sums I
+
+官方解答是滑動窗口，但是第一次寫的時候看到 subarray sum 直覺想到用前綴和做。
+
+* 滑窗
+
+```cpp
+void solve() {
+    ll n, tar, ans = 0;
+    cin >> n >> tar;
+    vector<int> a(n);
+    readv(n, a[i]);
+    ll sum = 0;
+    for(int l = 0, r = 0; r < n;) {
+        sum += a[r++];
+        while(l < r && sum > tar) {
+            sum -= a[l++];
+        }
+        if(sum == tar) {
+            ans++;
+        }
+    }
+    cout<<ans<<endl;
+}
+```
+
+* 前綴和 + hash table 
+
+雖然指只用了一次遍歷但是 hash table 的開銷使得比滑窗慢。
+
+```cpp
+void solve() {
+    ll n, tar, x;
+    cin >> n >> tar;
+    htb(ll, int) pre;
+    pre[0] = 1;
+    ll sum = 0;
+    int ans = 0;
+    for(int i = 0; i < n; ++i) {
+        cin >> x;
+        sum += x;
+        if(pre.contains(sum - tar)) {
+            ans += pre[sum - tar];
+        }
+        pre[sum]++;
+    }
+    cout<<ans<<endl;
 }
 ```
