@@ -1275,7 +1275,7 @@ void solve() {
 
 ---
 
-### 29. Subarray Sums II
+### 30. Subarray Sums II
 
 跟上題只差在元素值域可能為負，無法使用滑窗
 
@@ -1299,7 +1299,7 @@ void solve() {
 }
 ```
 
-### 29. Subarray Divisibility
+### 31. Subarray Divisibility
 
 注意元素可能為負，取模要注意。
 
@@ -1318,5 +1318,63 @@ void solve() {
         cnt[sum]++;
     }
     cout<<ans<<endl;
+}
+```
+
+### 32. Distinct Values Subarrays II
+
+滑窗
+
+```cpp
+void solve() {
+    int n, k;
+    cin >> n >> k;
+    vector<int> a(n);
+    readv(n, a[i]);
+    htb(int, int) dict;
+    ll ans = 0;
+    for(int l = 0, r = 0; r < n; ) {
+        dict[a[r++]]++;
+        while(l < r && dict.size() > k) {
+            int &del = a[l++];
+            dict[del]--;
+            if(dict[del] == 0) dict.erase(del);
+        }
+        ans += (r - l);
+    }
+    cout<<ans<<endl;
+}
+```
+
+### 33. Array Division
+
+二分
+
+```cpp
+void solve() {
+    int n, k;
+    cin >> n >> k;
+    vector<ll> a(n);
+    readv(n, a[i]);
+    auto [mn, mx] = ranges::minmax(a);
+    int sz = (n - 1 + k)/ k;
+    ll l = mx - 1, r = mx * sz + 1;
+    auto check = [&](ll limit) -> int {
+        int cnt = 0;
+        ll sum = 0;
+        for(int i = 0; i < n; ++i) {
+            sum += a[i];
+            if(i == n - 1 || sum + a[i + 1] > limit) {
+                cnt++;
+                sum = 0;
+            }
+        }
+        return cnt <= k;
+    };
+    while(l + 1 < r) {
+        ll m = l + (r - l) / 2;
+        (check(m)? r : l) = m;
+    }
+    cout<< r << endl;
 }
 ```
