@@ -1298,3 +1298,25 @@ void solve() {
     cout<<ans<<endl;
 }
 ```
+
+### 29. Subarray Divisibility
+
+注意元素可能為負，取模要注意。
+
+```cpp
+void solve() {
+    int n, x;
+    cin >> n;
+    vector<ll> cnt(n);
+    cnt[0] = 1;
+    int sum = 0;
+    ll ans = 0;
+    for(int i = 0; i < n; ++i) {
+        cin >> x;
+        sum = ((sum + x) % n + n) % n;
+        ans += cnt[sum];
+        cnt[sum]++;
+    }
+    cout<<ans<<endl;
+}
+```
