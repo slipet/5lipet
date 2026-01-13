@@ -1444,3 +1444,33 @@ void solve() {
     cout<<ans<<endl;
 }
 ```
+
+### 35. Maximum Subarray Sum II
+
+Monotonic queue + prefix sum，要注意這邊 i + 1 的意義是前綴的長度。
+
+```cpp
+void solve() {
+    int n, l, r, x;
+    cin >> n >> l >> r;
+    vector<ll> pre(n + 1, 0);
+    deque<int> dq;
+    ll ans = LLONG_MIN;
+    
+    for(int i = 0; i < n; ++i) {
+        cin >> x;
+        pre[i + 1] = pre[i] + x;
+        if(i + 1 >= l) {
+            int j = i + 1 - l;
+            while(!dq.empty() && pre[j] <= pre[dq.back()]) dq.pop_back();
+            dq.pb(j);
+        }
+        while(!dq.empty() && i + 1 - dq.front() > r) {
+            dq.pop_front();
+        }
+        if(i + 1 >= l)
+            chmax(ans, pre[i + 1] - pre[dq.front()]);
+    }
+    cout<<ans<<endl;
+}
+```
