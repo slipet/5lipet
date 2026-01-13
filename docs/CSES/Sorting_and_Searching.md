@@ -1348,7 +1348,9 @@ void solve() {
 
 ### 33. Array Division
 
-二分
+二分答案 + 貪心，上下界要注意，下界因為是求分割後 subarray 最大，所以要用 max，貪心的部分將每個 subarray sum 分割成不超過 limit。
+
+二分的時候如果分割的 subarray 個數 $cnt < k$ 表示目前的 limit 太大了要往小猜，$cnt < k$ 則同樣也要往小猜。。
 
 ```cpp
 void solve() {
