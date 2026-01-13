@@ -66,3 +66,30 @@ void solve() {
         cout<<f[x]<<endl;
 }
 ```
+
+### 3. Coin Combinations I
+
+$F[i] = \sum_{j = 1}^{n}{F[i - c_j]}$
+
+這題要注意的是模數的計算會非常花費時間，因此先用 long long 的 tmp 加法，最後再做模數計算可以增加整體的效能。
+
+```cpp
+const int MOD = 1'000'000'000 + 7;
+void solve() {
+    int n, x;
+    cin >> n >> x;
+    vector<int> c(n), f(x + 1);
+    readv(n, c[i]);
+    f[0] = 1;
+    ll tmp = 0;
+    for(int i = 1; i <= x; ++i) {
+        tmp = 0;
+        for(int j = 0; j < n; ++j) {
+            if(i - c[j] >= 0) 
+                tmp += f[i - c[j]];
+        }
+        f[i] = (tmp % MOD);
+    }
+    cout<<f[x]<<endl;
+}
+```
