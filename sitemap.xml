@@ -7,6 +7,12 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/"/>
     </url>
     <url>
+        <loc>https://localhost:8000/CSES/Dynamic_Programming/</loc>
+        <lastmod>2026-01-13</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/CSES/Dynamic_Programming/"/>
+    </url>
+    <url>
         <loc>https://localhost:8000/CSES/Introductory_Problems/</loc>
         <lastmod>2026-01-13</lastmod>
         <changefreq>daily</changefreq>
