@@ -1380,3 +1380,63 @@ void solve() {
     cout<< r << endl;
 }
 ```
+
+### 34. Movie Festival II
+
+有 k 個人，要找到這些人可以看最多電影的區間。
+
+一開始思考的方向是由結尾排序，因為比起由開頭，結尾越靠前表示結束時間越早，可以儘可能的看越多電影，接著只要用優先佇列維護 k 個結束時間即可。
+
+但是這個方向是錯的，因為這樣沒有維護開始的時間，假設:
+
+
+5 2
+3 4
+2 5
+6 7
+1 8
+9 10
+
+可以用下面的圖表示
+
+    3--4
+  2------5
+            6--7
+1----------------8
+                   9--10
+
+一開始會將 [3, 4], [2, 5] 加入佇列，遇到 [6, 7] 因為佇列中的電影都結束了所以彈出[3, 4], [2, 5]，並接著加入 [6, 7], [1, 8], [9, 10]。問題出在加入 [1, 8]
+
+```cpp
+void solve() {
+    int n, k;
+    cin >> n >> k;
+    if(k >= n) {
+        cout<<n<<endl;
+        return;
+    }
+    vector<pii> times(n);
+    multiset<int> movies;
+    for(int i = 0; i < n; ++i) {
+        auto &[l, r] = times[i];
+        cin >> l >> r;
+    }
+    ranges::sort(times);
+    int ans = 0, t = 0;
+    for(auto &[l, r]: times) {
+        chmax(t, l);
+        if(movies.size() == k && *movies.begin() <= t) {
+            movies.erase(movies.begin());
+        }
+        if(movies.size() < k) {
+            movies.insert(r);
+            ans++;
+        } else if(*movies.rbegin() > r) {
+            auto rit = prev(movies.end());
+            movies.erase(rit);
+            movies.insert(r);
+        }
+    }
+    cout<<ans<<endl;
+}
+```
