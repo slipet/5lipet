@@ -40,3 +40,29 @@ void solve() {
     cout<<f[n % sides]<<endl;
 }
 ```
+
+### 2. Minimizing Coins
+
+$F[i] = min(F[i], F[i - c_j] + 1)$
+
+這題要注意的地方，內外層的 for-loop 可以交換計算不影響答案，但若是內層 for-loop 為 $c_j$ 的 [1, n] 會比內層 for-loop 是 [1, x] 時還慢 => cache locality。
+
+```cpp
+void solve() {
+    int n, x;
+    cin >> n >> x;
+    vector<int> c(n), f(x + 1, inf);
+    readv(n, c[i]);
+    f[0] = 0;
+    for(int j = 0; j < n; ++j) {
+        for(int i = 1; i <= x; ++i) {
+            if(i - c[j] >= 0)
+                chmin(f[i], f[i - c[j]] + 1);
+        }
+    }
+    if(f[x] >= inf)
+        cout<<-1<<endl;
+    else
+        cout<<f[x]<<endl;
+}
+```
