@@ -117,3 +117,52 @@ void solve() {
     cout<<f[x]<<endl;
 }
 ```
+
+### 5. Removing Digits
+
+$F[x] = min(F[x - d_i]) + 1$，$d_i$ 是 x 的 digit。
+
+```cpp
+void solve() {
+    int n;
+    cin >> n;
+    vector<int> f(10, inf);
+    f[0] = 0;
+    for(int i = 1; i <= n; ++i) {
+        int x = i;
+        int nxt = inf;
+        while(x) {
+            int d = x % 10;
+            if(d) chmin(nxt, f[((i - d) % 10 + 10) % 10] + 1);
+            x /= 10;
+        }
+        f[i % 10] = nxt;
+    }
+    cout<<f[n % 10]<<endl;
+}
+```
+
+### 6. Grid Paths I
+
+```cpp
+const int MOD = 1'000'000'000 + 7;
+vector<pii> dirs = {{0, 1}, {1, 0}};
+void solve() {
+    int n;
+    cin >> n;
+    string row;
+    vector f(n + 1, 0);
+    f[1] = 1;
+    for(int i = 0; i < n; ++i) {
+        cin >> row;
+        for(int j = 0; j < n; ++j) {
+            if(row[j] == '*') {
+                f[j + 1] = 0;
+            } else {
+                f[j + 1] = (f[j + 1] + f[j]) % MOD;
+            }
+        }
+    }
+    cout<<f[n]<<endl;
+}
+```
