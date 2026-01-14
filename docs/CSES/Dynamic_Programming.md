@@ -93,3 +93,27 @@ void solve() {
     cout<<f[x]<<endl;
 }
 ```
+
+### 4. Coin Combinations II
+
+這題是求組合數，因此像是 2 + 3, 3 + 2 這種重複組合要去重，透過將遍歷硬幣的 for-loop 放在外層，可以避免重複。
+
+要注意的地方是內層 for-loop 的範圍會是 $[c_j, x]$
+
+```cpp
+const int MOD = 1'000'000'000 + 7;
+void solve() {
+    int n, x;
+    cin >> n >> x;
+    vector<int> c(n), f(x + 1);
+    readv(n, c[i]);
+    f[0] = 1;
+    for(int j = 0; j < n; ++j) {
+        for(int i = c[j]; i <= x; ++i) {
+            f[i] += f[i - c[j]];
+            if(f[i] >= MOD) f[i] -= MOD;
+        }
+    }
+    cout<<f[x]<<endl;
+}
+```
