@@ -166,3 +166,27 @@ void solve() {
     cout<<f[n]<<endl;
 }
 ```
+
+### 7. Book Shop
+
+限制個數背包，每個物品只能選一次，所以內層迴圈使用 $[x, prices_i]$。注意最後輸出 F[X]，陣列初始化是 0。
+
+$F[x] = max(F[x], F[x - prices_j] + pages_j)$
+
+```
+void solve() {
+    int n, x;
+    cin >> n >> x;
+    vector<int> prices(n), pages(n);
+    readv(n, prices[i]);
+    readv(n, pages[i]);
+    vector<int> f(x + 1, 0);
+    f[0] = 0;
+    for(int i = 0; i < n; ++i) {
+        for(int j = x; j >= prices[i]; --j) {
+            chmax(f[j], f[j - prices[i]] + pages[i]);
+        }
+    }
+    cout<<f[x]<<endl;
+}
+```
