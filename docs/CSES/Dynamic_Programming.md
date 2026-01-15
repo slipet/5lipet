@@ -190,3 +190,57 @@ void solve() {
     cout<<f[x]<<endl;
 }
 ```
+
+### 8. Array Description
+
+F[i][j] 定義為長度為 i 時以 j 為結尾的序列的個數。 
+
+因此轉移方程: 
+
+$f[i][j] = \sum_{k = -1}^{1}{F[i - 1][j + k]}$
+
+1. 當 j > 0 時只要計算 f[i][j]。
+
+2. 當 j == 0 計算 $F[i][1:m]$。
+
+要注意的是若是序列為 ... 0, j_i,  j_{i + 1}, 0 ...，且 abs(j_i - j_{i + 1}) > 1 表示無法構成合法序列，答案為 0。
+
+```cpp
+const int MOD = 1'000'000'000 + 7;
+void solve() {
+    int n, m, x;
+    cin >> n >> m;
+    vector<ll> f(m + 2, 0);
+    cin >> x;
+    if(x) {
+        f[x] = 1;
+    } else {
+        ranges::fill(f.begin() + 1, f.end() - 1, 1);
+    }
+    int pre = x;
+    for(int i = 1; i < n; ++i) {
+        cin >> x;
+        vector<ll> nxt(m + 2, 0);
+        if(x) {
+            if(pre > 0 && abs(x - pre) > 1) {
+                cout<<0<<endl;
+                return;
+            }
+            nxt[x] = (f[x - 1] + f[x] + f[x + 1]) % MOD;
+        } else {
+            for(int j = 1; j <= m; ++j) {
+                nxt[j] = (f[j - 1] + f[j] + f[j + 1]) % MOD;
+            }
+        }
+        f = move(nxt);
+        pre = x;
+    }
+    if(x) {
+        cout<<f[x]<<endl;
+    }
+    else {
+        ll sum = reduce(f.begin(), f.end(), 0LL) % MOD;
+        cout<<sum<<endl;
+    }   
+}
+```
