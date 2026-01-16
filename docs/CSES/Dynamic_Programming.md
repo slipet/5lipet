@@ -333,7 +333,7 @@ void solve() {
 \right.
 \]
 
-這題的時間複雜度為 O(n)
+時間複雜度為 O(n)，但是如果有多個 testcase，會重複計算很多次，因此可以一開始就把全部的結果算出來，最後再回答即可。
 
 ```cpp
 const int MOD = 1'000'000'000 + 7;
@@ -358,5 +358,73 @@ void solve() {
     int n;
     cin >> n;
     cout<<F[n]<<endl;
+}
+```
+
+由上方的轉移方程可以得到下面的矩陣形式:
+
+$$
+\begin{bmatrix}
+4 & 1\\
+1 & 2
+\end{bmatrix}
+\begin{bmatrix}
+f[0] \\
+f[1]
+\end{bmatrix}
+= \
+\begin{bmatrix}
+4f[0] +  f[1]\\
+ f[0] + 2f[1]
+\end{bmatrix}
+$$
+
+因此可以使用矩陣快速冪計算，時間複雜度為 $O(\log{(n)})$
+
+```cpp
+const int MOD = 1'000'000'000 + 7;
+using Matrix_t = vector<vector<long long>>;
+Matrix_t mul(Matrix_t &a, Matrix_t &b) {
+    const int m = a.size(), n = b[0].size();
+    Matrix_t mat = Matrix_t(m, vector<long long>(n, 0));
+    for(int i = 0; i < m; ++i) {
+        for(int k = 0; k < a[i].size(); ++k) {
+            for(int j = 0; j < n; ++j) {
+                if(!a[i][k]) continue;
+                mat[i][j] = (mat[i][j] + a[i][k] * b[k][j]) % MOD;
+            }
+        }
+    }
+    return mat;
+}
+Matrix_t identity_mat(int n) {
+    Matrix_t mat(n, vector<long long>(n, 0));
+    for(int i = 0; i < n; ++i) {
+        mat[i][i] = 1;
+    }
+    return mat;
+}
+Matrix_t mat_qpow(Matrix_t &x, int n) {
+    Matrix_t ans = identity_mat(x.size());
+    while(n) {
+        if(n & 1) ans = mul(x, ans);
+        x = mul(x, x);
+        n >>= 1;
+    }
+    return ans;
+}
+ 
+void solve() {
+    int n;
+    cin >> n;
+    if(n == 1) {
+        cout<<2<<endl;
+        return;
+    }
+    Matrix_t M = {{4, 1}, {1, 2}};
+    Matrix_t f0 = {{1}, {1}};
+    M = mat_qpow(M, n - 1);
+    M = mul(M, f0);
+    cout<<(M[0][0] + M[1][0]) % MOD <<endl;
 }
 ```
