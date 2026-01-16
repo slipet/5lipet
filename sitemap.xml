@@ -67,6 +67,12 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/dp/digits_counting/"/>
     </url>
     <url>
+        <loc>https://localhost:8000/dp/matrix_exponentiation/</loc>
+        <lastmod>2026-01-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/dp/matrix_exponentiation/"/>
+    </url>
+    <url>
         <loc>https://localhost:8000/ds/seg_tree/</loc>
         <lastmod>2026-01-16</lastmod>
         <changefreq>daily</changefreq>
