@@ -271,6 +271,7 @@ nav:
     - Subseq automation: "./string/subseq_automation.md"
   - DP:
     - Digits counting: "./dp/digits_counting.md"
+    - Matrix Exponentiation: "./dp/matrix_exponentiation.md"
   - Math:
     - Number theory: "./math/number_theory.md"
     - Order theory: "./math/order_theory.md"
