@@ -294,4 +294,69 @@ void solve() {
 \right.
 \]
 
+接著化簡:
 
+\[
+\left\{ 
+\begin{array}{ll}
+    f[0] = f[0] + f[2] + f[3] + f[4] + f[5] \\
+    f[5] = f[4] = f[3]= f[1] = f[0]
+\end{array}
+\right.
+\left\{ 
+\begin{array}{ll}
+    f[2] = f[1] + f[6] + f[7] \\
+    f[7] = f[6] = f[2]
+\end{array}
+\right.
+\]
+
+消除重複項:
+
+\[
+\left\{ 
+\begin{array}{ll}
+    f[0] = 4 \times f[0] + f[2] \\
+    f[2] = f[0] + 2 \times f[2] 
+\end{array}
+\right.
+\]
+
+調整一下編號:
+
+\[
+\left\{ 
+\begin{array}{ll}
+    f[0] = 4 f[0] + f[1] \\
+    f[1] = f[0] + 2f[1]
+\end{array}
+\right.
+\]
+
+這題的時間複雜度為 O(n)
+
+```cpp
+const int MOD = 1'000'000'000 + 7;
+const int MX = 1'000'000;
+ll F[MX + 1];
+ 
+auto init = []() {
+    vector<ll> f(2, 1);
+    F[1] = 2;
+    F[2] = 8;
+    for(int i = 3; i <= MX; ++i) {
+        ll f0 = f[0];
+        f[0] = (f[0] * 4 + f[1]) % MOD;
+        f[1] = (f0 + f[1] * 2) % MOD;
+ 
+        F[i] = (f[0] * 5 + f[1] * 3) % MOD;
+    }
+    return 0;
+}();
+ 
+void solve() {
+    int n;
+    cin >> n;
+    cout<<F[n]<<endl;
+}
+```
