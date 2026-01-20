@@ -477,17 +477,23 @@ $$A^2 - 6A + 7I = 0$$
 
 乘上 $F_n = c^Tx_n$。($c^Tx_n$ 是用一組權重 $c = \begin{bmatrix} \alpha \\ \beta\end{bmatrix}$，對狀態向量 $x_n = \begin{bmatrix} f_n \\ g_n\end{bmatrix}$ 做線性加權，得到真正關心的輸出 $F_n = \begin{bmatrix} 1 & 1 \end{bmatrix} \begin{bmatrix} f_n \\ g_n\end{bmatrix}$)
 
-$$
-A^2 - 6A + 7I = 0 \\
-\rightarrow (A^2 - 6A + 7I)x_n = 0\\ 
-\rightarrow A^2x_n - 6Ax_n + 7Ix_n = 0\\
-$$
+\[
+\begin{array}{ll}
+    A^2 - 6A + 7I = 0 \\
+    \rightarrow (A^2 - 6A + 7I)x_n = 0\\ 
+    \rightarrow A^2x_n - 6Ax_n + 7Ix_n = 0
+\end{array}
+\]
+
 由前面可知 $x_{n+1} = Ax_n$，$x_{n+2}=A^2x_n$
-$$
-x_{n + 2} - 6x_{n+1} + 7x_n = 0 \\
-\rightarrow F_{n+2} - 6F_{n+1} + 7F_{n} = 0 \\
-\rightarrow F_{n} = 6F_{n-1} - 7F_{n - 2}
-$$
+
+\[
+\begin{array}{ll}
+    x_{n + 2} - 6x_{n+1} + 7x_n = 0 \\
+    \rightarrow F_{n+2} - 6F_{n+1} + 7F_{n} = 0 \\
+    \rightarrow F_{n} = 6F_{n-1} - 7F_{n - 2}
+\end{array}
+\]
 
 
 ```cpp
