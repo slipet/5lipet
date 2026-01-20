@@ -428,3 +428,125 @@ void solve() {
     cout<<(M[0][0] + M[1][0]) % MOD <<endl;
 }
 ```
+
+* Kitamasa
+
+時間複雜度 $O(k^2\log{(n)})$，這裡 k = 2。這個方法比矩陣快速冪更快。
+
+把上面矩陣表達式寫成如下:
+
+$$
+x_{n+1} = 
+\begin{bmatrix}
+f_{n + 1} \\
+g_{n + 1}
+\end{bmatrix}
+= A
+\begin{bmatrix}
+f_{n} \\
+g_{n}
+\end{bmatrix}
+= Ax_n
+，A=
+\begin{bmatrix}
+4 & 1\\
+1 & 2
+\end{bmatrix}
+，F_n = f_n + g_n
+$$
+
+這題所求的是 $F_n$，但是 kitamsa 要使用遞迴式的形式，ex: fibonacci $F(n) = F(n - 1) + F(n - 2)$。
+
+由特徵多項式可得:
+
+$$
+det(\lambda I - A) = det
+\begin{bmatrix}
+\lambda -4 & -1\\
+-1 & \lambda -2
+\end{bmatrix}
+=
+(\lambda - 4)(\lambda - 2) - 1
+=
+\lambda^2 - 6\lambda + 7I
+$$
+
+由 Cayley–Hamilton:
+
+$$A^2 - 6A + 7I = 0$$
+
+乘上 $F_n = c^Tx_n$。($c^Tx_n$ 是用一組權重 $c = \begin{bmatrix} \alpha \\ \beta\end{bmatrix}$，對狀態向量 $x_n = \begin{bmatrix} f_n \\ g_n\end{bmatrix}$ 做線性加權，得到真正關心的輸出 $F_n = \begin{bmatrix} 1 & 1 \end{bmatrix} \begin{bmatrix} f_n \\ g_n\end{bmatrix}$)
+
+$$
+A^2 - 6A + 7I = 0 \\
+\rightarrow (A^2 - 6A + 7I)x_n = 0\\ 
+\rightarrow A^2x_n - 6Ax_n + 7Ix_n = 0\\
+$$
+由前面可知 $x_{n+1} = Ax_n$，$x_{n+2}=A^2x_n$
+$$
+x_{n + 2} - 6x_{n+1} + 7x_n = 0 \\
+\rightarrow F_{n+2} - 6F_{n+1} + 7F_{n} = 0 \\
+\rightarrow F_{n} = 6F_{n-1} - 7F_{n - 2}
+$$
+
+
+```cpp
+const int MOD = 1'000'000'007;
+//f(n) = coef[k - 1] * f[n - 1] + coef[k - 2] * f[n - 2] + ... +  coef[0] * f[n - k]
+//init val f(i) = a[i] (0 <= i < k)
+//return f(n) % MOD
+//O(k^2 log n)
+int qpow(int x, long long n) {
+    int res = 1;
+    while(n) {
+        if(n & 1) res = (res * x) % MOD;
+        x = (x * x) % MOD;
+        n >>= 1;
+    }
+    return res;
+}
+int kitamasa(const vector<int>& coef,const vector<int>& a, long long n) {
+    if(n < a.size()) {
+        return a[n] % MOD;
+    }
+    int k = coef.size();
+    if(k == 0) return 0;
+    if(k == 1) return 1LL * a[0] * qpow(coef[0], n) % MOD;
+    auto compose = [&](const vector<int>& A, vector<int> B) -> vector<int> {
+        vector<int> C(k);
+        for (int v : A) {
+            for (int j = 0; j < k; j++) {
+                C[j] = (C[j] + 1LL * v * B[j]) % MOD;
+            }
+            int bk1 = B.back();
+            for (int i = k - 1; i > 0; i--) {
+                B[i] = (B[i - 1] + 1LL * bk1 * coef[i]) % MOD;
+            }
+            B[0] = 1LL * bk1 * coef[0] % MOD;
+        }
+        return C;
+    };
+    vector<int> res_c(k), c(k);
+    res_c[0] = c[1] = 1;
+    for (; n > 0; n /= 2) {
+        if (n % 2) {
+            res_c = compose(c, move(res_c));
+        }
+        c = compose(c, c);
+    }
+    long long ans = 0;
+    for (int i = 0; i < k; i++) {
+        ans = (ans + 1LL * res_c[i] * a[i]) % MOD;
+    }
+
+    return (ans + MOD) % MOD;
+}
+
+void solve() {
+    int n;
+    cin >> n;
+    vector<int> coef = {-7, 6};//f(n) = 6f(n - 1) - 7f(n - 2);
+    vector<int> a = {2, 8};
+    cout<<kitamasa(coef, a, n - 1) <<endl;
+}
+```
