@@ -52,6 +52,10 @@ public:
 
 ## Kitamasa
 
+[講解](https://zhuanlan.zhihu.com/p/1964051212304364939)
+
+[editorial](https://codeforces.com/blog/entry/88760)
+
 ```cpp
 constexpr int MOD = 1'000'000'007; // 998244353
 
@@ -109,4 +113,13 @@ int kitamasa(const vector<int>& coef, const vector<int>& a, long long n) {
 
     return (ans + MOD) % MOD; // 保证返回值非负
 }
+```
+
+## Berlekamp-Massey
+
+這邊 Berlekamp-Massey 是搭配上面的 Kitamasa ，找出給定數列中的遞迴表示
+
+[講解](https://zhuanlan.zhihu.com/p/1966417899825665440)
+
+```cpp
 ```
