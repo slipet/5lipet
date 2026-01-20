@@ -551,8 +551,8 @@ int kitamasa(const vector<int>& coef,const vector<int>& a, long long n) {
 void solve() {
     int n;
     cin >> n;
-    vector<int> coef = {-7, 6};//f(n) = 6f(n - 1) - 7f(n - 2);
-    vector<int> a = {2, 8};
+    vector<int> coef = {-7, 6};//f(n) = - 7f(n - 2) + 6f(n - 1);
+    vector<int> a = {2, 8};//F0 F1
     cout<<kitamasa(coef, a, n - 1) <<endl;
 }
 ```
