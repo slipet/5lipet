@@ -119,7 +119,7 @@ int kitamasa(const vector<int>& coef, const vector<int>& a, long long n) {
 
 ## Berlekamp-Massey
 
-這邊 Berlekamp-Massey 是搭配上面的 Kitamasa ，找出給定數列中的遞迴表示
+這邊 Berlekamp-Massey 是搭配上面的 Kitamasa ，找出給定數列中的"最小階"遞迴表示。
 
 時間複雜度 $O(m^2)$
 
@@ -218,9 +218,81 @@ vector<int> berlekampMassey(const vector<int>& a) {
 }
 ```
 
-* Cayley-Hamilton
+如果多維 DP 可以寫成 k x k 的係數矩陣。
 
-可以幫助我們由 dp 中 k x k 的係數矩陣得到一個不超過 k 階的線性遞推式。
+我們只需計算 DP 數組的連續至多 2k 項，就可以得到不超過 k 階的線性遞推式。有了遞推式，就可以用 Kitamasa 算法
 
-ex: [CSES/Counting Towers](https://slipet.github.io/5lipet/CSES/Dynamic_Programming/#9-counting-towers)
+ex: 
+1. [CSES/Counting Towers](https://slipet.github.io/5lipet/CSES/Dynamic_Programming/#9-counting-towers)
 
+2. [Leetcode/3700. 锯齿形数组的总数 II](https://leetcode.cn/problems/number-of-zigzag-arrays-ii/submissions/693304452/)
+
+### Cayley-Hamilton
+
+<span style="color:red">由 Cayley–Hamilton 可以知道對於 n x n 矩陣 A ，且 p(λ) 為 A 的特徵多項式。將矩陣 A 替換 λ 得到的矩陣多項式滿足 p(A)=0</span> 
+
+上面有提到如果多維 DP 可以寫成 k x k 的係數矩陣。那可以使用 Berlekamp-Massey 得到不超過 k 階的"最小階"遞迴表示。
+
+若是 k = 2 or 3 這種比較小的係數矩陣，可以利用手動推導的方式找到其遞迴表示。
+
+ex. [CSES/Counting Towers](https://slipet.github.io/5lipet/CSES/Dynamic_Programming/#9-counting-towers)
+
+以 2 x 2 的係數矩陣為例子:
+
+$$
+x_{n+1} = 
+\begin{bmatrix}
+f_{n + 1} \\
+g_{n + 1}
+\end{bmatrix}
+= A
+\begin{bmatrix}
+f_{n} \\
+g_{n}
+\end{bmatrix}
+= Ax_n
+，A=
+\begin{bmatrix}
+a & b\\
+c & d
+\end{bmatrix}
+，F_n = f_n + g_n
+$$
+
+由特徵多項式可得:
+
+$$
+det(\lambda I - A) = det
+\begin{bmatrix}
+\lambda -a & -b\\
+-c & \lambda -d
+\end{bmatrix}
+=
+(\lambda - a)(\lambda - d) - bc
+=
+\lambda^2 - (a + d)\lambda + (ad - bc)I
+$$
+
+由 Cayley–Hamilton 可以知道 $p(A)=0$:
+
+$$A^2 - (a + d)A + (ad - bc)I = 0$$
+
+乘上 $F_n = c^Tx_n$。($c^Tx_n$ 是用一組權重 $c = \begin{bmatrix} \alpha \\ \beta\end{bmatrix}$，對狀態向量 $x_n = \begin{bmatrix} f_n \\ g_n\end{bmatrix}$ 做線性加權，得到真正關心的輸出 $F_n = \begin{bmatrix} \alpha & \beta \end{bmatrix} \begin{bmatrix} f_n \\ g_n\end{bmatrix}$)
+
+\[
+\begin{array}{ll}
+    A^2 - (a + d)A + (ad - bc)I = 0 \\
+    \rightarrow (A^2 - (a + d)A + (ad - bc)I)x_n = 0\\ 
+    \rightarrow A^2x_n - (a + d)Ax_n + (ad - bc)Ix_n = 0
+\end{array}
+\]
+
+由前面可知 $x_{n+1} = Ax_n$，$x_{n+2}=A^2x_n$
+
+\[
+\begin{array}{ll}
+    x_{n + 2} - (a + d)x_{n+1} + (ad - bc)x_n = 0 \\
+    \rightarrow F_{n+2} - (a + d)F_{n+1} + (ad - bc)F_{n} = 0 \\
+    \rightarrow F_{n} = (a + d)F_{n-1} - (ad - bc)F_{n - 2}
+\end{array}
+\]
