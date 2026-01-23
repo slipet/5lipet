@@ -556,3 +556,54 @@ void solve() {
     cout<<kitamasa(coef, a, n - 1) <<endl;
 }
 ```
+
+### 10. Edit Distance
+
+本質上是 LCS 但是沒有仔細想清楚，一開始想用最長的字串長度減去 LCS 的長度當作操作的次數，但是沒有考慮到像 s = 'NGPYCNPO', t = 'UQPXWVLGHC'，這樣的例子 LCS 為 'PC' ，但是除了 P 之外的字符都可以直接增加或是替換得到答案，但若是使用前面的想法會需要額外操作。
+
+這題的轉移方程如下，定義 f(i, j) 為當字串 s 長度為 i 且字串 t 長度為 j 時，需要的操作數使得 s 等於 t。
+
+if $s_i = t_j$
+
+$$f(i + 1, j + 1) = f(i, j)$$
+
+else
+
+$$f(i + 1, j + 1) = min(f(i, j), f(i + 1, j), f(j, j + 1)) + 1$$
+
+初始值為:
+
+\[
+\left\{
+\begin{array}{ll}
+    f(0, 0) = 0 \\
+    f(0, j + 1) = j + 1 \\
+    (i + 1, 0) = i + 1
+\end{array}
+\right.
+\]
+
+```cpp
+void solve() {
+    string s, t;
+    cin >> s;
+    cin >> t;
+    const int n = s.length();
+    const int m = t.length();
+    vector f(2, vector<int>(m + 1, inf));
+    for(int j = 0; j < m; ++j) f[0][j + 1] = j + 1;
+    f[0][0] = 0;
+    for(int i = 0; i < n; ++i) {
+        f[(i + 1) % 2][0] = i + 1;
+        for(int j = 0; j < m; ++j) {
+            int &res = f[(i + 1) % 2][j + 1];
+            if(s[i] == t[j]) {
+                res = f[i % 2][j];
+            } else {
+                res = min({f[i % 2][j], f[i % 2][j + 1], f[(i + 1) % 2][j]}) + 1;
+            }
+        }
+    }
+    cout<<f[n % 2][m]<<endl;
+}
+```
