@@ -561,7 +561,7 @@ void solve() {
 
 本質上是 LCS 但是沒有仔細想清楚，一開始想用最長的字串長度減去 LCS 的長度當作操作的次數，但是沒有考慮到像 s = 'NGPYCNPO', t = 'UQPXWVLGHC'，這樣的例子 LCS 為 'PC' ，但是除了 P 之外的字符都可以直接增加或是替換得到答案，但若是使用前面的想法會需要額外操作。
 
-這題的轉移方程如下，定義 f(i, j) 為當字串 s 長度為 i 且字串 t 長度為 j 時，需要的操作數使得 s 等於 t。
+這題的轉移方程如下，定義 $f(i, j)$ 為當字串 s 長度為 i 且字串 t 長度為 j 時，需要的操作數使得 s 等於 t。
 
 if $s_i = t_j$
 
@@ -605,5 +605,58 @@ void solve() {
         }
     }
     cout<<f[n % 2][m]<<endl;
+}
+```
+
+### 11. Longest Common Subsequence
+
+定義 $f(i, j)$ 為當字串 s 長度為 i 且字串 t 長度為 j 時的 LCS。
+
+if $s_i = t_j$
+
+$$f(i + 1, j + 1) = max(f(i + 1, j + 1), f(i, j))$$
+
+else
+
+$$f(i + 1, j + 1) = min(f(i + 1, j), f(j, j + 1))$$
+
+```cpp
+void solve() {
+    int n, m;
+    cin >> n >> m;
+    vector<int> a(n), b(m);
+    vector f(n + 1, vector<int>(m + 1, 0));
+    readv(n, a[i]);
+    readv(m, b[i]);
+    
+    for(int i = 0; i < n; ++i) {
+        for(int j = 0; j < m; ++j) {
+            if(a[i] == b[j]) {
+                chmax(f[i + 1][j + 1], f[i][j] + 1);
+            } else {
+                f[i + 1][j + 1] = max(f[i + 1][j], f[i][j + 1]);
+            }
+        }
+    }
+    cout<<f[n][m]<<endl;
+
+    int i = n, j = m;
+    vector<int> ans;
+    while(i && j) {
+        if(f[i][j] == f[i - 1][j - 1] + 1 && a[i - 1] == b[j - 1]) {
+            ans.push_back(a[i - 1]);
+            i--;
+            j--;
+        } else {
+            if(f[i][j] == f[i - 1][j]) {
+                i--;
+            } else {
+                j--;
+            }
+        }
+    }
+    for(int i = ans.size() - 1; i >= 0; --i) {
+        cout<<ans[i]<<" ";
+    }
 }
 ```
