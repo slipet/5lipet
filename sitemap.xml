@@ -85,6 +85,12 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/ds/seg_tree/"/>
     </url>
     <url>
+        <loc>https://localhost:8000/ds/union_find/</loc>
+        <lastmod>2026-01-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/ds/union_find/"/>
+    </url>
+    <url>
         <loc>https://localhost:8000/greedy/greedy/</loc>
         <lastmod>2026-01-24</lastmod>
         <changefreq>daily</changefreq>
