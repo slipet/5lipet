@@ -3,7 +3,7 @@
 ## 試填法
 
 
-1. 假設 i-th 為 1 則能否有符合限制的前綴，leetcode 421, 2935 都是標準的模板。
+* 假設 i-th 為 1 則能否有符合限制的前綴。
 
 ```cpp
 for(int i = hi; i >= 0; --i) {
@@ -18,7 +18,6 @@ for(int i = hi; i >= 0; --i) {
 }
 ```
 
-2. 
 
 * Leetcode:
 
@@ -40,6 +39,14 @@ for(int i = hi; i >= 0; --i) {
 
 * Codeforces:
 
+    1. [XOR-factorization](https://slipet.github.io/5lipet/contest/codeforces/2025_S4/#c-xor-factorization)
+
+        直覺的貪心會掉進陷阱，必須逐位元維護那些數是沿著 limit n，那些數是小於 n。
+
+## Other
+
+* Codeforces:
+
     1. [Max Sum OR (Easy Version)/(Hard Version)](https://slipet.github.io/5lipet/problems/codeforces/#2146d2-max-sum-or-hard-version)
 
-    2. [XOR-factorization](https://slipet.github.io/5lipet/contest/codeforces/2025_S4/#c-xor-factorization)
+        觀察到對於 $[2^h, r]$ 的位元表示跟　$[l, 2^h - 1]$ 是互補的，因此可以用這個方式進行配對。
