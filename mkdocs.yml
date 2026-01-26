@@ -264,7 +264,8 @@ nav:
     - BFS: "./search/bfs.md"
     - Meet in middle: "./search/meet_in_middle.md"
   - Greedy:
-    - greedy: "./greedy/greedy.md"
+    - Greedy: "./greedy/greedy.md"
+    - Bitmask: "./greedy/bitmask.md"
   # - Binary search:
   - String:
     - KMP: "./string/kmp.md"
