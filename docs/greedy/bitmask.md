@@ -12,4 +12,8 @@
 
 ## 逐位貪心
 
+* Codeforces:
 
+    1. [Max Sum OR (Easy Version)/(Hard Version)](https://slipet.github.io/5lipet/problems/codeforces/#2146d2-max-sum-or-hard-version)
+
+    2. [XOR-factorization](https://slipet.github.io/5lipet/contest/codeforces/2025_S4/#c-xor-factorization)
