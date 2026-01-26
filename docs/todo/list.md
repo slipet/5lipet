@@ -10,6 +10,10 @@
 
 - [ ] bit 試填法
 
+- [ ] 0-1 trie
+
+- [ ] 0-1 bfs
+
 ### Codeforces
 
 - [ ] [2170E](https://codeforces.com/contest/2170/problem/E)
