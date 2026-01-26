@@ -91,6 +91,12 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/ds/union_find/"/>
     </url>
     <url>
+        <loc>https://localhost:8000/greedy/bitmask/</loc>
+        <lastmod>2026-01-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/greedy/bitmask/"/>
+    </url>
+    <url>
         <loc>https://localhost:8000/greedy/greedy/</loc>
         <lastmod>2026-01-26</lastmod>
         <changefreq>daily</changefreq>
