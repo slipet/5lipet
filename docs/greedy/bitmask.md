@@ -18,6 +18,7 @@ for(int i = hi; i >= 0; --i) {
 }
 ```
 
+ex. leetcode 3821
 
 * Leetcode:
 
@@ -37,11 +38,25 @@ for(int i = hi; i >= 0; --i) {
 
 ## 逐位貪心
 
+* k-th lexicographical binary string
+
+對於每一位，假設這一位是 0，計算後面還能構成多少合法字串，如果 ≥ k，就選 0，否則選 1 並扣掉數量。
+
 * Codeforces:
 
     1. [XOR-factorization](https://slipet.github.io/5lipet/contest/codeforces/2025_S4/#c-xor-factorization)
 
         直覺的貪心會掉進陷阱，必須逐位元維護那些數是沿著 limit n，那些數是小於 n。
+
+
+tmp:
+
+leetcode 3106. 满足距离约束且字典序最小的字符串
+leetcode 3720. 大于目标字符串的最小字典序排列
+leetcode 3734. 大于目标字符串的最小字典序回文排列
+leetcode 3470. 全排列 IV
+leetcode 3022. 给定操作次数内使剩余元素的或值最小
+leetcode 3518. 最小回文排列 II
 
 ## Other
 
