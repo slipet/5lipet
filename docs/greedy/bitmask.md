@@ -35,6 +35,12 @@ for(int i = hi; i >= 0; --i) {
     這題是要求限制 k 次 AND 操作後集合中的元素進行 OR 所得最小，透過維護前綴 mask 確定那些位元會是 0 得到當前操作 $\le k$ 次的解。
 
 
+* Codeforces:
+
+    1. [XOR-factorization](https://slipet.github.io/5lipet/contest/codeforces/2025_S4/#c-xor-factorization)
+
+        直覺的貪心會掉進陷阱，必須逐位元維護那些數是沿著 limit n，那些數是小於 n。
+
 核心想法:
 
 若是題目把可以操作的元素限制在一個有限集合(大小大概是 $10^5$ )當中。透過維護前綴 mask 每次都只取 x 前綴，在遍歷過程中維護題目要求，重點在於遍歷的過程中要滿足限制。
@@ -53,6 +59,8 @@ for(int i = hi; i >= 0; --i) {
 
 1. [3007. 价值和小于等于 K 的最大数字](https://leetcode.cn/problems/maximum-number-that-sum-of-the-prices-is-less-than-or-equal-to-k/description/)
 
+    計算 i-th 設 1 會產生出的貢獻，若是小於 k ，減去貢獻並縮小規模，貢獻的公式 $cnt = pre_i \times 2^i + \lfloor \frac{i}{x} \rfloor \times 2^{i - 1}$，直觀理解為右邊有 $2^i$ 的方案數可以使左邊 $pre_i$ 產生貢獻。對於右邊的情況則可以用組合數學的方式思考，在 [0, i - 1] 位元上共有 $\lfloor \frac{i}{x} \rfloor$ 個是可以產生貢獻的位元，對於每個位元其可以產生的貢獻為 $2^{i - 1}$，$2^{i - 1}$ 代表著除了自己之外的方案數，兩個相乘 $\lfloor \frac{i}{x} \rfloor \times 2^{i - 1}$ 表示在 x 位置上可以產生的貢獻。
+
 2. [3145. 大数组元素的乘积](https://leetcode.cn/problems/find-products-of-elements-of-big-array/description/)
 
 3. [3806. 增加操作后最大按位与的结果](https://slipet.github.io/5lipet/contest/leetcode/2026_S1/#weekly-contest-484)
@@ -63,15 +71,6 @@ for(int i = hi; i >= 0; --i) {
 
     由高位至低位透過假設 i-th bit 填 0 的方案數決定這個位元是否填 1
 
-* Codeforces:
-
-## 逐位貪心
-
-* Codeforces:
-
-    1. [XOR-factorization](https://slipet.github.io/5lipet/contest/codeforces/2025_S4/#c-xor-factorization)
-
-        直覺的貪心會掉進陷阱，必須逐位元維護那些數是沿著 limit n，那些數是小於 n。
 
 ## Other
 
