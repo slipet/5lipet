@@ -20,27 +20,37 @@ for(int i = hi; i >= 0; --i) {
 
 ex. leetcode 3821
 
+* k-th lexicographical binary string
+
+    * 對於每一位，假設這一位是 0，計算後面還能構成多少合法字串，如果 $\ge k$，就選 0，否則選 1 並扣掉數量。不一定是
+
+
+    * 或者假設這一位是 1，計算左邊和右邊可以產生多少貢獻 x x x 1 o o .. ，如果 $\le k$ 那就把這位設為 1 並扣掉貢獻。
+
+
 * Leetcode:
 
     1. [421. 数组中两个数的最大异或值](https://leetcode.cn/problems/maximum-xor-of-two-numbers-in-an-array/)
 
     2. [2935. Maximum Strong Pair XOR II](https://leetcode.com/problems/maximum-strong-pair-xor-ii/description/)
 
-    3. [3806. 增加操作后最大按位与的结果](https://slipet.github.io/5lipet/contest/leetcode/2026_S1/#weekly-contest-484)
+    3. [3007. 价值和小于等于 K 的最大数字]
+
+    4. [3145. 大数组元素的乘积 2859]
+
+    5. [3022. 给定操作次数内使剩余元素的或值最小]
+
+    6. [3806. 增加操作后最大按位与的结果](https://slipet.github.io/5lipet/contest/leetcode/2026_S1/#weekly-contest-484)
 
         貢獻法 + 試填法。構造出 target 需要多少得貢獻，選最小貢獻的 m 做 AND。
 
-    4. [3821. 二进制中恰好K个1的第N小整数](https://slipet.github.io/5lipet/contest/leetcode/2026_S1/#weekly-contest-486)
+    7. [3821. 二进制中恰好K个1的第N小整数](https://slipet.github.io/5lipet/contest/leetcode/2026_S1/#weekly-contest-486)
 
         由高位至低位透過假設 i-th bit 填 0 的方案數決定這個位元是否填 1。
 
 * Codeforces:
 
 ## 逐位貪心
-
-* k-th lexicographical binary string
-
-對於每一位，假設這一位是 0，計算後面還能構成多少合法字串，如果 ≥ k，就選 0，否則選 1 並扣掉數量。
 
 * Codeforces:
 
