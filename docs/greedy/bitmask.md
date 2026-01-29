@@ -34,6 +34,9 @@ for(int i = hi; i >= 0; --i) {
 
     這題是要求限制 k 次 AND 操作後集合中的元素進行 OR 所得最小，透過維護前綴 mask 確定那些位元會是 0 得到當前操作 $\le k$ 次的解。
 
+4. [3806. 增加操作后最大按位与的结果](https://slipet.github.io/5lipet/contest/leetcode/2026_S1/#weekly-contest-484)
+
+    貢獻法 + 試填法。構造出 target 需要多少貢獻，選最小貢獻的 m 做 AND。
 
 * Codeforces:
 
@@ -65,11 +68,7 @@ for(int i = hi; i >= 0; --i) {
 
     這題跟上面那題的思路是一樣的，只有在細節上不一樣，因為題目限制只有 2 的冪次相乘，所以可以將相乘的計算改為冪次和的計算，避免數值溢出。另外對於右邊的冪次和 $\sum_{0}^{x = i - 1} x * 2^{i - 1}$，所以可以利用等差級數和公式得到 $\frac{i(i - 1)}{2} \times 2^{i - 1}$。
 
-3. [3806. 增加操作后最大按位与的结果](https://slipet.github.io/5lipet/contest/leetcode/2026_S1/#weekly-contest-484)
-
-    貢獻法 + 試填法。構造出 target 需要多少得貢獻，選最小貢獻的 m 做 AND。
-
-4. [3821. 二进制中恰好K个1的第N小整数](https://slipet.github.io/5lipet/contest/leetcode/2026_S1/#weekly-contest-486)
+3. [3821. 二进制中恰好K个1的第N小整数](https://slipet.github.io/5lipet/contest/leetcode/2026_S1/#weekly-contest-486)
 
     由高位至低位透過假設 i-th bit 填 0 的方案數決定這個位元是否填 1
 
