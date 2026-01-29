@@ -41,25 +41,27 @@ for(int i = hi; i >= 0; --i) {
 
 有些題目可以使用 0-1 Trie 完成。
 
+---
 
 * k-th lexicographical binary string
 
-    * 對於每一位，假設這一位是 0，計算後面還能構成多少合法字串，如果 $\ge k$，就選 0，否則選 1 並扣掉數量。不一定是
-
+    * 對於每一位，假設這一位是 0/1，計算後面還能構成多少合法字串，如果 $\ge k$，就選 0，否則選 1 並扣掉數量。
 
     * 或者假設這一位是 1，計算左邊和右邊可以產生多少貢獻 x x x 1 o o .. ，如果 $\le k$ 那就把這位設為 1 並扣掉貢獻。
 
-    1. [3007. 价值和小于等于 K 的最大数字](https://leetcode.cn/problems/maximum-number-that-sum-of-the-prices-is-less-than-or-equal-to-k/description/)
+    * 核心想法: 透過不斷縮小規模從而確定答案。
 
-    2. [3145. 大数组元素的乘积](https://leetcode.cn/problems/find-products-of-elements-of-big-array/description/)
+1. [3007. 价值和小于等于 K 的最大数字](https://leetcode.cn/problems/maximum-number-that-sum-of-the-prices-is-less-than-or-equal-to-k/description/)
 
-    3. [3806. 增加操作后最大按位与的结果](https://slipet.github.io/5lipet/contest/leetcode/2026_S1/#weekly-contest-484)
+2. [3145. 大数组元素的乘积](https://leetcode.cn/problems/find-products-of-elements-of-big-array/description/)
 
-        貢獻法 + 試填法。構造出 target 需要多少得貢獻，選最小貢獻的 m 做 AND。
+3. [3806. 增加操作后最大按位与的结果](https://slipet.github.io/5lipet/contest/leetcode/2026_S1/#weekly-contest-484)
 
-    4. [3821. 二进制中恰好K个1的第N小整数](https://slipet.github.io/5lipet/contest/leetcode/2026_S1/#weekly-contest-486)
+    貢獻法 + 試填法。構造出 target 需要多少得貢獻，選最小貢獻的 m 做 AND。
 
-        由高位至低位透過假設 i-th bit 填 0 的方案數決定這個位元是否填 1。
+4. [3821. 二进制中恰好K个1的第N小整数](https://slipet.github.io/5lipet/contest/leetcode/2026_S1/#weekly-contest-486)
+
+    由高位至低位透過假設 i-th bit 填 0 的方案數決定這個位元是否填 1
 
 * Codeforces:
 
