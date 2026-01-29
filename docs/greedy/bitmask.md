@@ -3,12 +3,14 @@
 ## 試填法
 
 
-* 假設 i-th 為 1/0 則能否有符合限制的前綴。
+* 假設 i-th 為 1/0 則，能否有符合限制的前綴。
 
 ```cpp
 for(int i = hi; i >= 0; --i) {
+    mask |= 1 << i;
     int nxt = ans | (1 << i);
     for(auto ...) {//traverse element to meet the requirments
+        res  [op=] (x & mask);
         if(check ...) {
             ans = nxt
             ...
@@ -20,9 +22,24 @@ for(int i = hi; i >= 0; --i) {
 
 1. [421. 数组中两个数的最大异或值](https://leetcode.cn/problems/maximum-xor-of-two-numbers-in-an-array/)
 
+    題目要求找出最大 $x \oplus y$，透過維護前綴 mask 以及在 i-th 位元試填 nxt，使用 hash table 找出是否有 $nxt \oplus x_{pre_i}$，若有表示 i-th 可以填 1。
+
 2. [2935. Maximum Strong Pair XOR II](https://leetcode.com/problems/maximum-strong-pair-xor-ii/description/)
 
+    題目要求找出符合限制的 $x \oplus y$，透過維護前綴 mask 以及在 i-th 位元試填 nxt，使用 hash table 找到能否有符合題目要求的 $nxt \oplus x_{pre_i}$，若有表示 i-th 可以填 1。
+
 3. [3022. 给定操作次数内使剩余元素的或值最小](https://leetcode.cn/problems/minimize-or-of-remaining-elements-using-operations/description/)
+
+    這題乍看之下要使用下面的方法做逐位排除確定，但是從 [7,3,15,14,2,8] 這個例子會發現這樣沒辦法得到解答，可以發現若是題目把可以操作的元素限制在一個集合當中，並且要透過維護一些性質並計算出答案，就要使用類似上面的模板的思考方向。
+
+    
+
+核心想法:
+
+透過前綴 mask ，透過 mask 每次都只取 x 前綴，在維護遍歷過程中題目要求，重點在於遍歷的過程中要維護限制的要求。
+
+有些題目可以使用 0-1 Trie 完成。
+
 
 * k-th lexicographical binary string
 
