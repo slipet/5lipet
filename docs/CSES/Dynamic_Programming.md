@@ -660,3 +660,33 @@ void solve() {
     }
 }
 ```
+
+### 12. Rectangle Cutting
+
+這題一開始直覺地想到 $O(n^3)$ 的解法，但是因為超過 $10^9$ 所以有點不敢寫，後來看到解答有利用對稱性將複雜度下降成 $O(\frac{n^3}{2})$
+
+```cpp
+void solve() {
+    int n, m;
+    cin >> n >> m;
+    int mx = max(m, n);
+    vector f(n + 1, vector<int>(m + 1, inf));
+    for(int i = 1; i <= min(n, m); ++i) {
+        f[i][i] = 0;
+    }
+    for(int len = 1; len <= n; ++len) {
+        for(int width = 1; width <= m; ++width) {
+            int &res = f[len][width];
+            if(len == width) continue;
+            for(int i = 1; i <= len / 2; ++i) {
+                res = min(res, f[i][width] + f[len - i][width]);
+            }
+            for(int i = 1; i <= width / 2; ++i) {
+                res = min(res, f[len][i] + f[len][width - i]);
+            }
+            res++;
+        }
+    }
+    cout<<f[n][m]<<endl;
+}
+```
