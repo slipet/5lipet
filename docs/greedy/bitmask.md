@@ -2,6 +2,7 @@
 
 ## 試填法
 
+可以透過<span style="color:red">整數的連續性</span>將試填法分成兩種做法:
 
 * 假設 i-th 為 1/0 則，能否有符合限制的前綴。
 
@@ -58,7 +59,7 @@ for(int i = hi; i >= 0; --i) {
 
     * 或者假設這一位是 1，計算左邊和右邊可以產生多少貢獻 x x x 1 o o .. ，如果 $\le k$ 那就把這位設為 1 並扣掉貢獻。
 
-    * 核心想法: 透過不斷縮小規模從而確定答案。
+    * 核心想法: <span style="color:red">利用整數的連續性</span>，不斷縮小規模從而確定答案。
 
 1. [3007. 价值和小于等于 K 的最大数字](https://leetcode.cn/problems/maximum-number-that-sum-of-the-prices-is-less-than-or-equal-to-k/description/)
 
