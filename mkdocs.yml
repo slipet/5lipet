@@ -274,6 +274,8 @@ nav:
   - DP:
     - Digits counting: "./dp/digits_counting.md"
     - Matrix Exponentiation: "./dp/matrix_exponentiation.md"
+    - Convex Hull Trick: "./dp/convex_hull_trick.md"
+
   - Math:
     - Number theory: "./math/number_theory.md"
     - Order theory: "./math/order_theory.md"
