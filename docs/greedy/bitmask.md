@@ -73,6 +73,9 @@ for(int i = hi; i >= 0; --i) {
 
     由高位至低位透過假設 i-th bit 填 0 的方案數決定這個位元是否填 1
 
+4. [3344. 最大尺寸数组](https://leetcode.cn/problems/maximum-sized-array/description/)
+
+
 
 ## Other
 

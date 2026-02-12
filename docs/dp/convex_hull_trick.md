@@ -22,7 +22,9 @@ $$f_i = min_{j = 0}^{i - 1} (s_j, f_j) \cdot (s_i, 1) $$
 
 ![photo](../assets/imgs/convex_hull_trick_monotonic.png)
 
-* 凸包優化的實作重點是兩種向量的計算，一個是計算兩個向量的內積得到 $f_i$，一個是判斷當前點是不是可以加入凸包的外積
+<span style="color:red">凸包優化的實作重點是兩種向量的計算，一個是計算兩個向量的內積得到 $f_i$，一個是判斷當前點是不是可以加入凸包的外積</span>
+
+練習:
 
 單調對列優化:
 
