@@ -75,7 +75,13 @@ for(int i = hi; i >= 0; --i) {
 
 4. [3344. 最大尺寸数组](https://leetcode.cn/problems/maximum-sized-array/description/)
 
+    這題要計算的是 $$\sum_{j, k}(j \text{ OR } k) = \sum_{j, k} \sum_m(j \text{ OR } k) \text{ AND } 2^m = \sum_m \sum_{j, k} (j \text{ AND } 2^m) \text{ OR } (k \text{ AND } 2^m)$$
 
+    由於 $j \text{ AND } 2^m$ 只會是 $2^m$ 或是 0，所以可以轉化為 $n^2 - cnt^2(j \text{ AND } 2^m = 0)$，用全部可能 $n^2$ 減去兩側皆為 0 的情況:
+
+    $$\sum_{j, k} \sum_m(j \text{ AND } 2^m) \text{ OR } (k \text{ AND } 2^m) = \sum_{j, k} \sum_m 2^m(n^2 - Card^2\{j | j \text{AND} 2^m = 0\})$$
+
+    設函數 $Z(n, m) = Card\{j | 0 \le j < n, j \text{AND} 2^m = 0\}$ 為 $[0, n - 1]$ 的數中第 m 位為 0 的個數。
 
 ## Other
 
