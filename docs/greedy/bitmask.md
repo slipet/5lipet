@@ -126,7 +126,7 @@ for(int i = hi; i >= 0; --i) {
 
     2) $m = b - 1$
     
-    在 $[n, n + 2^b-1)$ 上第 b - 1 位都是 0，這是 $Z(n + 2^{b-1}, b - 1)$ 產生的增量，也就是 $Z(n + 2^{b-1}, b - 1) = Z(n, m) + 2^{b-1}= \frac{n}{2} + 2^{b-1}$
+    在 $[n, n + 2^b-1)$ 上第 b - 1 位都是 0，這是 $Z(n + 2^{b-1}, b - 1)$ 產生的增量，也就是 $Z(n + 2^{b-1}, b - 1) = \frac{n}{2} + 2^{b-1}$
 
     因此增量為:
 
@@ -143,10 +143,64 @@ for(int i = hi; i >= 0; --i) {
 
     3) $m \ge b, (n \text{ AND } 2^m) = 0$
 
-    
+    在比 b - 1 更高位時為 0 的情況，也就是在 $[n, n + 2^{b-1})$ 中為 0 的情況。對於每一位有 $Z(n + 2^{b-1}, m) = Z(n, m) + 2^{b-1}$，代表在 $Z(n, m)$ 上再增加 $2^{b-1}$
+
+    有增量:
+    $$
+    \begin{aligned}
+    G(n + 2^{b-1}) - G(n) &= \sum_m 2^m((n+2^{b-1})^2 - (Z(n, m) + 2^{b-1})^2) - \sum_m 2^m(n^2 - Z^2(n, m)) \\ 
+    &= \sum_m 2^m(n+2^{b-1})^2 - (Z(n, m) + 2^{b-1})^2 - n^2 + Z^2(n, m) \\ 
+    &= \sum_m 2^m(2 \cdot n \cdot 2^{b-1} + 2 \cdot Z(n, m) \cdot 2^{b-1}) \\ 
+    &= \sum_m 2^m \cdot 2^{b-1}(2n + 2Z(n, m)) \\ 
+    &= 2^{b-1} \sum_m 2^m (2n + 2Z(n, m)) \\ 
+    \end{aligned}
+    $$
+
+    設 $ZC(n, b) = \sum_{m \ge b, n \text{ AND } 2^m = 0} 2^m (2n + 2Z(n, m))$
+
+    最後得到:
+    $$G(n + 2^{b-1}) - G(n) = ZC(n, b)2^{b-1}$$
 
     4) $m \ge b, (n \text{ AND } 2^m) = 2^m$
 
+    在比 b - 1 更高位時為 1 的情況，也就是在 $[n, n + 2^{b-1})$ 中為 1 的情況。對於每一位有 $Z(n + 2^{b-1}, m) = Z(n, m)$。這個意義是對於 $n \text{ AND } 2^m = 2^m$ 的情況 $Z(n + 2^{b-1}, m)$ 不會有變化($Z$ 的定義是 0 的個數)。
+
+    此時的增量
+
+    $$
+    \begin{aligned}
+    G(n + 2^{b-1}) - G(n) &= \sum_m 2^m((n+2^{b-1})^2 - Z^2(n, m)) - \sum_m 2^m(n^2 - Z^2(n, m)) \\ 
+    &= \sum_m 2^m((n+2^{b-1})^2 - n^2)\\
+    &= \sum_m 2^m(2 \cdot n \cdot 2^{b-1} + 2^{b-1} \cdot 2^{b-1}) \\
+    &= \sum_m 2^m \cdot 2^{b-1}(2 n + 2^{b-1} )
+    \end{aligned}
+    $$
+
+    由於我們考慮的是 $(n \text{ AND } 2^m) = 2^m$，且此時的 n 為 $n = a \cdot 2^b$ 的形式，所以可以得到在 $m \ge b, (n \text{ AND } 2^m) = 2^m$ 的情況下 $\sum_m 2^m = n$。
+
+    因此增量為:
+
+    $$G(n + 2^{b-1}) - G(n) = n \cdot 2^{b-1}(2 n + 2^{b-1} )$$
+
+    最後全部求和可以得到對於 $n + 2^{b-1}$ 產生的增量:
+
+    $$
+    \begin{aligned}
+    G(n + 2^{b-1}) - G(n) &= ZC(n, b)2^{b-1} + n \cdot 2^{b-1}(2 n + 2^{b-1} ) + 2^{b-1}\cdot n \cdot 2^{b-1} \\
+    &+ \frac{3}{4} \cdot (2^{b-1} - 1) \cdot 2^{b-1}(2 \cdot n + 2^{b-1})
+    \end{aligned}
+    $$
+
+    用 $S = 2^{b-1}$ 簡化為:
+
+    $$
+    \begin{aligned}
+    G(n + 2^{b-1}) - G(n) &= ZC(n, b)\cdot S + n \cdot S(2 n + S) + S\cdot n \cdot S \\
+    &+ \frac{3}{4} \cdot (S - 1) \cdot S(2 \cdot n + S)
+    \end{aligned}
+    $$
+
+    
 
 ## Other
 
