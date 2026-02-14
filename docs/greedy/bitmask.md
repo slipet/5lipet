@@ -128,7 +128,22 @@ for(int i = hi; i >= 0; --i) {
     
     在 $[n, n + 2^b-1)$ 上第 b - 1 位都是 0，這是 $Z(n + 2^{b-1}, b - 1)$ 產生的增量，也就是 $Z(n + 2^{b-1}, b - 1) = Z(n, m) + 2^{b-1}= \frac{n}{2} + 2^{b-1}$
 
+    因此增量為:
+
+    $$
+    \begin{aligned}
+    G(n + 2^{b-1}) - G(n) &= \sum_m 2^m((n+2^{b-1})^2 - Z^2(n+2^{b-1}, b-1)) - \sum_m 2^m(n^2 - Z^2(n, b-1)) \\ 
+    &= \sum_m 2^m((n+2^{b-1})^2 - (\frac{n}{2} + 2^{b-1})^2) - \sum_m 2^m(n^2 - (\frac{n}{2})^2) \\
+    &= \sum_m 2^m((n+2^{b-1})^2 - (\frac{n}{2} + 2^{b-1})^2 - n^2 + (\frac{n}{2})^2) \\
+    &= \sum_m 2^m(2 \cdot n \cdot 2^{b-1} - n \cdot 2^{b-1}) \\
+    &= \sum_m 2^m(n \cdot 2^{b-1}) \\
+    &= 2^{b-1}\cdot n \cdot 2^{b-1} \\
+    \end{aligned}
+    $$
+
     3) $m \ge b, (n \text{ AND } 2^m) = 0$
+
+    
 
     4) $m \ge b, (n \text{ AND } 2^m) = 2^m$
 
