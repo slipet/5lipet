@@ -83,7 +83,7 @@ for(int i = hi; i >= 0; --i) {
 
     設函數 $Z(n, m) = Card\{j | 0 \le j < n, j \text{AND} 2^m = 0\}$ 為 $[0, n - 1]$ 的數中第 m 位為 0 的個數。
 
-    $$\sum_{j, k} \sum_m(j \text{ AND } 2^m) \text{ OR } (k \text{ AND } 2^m) = \sum_{j, k} \sum_m 2^m(n^2 - Z^2(n, m))$$
+    $$\sum_{j, k} \sum_m(j \text{ AND } 2^m) \text{ OR } (k \text{ AND } 2^m) = \sum_m 2^m(n^2 - Z^2(n, m))$$
 
     可以發現 0, 1 在 [0, n - 1] 中是週期性出現的，所以 Z(n, m) 可以利用這個性質很容易的求出，我們可以利用二分的方式得到 $O(\log^2{n})$ 的方法。
 
@@ -93,9 +93,25 @@ for(int i = hi; i >= 0; --i) {
 
     ### 增量計算
 
+    [講解](https://leetcode.cn/problems/maximum-sized-array/solutions/3703073/bi-er-fen-geng-kuai-de-olog-nzhu-wei-que-95sq/)
+
     要使用逐位確定的話必須求出在第 i 位產生的貢獻，假設 $n = a \cdot 2^b$， $n$ 是二進制右邊皆為 0 的形式。
 
-    當 $G(n) = \sum_{0\le j, k < n}(j \text { OR } k)$
+    有 $G(n) = \sum_{0\le j, k < n}(j \text { OR } k) = \sum_m 2^m(n^2 - Z^2(n, m))$
+
+    我們想要計算的是對於 $2^{b-1}$ 產生的增量，也就是 $G(n + 2^{b-1}) - G(n)$，當我們由高至低確定第 b - 1 位是否會超過限制 s ，若是不超過則 $n = n + 2^{b-1}$ 不斷逼近 s。
+
+    由上面的 $G(n)$ 可以知道，$G(n + 2^{b-1}) = \sum_{m}2^m((n+2^{b-1})^2 - Z^2(n+2^{b-1},m))$，此時需要關注的點是 $Z(n+2^{b-1},m)$，要考慮的是 $Z(n+2^{b-1},m)$ 與 $Z(n+2,m)$ 的關係變化。
+
+    我們要考慮的是四種情況:
+
+    1) $m < b - 1$
+
+    2) $m = b - 1$
+
+    3) $m \ge b$
+
+    4) $m \ge b$
 
 
 ## Other
