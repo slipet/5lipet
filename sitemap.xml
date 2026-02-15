@@ -187,6 +187,12 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/string/kmp/"/>
     </url>
     <url>
+        <loc>https://localhost:8000/string/palindrome/</loc>
+        <lastmod>2026-02-15</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/string/palindrome/"/>
+    </url>
+    <url>
         <loc>https://localhost:8000/string/subseq_automation/</loc>
         <lastmod>2026-02-15</lastmod>
         <changefreq>daily</changefreq>
