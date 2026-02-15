@@ -91,6 +91,12 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/ds/seg_tree/"/>
     </url>
     <url>
+        <loc>https://localhost:8000/ds/trie/</loc>
+        <lastmod>2026-02-15</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/ds/trie/"/>
+    </url>
+    <url>
         <loc>https://localhost:8000/ds/union_find/</loc>
         <lastmod>2026-02-15</lastmod>
         <changefreq>daily</changefreq>
