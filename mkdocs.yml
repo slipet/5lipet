@@ -259,6 +259,7 @@ nav:
   - Data Structure: #DS
     - Segment Tree: "./ds/seg_tree.md"
     - Union-Find/Disjoint Set: "./ds/union_find.md"
+    - Trie: "./ds/trie.md"
   - Search:
     - DFS: "./search/dfs.md"
     - BFS: "./search/bfs.md"
