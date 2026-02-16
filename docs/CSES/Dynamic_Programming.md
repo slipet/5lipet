@@ -690,3 +690,54 @@ void solve() {
     cout<<f[n][m]<<endl;
 }
 ```
+
+### 13. Minimal Grid Path
+
+
+
+```cpp
+vector<pii> dirs = {{0, 1}, {1, 0}};
+void solve() {
+    int n;
+    cin >> n;
+    vector<string> row(n);
+    readv(n, row[i]);
+    vector<pii> cur = {{0, 0}};
+    vector used(n, vector<int>(n, 0));
+    cout<<row[0][0];
+    for(int diag = 1; diag < 2 * n - 1; ++diag) {
+        vector<pii> nxt;
+        for(auto &[r, c]: cur) {
+            for(auto &[dr, dc]: dirs) {
+                int nr = r + dr, nc = c + dc;
+                if(nr >= n || nc >= n) continue;
+                if(used[nr][nc]) continue;
+                used[nr][nc] = 1;
+                auto update = [&](int y, int x) -> void {
+                    if(!nxt.empty()) {
+                        if(row[nxt.back().first][nxt.back().second] > row[y][x]) {
+                            nxt.clear();
+                        } else if(row[nxt.back().first][nxt.back().second] < row[y][x]) {
+                            return;
+                        }
+                    }
+                    nxt.emplace_back(y, x);
+                };
+                update(nr, nc);
+            }
+        }
+        cout<<row[nxt[0].first][nxt[0].second];
+        cur.clear();
+        char pre = 0;
+        for(auto &[r, c]: nxt) {
+            if(pre > 0 && row[r][c] != pre) {
+                break;
+            }
+            cur.emplace_back(r, c);
+            pre = row[r][c];
+        }
+    }
+    cout<<endl;
+    
+}
+```
