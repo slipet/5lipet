@@ -2,217 +2,217 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
     <url>
         <loc>https://localhost:8000/</loc>
-        <lastmod>2026-02-16</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/"/>
     </url>
     <url>
         <loc>https://localhost:8000/CSES/Dynamic_Programming/</loc>
-        <lastmod>2026-02-16</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/CSES/Dynamic_Programming/"/>
     </url>
     <url>
         <loc>https://localhost:8000/CSES/Introductory_Problems/</loc>
-        <lastmod>2026-02-16</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/CSES/Introductory_Problems/"/>
     </url>
     <url>
         <loc>https://localhost:8000/CSES/Sorting_and_Searching/</loc>
-        <lastmod>2026-02-16</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/CSES/Sorting_and_Searching/"/>
     </url>
     <url>
         <loc>https://localhost:8000/blog/</loc>
-        <lastmod>2026-02-16</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/blog/"/>
     </url>
     <url>
         <loc>https://localhost:8000/conclusion/conclusion/</loc>
-        <lastmod>2026-02-16</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/conclusion/conclusion/"/>
     </url>
     <url>
         <loc>https://localhost:8000/contest/codeforces/2025_S4/</loc>
-        <lastmod>2026-02-16</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/contest/codeforces/2025_S4/"/>
     </url>
     <url>
         <loc>https://localhost:8000/contest/codeforces/2026_S1/</loc>
-        <lastmod>2026-02-16</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/contest/codeforces/2026_S1/"/>
     </url>
     <url>
         <loc>https://localhost:8000/contest/leetcode/2025_S4/</loc>
-        <lastmod>2026-02-16</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/contest/leetcode/2025_S4/"/>
     </url>
     <url>
         <loc>https://localhost:8000/contest/leetcode/2026_S1/</loc>
-        <lastmod>2026-02-16</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/contest/leetcode/2026_S1/"/>
     </url>
     <url>
         <loc>https://localhost:8000/cpp/function/</loc>
-        <lastmod>2026-02-16</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/cpp/function/"/>
     </url>
     <url>
         <loc>https://localhost:8000/dp/convex_hull_trick/</loc>
-        <lastmod>2026-02-16</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/dp/convex_hull_trick/"/>
     </url>
     <url>
         <loc>https://localhost:8000/dp/digits_counting/</loc>
-        <lastmod>2026-02-16</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/dp/digits_counting/"/>
     </url>
     <url>
         <loc>https://localhost:8000/dp/matrix_exponentiation/</loc>
-        <lastmod>2026-02-16</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/dp/matrix_exponentiation/"/>
     </url>
     <url>
         <loc>https://localhost:8000/ds/seg_tree/</loc>
-        <lastmod>2026-02-16</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/ds/seg_tree/"/>
     </url>
     <url>
         <loc>https://localhost:8000/ds/trie/</loc>
-        <lastmod>2026-02-16</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/ds/trie/"/>
     </url>
     <url>
         <loc>https://localhost:8000/ds/union_find/</loc>
-        <lastmod>2026-02-16</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/ds/union_find/"/>
     </url>
     <url>
         <loc>https://localhost:8000/greedy/bitmask/</loc>
-        <lastmod>2026-02-16</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/greedy/bitmask/"/>
     </url>
     <url>
         <loc>https://localhost:8000/greedy/greedy/</loc>
-        <lastmod>2026-02-16</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/greedy/greedy/"/>
     </url>
     <url>
         <loc>https://localhost:8000/math/number_theory/</loc>
-        <lastmod>2026-02-16</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/math/number_theory/"/>
     </url>
     <url>
         <loc>https://localhost:8000/math/order_theory/</loc>
-        <lastmod>2026-02-16</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/math/order_theory/"/>
     </url>
     <url>
         <loc>https://localhost:8000/problems/codeforces/</loc>
-        <lastmod>2026-02-16</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/problems/codeforces/"/>
     </url>
     <url>
         <loc>https://localhost:8000/problems/leetcode/</loc>
-        <lastmod>2026-02-16</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/problems/leetcode/"/>
     </url>
     <url>
         <loc>https://localhost:8000/resources/list/</loc>
-        <lastmod>2026-02-16</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/resources/list/"/>
     </url>
     <url>
         <loc>https://localhost:8000/review/review/</loc>
-        <lastmod>2026-02-16</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/review/review/"/>
     </url>
     <url>
         <loc>https://localhost:8000/search/bfs/</loc>
-        <lastmod>2026-02-16</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/search/bfs/"/>
     </url>
     <url>
         <loc>https://localhost:8000/search/dfs/</loc>
-        <lastmod>2026-02-16</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/search/dfs/"/>
     </url>
     <url>
         <loc>https://localhost:8000/search/meet_in_middle/</loc>
-        <lastmod>2026-02-16</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/search/meet_in_middle/"/>
     </url>
     <url>
         <loc>https://localhost:8000/stat/codeforces/</loc>
-        <lastmod>2026-02-16</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/stat/codeforces/"/>
     </url>
     <url>
         <loc>https://localhost:8000/stat/leetcode/</loc>
-        <lastmod>2026-02-16</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/stat/leetcode/"/>
     </url>
     <url>
         <loc>https://localhost:8000/stat/mixed/</loc>
-        <lastmod>2026-02-16</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/stat/mixed/"/>
     </url>
     <url>
         <loc>https://localhost:8000/string/kmp/</loc>
-        <lastmod>2026-02-16</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/string/kmp/"/>
     </url>
     <url>
         <loc>https://localhost:8000/string/palindrome/</loc>
-        <lastmod>2026-02-16</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/string/palindrome/"/>
     </url>
     <url>
         <loc>https://localhost:8000/string/subseq_automation/</loc>
-        <lastmod>2026-02-16</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/string/subseq_automation/"/>
     </url>
     <url>
         <loc>https://localhost:8000/string/z_algorithm/</loc>
-        <lastmod>2026-02-16</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/string/z_algorithm/"/>
     </url>
     <url>
         <loc>https://localhost:8000/todo/list/</loc>
-        <lastmod>2026-02-16</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/todo/list/"/>
     </url>
