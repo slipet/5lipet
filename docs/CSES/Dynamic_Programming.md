@@ -757,7 +757,6 @@ void solve() {
         }
     }
     cout<<endl;
-    
 }
 ```
 
@@ -766,3 +765,47 @@ void solve() {
 $$f(i, j) = min(f(i - 1, j), f(i, j - 1)) + s[i][j]$$
 
 但是這樣會有 $O(n^3)$ 的複雜度，因為字串的比對所以多一個 n 的複雜度。
+
+```cpp
+void solve() {
+    int n;
+    cin >> n;
+    vector<string> row(n);
+    readv(n, row[i]);
+    vector hash(n + 1, vector<int>(n + 1, n + 1));
+    for(int diag = 2 * n - 2; diag >= 0; --diag) {
+        vector<pii> v;
+        for(int r = 0; r < n; r++) {
+            int c = diag - r;
+            if(0 <= c && c < n) {
+                v.emplace_back(r, c);
+            }
+        }
+        int k = v.size();
+        vector<pii> order(k);
+        for(int i = 0; i < k; ++i) {
+            auto [r, c] = v[i];
+            int state = (n + 2) * (row[r][c] - 'a') + min(hash[r + 1][c], hash[r][c + 1]);
+            order[i] = {state, r};
+        }
+        ranges::sort(order);
+        int nxt = 0;
+        for(int i = 0; i < k; ++i) {
+            if(i == 0 || order[i].first != order[i - 1].first) {
+                nxt++;
+            }
+            int r = order[i].second;
+            int c = diag - r;
+            hash[r][c] = nxt;
+        }
+    }
+    int r = 0, c = 0;
+    cout<<row[r][c];
+    while(r < n - 1 || c < n - 1) {
+        if(hash[r + 1][c] < hash[r][c + 1]) {
+            r++;
+        } else c++;
+        cout<<row[r][c];
+    }
+}
+```
