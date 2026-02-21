@@ -689,7 +689,9 @@ ex. [1, 1000000000] -> 一次一次減會導致 TLE
     2. 接著考慮利用額外操作 $ops$ 使得全部花園都可以合法的情況，此時需要的操作為 $\sum{target - flowers'[i]} \le ops$，$flowers'[i]$ 為 $flowers[i] < target$ 的元素。可以得到不等式 $$left = ops - (\sum{target - flowers'[i]}) \ge 0$$ 
     此時剩餘的花朵 $left$ 若是大於等於 0 的話則表示可以透過操作將所有的花園種到 target。
     要注意的是此時最大值會有兩種可能 $$max(n \times full, (n - 1) \times full + (target-1) \times partial)$$
-    上面 1, 2 兩種情況可以合併成 $left - n \times target$ 再遍歷一次陣列，遍歷過程中做 $left += min(x, target)$ ，最後會得到 $left = ops - (\sum{target - flowers'[i]})$
+    
+    * 上面 1, 2 兩種情況可以合併成 $left - n \times target$ 再遍歷一次陣列，遍歷過程中做 $left += min(x, target)$ ，最後會得到 $left = ops - (\sum{target - flowers'[i]})$
+    
     3.
 
 
