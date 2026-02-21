@@ -4,6 +4,8 @@
 
 - [ ] [1703. Minimum Adjacent Swaps for K Consecutive Ones](https://leetcode.cn/problems/minimum-adjacent-swaps-for-k-consecutive-ones/description/)
 
+- [ ] [3841. 查询树上回文路径](https://leetcode.cn/problems/palindromic-path-queries-in-a-tree/solutions/)
+
 - [ ] SegmentTree, LazySegmentTree
 
 - [ ] reroot
@@ -11,6 +13,8 @@
 - [ ] bit 試填法
 
 - [ ] 0-1 trie
+
+- [ ] DFS 時間戳
 
 - [ ] 0-1 bfs
 
