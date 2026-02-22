@@ -887,7 +887,7 @@ void solve() {
 }
 ```
 
-跌代寫法:
+疊代寫法:
 
 ```cpp
 void solve() {
