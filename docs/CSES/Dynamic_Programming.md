@@ -950,3 +950,25 @@ void solve() {
     cout<<dfs(dfs, n, 0) * qpow(2, MOD - 2) % MOD<<endl;
 }
 ```
+
+```cpp
+const int MOD = 1'000'000'000 + 7;
+void solve() {
+    int n;
+    cin >> n;
+    int offset = (1 + n) * n / 2;
+    if(offset & 1) {
+        cout<< 0 << endl;
+        return;
+    }
+    int tar = offset / 2;
+    vector<int> f(tar + 1, 0);
+    f[0] = 1;
+    for(int x = 1; x < n; ++x) {
+        for(int s = tar; s >= x; --s) {
+            f[s] = (f[s] + f[s - x]) % MOD;
+        }
+    }
+    cout<<f[tar]<<endl;
+}
+```
