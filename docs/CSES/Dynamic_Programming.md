@@ -843,3 +843,71 @@ void solve() {
     }
 }
 ```
+
+### 15. Removal Game
+
+經典的博弈 DP，透過式子變形可以得到:
+
+$$
+\begin{aligned}
+&Alice + Bob = sum\\
+&Alice - Bob = diff\\ 
+&Alice = \frac{sum + diff}{2}
+\end{aligned}
+$$
+
+所以利用轉移方程 $f(l, r) = max(-f(l + 1, r) + a[l], -f(l, r - 1) + a[r])$ 得到最大差值。
+
+這裡要注意的是 $a[i] \le 10^9$ 使得 sum 可能超過 int。
+
+遞迴寫法:
+
+```cpp
+void solve() {
+    int n;
+    cin >> n;
+    vector<int> a(n);
+    ll sum = 0;
+    for(int i = 0; i < n; ++i) {
+        cin >> a[i];
+        sum += a[i];
+    }
+    vector f(n, vector<ll>(n, -infll));
+    auto dfs = [&](auto &&dfs, int l, int r) -> ll {
+        if(l > r) return 0;
+        if(l == r) return a[l];
+        ll &res = f[l][r];
+        if(res != -infll) return res;
+        res = 0;
+        res = max(-dfs(dfs, l + 1, r) + a[l], -dfs(dfs, l, r - 1) + a[r]);
+        return res;
+    };
+    ll d = dfs(dfs, 0, n - 1);
+    cout<<(d + sum) / 2LL<<endl;
+}
+```
+
+跌代寫法:
+
+```cpp
+void solve() {
+    int n;
+    cin >> n;
+    vector<int> a(n);
+    ll sum = 0;
+    for(int i = 0; i < n; ++i) {
+        cin >> a[i];
+        sum += a[i];
+    }
+    vector f(n, vector<ll>(n, -infll));
+    f[n - 1][n - 1] = a[n - 1];
+    for(int l = n - 2; l >= 0; --l) {
+        f[l][l] = a[l];
+        for(int r = l + 1; r < n; ++r) {
+            f[l][r] = max(-f[l + 1][r] + a[l], -f[l][r - 1] + a[r]);
+        }
+    }
+    ll d = f[0][n - 1];
+    cout<<(d + sum) / 2LL<<endl;
+}
+```
