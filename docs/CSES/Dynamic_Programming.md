@@ -819,3 +819,27 @@ void solve() {
 ```
 
 ### 14. Money Sums
+
+背包問題，用bitset優化 $O(\frac{n \cdot s}{B})$，n 是陣列長度，s 是值域，B 為 32/64 bit。
+
+```cpp
+bitset<1'000'00 + 1> f;
+void solve() {
+    int n;
+    cin >> n;
+    vector<int> a(n);
+    int sum = 0;
+    for(int i = 0; i < n; ++i) {
+        cin >> a[i];
+        sum += a[i];
+    }
+    f[0] = 1;
+    for(auto &x: a) {
+        f |= (f << x);
+    }
+    cout<<(f.count() - 1)<<endl;
+    for(int x = 1; x <= sum; ++x) {
+        if(f[x]) cout<<x<<" ";
+    }
+}
+```
