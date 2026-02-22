@@ -692,7 +692,13 @@ ex. [1, 1000000000] -> 一次一次減會導致 TLE
     
     * 上面 1, 2 兩種情況可以合併成 $left - n \times target$ 再遍歷一次陣列，遍歷過程中做 $left += min(x, target)$ ，最後會得到 $left = ops - (\sum{target - flowers'[i]})$
     
-    3.
+    3. 討論完種滿的情況，接著考慮會剩下沒種滿的情況，此時我們要考慮如何最大化花得最少數量。
+        目標是最大會最小值，由小至大想像我們往前綴中倒水，水會不斷慢慢地從最低的位置往前漫上來。假設我們剩下 $left$ 朵花可以種到前綴 [0, j - 1] 中。那麼我們會共有 $avg \cdot j$ 朵花，有不等式:$$avg \cdot j \le left + \sum_{k = 0}^{k=j-1}{flowers[k]}$$
+        
+        因此可以知道最大值 $avg$:
+        $$\lfloor \frac{left + \sum_{k = 0}^{k=j-1}{flowers[k]}}{j} \rfloor$$
 
-
+    * 細節
+        
+        <span style="color:red"> 把超過 target 的 flowers[i] 改成 target。這一來可以簡化雙指針的計算，二來可以加快排序的效率，尤其是當很多 flowers[i] 都超過 target 的情況。</span> 
     
