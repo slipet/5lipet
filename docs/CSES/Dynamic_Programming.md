@@ -911,3 +911,42 @@ void solve() {
     cout<<(d + sum) / 2LL<<endl;
 }
 ```
+
+### 16. Two Sets II
+
+用狀態表示把 x 分到哪一個 set 中，要注意的是最後要除 2 去除重複統計，除 2 要再注意使用模反做乘法。
+
+用遞迴寫法比較好寫:
+
+```cpp
+const int MOD = 1'000'000'000 + 7;
+ll qpow(ll x, int n) {
+    ll res = 1;
+    while(n) {
+        if(n & 1) res = (res * x) % MOD;
+        x = (x * x) % MOD;
+        n >>= 1;
+    }
+    return res;
+}
+void solve() {
+    int n;
+    cin >> n;
+    int offset = (1 + n) * n / 2;
+    if(offset & 1) {
+        cout<< 0 << endl;
+        return;
+    }
+    vector f(n + 1, vector<int>(offset * 2 + 1, -1));
+    auto dfs = [&](auto &&dfs, int i, int cur) -> int {
+        if(i == 0) {
+            return cur == 0;
+        }
+        int &res = f[i][cur + offset];
+        if(res != -1) return res;
+        res = (dfs(dfs, i - 1, cur + i) + dfs(dfs, i - 1, cur - i)) % MOD;
+        return res;
+    };
+    cout<<dfs(dfs, n, 0) * qpow(2, MOD - 2) % MOD<<endl;
+}
+```
