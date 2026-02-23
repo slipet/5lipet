@@ -978,3 +978,143 @@ void solve() {
     cout<<f[tar]<<endl;
 }
 ```
+
+### 17. Mountain Range
+
+直覺地想到從最高的山頂開始，假設站在最高的山頂往兩側看，可以飛到比現在位置矮一點的山頂，接著重複同樣動作。因此需要知道一個區間內的最高位置，可以使用線段樹快速得到一個區間內的最大值。
+
+上面方法有一個問題是當有多個相同高度的山頂時，把相同高度的山頂看成分割點會把當前區間分割成多個子區間，那我們該選擇的是能夠有最長序列的子區間，選擇一個子區間後沒辦法跨越至另一個子區間，透過預處理分組儲存每個高度的下標，可以用二分得到當前區間內對應高度的位置，從而找到對應的子區間。
+
+時間複雜度為 $O(n\log{n})$
+
+```cpp
+// 模板来源 https://leetcode.cn/circle/discuss/mOr1u6/
+// 线段树有两个下标，一个是线段树节点的下标，另一个是线段树维护的区间的下标
+// 节点的下标：从 1 开始，如果你想改成从 0 开始，需要把左右儿子下标分别改成 node*2+1 和 node*2+2
+// 区间的下标：从 0 开始
+
+struct Node {
+    int x;
+    int idx;
+};
+
+template<typename T>
+class SegmentTree {
+    // 注：也可以去掉 template<typename T>，改在这里定义 T
+    // using T = pair<int, int>;
+
+    int n;
+    vector<T> tree;
+
+    // 合并两个 val
+    T merge_val(T a, T b) const {
+        return max(a, b);
+    }
+
+    // 合并左右儿子的 val 到当前节点的 val
+    void maintain(int node) {
+        tree[node] = merge_val(tree[node * 2], tree[node * 2 + 1]);
+    }
+
+    // 用 a 初始化线段树
+    // 时间复杂度 O(n)
+    void build(const vector<T>& a, int node, int l, int r) {
+        if (l == r) { // 叶子
+            tree[node] = a[l]; // 初始化叶节点的值
+            return;
+        }
+        int m = (l + r) / 2;
+        build(a, node * 2, l, m); // 初始化左子树
+        build(a, node * 2 + 1, m + 1, r); // 初始化右子树
+        maintain(node);
+    }
+
+    void update(int node, int l, int r, int i, T val) {
+        if (l == r) { // 叶子（到达目标）
+            // 如果想直接替换的话，可以写 tree[node] = val
+            tree[node] = merge_val(tree[node], val);
+            return;
+        }
+        int m = (l + r) / 2;
+        if (i <= m) { // i 在左子树
+            update(node * 2, l, m, i, val);
+        } else { // i 在右子树
+            update(node * 2 + 1, m + 1, r, i, val);
+        }
+        maintain(node);
+    }
+
+    T query(int node, int l, int r, int ql, int qr) const {
+        if (ql <= l && r <= qr) { // 当前子树完全在 [ql, qr] 内
+            return tree[node];
+        }
+        int m = (l + r) / 2;
+        if (qr <= m) { // [ql, qr] 在左子树
+            return query(node * 2, l, m, ql, qr);
+        }
+        if (ql > m) { // [ql, qr] 在右子树
+            return query(node * 2 + 1, m + 1, r, ql, qr);
+        }
+        T l_res = query(node * 2, l, m, ql, qr);
+        T r_res = query(node * 2 + 1, m + 1, r, ql, qr);
+        return merge_val(l_res, r_res);
+    }
+
+public:
+    // 线段树维护一个长为 n 的数组（下标从 0 到 n-1），元素初始值为 init_val
+    SegmentTree(int n, T init_val) : SegmentTree(vector<T>(n, init_val)) {}
+
+    // 线段树维护数组 a
+    SegmentTree(const vector<T>& a) : n(a.size()), tree(2 << bit_width(a.size() - 1)) {
+        build(a, 1, 0, n - 1);
+    }
+
+    // 更新 a[i] 为 merge_val(a[i], val)
+    // 时间复杂度 O(log n)
+    void update(int i, T val) {
+        update(1, 0, n - 1, i, val);
+    }
+
+    // 返回用 merge_val 合并所有 a[i] 的计算结果，其中 i 在闭区间 [ql, qr] 中
+    // 时间复杂度 O(log n)
+    T query(int ql, int qr) const {
+        return query(1, 0, n - 1, ql, qr);
+    }
+
+    // 获取 a[i] 的值
+    // 时间复杂度 O(log n)
+    T get(int i) const {
+        return query(1, 0, n - 1, i, i);
+    }
+};
+
+void solve() {
+    int n;
+    cin >> n;
+    vector<pii> a(n);
+    unordered_map<int, vector<int>> dict;//[x, idx]
+    for(int i = 0; i < n; ++i) {
+        cin >> a[i].first;
+        a[i].second = i;
+        dict[a[i].first].push_back(i);
+    }
+    SegmentTree<pii> seg(a);
+    
+    auto dfs = [&](auto &&dfs, int l, int r) -> int {
+        if(l > r) return 0;
+        if(l == r) return 1;
+        auto [x, idx] = seg.query(l, r);
+        int res = 0;
+        int s = l;
+        int j = ranges::lower_bound(dict[x], s) - dict[x].begin();
+        int sz = dict[x].size();
+        for(; j < sz && dict[x][j] <= r; ++j) {
+            res = max(res, dfs(dfs, s, dict[x][j] - 1));
+            s = dict[x][j] + 1;
+        }
+        res = max(res, dfs(dfs, s, r));
+        return res + 1;
+    };
+    cout<<dfs(dfs, 0, n - 1)<<endl;
+}
+```
