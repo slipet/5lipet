@@ -1118,3 +1118,48 @@ void solve() {
     cout<<dfs(dfs, 0, n - 1)<<endl;
 }
 ```
+
+拓樸排序
+
+```cpp
+void solve() {
+    int n;
+    cin >> n;
+    vector<int> a(n + 2);
+    for(int i = 1; i <= n; ++i) cin >> a[i];
+    a[0] = inf;
+    a[n + 1] = inf;
+    vector<vector<int>> g(n + 2);
+    vector<int> st = {0};
+    for(int i = 1; i <= n; ++i) {
+        int &x = a[i];
+        while(x >= a[st.back()]) st.pop_back();
+        g[st.back()].push_back(i);
+        st.push_back(i);
+    }
+    st.clear();
+    st.push_back(n + 1);
+    
+    for(int i = n; i >= 1; --i) {
+        int &x = a[i];
+        while(x >= a[st.back()]) st.pop_back();
+        g[st.back()].push_back(i);
+        st.push_back(i);
+    }
+    vector<int> indeg(n + 2, 0), depth(n + 2, 0);
+    vector<int> q = {0, n + 1};
+    
+    for(int i = 0; i < q.size(); ++i) {
+        int pos = q[i];
+        for(auto &x: g[pos]) {
+            depth[x] = max(depth[x], depth[pos] + 1);
+            indeg[x]++;
+            if(indeg[x] == 2) {
+                q.push_back(x);
+            }
+        }
+    }
+    cout<<ranges::max(depth)<<endl;
+}
+
+```
