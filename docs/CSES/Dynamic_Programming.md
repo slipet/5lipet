@@ -1121,7 +1121,9 @@ void solve() {
 
 另一種不用線段樹的作法，時間複雜度同樣是 $O(n\log{n})$。
 
-透過事先排序高度，由高至低處理山頂。利用有序結構 map 儲存比當前元素高的山頂，利用 upper_bound 找兩個最近的位置，計算到當前高度要多長的距離 $max(dis[pre], dis[nxt]) + 1$
+透過事先排序高度，由高至低處理山頂。利用有序結構 map 儲存比當前元素高的山頂，利用 upper_bound 找兩個最近的位置，計算到當前高度要多長的距離 $max(dis[pre], dis[nxt]) + 1$。
+
+* 要注意的地方是，更新 map 時必須同一個高度的位置都計算完後才更新，否則會統計到相同高度的位置。
 
 ```cpp
 void solve() {
@@ -1207,4 +1209,137 @@ void solve() {
     cout<<ranges::max(depth)<<endl;
 }
 
+```
+
+### 18. Increasing Subsequence
+
+```cpp
+
+template<typename T>
+class SegmentTree {
+    // 注：也可以去掉 template<typename T>，改在这里定义 T
+    // using T = pair<int, int>;
+
+    int n;
+    vector<T> tree;
+
+    // 合并两个 val
+    T merge_val(T a, T b) const {
+        return max(a, b);
+    }
+
+    // 合并左右儿子的 val 到当前节点的 val
+    void maintain(int node) {
+        tree[node] = merge_val(tree[node * 2], tree[node * 2 + 1]);
+    }
+
+    // 用 a 初始化线段树
+    // 时间复杂度 O(n)
+    void build(const vector<T>& a, int node, int l, int r) {
+        if (l == r) { // 叶子
+            tree[node] = a[l]; // 初始化叶节点的值
+            return;
+        }
+        int m = (l + r) / 2;
+        build(a, node * 2, l, m); // 初始化左子树
+        build(a, node * 2 + 1, m + 1, r); // 初始化右子树
+        maintain(node);
+    }
+
+    void update(int node, int l, int r, int i, T val) {
+        if (l == r) { // 叶子（到达目标）
+            // 如果想直接替换的话，可以写 tree[node] = val
+            tree[node] = merge_val(tree[node], val);
+            return;
+        }
+        int m = (l + r) / 2;
+        if (i <= m) { // i 在左子树
+            update(node * 2, l, m, i, val);
+        } else { // i 在右子树
+            update(node * 2 + 1, m + 1, r, i, val);
+        }
+        maintain(node);
+    }
+
+    T query(int node, int l, int r, int ql, int qr) const {
+        if (ql <= l && r <= qr) { // 当前子树完全在 [ql, qr] 内
+            return tree[node];
+        }
+        int m = (l + r) / 2;
+        if (qr <= m) { // [ql, qr] 在左子树
+            return query(node * 2, l, m, ql, qr);
+        }
+        if (ql > m) { // [ql, qr] 在右子树
+            return query(node * 2 + 1, m + 1, r, ql, qr);
+        }
+        T l_res = query(node * 2, l, m, ql, qr);
+        T r_res = query(node * 2 + 1, m + 1, r, ql, qr);
+        return merge_val(l_res, r_res);
+    }
+
+public:
+    // 线段树维护一个长为 n 的数组（下标从 0 到 n-1），元素初始值为 init_val
+    SegmentTree(int n, T init_val) : SegmentTree(vector<T>(n, init_val)) {}
+
+    // 线段树维护数组 a
+    SegmentTree(const vector<T>& a) : n(a.size()), tree(2 << bit_width(a.size() - 1)) {
+        build(a, 1, 0, n - 1);
+    }
+
+    // 更新 a[i] 为 merge_val(a[i], val)
+    // 时间复杂度 O(log n)
+    void update(int i, T val) {
+        update(1, 0, n - 1, i, val);
+    }
+
+    // 返回用 merge_val 合并所有 a[i] 的计算结果，其中 i 在闭区间 [ql, qr] 中
+    // 时间复杂度 O(log n)
+    T query(int ql, int qr) const {
+        return query(1, 0, n - 1, ql, qr);
+    }
+
+    // 获取 a[i] 的值
+    // 时间复杂度 O(log n)
+    T get(int i) const {
+        return query(1, 0, n - 1, i, i);
+    }
+};
+
+void solve() {
+    int n, x, idx = 1, ans = 0;
+    cin >> n;
+    vector<int> a(n);
+    map<int, int> dict;
+    for(int i = 0; i < n; ++i) {
+        cin >> a[i];
+        dict[a[i]] = 0;
+    }
+    for(auto &[x, i]: dict) i = idx++;
+    vector<int> dis(idx);
+    SegmentTree t(dis);
+
+    for(auto &x: a) {
+        int val = t.query(0, dict[x] - 1) + 1;
+        int tv = t.get(dict[x]);
+        if(val > tv) t.update(dict[x], val);
+        chmax(ans, val);
+    }
+    cout<<ans<<endl;
+}
+```
+
+```cpp
+void solve() {
+    int n, x;
+    cin >> n;
+    vector<int> g;
+    for(int i = 0; i < n; ++i) {
+        cin >> x;
+        auto it = ranges::lower_bound(g, x);
+        if(it == g.end()) {
+            g.push_back(x);
+        } else *it = x;
+    }
+    cout<<g.size()<<endl;
+}
 ```
