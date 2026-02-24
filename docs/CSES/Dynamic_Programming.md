@@ -1119,7 +1119,11 @@ void solve() {
 }
 ```
 
-拓樸排序
+monotnic stack + 拓樸排序
+
+透過單調 stack 可以得到最近比自己矮一點的山頂，要注意的是這裡單調 stack 的 top 元素為被更新的主體，而不是平常拿 top 元素回答當前元素的方式。
+
+透過拓樸排序，可以由入度為 0 的山頂往旁邊矮一點的山頂走，此時更新方式 $depth[nxt] = max(depth[nxt], depth[cur] + 1)$。
 
 ```cpp
 void solve() {
@@ -1131,10 +1135,12 @@ void solve() {
     a[n + 1] = inf;
     vector<vector<int>> g(n + 2);
     vector<int> st = {0};
+    vector<int> indeg(n + 2, 0), depth(n + 2, 0);
     for(int i = 1; i <= n; ++i) {
         int &x = a[i];
         while(x >= a[st.back()]) st.pop_back();
         g[st.back()].push_back(i);
+        indeg[i]++;
         st.push_back(i);
     }
     st.clear();
@@ -1144,17 +1150,17 @@ void solve() {
         int &x = a[i];
         while(x >= a[st.back()]) st.pop_back();
         g[st.back()].push_back(i);
+        indeg[i]++;
         st.push_back(i);
     }
-    vector<int> indeg(n + 2, 0), depth(n + 2, 0);
     vector<int> q = {0, n + 1};
     
     for(int i = 0; i < q.size(); ++i) {
         int pos = q[i];
         for(auto &x: g[pos]) {
             depth[x] = max(depth[x], depth[pos] + 1);
-            indeg[x]++;
-            if(indeg[x] == 2) {
+            indeg[x]--;
+            if(indeg[x] == 0) {
                 q.push_back(x);
             }
         }
