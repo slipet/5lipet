@@ -257,9 +257,11 @@ nav:
       - Codeforces: "./stat/codeforces.md"
       - Mixed: "./stat/mixed.md"
   - Data Structure: #DS
-    - Segment Tree: "./ds/seg_tree.md"
-    - Union-Find/Disjoint Set: "./ds/union_find.md"
+    - Stack: "./ds/stack.md"
     - Trie: "./ds/trie.md"
+    - Union-Find/Disjoint Set: "./ds/union_find.md"
+    - Segment Tree: "./ds/seg_tree.md"
+
   - Search:
     - DFS: "./search/dfs.md"
     - BFS: "./search/bfs.md"
