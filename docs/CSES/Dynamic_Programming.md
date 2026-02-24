@@ -1119,6 +1119,45 @@ void solve() {
 }
 ```
 
+另一種不用線段樹的作法，時間複雜度同樣是 $O(n\log{n})$。
+
+透過事先排序高度，由高至低處理山頂。利用有序結構 map 儲存比當前元素高的山頂，利用 upper_bound 找兩個最近的位置，計算到當前高度要多長的距離 $max(dis[pre], dis[nxt]) + 1$
+
+```cpp
+void solve() {
+    int n;
+    cin >> n;
+    vector<pii> heights;
+    for(int i = 0; i < n; ++i) {
+        int h;
+        cin >> h;
+        heights.emplace_back(h, i);
+    }
+    ranges::sort(heights, greater{});
+    map<int, int> dis;
+    vector<pii> updates;
+    dis[0] = 0;
+    dis[n + 1] = 0;
+    int ans = 0, pre_h = 0;
+    for(auto &[h, pos]: heights) {
+        if(pre_h != h) {
+            for(auto &[p, d]: updates) {
+                dis[p] = d;
+            }
+            updates.clear();
+            pre_h = h;
+        }
+        auto it = dis.upper_bound(pos);
+        int nxt = it->first;
+        it--;
+        int pre = it->first;
+        int res = max(dis[nxt], dis[pre]) + 1;
+        ans = max(ans, res);
+        updates.emplace_back(pos, res);
+    }
+    cout<<ans<<endl;
+}
+```
 monotnic stack + 拓樸排序
 
 透過單調 stack 可以得到最近比自己矮一點的山頂，要注意的是這裡單調 stack 的 top 元素為被更新的主體，而不是平常拿 top 元素回答當前元素的方式。
