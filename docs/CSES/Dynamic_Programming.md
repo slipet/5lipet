@@ -1213,6 +1213,13 @@ void solve() {
 
 ### 18. Increasing Subsequence
 
+經典 LIS 問題，轉移方程 $LIS(i) = max_{j < i, x_j < x_i}{LIS(j)} + 1$，在找 $max_{j < i, x_j < x_i}{LIS(j)}$ 的過程若是單純用樸素的方式會有 $O(n^2)$ 的複雜度。
+
+利用線段樹可以將區間極值回答優化至 $O(\log{n})$，整體複雜度為 $O(n\log{n})$。
+
+我的作法是透過離散化數據，將值域的最長遞增子序列長度存在線段樹中，轉移方程為 $LIS(x_i) = max_{j < i, x_j < x_i}{LIS(x_i - 1)} + 1$，利用線段樹回答比 $x_i$ 小的最長遞增子序列。
+
+
 ```cpp
 
 template<typename T>
@@ -1327,6 +1334,8 @@ void solve() {
     cout<<ans<<endl;
 }
 ```
+
+貪心:
 
 ```cpp
 void solve() {
