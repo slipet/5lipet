@@ -1335,7 +1335,39 @@ void solve() {
 }
 ```
 
+用 sort 離散化會比較快。
+
+```cpp
+void solve() {
+    int n, x, idx = 1, ans = 0;
+    cin >> n;
+    vector<int> a(n);
+    vector<int> discret(n + 1), dis(n + 1);
+    SegmentTree t(dis);
+    for(int i = 0; i < n; ++i) {
+        cin >> a[i];
+        discret[i + 1] = a[i];
+    }
+    ranges::sort(discret);
+    discret.erase(unique(discret.begin(), discret.end()), discret.end());
+    for(auto &x: a) {
+        x = ranges::lower_bound(discret, x) - discret.begin();
+    }
+
+    for(auto &x: a) {
+        int val = t.query(0, x - 1) + 1;
+        int tv = t.get(x);
+        if(val > tv) t.update(x, val);
+        chmax(ans, val);
+    }
+    cout<<ans<<endl;
+}
+```
+
 貪心:
+
+1. 嚴格遞增子序列 -> lower_bound
+2.    遞增子序列 -> upper_bound
 
 ```cpp
 void solve() {
