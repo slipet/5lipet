@@ -1384,3 +1384,102 @@ void solve() {
     cout<<g.size()<<endl;
 }
 ```
+
+### 19. Projects
+
+先離散化座標後 DP，對於 $proj_i$ 的轉移方程為 $f(r) = max{f(l - 1)} + p$
+
+利用 BIT 維護前綴最大值，整體時間複雜度為 $O(n\log{n})$
+
+```cpp
+template<typename T>
+class FenwickTree {
+    vector<T> tree;
+ 
+public:
+    // 使用下标 1 到 n
+    FenwickTree(int n) : tree(n + 1) {}
+ 
+    // a[i] 增加 val
+    // 1 <= i <= n
+    // 时间复杂度 O(log n)
+    void update(int i, T val) {
+        for (; i < tree.size(); i += i & -i) {
+            chmax(tree[i], val);
+        }
+    }
+ 
+    // 求前缀和 a[1] + ... + a[i]
+    // 1 <= i <= n
+    // 时间复杂度 O(log n)
+    T pre(int i) const {
+        T res = 0;
+        for (; i > 0; i -= (i & -i)) {
+            chmax(res, tree[i]);
+        }
+        return res;
+    }
+ 
+    // 求区间和 a[l] + ... + a[r]
+    // 1 <= l <= r <= n
+    // 时间复杂度 O(log n)
+    T query(int l, int r) const {
+        if (r < l) {
+            return 0;
+        }
+        return pre(r) - pre(l - 1);
+    }
+};
+
+void solve() {
+    int n, l, r, p;
+    cin >> n;
+    vector<tiii> projects(n);
+    vector<int> pos;
+    for(int i = 0; i < n; ++i) {
+        cin >> l >> r >> p;
+        projects[i] = tuple{l, r, p};
+        pos.push_back(l);
+        pos.push_back(r);
+    }
+    ranges::sort(projects);
+    ranges::sort(pos);
+    pos.erase(unique(pos.begin(), pos.end()), pos.end());
+    for(auto &[l, r, p]: projects) {
+        l = ranges::lower_bound(pos, l) - pos.begin();
+        r = ranges::lower_bound(pos, r) - pos.begin();
+    }
+    
+    FenwickTree<ll> t(pos.size());
+    for(auto &[l, r, p]: projects) {
+        ll mx = t.pre(l);
+        t.update(r + 1, mx + p);
+    }
+    cout<<t.pre(pos.size())<<endl;
+}
+```
+
+```cpp
+void solve() {
+    int n, l, r, p;
+    cin >> n;
+    vector<tiii> pos;
+    vector<int> prices(n);
+    vector<ll> f(n);
+    for(int i = 0; i < n; ++i) {
+        cin >> l >> r >> prices[i];
+        pos.push_back(tuple{l, 0, i});
+        pos.push_back(tuple{r, 1, i});
+    }
+    ranges::sort(pos);
+    ll pre = 0;
+    for(auto &[p, isEnd, i]: pos) {
+        if(isEnd) {
+            pre = max(pre, f[i]);
+        } else {
+            f[i] = pre + prices[i];
+        }
+    }
+    cout<<pre<<endl;
+}
+```
