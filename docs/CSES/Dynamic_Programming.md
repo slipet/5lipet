@@ -1485,3 +1485,39 @@ void solve() {
     cout<<pre<<endl;
 }
 ```
+
+### 20. Elevator Rides
+
+```cpp
+void solve() {
+    int n, w;
+    cin >> n >> w;
+    vector<int> a(n);
+    readv(n, a[i]);
+    int u = 1 << n;
+    int all = u - 1;
+    vector<ll> left(u), elevators(u, inf);
+    elevators[0] = 0;
+    for(int s = 1; s < u; ++s) {
+        for(int i = 0; i < n; ++i) {
+            if(s >> i & 1) {
+                ll cnt = left[s ^ (1 << i)] + a[i];
+                ll sub = elevators[s ^ (1 << i)];
+                if(cnt > w) {
+                    sub++;
+                    cnt = a[i];
+                }
+                if(sub < elevators[s]) {
+                    elevators[s] = sub;
+                    left[s] = cnt;
+                }
+                if(sub == elevators[s] && cnt < left[s]) {
+                    left[s] = cnt;
+                }
+            }
+        }
+    }
+    if(left[all]) elevators[all]++;
+    cout<<elevators[all]<<endl;
+}
+```
