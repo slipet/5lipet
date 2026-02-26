@@ -1488,6 +1488,8 @@ void solve() {
 
 ### 20. Elevator Rides
 
+這題要用樹形 DP 的概念出發，使用兩個 DP 陣列分別儲存不同的狀態。
+
 ```cpp
 void solve() {
     int n, w;
