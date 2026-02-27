@@ -1582,3 +1582,23 @@ void solve() {
     cout<<dfs(dfs, m, all)<<endl;
 }
 ```
+
+透過預處理 check 函數可以將複雜度降至 $O(m3^n)$
+
+```cpp
+vector<int> available(u, 0);
+for(int s = 0; s < u; ++s) {
+    int cnt = popcount((unsigned) s);
+    if(cnt & 1) continue;
+    for(int i = 0; i < n; ++i) {
+        if(s >> i & 1) {
+            int j = i + 1;
+            if(j < n && (s >> j & 1)) {
+                cnt -= 2;
+                i = j;
+            }
+        }
+    }
+    available[s] = cnt == 0;
+}
+```
