@@ -1488,7 +1488,21 @@ void solve() {
 
 ### 20. Elevator Rides
 
-這題要用樹形 DP 的概念出發，使用兩個 DP 陣列分別儲存不同的狀態。
+這題要用樹形 DP 的概念出發，使用 $f(s) = \{r, l\}$ 分別儲存兩種不同的狀態。$r$ 表示當前 s 搭電梯最少需要多少次，$l$ 表示最後一次剩下多少人。我們不關心前 r - 1 次的順序和每次搭乘人數。轉移方程為 $$f(S) = min_{i \in S}{G(f(S \oplus i), w_i)}$$
+
+此時 $G(f(S \oplus i), w_i)$，嘗試在 $S \oplus i$ 中加入 $w_i$ 
+
+1. 若是 $l_{S \oplus i} + w_i > x$ :
+
+    則此時 $f(S) = \{r_{S \oplus i} + 1, w_i \}$
+
+2. 若是 $l_{S \oplus i} + w_i \le x$ :
+
+    則此時 $f(S) = \{r_{S \oplus i}, l_{S} = min(l_{S}, l_{S \oplus i} + w_i) \}$
+
+    $l_{S}$  需要儲存的是當前 S 下在 $r_{S}$ 時最少剩餘人數。
+
+此時時間複雜度為 $O(n2^n)$
 
 ```cpp
 void solve() {
