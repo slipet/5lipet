@@ -1537,3 +1537,48 @@ void solve() {
     cout<<elevators[all]<<endl;
 }
 ```
+
+### 21. Counting Tilings
+
+$f(i, pre_mask)$ 表示在第 i 行剩下 pre_mask 可以放的位置，枚舉 $1 \times 2$ 的位置確認可不可以放得下。時間複雜度為 $O(nm3^n)$。
+
+```cpp
+void solve() {
+    int n, m;
+    cin >> n >> m;
+    int u = 1 << n;
+    int all = u - 1;
+    vector f(m + 1, vector<ll>(u, -1));
+    auto check = [&](int s) -> int {//check xx
+        int cnt = popcount((unsigned) s);
+        if(cnt & 1) return false;
+        for(int i = 0; i < n; ++i) {
+            if(s >> i & 1) {
+                int j = i + 1;
+                if(j < n && (s >> j & 1)) {
+                    cnt -= 2;
+                    i = j;
+                }
+            }
+        }
+        return cnt == 0;
+    };
+    auto dfs = [&](auto &&dfs, int i, int s) -> ll {
+        if(i == 1) {
+            return check(s);
+        }
+        ll &res = f[i][s];
+        if(res != -1) return res;
+        res = 0;
+        int sub = s;
+        do {
+            if(check(s ^ sub)) {
+                res = (res + dfs(dfs, i - 1, all ^ sub)) % MOD;
+            }
+            sub = (sub - 1 & s);
+        } while(sub != s);
+        return res;
+    };
+    cout<<dfs(dfs, m, all)<<endl;
+}
+```
