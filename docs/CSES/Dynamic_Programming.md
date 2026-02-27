@@ -1540,7 +1540,7 @@ void solve() {
 
 ### 21. Counting Tilings
 
-$f(i, pre_mask)$ 表示在第 i 行剩下 pre_mask 可以放的位置，枚舉 $1 \times 2$ 的位置確認可不可以放得下。時間複雜度為 $O(nm3^n)$。
+$f(i, pre)$ 表示在第 i 行剩下 pre 可以放的位置，枚舉 $1 \times 2$ 的位置確認可不可以放得下。時間複雜度為 $O(nm3^n)$。
 
 ```cpp
 void solve() {
