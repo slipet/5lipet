@@ -1603,7 +1603,7 @@ for(int s = 0; s < u; ++s) {
 }
 ```
 
-* [優化](https://codeforces.com/blog/entry/111675)
+#### [優化](https://codeforces.com/blog/entry/111675)
 
 * SOS DP
 
