@@ -1607,3 +1607,73 @@ for(int s = 0; s < u; ++s) {
 
 * SOS DP
 
+### 22. Counting Numbers
+
+### 23. Increasing Subsequence II
+
+```cpp
+const int MOD = 1'000'000'000 + 7;
+template<typename T>
+class FenwickTree {
+    vector<T> tree;
+ 
+public:
+    // 使用下标 1 到 n
+    FenwickTree(int n) : tree(n + 1) {}
+ 
+    // a[i] 增加 val
+    // 1 <= i <= n
+    // 时间复杂度 O(log n)
+    void update(int i, T val) {
+        for (; i < tree.size(); i += i & -i) {
+            tree[i] = (tree[i] + val) % MOD;
+        }
+    }
+ 
+    // 求前缀和 a[1] + ... + a[i]
+    // 1 <= i <= n
+    // 时间复杂度 O(log n)
+    T pre(int i) const {
+        T res = 0;
+        for (; i > 0; i -= (i & -i)) {
+            res = (res + tree[i]) % MOD;
+        }
+        return res;
+    }
+ 
+    // 求区间和 a[l] + ... + a[r]
+    // 1 <= l <= r <= n
+    // 时间复杂度 O(log n)
+    T query(int l, int r) const {
+        if (r < l) {
+            return 0;
+        }
+        return ((pre(r) - pre(l - 1)) % MOD + MOD) % MOD;
+    }
+};
+
+void solve() {
+    int n;
+    cin >> n;
+    vector<int> a(n), pos(n + 1);
+    for(int i = 0; i < n; ++i) {
+        cin >> a[i];
+        pos[i] = a[i];
+    }
+    pos.push_back(0);
+    ranges::sort(pos);
+    pos.erase(unique(pos.begin(), pos.end()), pos.end());
+    for(auto &x: a) {
+        x = ranges::lower_bound(pos, x) - pos.begin();
+    }
+    int sz = pos.size(), ans = 0;
+    FenwickTree<ll> t(sz);
+    t.update(1, 1);
+    for(auto &x: a) {
+        int pre = t.pre(x);
+        t.update(x + 1, pre);
+        ans = (ans + pre) % MOD;
+    }
+    cout<<ans<<endl;
+}
+```
