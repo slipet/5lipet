@@ -1671,6 +1671,8 @@ void solve() {
 
 ### 23. Increasing Subsequence II
 
+離散化 + BIT 前綴和優化 DP
+
 ```cpp
 const int MOD = 1'000'000'000 + 7;
 template<typename T>
