@@ -1619,6 +1619,32 @@ for(int s = 0; s < u; ++s) {
 
     3. 如果 q 的第 $j^{th}$ 和 $(j+1)^{th}$ bit 為 0，可以放置一個垂直的磚塊，對應 p 的 $j^{th}$ 和 $(j + 1)^{th}$ bit 會是 1。
 
+    由上面這些規則我們可以定義 $dp[i][q]$ ，當在第 i column 時有 q 的輪廓線，透過遞迴我們可以將第 i column 填滿產生 i + 1 column 的輪廓線 p。
+
+    pseudo code
+
+    ```cpp
+    func fills(j, i, p, q):
+        if j == n:
+            dp[i + 1][p] += dp[i][q]
+            return
+        //case 1
+        if q >> i & 1:
+            fills(j + 1, i, p, q)
+            return
+        //case 2
+        fills(j + 1, i, p ^ (1 << j), q)
+        //case 3
+        if j + 1 <= n - 1 && !(q >> (j + 1) & 1):
+            fills(j + 2, i, p, q)
+
+    dp[0][0] = 1
+    for i to m:
+        for q to (1 << n):
+            fills(0, i, 0, q)
+
+    return dp[m][0]
+    ```
 * SOS DP
 
 ### 22. Counting Numbers
