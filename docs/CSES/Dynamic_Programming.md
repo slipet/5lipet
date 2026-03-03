@@ -1607,6 +1607,17 @@ for(int s = 0; s < u; ++s) {
 
 * DP on profiles(輪廓線 DP)
 
+    先定義 1 表示當前被填滿，0 表示當前為空。且 q 表示第 i column 的輪廓線，p 表示第 i + 1 column 的輪廓線，如圖:
+
+    ![photo](https://codeforces.com/predownloaded/a9/a9/a9a90b171cff6bf333b96def2f7cbe43c35e9c02.png)
+
+    由上面可以得到幾個性質:
+
+    1. 如果 q 的第 $j^{th}$ bit 為 1，則表示無法放置水平的磚塊，則 p 的 $j^{th}$ bit 必為 0。
+
+    2. 如果 q 的第 $j^{th}$ bit 為 0，那我們可以放一個水平的磚塊，此時 p 的 $j^{th}$ bit 會是 1。
+
+    3. 如果 q 的第 $j^{th}$ 和 $(j+1)^{th}$ bit 為 0，可以放置一個垂直的磚塊，對應 p 的 $j^{th}$ 和 $(j + 1)^{th}$ bit 會是 1。
 
 * SOS DP
 
