@@ -39,6 +39,12 @@ for(int i = hi; i >= 0; --i) {
 
     貢獻法 + 試填法。構造出 target 需要多少貢獻，選最小貢獻的 m 做 AND。
 
+5. [3859. 统计包含 K 个不同整数的子数组](https://leetcode.cn/problems/count-subarrays-with-k-distinct-integers/description/)
+
+    基本上就是先填看看 0 ，然後看能夠選的選的元素中是否有符合當前bit為0的元素。
+
+    怎樣能夠選? 已經選了前綴 mask ，我們剩下能選的部分是"前綴 + $2^i - 1$ 的子集。
+
 * Codeforces:
 
     1. [XOR-factorization](https://slipet.github.io/5lipet/contest/codeforces/2025_S4/#c-xor-factorization)
