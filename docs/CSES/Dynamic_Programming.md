@@ -1605,6 +1605,9 @@ for(int s = 0; s < u; ++s) {
 
 #### [優化](https://codeforces.com/blog/entry/111675)
 
+* DP on profiles(輪廓線 DP)
+
+
 * SOS DP
 
 ### 22. Counting Numbers
