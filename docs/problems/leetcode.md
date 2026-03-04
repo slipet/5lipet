@@ -775,3 +775,21 @@ ex. [1, 1000000000] -> 一次一次減會導致 TLE
     接著就是比較怎樣可以得到多的貢獻， 排序中比較:
 
     $$max(cost_b - cash_a, 0) + cost_a > max(cost_a - cash_b, 0) + cost_b$$
+
+    這個方法的複雜度為 $O(n\log{n})$，瓶頸在排序上。
+
+    * 由上面的想法可以得到一個結論，那就是必須先做完所有的虧錢交易，才能得到最大的初始資金，因此要先做完所有 $cost_i > cash_i$ 的交易，虧的錢為 $\sum_{cost_i > cash_i}{cost_i - cash_i}$。
+
+    對於賺錢的交易:
+
+    1. 假設是(虧錢後)第一筆交易，為了完成這筆交易會需要至少 cost，此時的初始資金為 $initial - totalLose \ge cost$，移項後 $initial \ge totalLose + cost$
+
+    2. 假設是虧錢的最後一筆交易 $initial - (totalLose - (cost - cash)) \ge cost$，移項後 $initial \ge totalLose + cash$
+
+    可以將所有情況取最大值，以保證任何順序下都可以完成交易:
+
+    * 假設虧錢交易 $cost_i > cash_i$，$totalLose$ 要加上的是兩者的較小值 $cash_i$
+
+    * 假設賺錢交易 $cost_i \le cash_i$，$totalLose$ 要加上的是兩者的較小值 $cost_i$
+
+    因此可以得到初始資金為 $totalLose + max(min(cost_i, cash_i))$
