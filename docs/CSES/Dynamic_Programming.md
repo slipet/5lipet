@@ -1658,6 +1658,10 @@ for(int s = 0; s < u; ++s) {
 
     最後我們的時間複雜度來到 $O(m \times (n2^n + 2.62^n))$
 
+* Optimization using Broken Profile DP
+
+    
+
 * SOS DP
 
 ### 22. Counting Numbers
