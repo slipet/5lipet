@@ -1645,6 +1645,13 @@ for(int s = 0; s < u; ++s) {
 
     return dp[m][0]
     ```
+    
+    上面這個演算法時間複雜度會是 $O(m \times (2^n  \cdot n+ C(n)))$，多出來的 $C(n)$ 是假設輪廓線為 q 時，則我們至少會需要 n 做 $fills(j + 1)$，以及多出來的 $fills(j + 2)$，多出來的部分就是 $C(n)$ 的總和。
+
+    只有當 q 有兩個相鄰的 0 時會同時呼叫 $fills(j + 1)$ 和 $fills(j + 2)$，我們要計算的是這個情況的上界 $C(n)$。
+
+    設 $totalcalls(j)$ 表示在 q 中 $j^{th}$ bit 為 0 且相鄰也是 0 時所需的呼叫次數。定義 $totalcalls(1) = 1$，$totalcalls(2) = 1$，對於 $n > 2$ 時有 $totalcalls(n) = totalcalls(n - 1) + totalcalls(n - 2) = f_n(n_{th} \text{ fibonacci no.})$ ，假設 q 的輪廓線有 k 個 0 ，則 $O(f_k) = O(\phi^k) \simeq O(1.62^k)$
+
 * SOS DP
 
 ### 22. Counting Numbers
@@ -1778,4 +1785,4 @@ void solve() {
     }
     cout<<ans<<endl;
 }
-```
+``` 
