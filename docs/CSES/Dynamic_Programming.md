@@ -1621,7 +1621,7 @@ for(int s = 0; s < u; ++s) {
 
     由上面這些規則我們可以定義 $dp[i][q]$ ，當在第 i column 時有 q 的輪廓線，透過遞迴我們可以將第 i column 填滿產生 i + 1 column 的輪廓線 p。
 
-    pseudo code
+    * pseudo code:
 
     ```cpp
     func fills(j, i, p, q):
