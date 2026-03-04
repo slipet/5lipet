@@ -1654,7 +1654,7 @@ for(int s = 0; s < u; ++s) {
     
     設 $totalcalls(j)$ 表示在 q 中 $j^{th}$ bit 為 0 且相鄰也是 0 時所需的呼叫次數。定義 $totalcalls(1) = 1$，$totalcalls(2) = 1$，對於 $n > 2$ 時有 $totalcalls(n) = totalcalls(n - 1) + totalcalls(n - 2) = f_n(n_{th} \text{ fibonacci no.})$ ，假設 q 的輪廓線有 k 個 0 ，則 $O(f_k) = O(\phi^k) \approx O(1.62^k)$，$\phi$ 為黃金比例。
 
-    組合數在 n 個 bit 取 k 個零 $\binom{n}{k}$ ，所以 $C(n) = O(\sum_{k}{\binom{n}{k} \cdot \phi^k}) = O((1 + \phi)^n) \approx O(2.62)^n$。
+    組合數在 n 個 bit 取 k 個零 $\binom{n}{k}$ ，所以 $C(n) = O(\sum_{k}{\binom{n}{k} \cdot \phi^k}) = O((1 + \phi)^n) \approx O(2.62^n)$。
 
     最後我們的時間複雜度來到 $O(m \times (n2^n + 2.62^n))$
 
