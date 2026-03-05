@@ -289,6 +289,7 @@ nav:
     - Introductory Problems: "./CSES/Introductory_Problems.md"
     - Sorting and Searching: "./CSES/Sorting_and_Searching.md"
     - Dynamic Programming: "./CSES/Dynamic_Programming.md"
+    - Range Queries: "./CSES/Range_Queries.md"
   - Problems:
     - Leetcode: "./problems/leetcode.md"
     - Codeforces: "./problems/codeforces.md"
