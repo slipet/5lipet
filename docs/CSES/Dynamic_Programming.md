@@ -1666,7 +1666,11 @@ for(int s = 0; s < u; ++s) {
     
     ![photo](https://codeforces.com/predownloaded/18/cd/18cdccd66d20fd596572ffcaf4af4e39e6c9fff7.png)
 
-    如上圖將輪廓線分成 100001 和 010，可以定義轉移方程 $dp[i][j][x]$ 表示在填滿 $i - 1$ column 的情況下在 $i^{th}$ column 已經填了 $j^{th}$  row 有 x 輪廓線的方案數。
+    如上圖將輪廓線分成 100001 和 010，可以定義轉移方程 $dp[i][j][x]$ 表示在填滿 $i - 1$ column 的情況下在 $i^{th}$ column 已經填了 $j^{th}$  row 有輪廓線 x 的方案數。
+
+    ![photo](https://codeforces.com/predownloaded/d1/99/d1993bdd1c7eba98fb67b301843a622b5a083e0f.png)
+
+    
 
 * SOS DP
 
