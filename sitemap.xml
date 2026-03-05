@@ -19,6 +19,12 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/CSES/Introductory_Problems/"/>
     </url>
     <url>
+        <loc>https://localhost:8000/CSES/Range_Queries/</loc>
+        <lastmod>2026-03-05</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/CSES/Range_Queries/"/>
+    </url>
+    <url>
         <loc>https://localhost:8000/CSES/Sorting_and_Searching/</loc>
         <lastmod>2026-03-05</lastmod>
         <changefreq>daily</changefreq>
