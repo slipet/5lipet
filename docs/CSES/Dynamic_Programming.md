@@ -1676,6 +1676,8 @@ for(int s = 0; s < u; ++s) {
 
     3. 如果遇到兩個連續的 0，可以放垂直的磚頭，放完後不會改變輪廓線 p，此時的轉移 $(i, j, x) \rightarrow (i, j + 2, x)$，$dp[i][j+2][x] += dp[i][j][x]$
 
+    4. 最後當 (i, n, x) 時表示前面 n bit 都填完了，可以轉移到 i + 1 column 繼續填，此時狀態為 (i + 1, 0, x)，有轉移方程 $dp[i + 1][0][x] = dp[i][n][x]$
+
 * SOS DP
 
 ### 22. Counting Numbers
