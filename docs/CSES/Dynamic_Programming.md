@@ -1678,7 +1678,42 @@ for(int s = 0; s < u; ++s) {
 
     4. 最後當 (i, n, x) 時表示前面 n bit 都填完了，可以轉移到 i + 1 column 繼續填，此時狀態為 (i + 1, 0, x)，有轉移方程 $dp[i + 1][0][x] = dp[i][n][x]$
 
-* SOS DP
+    時間複雜度為 $O(nm2^n)$
+
+```cpp
+const int MOD = 1'000'000'000 + 7;
+const int MXN = 10, MXM = 1000;
+ll f[MXM + 1][MXN + 1][1 << MXN];
+void solve() {
+    int n, m;
+    cin >> n >> m;
+    int u = 1 << n;
+    int all = u - 1;
+    
+    f[0][n][0] = 1;
+    for(int i = 1; i <= m; ++i) {
+        for(int p = 0; p < u; ++p) {
+            f[i][0][p] = f[i - 1][n][p];
+        }
+        for(int j = 1; j <= n; ++j) {
+            for(int p = 0; p < u; ++p) {
+                if(p >> (j - 1) & 1) {
+                    int q = p - (1 << (j - 1));
+                    f[i][j][p] += f[i][j - 1][q];
+                } else {
+                    int q = p + (1 << (j - 1));
+                    f[i][j][p] += f[i][j - 1][q];
+                    if(j - 2 >= 0 && !(p >> (j - 2) & 1)) {
+                        f[i][j][p] += f[i][j - 2][p];
+                    }
+                }
+                f[i][j][p] %= MOD;
+            }
+        }
+    }
+    cout<<f[m][n][0]<<endl;
+}
+```
 
 ### 22. Counting Numbers
 
