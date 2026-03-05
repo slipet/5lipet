@@ -1670,8 +1670,12 @@ for(int s = 0; s < u; ++s) {
 
     ![photo](https://codeforces.com/predownloaded/d1/99/d1993bdd1c7eba98fb67b301843a622b5a083e0f.png)
 
-    
+    1. 如果遇到下一個 cell 為 1 ($x \& 2^{j + 1} = 1$)，此時不能放水平的磚頭，有轉移 $(i, j, x) \rightarrow (i, j + 1, x'), \text{where } x'=x - 2^{j + 1}$，轉移方程為 $dp[i][j + 1][x'] += dp[i][j][x]$
 
+    2. 下一個 cell 為 0 ($x \& 2^{j + 1} = 0$)，可以放水平的磚頭，有轉移 $(i, j, x) \rightarrow (i, j + 1, x'), \text{where } x'=x + 2^{j + 1}$，轉移方程為 $dp[i][j + 1][x'] += dp[i][j][x]$
+
+    3. 
+    
 * SOS DP
 
 ### 22. Counting Numbers
