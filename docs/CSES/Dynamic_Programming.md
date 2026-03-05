@@ -1674,8 +1674,8 @@ for(int s = 0; s < u; ++s) {
 
     2. 下一個 cell 為 0 ($x \& 2^{j + 1} = 0$)，可以放水平的磚頭，有轉移 $(i, j, x) \rightarrow (i, j + 1, x'), \text{where } x'=x + 2^{j + 1}$，轉移方程為 $dp[i][j + 1][x'] += dp[i][j][x]$
 
-    3. 
-    
+    3. 如果遇到兩個連續的 0，可以放垂直的磚頭，放完後不會改變輪廓線 p，此時的轉移 $(i, j, x) \rightarrow (i, j + 2, x)$，$dp[i][j+2][x] += dp[i][j][x]$
+
 * SOS DP
 
 ### 22. Counting Numbers
