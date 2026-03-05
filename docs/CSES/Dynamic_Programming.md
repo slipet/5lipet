@@ -1656,7 +1656,7 @@ for(int s = 0; s < u; ++s) {
 
     組合數在 n 個 bit 取 k 個零 $\binom{n}{k}$ ，所以 $C(n) = O(\sum_{k}{\binom{n}{k} \cdot \phi^k}) = O((1 + \phi)^n) \approx O(2.62^n)$。
 
-    最後我們的時間複雜度來到 $O(m \times (n2^n + 2.62^n))$
+    最後時間複雜度來到 $O(m \times (n2^n + 2.62^n))$
 
 * Optimization using Broken Profile DP
 
