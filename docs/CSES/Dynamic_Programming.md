@@ -1660,7 +1660,13 @@ for(int s = 0; s < u; ++s) {
 
 * Optimization using Broken Profile DP
 
+    觀察上面填磚塊的過程，會發現同一種輪廓線 p 會重複計算很多次(從不同輪廓線 q 得到)。是否可以從這點下手進行優化?
     
+    在第 $i^{th}$ column 按照順序從 0 填到 $j^{th}$ row 時，可以將此時的輪廓線劃分成 "已經填完" 和 "還沒填" 兩部分。
+    
+    ![photo](https://codeforces.com/predownloaded/18/cd/18cdccd66d20fd596572ffcaf4af4e39e6c9fff7.png)
+
+    如上圖將輪廓線分成 100001 和 010，可以定義轉移方程 $dp[i][j][x]$ 表示在填滿 $i - 1$ column 的情況下在 $i^{th}$ column 已經填了 $j^{th}$  row 有 x 輪廓線的方案數。
 
 * SOS DP
 
