@@ -121,6 +121,12 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/ds/union_find/"/>
     </url>
     <url>
+        <loc>https://localhost:8000/graph/connected_components/</loc>
+        <lastmod>2026-03-06</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/graph/connected_components/"/>
+    </url>
+    <url>
         <loc>https://localhost:8000/greedy/bitmask/</loc>
         <lastmod>2026-03-06</lastmod>
         <changefreq>daily</changefreq>
