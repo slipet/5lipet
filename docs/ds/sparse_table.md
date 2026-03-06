@@ -8,7 +8,10 @@
 
     * opt 還必須滿足<span style="color:red">結合律</span>才能使用 ST 表求解。
 
-* <span style="color:red">RMQ (Range Maximum/Minimum Query)</span> 和區間 <span style="color:red">GCD</span> 為可重複貢獻問題。
+* 可重複貢獻問題:
+    * RMQ (Range Maximum/Minimum Query)
+    * GCD
+    * 區間按位 AND/OR
 
 * <span style="color:red">區間和</span>不是重複貢獻問題，如果求區間和的時候採用的預處理區間重疊了，則會導致重疊部分被計算兩次。
 
@@ -34,7 +37,6 @@ ST 表基於"倍增"的思想，預處理 $O(n\log{n})$，回答詢問 $O(1)$。
 
 ```cpp
 //ref. https://leetcode.cn/circle/discuss/mOr1u6/
-//。
 class SparseTable {
     vector<vector<int>> st_min;
     vector<vector<int>> st_max;
@@ -78,3 +80,4 @@ public:
 };
 ```
 
+* 預處理 ST 表時通常需要建立一個一維大小為 $\log{n}$，另一維大小為 $n$ 的數組，此時應優先讓大小為 $\log{n}$ 的維度作為第一維，以提升 cache locality。
