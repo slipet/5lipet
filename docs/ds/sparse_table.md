@@ -10,14 +10,16 @@
 
 * <span style="color:red">RMQ (Range Maximum/Minimum Query)</span> 和區間 <span style="color:red">GCD</span> 為可重複貢獻問題。
 
-* <span style="color:red">區間和<span>不是重複
+* <span style="color:red">區間和</span>不是重複貢獻問題，如果求區間和的時候採用的預處理區間重疊了，則會導致重疊部分被計算兩次。
 
-但不支持修改。
+* <span style="color:red">不支持修改</span>
 
-優點是代碼短，且查詢的時間覆雜度是 O(1)。
+ST 表基於"倍增"的思想，預處理 $O(n\log{n})$，回答詢問 $O(1)$。
+
 
 ```cpp
 //ref. https://leetcode.cn/circle/discuss/mOr1u6/
+//。
 class SparseTable {
     vector<vector<int>> st_min;
     vector<vector<int>> st_max;
