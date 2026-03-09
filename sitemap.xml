@@ -163,10 +163,16 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/problems/codeforces/"/>
     </url>
     <url>
-        <loc>https://localhost:8000/problems/leetcode/</loc>
+        <loc>https://localhost:8000/problems/leetcode/2025_S4/</loc>
         <lastmod>2026-03-09</lastmod>
         <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/problems/leetcode/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/problems/leetcode/2025_S4/"/>
+    </url>
+    <url>
+        <loc>https://localhost:8000/problems/leetcode/2026_S1/</loc>
+        <lastmod>2026-03-09</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/problems/leetcode/2026_S1/"/>
     </url>
     <url>
         <loc>https://localhost:8000/resources/list/</loc>
