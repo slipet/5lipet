@@ -793,3 +793,13 @@ ex. [1, 1000000000] -> 一次一次減會導致 TLE
     * 假設賺錢交易 $cost_i \le cash_i$，$totalLose$ 要加上的是兩者的較小值 $cost_i$
 
     因此可以得到初始資金為 $totalLose + max(min(cost_i, cash_i))$
+
+### 3664. 两个字母卡牌游戏
+
+* Score: 2158
+
+* Quality: 0
+
+* Date: 2026/03/09
+
+* Comment:
