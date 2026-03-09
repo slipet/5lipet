@@ -10,8 +10,6 @@
 
 - [ ] reroot
 
-- [ ] bit 試填法
-
 - [ ] 0-1 trie
 
 - [ ] DFS 時間戳
@@ -27,6 +25,11 @@
 - [ ] practice the problem with dp involving bits, not digit counting
 
 - [ ] practice more dp question with prefix sum optimization
+
+
+### Atcoder
+
+- [ ] SCC
 
 #### wait to note
 
