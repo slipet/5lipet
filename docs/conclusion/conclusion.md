@@ -86,6 +86,16 @@ x = k * y + t
 2. 試填法
 
 
+### 分配問題
+
+1. 分配給兩組
+
+枚舉分配個數
+
+* leetcode:
+
+    * [3664. 两个字母卡牌游戏](https://leetcode.cn/problems/two-letter-card-game/description/)
+
 
 ### 區間修改子樹(DFS 時間戳)
 
