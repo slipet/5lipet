@@ -292,7 +292,7 @@ nav:
     - Dynamic Programming: "./CSES/Dynamic_Programming.md"
     - Range Queries: "./CSES/Range_Queries.md"
   - Problems:
-    - Leetcode: 
+    - Leetcode:
       -2025:
         - S4: "./problems/leetcode/2025_S4.md"
       -2026:
