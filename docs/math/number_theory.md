@@ -140,6 +140,19 @@ auto init = []() {
 
     * [完全子集的最大元素和](https://leetcode.cn/problems/maximum-element-sum-of-a-complete-subset-of-indices/description/)
 
+## $\lfloor \frac{N}{M} \rfloor \mod{P}$
+
+由 [ref](https://codeforces.com/blog/entry/48989) 得到 
+
+$$N = (MP)Q + r$$
+
+將 N 模 $M \times P$ 後，兩邊同除 M 就是結果:
+
+$$\frac{N}{M} = PQ + \frac{r}{M}$$
+
+* atcoder:
+    * [#448 E. Simple Division]()
+
 ## 歐幾里得算法/帶餘數除法
 
 [video](https://www.bilibili.com/video/BV1eK4y1L7hq/?spm_id_from=333.1387.search.video_card.click&vd_source=caaccd1459c5ece44b5e2d37804871b8)
