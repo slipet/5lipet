@@ -35,7 +35,7 @@ public:
     // 求区间和 a[l] + ... + a[r]
     // 1 <= l <= r <= n
     // 时间复杂度 O(log n)
-    //query()
+    //usage: [l, r] -> query(l + 1, r + 1)
     T query(int l, int r) const {
         if (r < l) {
             return 0;
