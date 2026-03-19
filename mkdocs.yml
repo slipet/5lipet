@@ -260,6 +260,7 @@ nav:
     - Stack: "./ds/stack.md"
     - Trie: "./ds/trie.md"
     - Union-Find/Disjoint Set: "./ds/union_find.md"
+    - Fenwick Tree/BIT: "./ds/bit.md"
     - Segment Tree: "./ds/seg_tree.md"
     - Sparse Table: "./ds/sparse_table.md"
   - Search:
