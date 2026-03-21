@@ -53,7 +53,8 @@ class SegmentTree {
         build(a, node * 2 + 1, m + 1, r); // 初始化右子树
         maintain(node);
     }
-
+    
+    //要注意這是單點更新
     void update(int node, int l, int r, int i, T val) {
         if (l == r) { // 叶子（到达目标）
             // 如果想直接替换的话，可以写 tree[node] = val
