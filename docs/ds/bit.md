@@ -31,16 +31,20 @@ public:
         }
         return res;
     }
-
-    // 求区间和 a[l] + ... + a[r]
-    // 1 <= l <= r <= n
+    // 求區間
+    // 0 <= l <= r <= n - 1
     // 时间复杂度 O(log n)
-    //usage: [l, r] -> query(l + 1, r + 1)
+    //usage: [l, r] -> query(l, r)
     T query(int l, int r) const {
         if (r < l) {
             return 0;
         }
         return pre(r) - pre(l - 1);
     }
+
 };
+
+int mapping(int i) {
+    return i + 1;
+}
 ```
