@@ -10,6 +10,14 @@
 
 * <span style="color:red">單點</span>更新：有 $O(\log{n})$ 個區間包含被修改的位置，需要更新 $O(\log{n})$ 個節點的信息。
 
+* 若是葉子節點有 n 個節點，則總共需要開闢的陣列空間為 <span style="color:red">$2^{\lceil \log{n} \rceil + 1} - 1$</span>:
+
+    可以知道完美二元樹時，此時樹的高度 $h = \lceil \log{n} \rceil$，總共的節點個數為:
+    
+    $$2^0 + 2^1 + 2^2 + .... + 2^h = \frac{1(1 - 2^{h + 1})}{1 - 2} = 2^{h + 1} - 1$$
+
+    偷懶寫法可以直接宣告 $4n$ 的空間。
+
 ```cpp
 // 模板来源 https://leetcode.cn/circle/discuss/mOr1u6/
 // 线段树有两个下标，一个是线段树节点的下标，另一个是线段树维护的区间的下标
