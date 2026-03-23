@@ -10,13 +10,17 @@
 
 - [ ] coedforces #1087
 
+- [ ] [HH 的项链](https://www.luogu.com.cn/problem/P1972)
+
+- [ ] SegmentTree, LazySegmentTree
+
+- [ ] SCC
+
 ### Leetcode
 
 - [ ] [1703. Minimum Adjacent Swaps for K Consecutive Ones](https://leetcode.cn/problems/minimum-adjacent-swaps-for-k-consecutive-ones/description/)
 
 - [ ] [3841. 查询树上回文路径](https://leetcode.cn/problems/palindromic-path-queries-in-a-tree/solutions/)
-
-- [ ] SegmentTree, LazySegmentTree
 
 - [ ] reroot
 
@@ -39,7 +43,6 @@
 
 ### Atcoder
 
-- [ ] SCC
 
 #### wait to note
 
@@ -62,7 +65,6 @@
 
 ### luogu
 
-- [ ] [HH 的项链](https://www.luogu.com.cn/problem/P1972)
 
 - [ ] [模板](https://www.luogu.com.cn/problem/list?keyword=%E6%A8%A1%E6%9D%BF&page=1)
 
