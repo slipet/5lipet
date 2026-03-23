@@ -1,5 +1,15 @@
 #Todo list
 
+### urgent
+
+- [ ] leetcode #1520
+
+- [ ] leetcode weekly #494
+
+- [ ] atcoder weekly #450
+
+- [ ] coedforces #1087
+
 ### Leetcode
 
 - [ ] [1703. Minimum Adjacent Swaps for K Consecutive Ones](https://leetcode.cn/problems/minimum-adjacent-swaps-for-k-consecutive-ones/description/)
