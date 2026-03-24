@@ -277,6 +277,7 @@ nav:
     - Z-algorithm: "./string/z_algorithm.md"
     - Subseq automation: "./string/subseq_automation.md"
   - DP:
+    - Conclusion: "./dp/conclusion.md"
     - Digits counting: "./dp/digits_counting.md"
     - Matrix Exponentiation: "./dp/matrix_exponentiation.md"
     - Convex Hull Trick: "./dp/convex_hull_trick.md"
