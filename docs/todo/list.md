@@ -2,11 +2,7 @@
 
 ### urgent
 
-- [ ] leetcode #1520
-
-- [ ] leetcode weekly #494
-
-- [ ] atcoder weekly #450
+- [ ] atcoder weekly #448-F
 
 - [ ] coedforces #1087
 
