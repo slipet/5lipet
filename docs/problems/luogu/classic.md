@@ -3,6 +3,8 @@
 
 ### [HH 的项链](https://www.luogu.com.cn/problem/P1972)
 
+* 離線 + Fenwick
+
 ```cpp
 struct QUERY {
     int l, r, id;
@@ -42,5 +44,7 @@ void solve() {
     for(auto &x: ans) cout<<x<<endl;
 }
 ```
+
+* 在線: 可持久化線段樹
 
 ---
