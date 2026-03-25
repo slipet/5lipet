@@ -2,7 +2,7 @@
 
 放一些 DP 的心得/小結論
 
-## 計算方案數
+## 利用 f(i - 1) 將前綴最優狀態轉移
 
 * Leetcode [#2320. 统计放置房子的方式数](https://leetcode.cn/problems/count-number-of-ways-to-place-houses/description/)
 
@@ -17,8 +17,12 @@
 
     2. 不選擇當前位置: 不選當前位置可以產生出的方案，此時有 $f(i - 1)$ 個。
 
-    加上 $f(i - 1)$ 時就會把 $\{\emptyset\}$ 這種方案也會同時考慮進去。
+    $f(i-1)$ 代表不選第 $i$ 個位置的方案數（繼承前綴所有可能）；$f(i-2)$ 代表選擇第 $i$ 個位置的方案數（受限於相鄰約束）。
 
-    可以看成總共可以產生出多少個子序列(包含空)，且相鄰子序列不能連續選擇。
+* Leetcode [3186. 施咒的最大总伤害](https://leetcode.cn/problems/maximum-total-damage-with-spell-casting/description/)
+
+    Transition function: $f(i) = max(f(i - 1), f(j) + x \times n)$
+
+    值域的打家劫舍只能取間隔超過 2 的元素。$f(i - 1)$ 的值同時也隱含著 $f(i - 2)$ 為最優的可能性。而 j 則是剛好 $< x - 2$ 的位置。
     
 
