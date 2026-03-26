@@ -237,9 +237,16 @@ for(int i = hi; i >= 0; --i) {
 
 對於位元運算的時候，不妨將每個元素的位元運算看成對不同集合做運算，也就是 $001 = \{b_1\}, 010 = \{b_2\}, 011 = \{b_2, b_3\}$
 
+集合
+
+單調性
 
 * 模板題:
     * Leetcode [#3878. 统计好子数组](https://leetcode.cn/problems/count-good-subarrays/solutions/3933380/mo-ban-logtrick-ji-lu-mei-ge-yuan-su-de-otgcv/)
+
+    去重
+
+    計算答案
 
 ```cpp
 class Solution {
