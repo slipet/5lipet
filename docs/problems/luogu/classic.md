@@ -5,6 +5,8 @@
 
 * 離線 + Fenwick
 
+
+
 ```cpp
 struct QUERY {
     int l, r, id;

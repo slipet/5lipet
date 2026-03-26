@@ -6,8 +6,6 @@
 
 - [ ] coedforces #1087
 
-- [ ] [HH 的项链](https://www.luogu.com.cn/problem/P1972)
-
 - [ ] SegmentTree, LazySegmentTree
 
 - [ ] SCC
