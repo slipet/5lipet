@@ -229,6 +229,14 @@ for(int i = hi; i >= 0; --i) {
     結合上面兩種情況可以維護 $ZC$。
 
     [code](https://leetcode.cn/problems/maximum-sized-array/submissions/698505720/)
+
+
+---
+
+## Logtrick
+
+---
+
 ## Other
 
 * Codeforces:
