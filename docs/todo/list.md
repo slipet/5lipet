@@ -4,8 +4,6 @@
 
 - [ ] atcoder weekly #448-F
 
-- [ ] coedforces #1087
-
 - [ ] SegmentTree, LazySegmentTree
 
 - [ ] SCC
