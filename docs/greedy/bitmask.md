@@ -269,11 +269,14 @@ AND 運算會使集合大小單調遞減。
 
     這題需要統計子陣列的個數，合法的子陣列為子陣列元素作或運算後得到的值 $v_{or}$ 出現在子陣列中。
 
-    透過上圖可以觀察到，我們要統計的部分就是對集合做 OR 後第一次出現 $v_{or}$ 的位置 $first[v_{or}]$ 和元素值為 $v_{or}$ 的最近位置 $pre[v_{or}]$ 的長度
+    透過上圖可以觀察到，設右端點在 $i$，左端點在 $[l,r]$ 中的子陣列的 OR 都是 $v_{or}$。設 $j=pre[v_{or}]$。當 $j \ge l$ 時，左端點為 $l,l+1,...,min(r,j)$，右端點為 $i$ 的子陣列都包含 $v_{or}$，這一共有
 
+    $$min(r,j)−l+1$$
+
+    [ref.](https://leetcode.cn/problems/count-good-subarrays/solutions/3933380/mo-ban-logtrick-ji-lu-mei-ge-yuan-su-de-otgcv/)
+    
     * 原地去重要看一下。
 
-    * 統計所有: $$pre[v_{or}] - frist[v_{or}] + 1, \text{for all } pre[v_{or}] \ge frist[v_{or}]$$
 
 ```cpp
 class Solution {
