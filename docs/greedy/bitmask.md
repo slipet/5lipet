@@ -261,14 +261,19 @@ AND 運算會使集合大小單調遞減。
 
 ![and](./logtrick_and.jpeg)
 
-
+* 可以透過維護一個集合 set 由左往右遍歷陣列，為了維護陣列單調性，每次元素都要與陣列中的元素進行 OR/AND。
 
 * 模板題:
-    * Leetcode [#3878. 统计好子数组](https://leetcode.cn/problems/count-good-subarrays/solutions/3933380/mo-ban-logtrick-ji-lu-mei-ge-yuan-su-de-otgcv/)
+    
+  * Leetcode [#3878. 统计好子数组](https://leetcode.cn/problems/count-good-subarrays/solutions/3933380/mo-ban-logtrick-ji-lu-mei-ge-yuan-su-de-otgcv/)
 
-    去重
+    這題需要統計子陣列的個數，合法的子陣列為子陣列元素作或運算後得到的值 $v_{or}$ 出現在子陣列中。
 
-    計算答案
+    透過上圖可以觀察到，我們要統計的部分就是對集合做 OR 後第一次出現 $v_{or}$ 的位置 $first[v_{or}]$ 和元素值為 $v_{or}$ 的最近位置 $pre[v_{or}]$ 的長度
+
+    * 原地去重要看一下。
+
+    * 統計所有: $$pre[v_{or}] - frist[v_{or}] + 1, \text{for all } pre[v_{or}] \ge frist[v_{or}]$$
 
 ```cpp
 class Solution {
