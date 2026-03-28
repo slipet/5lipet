@@ -79,7 +79,9 @@ x = k * y + t
 
 #### 區間合併
 
-* 模板
+* Monotonic Stack + Binary Search 模板
+
+暴力的做法是將所有點都放進一個有序陣列中維護，進階作法是利用單調 stack 作區間合併。
 
 ```cpp
 class Solution {
