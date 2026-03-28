@@ -77,6 +77,44 @@ x = k * y + t
 ![range](https://codeforces.com/predownloaded/f0/bc/f0bc055b37bc44373c14a2fd0b8c09492d63c46a.png)
 
 
+#### 區間合併
+
+* 模板
+
+```cpp
+class Solution {
+public:
+    int findMinimumTime(vector<vector<int>>& tasks) {
+        ranges::sort(tasks, {}, [](auto& a) { return a[1]; }); // 按照右端点从小到大排序
+        // 栈中保存闭区间左右端点，栈底到栈顶的区间长度的和
+        vector<array<int, 3>> st = {{-2, -2, 0}}; // 哨兵，保证不和任何区间相交
+        for (auto& t : tasks) {
+            int start = t[0], end = t[1], d = t[2];
+            //[---] [----]  start [l----r] end
+            auto [_, r, s] = *--ranges::lower_bound(st, start, {}, [](auto& x) { return x[0]; });
+            //[---s0] [----s1] start [s2] [s3]  end
+            d -= st.back()[2] - s; // 去掉运行中的时间点(因為事先排序所以可以這樣減)
+            //[---s0] [--start{--r]  [s2] [s3]  } end
+            if (start <= r) { // start 在区间 st[i] 内
+                d -= r - start + 1; // 去掉运行中的时间点
+            }
+            if (d <= 0) {
+                continue;
+            }
+            while (end - st.back()[1] <= d) { // 剩余的 d 填充区间后缀
+                auto [l, r, _] = st.back();
+                st.pop_back();
+                //[---] [----]  start [l----r] end
+                d += r - l + 1; // 合并区间
+            }
+            st.push_back({end - d + 1, end, st.back()[2] + d});
+        }
+        return st.back()[2];
+    }
+};
+```
+
+
 ### 子陣列最大 XOR sum
 
 在陣列中找 XOR 最大的數
