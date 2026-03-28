@@ -83,6 +83,12 @@ x = k * y + t
 
 暴力的做法是將所有點都放進一個有序陣列中維護，進階作法是利用單調 stack 作區間合併。
 
+由於每次都是從右到左新增時間點，如果把連續的時間點看成閉區間，那麽從右到左新增時間點，會把若幹右側的區間合並成一個大區間，也就是從 end 倒著開始，先合並右邊，再合並左邊，因此可以用棧來優化
+
+* Leetcode
+  * [#757. 设置交集大小至少为2](https://leetcode.cn/problems/set-intersection-size-at-least-two/)
+  * [#2589. 完成所有任务的最少时间](https://leetcode.cn/problems/minimum-time-to-complete-all-tasks/description/)
+
 ```cpp
 class Solution {
 public:
