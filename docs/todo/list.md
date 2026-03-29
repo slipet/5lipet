@@ -2,9 +2,21 @@
 
 ### urgent
 
+- [ ] atcoder abc #451
+
+- [ ] leetcode #495
+
+- [ ] 帶權並查集
+
+- [ ] logtrick 練習
+
 - [ ] 锣鼓 P2024 - [NOI2001] 食物链
 
-- [ ] atcoder weekly #448-F
+- [ ] codeforces #1088
+
+- [ ] atcoder abc #451-E,F
+
+- [ ] atcoder abc #448-F
 
 - [ ] SegmentTree, LazySegmentTree
 
