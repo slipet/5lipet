@@ -2,8 +2,6 @@
 
 ### urgent
 
-- [ ] atcoder abc #451
-
 - [ ] leetcode #495
 
 - [ ] 帶權並查集
@@ -13,6 +11,8 @@
 - [ ] 锣鼓 P2024 - [NOI2001] 食物链
 
 - [ ] codeforces #1088
+
+- [ ] codeforces #1086
 
 - [ ] atcoder abc #451-E,F
 
