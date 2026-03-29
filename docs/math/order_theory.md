@@ -19,3 +19,19 @@ Erdős-Szekeres theorem: Given n ≥ rs + 1 , any sequence of n elements has eit
 [material 3](https://math.stackexchange.com/questions/1208735/understanding-dilworths-theorem)
 
 
+
+### 遍歷逆序位置
+
+在一堆上升區間中，快速的遍歷逆序的位置的優化方式。
+
+用一個陣列儲存下次逆序位置。
+
+```cpp
+vector<int> nxt_dec(n);
+nxt_dec[n - 1] = n;
+int p = n;
+for(int i = n - 2; i >= 0; --i) {
+    if(nums[i] > nums[i + 1]) p = i;
+    nxt_dec[i] = p;
+}
+```
