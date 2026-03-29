@@ -2,6 +2,8 @@
 
 ### urgent
 
+- [ ] 锣鼓 P2024 - [NOI2001] 食物链
+
 - [ ] atcoder weekly #448-F
 
 - [ ] SegmentTree, LazySegmentTree
