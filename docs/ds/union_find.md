@@ -72,3 +72,9 @@ public:
     }
 };
 ```
+
+### 帶權並查集(Weighted DSU)
+
+```cpp
+
+```

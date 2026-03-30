@@ -2,8 +2,6 @@
 
 ### urgent
 
-- [ ] leetcode #495
-
 - [ ] 帶權並查集
 
 - [ ] logtrick 練習

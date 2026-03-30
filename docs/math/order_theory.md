@@ -26,6 +26,8 @@ Erdős-Szekeres theorem: Given n ≥ rs + 1 , any sequence of n elements has eit
 
 用一個陣列儲存下次逆序位置。
 
+* $\text{nxt\_dec} [i]$ 指向當前上升區間的尾端。
+
 ```cpp
 vector<int> nxt_dec(n);
 nxt_dec[n - 1] = n;
