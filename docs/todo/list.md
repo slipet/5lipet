@@ -1,14 +1,23 @@
 # Todo list
 
+
+### Weekly
+
+
+- [ ] VP atcoder #1
+- [ ] VP codefroces #1
+- [ ] clist random 5% ~ 40%
+- [ ] luogu template
+
 ### urgent
 
 - [ ] 帶權並查集
 
-- [ ] logtrick 練習
-
 - [ ] 锣鼓 P2024 - [NOI2001] 食物链
 
-- [ ] codeforces #1088
+- [ ] logtrick 練習
+
+- [ ] codeforces #1089
 
 - [ ] codeforces #1086
 
