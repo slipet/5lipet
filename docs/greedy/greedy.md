@@ -23,4 +23,19 @@
     * [D. A and B](https://codeforces.com/contest/2149/problem/D)
 
 
+## 思想/小結論
+
+#### 替換/取代 操作
+
+* 貢獻法
+
+    對於取代或是替換操作，可以有兩種選擇:
+
+    1. 不操作: 此時的貢獻是原本的 $g$
+
+    2. 操作: 此時的貢獻是減去原本的 $g$ ，加上操作後產生的貢獻 $g'$
+
+    $$cost = max(g, g' - g)$$
+
+    * Leetcode [#2321. 拼接数组的最大分数](https://leetcode.cn/problems/maximum-score-of-spliced-array/description/)
 
