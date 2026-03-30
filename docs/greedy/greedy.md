@@ -39,3 +39,10 @@
 
     * Leetcode [#2321. 拼接数组的最大分数](https://leetcode.cn/problems/maximum-score-of-spliced-array/description/)
 
+        可以知道最後的答案會是 $$\sum_i{nums1[i]} + (nums2[left] + ... +nums2[right]) - (nums1[right] + ... +nums1[right])$$
+
+        因此核心思想是找最大子數組 $diff[i] = nums2[i] - nums2[i]$ 的和:
+
+        $$\sum_i{nums1[i]} + diff[left] + ... + diff[right]$$
+
+        對於 $nums2$ 同理。
