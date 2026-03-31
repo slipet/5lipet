@@ -86,7 +86,7 @@ public:
   
 * [leetcode #3887. 增量偶权环查询](https://leetcode.cn/problems/incremental-even-weighted-cycle-queries/description/)
 
-    [Solution](https://slipet.github.io/5lipet/contest/leetcode/2026_S1/#weekly-contest-495_1)
+    [Solution](https://slipet.github.io/5lipet/contest/leetcode/2026_S1/#weekly-contest-495)
 
 
 ```cpp
