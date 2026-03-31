@@ -76,6 +76,18 @@ public:
 ### 帶權並查集(Weighted DSU)
 
 
+* [P2024 [NOI2001] 食物链](https://www.luogu.com.cn/problem/P2024)
+    
+    用距離表示不同的關係:
+
+    (0) 表示同類
+    (1) 表示捕食關係
+    (2) 表示被捕食關係
+  
+* [leetcode #3887. 增量偶权环查询](https://leetcode.cn/problems/incremental-even-weighted-cycle-queries/description/)
+
+    [Solution](https://slipet.github.io/5lipet/contest/leetcode/2026_S1/#weekly-contest-495_1)
+
 
 ```cpp
 // 模板来源 https://leetcode.cn/circle/discuss/mOr1u6/
