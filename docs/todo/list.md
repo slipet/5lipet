@@ -19,8 +19,6 @@
 
 - [ ] codeforces #1086-B,D1,D2
 
-- [ ] atcoder abc vp #446-E
-
 - [ ] atcoder abc #451-E,F
 
 - [ ] atcoder abc #448-F
