@@ -304,7 +304,7 @@ nav:
         - S4: "./problems/codeforces/codeforces.md"
     - atcoder: 
       - 2026:
-        - S1: "./problems/atcoder/2026_S2.md"
+        - S2: "./problems/atcoder/2026_S2.md"
     - Luogu: "./problems/luogu/classic.md"
   - Contest:
     - Codeforces: 
