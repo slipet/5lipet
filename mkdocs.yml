@@ -301,7 +301,7 @@ nav:
         - S1: "./problems/leetcode/2026_S1.md"
     - Codeforces: 
       - 2025:
-        - S1: "./problems/codeforces/codeforces.md"
+        - S4: "./problems/codeforces/codeforces.md"
     - atcoder: 
       - 2026:
         - S1: "./problems/atcoder/2026_S2.md"
