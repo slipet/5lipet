@@ -17,7 +17,7 @@
 
 - [ ] codeforces #1089
 
-- [ ] codeforces #1086-B,D1,D2
+- [ ] codeforces #1086,D1,D2
 
 - [ ] atcoder abc #451-E,F
 
