@@ -4,7 +4,7 @@
 ### Weekly
 
 
-- [x] VP atcoder #1
+- [ ] VP atcoder #1
 - [ ] VP codefroces #1
 - [ ] clist random 5% ~ 40%
 - [ ] luogu template
@@ -15,9 +15,11 @@
 
 - [ ] logtrick 練習
 
-- [ ] codeforces #1089
+- [ ] codeforces #1089-C1,C2,D
 
 - [ ] codeforces #1086,D1,D2
+
+- [ ] atcoder abc #452
 
 - [ ] atcoder abc #451-E,F
 
