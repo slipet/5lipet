@@ -15,15 +15,19 @@
 
 - [ ] logtrick 練習
 
-- [ ] codeforces #1089-C1,C2,D
+- [ ] leetcode #496-Q3
+
+- [ ] codeforces #1089-C2,D,E
 
 - [ ] codeforces #1086,D1,D2
 
-- [ ] atcoder abc #452
+- [ ] atcoder abc #452-D,E
 
 - [ ] atcoder abc #451-E,F
 
-- [ ] atcoder abc #448-F
+- [ ] atcoder abc #448-F(莫隊)
+
+- [ ] atcoder abc #445-(C), D, F
 
 - [ ] SegmentTree, LazySegmentTree
 
