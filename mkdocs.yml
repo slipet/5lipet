@@ -302,6 +302,8 @@ nav:
     - Codeforces: 
       - 2025:
         - S4: "./problems/codeforces/codeforces.md"
+      - 2026:
+        - S2: "./problems/codeforces/2026_S2.md"
     - atcoder: 
       - 2026:
         - S2: "./problems/atcoder/2026_S2.md"
