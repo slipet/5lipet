@@ -181,6 +181,12 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/problems/atcoder/2026_S2/"/>
     </url>
     <url>
+        <loc>https://localhost:8000/problems/codeforces/2026_S2/</loc>
+        <lastmod>2026-04-07</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/problems/codeforces/2026_S2/"/>
+    </url>
+    <url>
         <loc>https://localhost:8000/problems/codeforces/codeforces/</loc>
         <lastmod>2026-04-07</lastmod>
         <changefreq>daily</changefreq>
