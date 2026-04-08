@@ -319,6 +319,7 @@ nav:
         - S4: "./contest/leetcode/2025_S4.md"
       - 2026:
         - S1: "./contest/leetcode/2026_S1.md"
+        - S2: "./contest/leetcode/2026_S2.md"
     - Atcoder:
       - 2026:
         - S1: "./contest/atcoder/2026_S1.md"
