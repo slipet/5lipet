@@ -15,7 +15,7 @@
 
 - [ ] logtrick 練習
 
-- [ ] leetcode #496-Q3
+- [ ] Circular array
 
 - [ ] codeforces #1089-C2,D,E
 
