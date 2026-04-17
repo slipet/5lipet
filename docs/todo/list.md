@@ -29,7 +29,7 @@
 
 - [ ] atcoder abc #448-F(莫隊)
 
-- [ ] atcoder abc #445-E, F
+- [ ] atcoder abc #445-E
 
 - [ ] atcoder abc #445-(C 基環樹森林, 倍增, DSU解法)
 
