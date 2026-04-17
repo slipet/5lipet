@@ -93,6 +93,37 @@ auto init = []() {
 }();
 ```
 
+#### 使用最小質因數做質因數分解
+
+由於質因數分解預處理會有空間上的限制在 $10^6, 10^7$ 的值域下沒辦法開那麼大的空間儲存每個數的質因數。
+
+因此可以換個方式，儲存每個數的最小質因數，透過一個質因數可以找到其餘的質因數。
+
+時間複雜度: $O(n\log{n})$
+空間複雜度: $O(n)$
+
+```cpp
+const int MAXN = 1e7;
+int spf[MAXN+1];
+
+auto init = []() {
+    for(int i = 1; i <= MAXN; i++) spf[i] = i;
+    for(int i = 2; i * i <= MAXN; i++) {
+        if(spf[i] == i) {
+            for(int j = i * i; j <= MAXN; j += i) {
+                if(spf[j] == j) spf[j] = i;
+            }
+        }
+    }
+    return 0;
+}();
+
+while (x > 1) {
+    int p = spf[x];
+    while (x % p == 0) x /= p;
+}
+```
+
 ####  質因數分解方案數
 
 [講解](https://leetcode.cn/problems/count-ways-to-make-array-with-product/solutions/2713481/tu-jie-zhi-yin-zi-fen-jie-fang-qiu-wen-t-fboo/)
