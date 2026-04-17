@@ -2,6 +2,8 @@
 
 這裡放一些GCD/LCM的內容
 
+* 兩個都是重複貢獻的問題也就是 $x \text{ opt }x = x$
+
 ## GCD
 
 性質:
@@ -10,7 +12,11 @@
 
 結論:
 
-1. gcd 越多元素 g 會越小
+1. gcd 越多元素 g 會越小 
+
+$$gcd(x_1, x_2) \ge gcd(x_1, x_2, x_3) \ge gcd(x_1, x_2, x_3, ...)$$
+
+   * [leetcode #3901. 好子序列查询](https://leetcode.cn/problems/good-subsequence-queries/description/)
 
 ## LCM
 
