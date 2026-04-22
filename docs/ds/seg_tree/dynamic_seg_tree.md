@@ -1,6 +1,99 @@
 #動態開點
 
+```cpp
+#include <iostream>
+#include <algorithm>
+#include <climits>
 
+using namespace std;
+
+// 設定預設值，若求最大值且包含負數，可設為 INT_MIN
+const int ST_NODE_DEFAULT_VAL = 0;
+
+struct stNode {
+    stNode *lo, *ro;
+    int l, r;
+    int val;
+
+    // 靜態哨兵節點，類似 Go 的 emptyStNode
+    static stNode* empty;
+
+    stNode(int _l, int _r, int _val = ST_NODE_DEFAULT_VAL) 
+        : l(_l), r(_r), val(_val) {
+        lo = ro = empty;
+    }
+
+    // 這裡為了簡化，提供一個靜態初始化方法
+    static void initEmpty() {
+        if (!empty) {
+            empty = new stNode(0, 0, ST_NODE_DEFAULT_VAL);
+            empty->lo = empty->ro = empty;
+        }
+    }
+
+    int mergeInfo(int a, int b) {
+        return max(a, b);
+    }
+
+    void maintain() {
+        // 因為有哨兵節點，不需要判斷 lo/ro 是否為空
+        val = mergeInfo(lo->val, ro->val);
+    }
+
+    void update(int i, int v) {
+        if (l == r) {
+            val = mergeInfo(val, v);
+            return;
+        }
+        
+        int m = l + (r - l) / 2; // 安全的下取整中點計算
+        if (i <= m) {
+            if (lo == empty) {
+                lo = new stNode(l, m);
+            }
+            lo->update(i, v);
+        } else {
+            if (ro == empty) {
+                ro = new stNode(m + 1, r);
+            }
+            ro->update(i, v);
+        }
+        maintain();
+    }
+
+    int query(int ql, int qr) {
+        // 如果目前是哨兵節點，或者區間不交疊
+        if (this == empty || ql > r || qr < l) {
+            return ST_NODE_DEFAULT_VAL;
+        }
+        // 完全包含
+        if (ql <= l && r <= qr) {
+            return val;
+        }
+        return mergeInfo(lo->query(ql, qr), ro->query(ql, qr));
+    }
+};
+
+// 初始化靜態成員
+stNode* stNode::empty = nullptr;
+
+// 測試範例
+int main() {
+    stNode::initEmpty();
+    
+    // 假設範圍是 [1, 1e9]
+    stNode* root = new stNode(1, 1000000000);
+    
+    root->update(5, 10);
+    root->update(10, 20);
+    
+    cout << "Query [1, 7]: " << root->query(1, 7) << endl;   // 10
+    cout << "Query [7, 12]: " << root->query(7, 12) << endl; // 20
+    cout << "Query [1, 100]: " << root->query(1, 100) << endl; // 20
+
+    return 0;
+}
+```
 ```
 ref: https://github.com/EndlessCheng/codeforces-go/blob/master/copypasta/segment_tree.go
 var emptyStNode = &stNode{val: stNodeDefaultVal}
