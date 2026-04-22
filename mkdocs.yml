@@ -263,7 +263,8 @@ nav:
     - Fenwick Tree/BIT: "./ds/bit.md"
     - Segment Tree: 
       -Segment Tree: "./ds/seg_tree/seg_tree.md"
-      
+      -zkw: "./ds/seg_tree/zkw.md"
+      -Dynamic Segment Tree: "./ds/seg_tree/dynamic_seg_tree.md"
     - Sparse Table: "./ds/sparse_table.md"
   - Search:
     - DFS: "./search/dfs.md"
