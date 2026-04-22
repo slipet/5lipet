@@ -6,24 +6,25 @@ ref: https://github.com/EndlessCheng/codeforces-go/blob/master/copypasta/segment
 #include <algorithm>
 #include <functional>
 
+template<typename T>
 class DynamicSegmentTree {
 private:
     struct Node {
         Node *lo, *ro;
-        int l, r, val;
-
-        Node(int _l, int _r, Node* empty, int defaultVal) 
+        int l, r;
+        T val;
+        Node(int _l, int _r, Node* empty, T defaultVal) 
             : l(_l), r(_r), val(defaultVal), lo(empty), ro(empty) {}
     };
 
     Node *root;
     Node *empty;
     int rangeL, rangeR;
-    int defaultVal;
+    T defaultVal;
 
     // --- 核心 Merge 邏輯 ---
     // 這裡可以根據需求修改，例如 return a + b; 或 return min(a, b);
-    int merge(int a, int b) const {
+    T merge(T a, T b) const {
         return max(a, b);
     }
 
@@ -32,7 +33,7 @@ private:
         o->val = merge(o->lo->val, o->ro->val);
     }
 
-    void update(Node* &o, int l, int r, int i, int v) {
+    void update(Node* &o, int l, int r, int i, T v) {
         if (o == empty) {
             o = new Node(l, r, empty, defaultVal);
         }
@@ -47,7 +48,7 @@ private:
         maintain(o);
     }
 
-    int query(Node* o, int ql, int qr) const {
+    T query(Node* o, int ql, int qr) const {
         if (o == empty || ql > o->r || qr < o->l) {
             return defaultVal;
         }
@@ -65,7 +66,7 @@ private:
     }
 
 public:
-    DynamicSegmentTree(int l, int r, int defVal = 0) 
+    DynamicSegmentTree(int l, int r, T defVal = 0) 
         : rangeL(l), rangeR(r), defaultVal(defVal) {
         
         // 建立哨兵節點
@@ -87,7 +88,7 @@ public:
         update(root, rangeL, rangeR, i, v);
     }
 
-    int Query(int ql, int qr) const {
+    T Query(int ql, int qr) const {
         return query(root, ql, qr);
     }
 };
@@ -95,7 +96,7 @@ public:
 // --- 使用範例 ---
 int main() {
     // 建立一個範圍為 [1, 10^9] 的線段樹
-    DynamicSegmentTree st(1, 1'000'000'000, 0);
+    DynamicSegmentTree<int> st(1, 1'000'000'000, 0);
 
     st.Update(500, 100);
     st.Update(1000, 500);
