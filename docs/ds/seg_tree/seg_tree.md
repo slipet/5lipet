@@ -75,10 +75,10 @@ class SegmentTree {
             return tree[node];
         }
         int m = (l + r) / 2;
-        if (qr <= m) { // [ql, qr] 在左子树
+        if (qr <= m) { // [ql, qr] 在左子树 -> ql, qr, m
             return query(node * 2, l, m, ql, qr);
         }
-        if (ql > m) { // [ql, qr] 在右子树
+        if (ql > m) { // [ql, qr] 在右子树 -> m + 1, ql, qr
             return query(node * 2 + 1, m + 1, r, ql, qr);
         }
         T l_res = query(node * 2, l, m, ql, qr);
@@ -257,4 +257,31 @@ int main() {
     cout << t2.query(0, 7) << endl;
     return 0;
 }
+```
+
+#### <span style="color:red"> 懶標記的意義是目前已經應用在 val 上的操作。</span>
+
+
+* lougu [P3372 【模板】线段树 1](https://www.luogu.com.cn/problem/P3372)
+* lougu [P3373 【模板】线段树 2](https://www.luogu.com.cn/problem/P3373)
+    這題用到兩種區間操作 1. 區間加法 2. 區間乘法，要注意到加法和乘法是有順序關係的
+    $val = (val + add) * mul$
+    要將乘法的影響應用到 todo add 的 lazy tag 上
+```cpp
+template<typename T, typename F>
+class LazySegmentTree {
+    ....
+    void apply(int node, int l, int r, F todo_add, F todo_mul) {
+        Node &cur = tree[node];
+        cur.val = cur.val * todo_mul;
+        cur.val %= MOD;
+        cur.val += todo_add * (r - l + 1);
+        cur.val %= MOD;
+        //要將乘法的影響應用到 todo add 的 lazy tag 上
+        cur.todo_add = merg_add(cur.todo_add * todo_mul, todo_add);
+        //
+        cur.todo_mul = merg_mul(cur.todo_mul, todo_mul);
+    }
+    ....
+};
 ```
