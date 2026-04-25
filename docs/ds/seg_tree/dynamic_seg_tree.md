@@ -2,6 +2,91 @@
 
 一開始 memory pool 可以用 $O(m\log{n})$ 的大小，$m$ 為操作次數，$n$ 是值域。
 
+## 單點修改
+
+```cpp
+#define lc(node) (tree[node].l)
+#define rc(node) (tree[node].r)
+const int SZ = 4'000'000;
+
+template<typename T>
+class DynamicSegTree {
+    struct Node {
+        int l, r;
+        T val;
+    };
+    inline static Node tree[SZ];
+    int empty;
+    int root;
+    int cnt;
+    int rangeL;
+    int rangeR;
+
+    int newNode() {
+        if(cnt >= SZ) return empty;
+        int node = cnt++;
+        tree[node].l = tree[node].r = empty;
+        tree[node].val = 0;
+        return node;
+    }
+    T merge_val(T &a, T &b) {
+        return (a + b);
+    }
+    void ensure(int &node) {
+        if (node == empty) {
+            node = newNode();
+        }
+    }
+    void maintain(int node) {
+        tree[node].val = merge_val(tree[lc(node)].val, tree[rc(node)].val);
+    }
+    void update(int &node, int l, int r, int i, F val) {
+        ensure(node);
+        if (l == r) {
+            tree[node].val = merge(tree[node].val, val);
+            return;
+        }
+        int m = l + (r - l) / 2;
+        if(i <= m) update(lc(node), l, m, i, val);
+        if(i > m) update(rc(node), m + 1, r, i, val);
+        maintain(node);
+    }
+    T query(int node, int l, int r, int ql, int qr) {
+        if(node == empty || (ql <= l && r <= qr)) {
+            return tree[node].val;
+        }
+        
+        int m = l + (r - l) / 2;
+        if(qr <= m) return query(lc(node), l, m, ql, qr);
+        if(ql > m) return query(rc(node), m + 1, r, ql, qr);
+        T rsL = query(lc(node), l, m, ql, qr);
+        T rsR = query(rc(node), m + 1, r, ql, qr);
+        return merge_val(rsL, rsR);
+    }
+public:
+    DynamicSegTree(int l, int r)
+        : cnt(0), rangeL(l), rangeR(r) {
+        empty = cnt++;
+        tree[empty].l = empty;
+        tree[empty].r = empty;
+        tree[empty].val = 0;
+        root = empty;
+    }
+    void update(int i, F val) {
+        if (i < rangeL || i > rangeR) return;
+        update(root, rangeL, rangeR, i, val);
+    }
+    T query(int ql, int qr) {
+        if (ql > qr) return 0;
+        if (ql < rangeL || qr > rangeR) return 0;
+        return query(root, rangeL, rangeR, ql, qr);
+    }
+};
+```
+
+
+## Lazy Tag
+
 ```cpp
 #define lc(node) (tree[node].l)
 #define rc(node) (tree[node].r)
