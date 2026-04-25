@@ -2,112 +2,110 @@
 
 ref: https://github.com/EndlessCheng/codeforces-go/blob/master/copypasta/segment_tree.go
 ```cpp
-#include <iostream>
-#include <algorithm>
-#include <vector>
+#define lc(node) (tree[node].l)
+#define rc(node) (tree[node].r)
 
-using namespace std;
+const int MOD = 1'000'000'000 + 7;
 
-template<typename T, int MAX_NODES = 1000000>
-class DynamicSegmentTree {
-private:
+const int SZ = 4'000'000;
+template<typename T, typename F>
+class DynamicSegTree {
     struct Node {
-        int lo, ro; // 改用 index 代替指標
         int l, r;
         T val;
+        F todo;
     };
-
-    // Memory Pool 相關
-    Node tree[MAX_NODES];
-    int cnt;        // 目前已分配的節點數量
-    int root;       // 根節點的 index
-    int empty;      // 哨兵節點的 index
-    
-    int rangeL, rangeR;
-    T defaultVal;
-
-    // 分配新節點
-    int newNode(int l, int r) {
-        if (cnt >= MAX_NODES) return empty; // 記憶體池滿了
-        int idx = cnt++;
-        tree[idx].l = l;
-        tree[idx].r = r;
-        tree[idx].val = defaultVal;
-        tree[idx].lo = tree[idx].ro = empty;
-        return idx;
+    inline static Node tree[SZ];
+    const F INIT_TODO = 0;
+    int empty;
+    int root;
+    int cnt;
+    int rangeL;
+    int rangeR;
+    int newNode() {
+        if(cnt >= SZ) return empty;
+        int node = cnt++;
+        tree[node].l = tree[node].r = empty;
+        tree[node].val = 0;
+        tree[node].todo = INIT_TODO;
+        return node;
     }
-
-    T merge(T a, T b) const {
-        return max(a, b);
+    T merge_val(T &a, T &b) {
+        return (a + b) % MOD;
     }
-
-    void maintain(int o) {
-        if (o == empty) return;
-        tree[o].val = merge(tree[tree[o].lo].val, tree[tree[o].ro].val);
+    F merge_todo(F &a, F &b) {
+        return (a + b) % MOD;
     }
-
-    void update(int &o, int l, int r, int i, T v) {
-        if (o == empty) {
-            o = newNode(l, r);
+    void ensure(int &node) {
+        if (node == empty) {
+            node = newNode();
         }
-        if (l == r) {
-            tree[o].val = merge(tree[o].val, v);
+    }
+    void apply(int &node, int l, int r, F todo) {
+        ensure(node);
+        Node &cur = tree[node];
+        cur.val += todo * (r - l + 1);
+        cur.todo = merge_todo(cur.todo, todo);
+    }
+    void spread(int node, int l, int r) {
+        Node &cur = tree[node];
+        F todo = tree[node].todo;
+        if (todo == INIT_TODO) {
             return;
         }
         int m = l + (r - l) / 2;
-        if (i <= m) update(tree[o].lo, l, m, i, v);
-        else update(tree[o].ro, m + 1, r, i, v);
-        maintain(o);
+        apply(lc(node), l, m, todo);
+        apply(rc(node), m + 1, r, todo);
+        cur.todo = INIT_TODO;
     }
-
-    T query(int o, int ql, int qr) const {
-        if (o == empty || ql > tree[o].r || qr < tree[o].l) {
-            return defaultVal;
-        }
-        if (ql <= tree[o].l && tree[o].r <= qr) {
-            return tree[o].val;
-        }
-        return merge(query(tree[o].lo, ql, qr), query(tree[o].ro, ql, qr));
+    void maintain(int node) {
+        tree[node].val = merge_val(tree[lc(node)].val, tree[rc(node)].val);
     }
+    void update(int &node, int l, int r, int ql, int qr, F val) {
+        ensure(node);
+        if (ql <= l && r <= qr) {
+            apply(node, l, r, val);
+            return;
+        }
+        spread(node, l, r);
+        int m = l + (r - l) / 2;
+        if(ql <= m) update(lc(node), l, m, ql, qr, val);
+        if(qr > m) update(rc(node), m + 1, r, ql, qr, val);
+        maintain(node);
+    }
+    T query(int node, int l, int r, int ql, int qr) {
 
+        if(node == empty || (ql <= l && r <= qr)) {
+            return tree[node].val;
+        }
+        
+        spread(node, l, r);
+        int m = l + (r - l) / 2;
+        if(qr <= m) return query(lc(node), l, m, ql, qr);
+        if(ql > m) return query(rc(node), m + 1, r, ql, qr);
+        T rsL = query(lc(node), l, m, ql, qr);
+        T rsR = query(rc(node), m + 1, r, ql, qr);
+        return merge_val(rsL, rsR);
+    }
 public:
-    DynamicSegmentTree(int l, int r, T defVal = 0) 
-        : rangeL(l), rangeR(r), defaultVal(defVal), cnt(0) {
-        
-        // 0 號位置留給哨兵節點 (empty)
+    DynamicSegTree(int l, int r)
+        : cnt(0), rangeL(l), rangeR(r) {
         empty = cnt++;
-        tree[empty].l = tree[empty].r = 0;
-        tree[empty].val = defaultVal;
-        tree[empty].lo = tree[empty].ro = empty;
-        
+        tree[empty].l = empty;
+        tree[empty].r = empty;
+        tree[empty].val = 0;
+        tree[empty].todo = INIT_TODO;
         root = empty;
     }
-
-    void Update(int i, T v) {
-        if (i < rangeL || i > rangeR) return;
-        update(root, rangeL, rangeR, i, v);
+    void update(int ql, int qr, F val) {
+        if (ql > qr) return;
+        if (ql < rangeL || qr > rangeR) return;
+        update(root, rangeL, rangeR, ql, qr, val);
     }
-
-    T Query(int ql, int qr) const {
-        return query(root, ql, qr);
+    T query(int ql, int qr) {
+        if (ql > qr) return 0;
+        if (ql < rangeL || qr > rangeR) return 0;
+        return query(root, rangeL, rangeR, ql, qr);
     }
 };
-
-// --- 使用範例 ---
-// 注意：MAX_NODES 根據題目範圍調整。
-// 若有 N 次 Update，且範圍很大，節點數約為 N * log(Range)
-DynamicSegmentTree<int, 2000000> st(1, 1'000'000'000, 0);
-
-int main() {
-    ios::sync_with_stdio(false); cin.tie(nullptr);
-
-    st.Update(500, 100);
-    st.Update(1000, 500);
-    st.Update(500, 200);
-
-    cout << "Query [1, 600]: " << st.Query(1, 600) << endl;      
-    cout << "Query [600, 2000]: " << st.Query(600, 2000) << endl; 
-
-    return 0;
-}
 ```
