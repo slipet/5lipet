@@ -1,6 +1,7 @@
 #動態開點
 
-ref: https://github.com/EndlessCheng/codeforces-go/blob/master/copypasta/segment_tree.go
+一開始 memory pool 可以用 $O(m\log{n})$ 的大小，$m$ 為操作次數，$n$ 是值域。
+
 ```cpp
 #define lc(node) (tree[node].l)
 #define rc(node) (tree[node].r)
