@@ -288,7 +288,10 @@ class LazySegmentTree {
 
 ## Tag Permanence(標記永久化)
 
-修改時一路更改被影響到的點，詢問時則一路累加路上的標記，從而省去下傳標記的操作。
+如果確定懶惰標記不會在中途被加到溢出（即超過了該類型數據所能表示的最大範圍），那麼就可以將標記永久化
+
+修改時一路更改被影響到的點，可以避免下傳懶惰標記，詢問時則一路累加路上的標記，從而省去下傳標記的操作。
+
 
 ```cpp
 template<typename T, typename F>
@@ -303,7 +306,7 @@ class PermanenceSegTree{
 public:
 
     PermanenceSegTree(int n, T init_val): PermanenceSegTree(vector<T>(n, init_val)) {
-        
+
     }
 
 }
