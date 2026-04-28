@@ -310,7 +310,7 @@ class PermanenceSegTree{
     void maintain(int node) {
         tree[node].val = merge_val(tree[node * 2].val, tree[node * 2 + 1].val);
     }
-    void build(vector<T> &a, int node, int l, int r) {
+    void build(const vector<T> &a, int node, int l, int r) {
         tree[node].tag = INIT_TAG;
         if(l == r) {
             tree[node].val = a[l];
@@ -352,9 +352,10 @@ class PermanenceSegTree{
 
 public:
 
-    PermanenceSegTree(int n, T init_val): PermanenceSegTree(vector<T>(n, init_val)) {}
 
-    PermanenceSegTree(vector<T> &a): n(a.size()), tree(2 << bit_width(a.size() - 1)) {
+    PermanenceSegTree(int n, T init_val = 0) : PermanenceSegTree(vector<T>(n, init_val)) {}
+    
+    PermanenceSegTree(const vector<T>& a) : n(a.size()), tree(2 << bit_width(a.size() - 1)) {
         build(a, 1, 0, n - 1);
     }
     void update(int ql, int qr, F val) {
