@@ -202,3 +202,92 @@ public:
     }
 };
 ```
+
+## Tag Permanence(標記永久化)
+
+```cpp
+const int SZ = 4'000'000;
+template<typename T, typename F>
+class DynamicSegTree {
+    struct Node {
+        int l, r;
+        T val;
+        F TAG;
+    };
+    inline static Node tree[SZ];
+    const F INIT_TAG = 0;
+    int empty;
+    int root;
+    int cnt;
+    int rangeL;
+    int rangeR;
+    int newNode() {
+        if(cnt >= SZ) return empty;
+        int node = cnt++;
+        tree[node].l = tree[node].r = empty;
+        tree[node].val = 0;
+        tree[node].tag = INIT_TAG;
+        return node;
+    }
+    T merge_val(T &a, T &b) {
+        return (a + b);
+    }
+    void ensure(int &node) {
+        if (node == empty) {
+            node = newNode();
+        }
+    }
+    void maintain(int node) {
+        tree[node].val = merge_val(tree[lc(node)].val, tree[rc(node)].val);
+    }
+    void update(int &node, int l, int r, int ql, int qr, F val) {
+        ensure(node);
+        if (ql <= l && r <= qr) {
+            tree[node].tag += val;
+            return;
+        }
+        int m = l + (r - l) / 2;
+        if(qr <= m) update(lc(node), l, m, ql, qr, val);
+        else if(ql > m) update(rc(node), m + 1, r, ql, qr, val);
+        else {
+            update(lc(node), l, m, ql, m, val);
+            update(rc(node), m + 1, r, m + 1, qr, val);
+        }
+        maintain(node);
+        tree[node].val += tree[lc(node)].tag * (m - l + 1);
+        tree[node].val += tree[rc(node)].tag * (r - (m + 1) + 1);
+    }
+    T query(int node, int l, int r, int ql, int qr) {
+        T gain = tree[node].tag * (qr - ql + 1);
+        if(node == empty || (ql <= l && r <= qr)) {
+            return tree[node].val + gain;
+        }
+        int m = l + (r - l) / 2;
+        if(qr <= m) return query(lc(node), l, m, ql, qr) + gain;
+        else if(ql > m) return query(rc(node), m + 1, r, ql, qr) + gain;
+        T rsL = query(lc(node), l, m, ql, m);
+        T rsR = query(rc(node), m + 1, r, m + 1, qr);
+        return merge_val(rsL, rsR) + gain;
+    }
+public:
+    DynamicSegTree(int l, int r)
+        : cnt(0), rangeL(l), rangeR(r) {
+        empty = cnt++;
+        tree[empty].l = empty;
+        tree[empty].r = empty;
+        tree[empty].val = 0;
+        tree[empty].tag = INIT_TAG;
+        root = empty;
+    }
+    void update(int ql, int qr, F val) {
+        if (ql > qr) return;
+        if (ql < rangeL || qr > rangeR) return;
+        update(root, rangeL, rangeR, ql, qr, val);
+    }
+    T query(int ql, int qr) {
+        if (ql > qr) return 0;
+        if (ql < rangeL || qr > rangeR) return 0;
+        return query(root, rangeL, rangeR, ql, qr);
+    }
+};
+```
