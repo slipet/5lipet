@@ -1,12 +1,19 @@
 #動態開點
 
-一開始 memory pool 可以用 $O(m\log{n})$ 的大小，$m$ 為操作次數，$n$ 是值域。
+一開始 memory pool 可以用 
+
+空間大小公式: $O(m\log{n})$ 的大小，$m$ 為操作次數，$n$ 是值域。
+* 單點修改： 每次操作最多產生 $\lceil \log_2{n} \rceil + 1$ 個新節點。如果操作 m 次，約需 $M(\log_2{n} + C)$ 個節點。
+* 區間修改（Lazy Tag）： 節點數會更多一些，但通常在 $2 \times m\log{n}$ 到 $4 \times m\log{n}$ 範圍內。
+
 
 ## 單點修改
 
 ```cpp
 #define lc(node) (tree[node].l)
 #define rc(node) (tree[node].r)
+
+const int SZ2 = m * (2 << bit_width(n));
 const int SZ = 4'000'000;
 
 template<typename T>
@@ -92,7 +99,7 @@ public:
 #define rc(node) (tree[node].r)
 
 const int MOD = 1'000'000'000 + 7;
-
+const int SZ2 = 4* m * (2 << bit_width(n));
 const int SZ = 4'000'000;
 template<typename T, typename F>
 class DynamicSegTree {
