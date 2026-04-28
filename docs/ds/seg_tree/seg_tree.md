@@ -299,7 +299,7 @@ class PermanenceSegTree{
     struct Node {
         T val;
         F tag;
-    }
+    };
     const F INIT_TAG = 0;
     vector<Node> tree;
     int n;
@@ -313,13 +313,13 @@ class PermanenceSegTree{
     void build(vector<T> &a, int node, int l, int r) {
         tree[node].tag = INIT_TAG;
         if(l == r) {
-            tree[node] = a[l];
+            tree[node].val = a[l];
             return;
         }
         int m = l + (r - l) / 2;
         build(a, node * 2, l, m);
         build(a, node * 2 + 1, m + 1, r);
-        maintin(node);
+        maintain(node);
     }
 
     void update(int node, int l, int r, int ql, int qr, F val) {
@@ -365,5 +365,5 @@ public:
         if(ql > qr) return 0;
         return query(1, 0, n - 1, ql, qr);
     }
-}
+};
 ```
