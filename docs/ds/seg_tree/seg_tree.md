@@ -303,11 +303,67 @@ class PermanenceSegTree{
     const F INIT_TAG = 0;
     vector<Node> tree;
     int n;
-public:
 
-    PermanenceSegTree(int n, T init_val): PermanenceSegTree(vector<T>(n, init_val)) {
-
+    T merge_val(T &a, T &b) {
+        return a + b;
+    }
+    void maintain(int node) {
+        tree[node].val = merge_val(tree[node * 2].val, tree[node * 2 + 1].val);
+    }
+    void build(vector<T> &a, int node, int l, int r) {
+        tree[node].tag = INIT_TAG;
+        if(l == r) {
+            tree[node] = a[l];
+            return;
+        }
+        int m = l + (r - l) / 2;
+        build(a, node * 2, l, m);
+        build(a, node * 2 + 1, m + 1, r);
+        maintin(node);
     }
 
+    void update(int node, int l, int r, int ql, int qr, F val) {
+        if(ql <= l && r <= qr) {
+            tree[node].tag += val;
+            return;
+        }
+        tree[node].val += val * (qr - ql + 1);
+        int m = l + (r - l) / 2;
+        if(qr <= m) update(node * 2, l, m, ql, qr, val);
+        else if(ql > m) update(node * 2 + 1, m + 1, r, ql, qr, val);
+        else {
+            update(node * 2, l, m, ql, m, val);
+            update(node * 2 + 1, m + 1, r, m + 1, qr, val);
+        }
+    }
+
+    T query(int node, int l, int r, int ql, int qr) {
+        F gain = tree[node].tag * (qr - ql + 1);
+        if(ql <= l && r <= qr) {
+            return tree[node].val + gain;
+        }
+        int m = l + (r - l) / 2;
+        if(qr <= m) return gain + query(node * 2, l, m, ql, qr);
+        if(ql > m) return gain + query(node * 2 + 1, m + 1, r, ql, qr);
+        T rsL = query(node * 2, l, m, ql, m);
+        T rsR = query(node * 2 + 1, m + 1, r, m + 1, qr);
+        return gain + rsL + rsR;
+    }
+
+public:
+
+    PermanenceSegTree(int n, T init_val): PermanenceSegTree(vector<T>(n, init_val)) {}
+
+    PermanenceSegTree(vector<T> &a): n(a.size()), tree(2 << bit_width(a.size() - 1)) {
+        build(a, 1, 0, n - 1);
+    }
+    void update(int ql, int qr, F val) {
+        if(ql > qr) return;
+        update(1, 0, n - 1, ql, qr, val);
+    }
+    T query(int ql, int qr) {
+        if(ql > qr) return 0;
+        return query(1, 0, n - 1, ql, qr);
+    }
 }
 ```
