@@ -241,6 +241,12 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/problems/leetcode/2026_S1/"/>
     </url>
     <url>
+        <loc>https://localhost:8000/problems/leetcode/2026_S2/</loc>
+        <lastmod>2026-04-28</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/problems/leetcode/2026_S2/"/>
+    </url>
+    <url>
         <loc>https://localhost:8000/problems/luogu/classic/</loc>
         <lastmod>2026-04-28</lastmod>
         <changefreq>daily</changefreq>
