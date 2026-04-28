@@ -115,7 +115,7 @@ public:
 };
 ```
 
-## Lazy Segment Tree (區間修改)
+## Lazy tag(懶標記)
 
 ```cpp
 // 模板来源 https://leetcode.cn/circle/discuss/mOr1u6/
@@ -284,4 +284,27 @@ class LazySegmentTree {
     }
     ....
 };
+```
+
+## Tag Permanence(標記永久化)
+
+修改時一路更改被影響到的點，詢問時則一路累加路上的標記，從而省去下傳標記的操作。
+
+```cpp
+template<typename T, typename F>
+class PermanenceSegTree{
+    struct Node {
+        T val;
+        F tag;
+    }
+    const F INIT_TAG = 0;
+    vector<Node> tree;
+    int n;
+public:
+
+    PermanenceSegTree(int n, T init_val): PermanenceSegTree(vector<T>(n, init_val)) {
+        
+    }
+
+}
 ```
