@@ -17,6 +17,8 @@
 
 - [ ] Circular array
 
+- [ ] codeforces #1094
+
 - [ ] codeforces #1089-C2,D,E
 
 - [ ] codeforces #1086,D1,D2
