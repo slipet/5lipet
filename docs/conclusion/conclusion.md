@@ -146,4 +146,9 @@ public:
 ### 區間修改子樹(DFS 時間戳)
 
 
+### 維護相鄰元素距離
 
+* 使用有序集合 set, multiset 維護集合元素
+* 使用二分確定相鄰元素的距離後，操作維護
+
+* [abc #444 E - Sparse Range](https://atcoder.jp/contests/abc444/tasks/abc444_e)
