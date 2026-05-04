@@ -37,3 +37,18 @@ for(int i = n - 2; i >= 0; --i) {
     nxt_dec[i] = p;
 }
 ```
+
+### 二為偏序
+
+一般的二維偏序問題可以用樹狀數組解決
+
+
+
+* CF1575L
+* [leetcode #3920](https://leetcode.cn/problems/maximize-fixed-points-after-deletions/description/)
+
+    給很多二元組 (x, y)，按一定順序選出最多的二元組，使得它們滿足第一維單調不降，第二維單調遞增。
+
+* [leetcode #2250](https://leetcode.cn/problems/count-number-of-rectangles-containing-each-point/description/)
+
+* [leetcode #354](https://leetcode.cn/problems/russian-doll-envelopes/description/)
