@@ -70,7 +70,7 @@ $$(a_j, b_j) \prec (a_i, b_i) \overset{def}{=} a_j \lesseqgtr a_i \text{ and } b
 
 * [POJ 2352 Stars](https://vjudge.net/problem/POJ-2352#author=translator:1281309:zh)
 
-    求 $(x_j, y_j) \prec (x_i, y_i)$ 的 (x_j, y_j) 個數，先按照 $y$ 由大至小排序後用 BIT 維護 x。
+    求 $(x_j, y_j) \prec (x_i, y_i)$ 的 $(x_j, y_j)$ 個數，先按照 $y$ 由大至小排序後用 BIT 維護 x。
 
 * [POJ 2299 Ultra-QuickSort](https://vjudge.net/problem/POJ-2299)
 
