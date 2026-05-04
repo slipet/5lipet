@@ -42,6 +42,10 @@ for(int i = n - 2; i >= 0; --i) {
 
 已知點對的序列 $(a_1, b_1), (a_2, b_2), (a_3, b_3), ... $ 並在其上定義某種偏序關系 $\prec$，現有點 $(a_i, b_i)$，求滿足 $(a_j, b_j) \prec (a_i, b_i)$ 的 $(a_j, b_j)$ 的數量。
 
+在二維的情形，我們分別對兩個屬性定義序關系，一定能得到一種偏序關系:
+
+$$(a_j, b_j) \prec (a_i, b_i) \overset{def}{=} a_j \lesseqgtr a_i \text{ and } b_j \lesseqgtr b_i$$
+
 一般的二維偏序問題可以用樹狀數組解決
 
 * CF1575L
@@ -55,4 +59,4 @@ for(int i = n - 2; i >= 0; --i) {
 
 * [POJ 2352 Stars](https://vjudge.net/problem/POJ-2352#author=translator:1281309:zh)
 
-    求 $(x_j, y_j) \prec (x_i, y_i)$ 的 (x_j, y_j) 個數
+    求 $(x_j, y_j) \prec (x_i, y_i)$ 的 (x_j, y_j) 個數，先按照 $y$ 由大至小排序後用 BIT 維護 x。
