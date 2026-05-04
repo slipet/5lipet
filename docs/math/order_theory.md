@@ -46,6 +46,13 @@ for(int i = n - 2; i >= 0; --i) {
 
 $$(a_j, b_j) \prec (a_i, b_i) \overset{def}{=} a_j \lesseqgtr a_i \text{ and } b_j \lesseqgtr b_i$$
 
+
+* 逆序對
+
+    逆序對本質上就是一種二維偏序
+
+    $$(j, a_j) \prec (i, a_i) \overset{def}{=} j < i \text{ and } a_j > a_i $$
+
 一般的二維偏序問題可以用樹狀數組解決
 
 * CF1575L
@@ -60,3 +67,11 @@ $$(a_j, b_j) \prec (a_i, b_i) \overset{def}{=} a_j \lesseqgtr a_i \text{ and } b
 * [POJ 2352 Stars](https://vjudge.net/problem/POJ-2352#author=translator:1281309:zh)
 
     求 $(x_j, y_j) \prec (x_i, y_i)$ 的 (x_j, y_j) 個數，先按照 $y$ 由大至小排序後用 BIT 維護 x。
+
+* [POJ 2299 Ultra-QuickSort](https://vjudge.net/problem/POJ-2299)
+
+    給定操作為交換相鄰元素，而 "最少交換次數（只允許相鄰交換）= 逆序對數量"
+    * 每一次「相鄰交換」，只會消掉 剛好 1 個逆序對
+    * 不會影響其他 pair 的順序關係
+
+    * 如果是任意位置那就是交換環的問題
