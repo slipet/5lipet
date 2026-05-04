@@ -52,3 +52,7 @@ for(int i = n - 2; i >= 0; --i) {
 * [leetcode #2250](https://leetcode.cn/problems/count-number-of-rectangles-containing-each-point/description/)
 
 * [leetcode #354](https://leetcode.cn/problems/russian-doll-envelopes/description/)
+
+* [POJ 2352 Stars](https://vjudge.net/problem/POJ-2352#author=translator:1281309:zh)
+
+    求 $(x_j, y_j) \prec (x_i, y_i)$ 的 (x_j, y_j) 個數
