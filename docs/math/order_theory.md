@@ -38,11 +38,11 @@ for(int i = n - 2; i >= 0; --i) {
 }
 ```
 
-### 二為偏序
+### 二為偏序/2D Partial Ordering
+
+已知點對的序列 $(a_1, b_1), (a_2, b_2), (a_3, b_3), ... $ 並在其上定義某種偏序關系 $\prec$，現有點 $(a_i, b_i)$，求滿足 $(a_j, b_j) \prec (a_i, b_i)$ 的 $(a_j, b_j)$ 的數量。
 
 一般的二維偏序問題可以用樹狀數組解決
-
-
 
 * CF1575L
 * [leetcode #3920](https://leetcode.cn/problems/maximize-fixed-points-after-deletions/description/)
