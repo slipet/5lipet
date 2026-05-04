@@ -19,6 +19,10 @@ Erdős-Szekeres theorem: Given n ≥ rs + 1 , any sequence of n elements has eit
 [material 3](https://math.stackexchange.com/questions/1208735/understanding-dilworths-theorem)
 
 
+### 逆序對(Inversion)
+
+* 嚴格逆序對個數 = 總數 - 非嚴格順序對個數
+
 
 ### 遍歷逆序位置
 
