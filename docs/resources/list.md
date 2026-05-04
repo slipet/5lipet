@@ -6,4 +6,6 @@
 
 [Sshwy's Notes](https://notes.sshwy.name/archives/)
 
-[海大競程](https://hackmd.io/@LeeShoWhaodian/SkD-LaztZe#/)
+[海大競程](https://hackmd.io/@LeeShoWhaodian)
+
+[DBG](https://hackmd.io/@LeeShoWhaodian/SkD-LaztZe#/)
