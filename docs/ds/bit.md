@@ -4,11 +4,15 @@
 ```cpp
 // 模板来源 https://leetcode.cn/circle/discuss/mOr1u6/
 // 根据题目用 FenwickTree<int> t(n) 或者 FenwickTree<long long> t(n) 初始化
+
+#define bit_idx(i) (i + 1)
+
 template<typename T>
 class FenwickTree {
     vector<T> tree;
 
 public:
+    // input range [0, n - 1]，size = n
     // 使用下标 1 到 n
     FenwickTree(int n) : tree(n + 1) {}
 
@@ -43,8 +47,4 @@ public:
     }
 
 };
-
-int mapping(int i) {
-    return i + 1;
-}
 ```
