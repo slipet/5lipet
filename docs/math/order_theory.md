@@ -51,7 +51,7 @@ for(int i = n - 2; i >= 0; --i) {
 $$(a_j, b_j) \prec (a_i, b_i) \overset{def}{=} a_j \lesseqgtr a_i \text{ and } b_j \lesseqgtr b_i$$
 
 
-* 逆序對
+* [逆序對](https://zhuanlan.zhihu.com/p/112504092)
 
     逆序對本質上就是一種二維偏序
 
@@ -79,3 +79,6 @@ $$(a_j, b_j) \prec (a_i, b_i) \overset{def}{=} a_j \lesseqgtr a_i \text{ and } b
     * 不會影響其他 pair 的順序關係
 
     * 如果是任意位置那就是交換環的問題
+
+* [CF1311F Moving Points](https://codeforces.com/problemset/problem/1311/F)
+
