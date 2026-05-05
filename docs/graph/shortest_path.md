@@ -19,4 +19,9 @@ for (k = 1; k <= n; k++)
 
 * 延伸: 跟矩陣乘法的關係 [abc #445-F](https://slipet.github.io/5lipet/problems/atcoder/2026_S2/?h=floyd#atcoder-beginner-contest-445)
 
+
+### Bellman–Ford/SPFA
+
+可以求出有負權的圖的最短路
+
 ### Dijkstra
