@@ -4,6 +4,10 @@
 
 常用來判環，用拓樸排序判環的好處是直觀，不用像 DFS 維護當前路徑上的點
 
+* [atcoder abc #456-E](http://127.0.0.1:8000/contest/atcoder/2026_S2/#atcoder-beginner-contest-456)
+
+    分層圖找環。難點會在要想到如何建邊
+
 ```cpp
 vector<int> topologicalSort(int n, vector<vector<int>> &edges) {
     vector<vector<int>> g(n);
@@ -38,3 +42,4 @@ vector<int> topologicalSort(int n, vector<vector<int>> &edges) {
     return topo_order;
 }
 ```
+
