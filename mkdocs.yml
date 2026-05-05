@@ -285,6 +285,7 @@ nav:
     - Matrix Exponentiation: "./dp/matrix_exponentiation.md"
     - Convex Hull Trick: "./dp/convex_hull_trick.md"
   - Graph:
+    - Others: "./graph/others.md"
     - Shortest Path: "./graph/shortest_path.md"
     - Connected Components: "./graph/connected_components.md"
   - Math:
