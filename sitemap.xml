@@ -49,6 +49,12 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/conclusion/conclusion/"/>
     </url>
     <url>
+        <loc>https://localhost:8000/conclusion/enumerate_skills/</loc>
+        <lastmod>2026-05-05</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/conclusion/enumerate_skills/"/>
+    </url>
+    <url>
         <loc>https://localhost:8000/contest/atcoder/2026_S1/</loc>
         <lastmod>2026-05-05</lastmod>
         <changefreq>daily</changefreq>
