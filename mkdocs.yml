@@ -293,6 +293,7 @@ nav:
     - GCD/LCM: "./math/GCD_LCM.md"
   - Conclusion:
     - Conclusion: "./conclusion/conclusion.md"
+    - Circular Problem: "./conclusion/circular.md"
     - Enumerate Skills: "./conclusion/enumerate_skills.md"
   - CSES:
     - Introductory Problems: "./CSES/Introductory_Problems.md"
