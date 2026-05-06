@@ -20,7 +20,7 @@
 ```cpp
 //vertex = [0, n - 1]
 //edges[i] = u, v, w
-vector<vector<int>> kruskal(int n, vector<vector<int>> &edges) {
+vector<vector<int>> Kruskal(int n, vector<vector<int>> &edges) {
     vector<vector<int>> g(n);
     UnionFind dsu(n);
     int cnt = 0;
@@ -43,3 +43,47 @@ vector<vector<int>> kruskal(int n, vector<vector<int>> &edges) {
 ```
 
 ### Prim
+
+視角由點出發不斷地加點(Kruskal 是不斷的加邊)。
+
+每次選擇距離最小的一個節點，以及用新的邊更新其他節點的距離。
+
+暴力(稠密圖): $O(n^2 + m)$
+
+```cpp
+//vertex = [0, n - 1]
+//edges[i] = u, v, w
+const int inf = INT_MAX / 2;
+vector<int> Prim(const vector<vector<int>> &adj) {
+    const int n = adj.size();
+    int cnt = 0;
+    vector<int> dis(n, inf), parent(n, -1), done(n);
+    //dis 的意義為當前集合到這些點的距離
+    dis[0] = 0;
+    parent[0] = 0;
+    while(true) {
+        int x = -1;
+        for(int i = 0; i < n; ++i) {
+            if(!done[i] && (x < 0 || dis[i] < dis[x])) {
+                x = i;
+            }
+        }
+        if(x < 0) {//complete
+            return parent;
+        }
+        if(dis[x] == inf) {//fail
+            return {};
+        }
+        done[x] = true;
+        cnt++;//check how many nodes processed
+        for(int y = 0; y < n; ++y) {
+            if (!done[y] && adj[x][y] < dis[y]) {
+                dis[y] = adj[x][y];
+                parent[y] = x;
+            }
+        }
+    }
+}
+```
+
+優先佇列優化(稀疏圖): $O((n + m) \log{n})$
