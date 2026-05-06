@@ -62,3 +62,63 @@ bool spfa(int n, int s) {
 
 兩種寫法，視角分別為由點或邊出發。
 
+* 稠密圖
+
+* $O(V^2)$
+
+```cpp
+const int inf = INT_MAX / 2;
+int dijkstra(int n, vector<vector<int>> &g, int start) {
+    vector<int> dis(n, inf), done(n);
+    dis[start] = 0;
+    while(true) {
+        int x = -1;
+        for(int i = 0; i < n; ++i) {
+            if(!done[i] && (x < 0 || dis[i] < dis[x])) {
+                x = i;
+            }
+        }
+        if(x < 0) {//finished
+            return ranges::max(dis);
+        }
+        if(dis[x] == inf) {//can not reach
+            return -1;
+        }
+        done[x] = true;
+        for(int y = 0; y < n; ++y) {
+            dis[y] = min(dis[y], dis[x] + g[x][y]);
+        }
+    }
+}
+```
+
+* 稀疏圖
+
+* $O(E\log{E})$
+
+```cpp
+using pii = pair<int, int>;
+const int inf = INT_MAX / 2;
+int dijkstra(int n, vector<pii> &g) {//adj list: v, w
+    vector<int> dis(n, inf);
+    priority_queue<pii, vector<pii>, greater<>> pq;
+    dis[0] = 0;
+    pq.emplace(0, 0);
+    while(!pq.empty()) {
+        auto [du, u] = pq.top();
+        pq.pop();
+        if(du > dis[u]) continue;
+        if(u == target) {
+            return dis[u];
+        }
+        for(auto &[v, w]: g[u]) {
+            int new_d = du + v;
+            if(new_d < dis[v]) {
+                dis[v] = new_d;
+                pq.emplace(new_d, v);
+            }
+        }
+    }
+}
+```
+
