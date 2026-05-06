@@ -181,6 +181,12 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/graph/connected_components/"/>
     </url>
     <url>
+        <loc>https://localhost:8000/graph/mst/</loc>
+        <lastmod>2026-05-06</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/graph/mst/"/>
+    </url>
+    <url>
         <loc>https://localhost:8000/graph/others/</loc>
         <lastmod>2026-05-06</lastmod>
         <changefreq>daily</changefreq>
