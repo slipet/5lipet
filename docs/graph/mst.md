@@ -87,3 +87,36 @@ vector<int> Prim(const vector<vector<int>> &adj) {
 ```
 
 優先佇列優化(稀疏圖): $O((n + m) \log{n})$
+
+
+```cpp
+//vertex = [0, n - 1]
+//edges[i] = u, v, w
+const int inf = INT_MAX / 2;
+using pii = pair<int, int>;
+vector<int> Prim(const vector<vector<pii>> &g) {
+    const int n = g.size();
+    int cnt = 0;
+    vector<int> dis(n, inf), parent(n, -1), done(n);
+    dis[0] = 0;
+    parent[0] = 0;
+    priority_queue<pii, vector<pii>, greater<>> pq;//du, u
+    pq.emplace(0, 0);
+    while(!pq.empty() && cnt < n) {
+        auto [du, u] = pq.top();
+        pq.pop();
+        if(done[u]) continue;
+        done[u] = true;
+        cnt++;
+        for(auto &[v, w]: g[u]) {
+            if (!done[v] && w < dis[v]) {
+                dis[v] = w;
+                pq.emplace(w, v);
+                parent[v] = u;
+            }
+        }
+    }
+    if (cnt < n) return {}; // disconnected
+    return parent;
+}
+```
