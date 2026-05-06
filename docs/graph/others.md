@@ -43,3 +43,41 @@ vector<int> topologicalSort(int n, vector<vector<int>> &edges) {
 }
 ```
 
+## Eulerian circuit
+
+```cpp
+/*
+"模板:
+先確認歐拉圖的性質
+1. indeg == outdeg
+2. 點之間的連通性質
+
+ans.push_back(init);"	"每經過一條邊就要刪一條邊
+
+沒路可走就加入答案
+
+最後reverse順序"
+*/
+
+auto dfs = [&](this auto&& dfs, string x) -> void {
+    while(g[x].size() > 0) {
+        auto &y = g[x].back();
+        g[x].pop_back();
+        dfs(y);
+        ans.push_back(y);
+    }
+    return;
+};
+dfs(start);
+//用 vis 剔除路徑
+dfs(x) {
+    for(int y: g[x]) {
+          if(vis[y]) {
+                 vis.insert(y);
+                 dfs(y);
+                 ans.push_back(y);
+          }
+    }
+} 
+dfs(init);
+```
