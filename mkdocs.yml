@@ -287,6 +287,7 @@ nav:
   - Graph:
     - Others: "./graph/others.md"
     - Shortest Path: "./graph/shortest_path.md"
+    - MST: "./graph/mst.md"
     - Connected Components: "./graph/connected_components.md"
   - Math:
     - Number theory: "./math/number_theory.md"

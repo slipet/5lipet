@@ -98,6 +98,8 @@ int dijkstra(int n, vector<vector<int>> &g, int start) {
 
 * $O(E\log{E})$
 
+* priority_queue 可以被線段樹取代
+
 ```cpp
 using pii = pair<int, int>;
 const int inf = INT_MAX / 2;
