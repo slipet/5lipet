@@ -30,3 +30,9 @@ $$ G = max_{j = 1}^{n}(gain_j) = max_{j = 1}^{n}max_{i = 1}^{n}(a_i + |j - i|)$$
 可以發現此時 $max$ 內的項只會與 $i$ 有關，接著透過前後綴分解可以得到最大值進行計算，將複雜度降到 $O(n)$
 
 * [leetcode 1937. 扣分后的最大得分](https://leetcode.cn/problems/maximum-number-of-points-with-cost/description/)
+
+### 把某些元素分到兩個集合
+
+1. 枚舉其中一個集合的元素 $k = 0, 1, 2, .. , n$ ，則另一個集合則是 $n - k = n, n - 1, ... , 1, 0$。
+    
+    接著再利用 k 去計算符合題目限制的要求。
