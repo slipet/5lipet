@@ -224,8 +224,10 @@ $$N = (MP)Q + r$$
 
 $$\frac{N}{M} = PQ + \frac{r}{M}$$
 
+$$r = \frac{N \pmod{M \times P}}{M}$$
+
 * atcoder:
-    * [#448 E. Simple Division]()
+    * [#448 E. Simple Division](https://atcoder.jp/contests/abc448/tasks/abc448_e?lang=en)
 
 ## 歐幾里得算法/帶餘數除法
 
