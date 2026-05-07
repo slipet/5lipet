@@ -214,6 +214,20 @@ auto init = []() {
 
     * [完全子集的最大元素和](https://leetcode.cn/problems/maximum-element-sum-of-a-complete-subset-of-indices/description/)
 
+
+## $i \text{ mod } j$
+
+將 MOD 模運算轉換成普通整數運算
+
+$$i \text{ mod } j = i - j \cdot (\lfloor \frac{i}{j} \rfloor)$$
+
+因此可以有
+
+$$\sum(i \text{ mod } j) = \sum{i} - \sum{j \cdot (\lfloor \frac{i}{j} \rfloor)}$$
+
+* atcoder:
+    * [#452 E. You WILL Like Sigma Problem](https://atcoder.jp/contests/abc452/tasks/abc452_e)
+
 ## $\lfloor \frac{N}{M} \rfloor \mod{P}$
 
 由 [ref](https://codeforces.com/blog/entry/48989) 得到 
@@ -227,7 +241,7 @@ $$\frac{N}{M} = PQ + \frac{r}{M}$$
 $$r = \frac{N \pmod{M \times P}}{M}$$
 
 * atcoder:
-    * [#448 E. Simple Division](https://atcoder.jp/contests/abc448/tasks/abc448_e?lang=en)
+    * [#448 E. Simple Division](https://atcoder.jp/contests/abc448/tasks/abc448_e)
 
 ## 歐幾里得算法/帶餘數除法
 
