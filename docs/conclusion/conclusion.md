@@ -152,3 +152,10 @@ public:
 * 使用二分確定相鄰元素的距離後，操作維護
 
 * [abc #444 E - Sparse Range](https://atcoder.jp/contests/abc444/tasks/abc444_e)
+
+### 不等式
+
+假設有 k, 和 n - k 要作用於區間上，可以把 $L \le k \le R$ 的限制，同樣操作在 $n - k$ 上面為:
+
+
+$$L \le n - k \le R \rightarrow n - R \le k \le n - L$$
