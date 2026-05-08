@@ -51,3 +51,59 @@ struct Matrix {
     };
 };
 ```
+
+### 固定大小
+
+```cpp
+template <typename T, int R, int C>
+struct Matrix {
+    
+    array<array<T, C>, R> a;
+    
+    Matrix(T init_val = T{}) {
+        for(auto &row: a) {
+            ranges::fill(row, init_val);
+        }
+    }
+
+    array<T, C>& operator[](int i) {
+        return a[i];
+    }
+
+    const array<T, C>& operator[](int i) const {
+        return a[i];
+    }
+    static Matrix identity() {
+        static_assert(R == C);
+        Matrix I(T{});
+        for(int i = 0; i < R; ++i) I[i][i] = T{1};
+        return I;
+    }
+
+    template <int K>
+    Matrix<T, R, K> operator *(const Matrix<T, C, K> &b) const {
+        Matrix res(T{});
+        for(int i = 0; i < R; ++i) {
+            for(int k = 0; k < C; ++k) {
+                for(int j = 0; j < K; ++j) {
+                    res[i][j] += a[i][k] * b[k][j];
+                }
+            }
+        }
+        return res;
+    };
+    Matrix operator +(const Matrix &b) const {
+
+        Matrix res(T{});
+        for(int i = 0; i < R; ++i) {
+            for(int j = 0; j < C; ++j) {
+                res[i][j] = this->a[i][j] + b[i][j];
+            }
+        }
+        return res;
+    };
+};
+
+//auto I = Mat::identity();
+//auto B = A * I;
+```
