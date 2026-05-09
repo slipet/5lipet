@@ -114,6 +114,61 @@ public:
     }
 };
 ```
+* 常數小的實作
+
+```cpp
+#define lc ((node) << 1)
+#define rc ((node) << 1 | 1)
+const int MAXN = 1'000'00 + 5;
+ll tree[MAXN << 2];
+ll a[MAXN];
+ll merge(ll &a, ll &b) {
+    return a + b;
+}
+void maintain(int node) {
+    tree[node] = merge(tree[lc], tree[rc]);
+}
+void build(int node, int l, int r) {
+    if(l == r) {
+        tree[node] = a[l];
+        return;
+    }
+    int m = l + (r - l) / 2;
+    build(lc, l, m);
+    build(lc, m + 1, r);
+    maitain(node);
+}
+//單點更新
+void update(int node, int l, int r, int i, ll val) {
+    if(l == r) {
+        tree[node] = merge(tree[node], val)
+        return;
+    }
+    int m = l + (r - l) / 2;
+    if(ql <= m) update(lc, l, m, i, val);
+    else if(qr > m) update(rc, m + 1, r, i, val);
+    maitain(node);
+}
+
+ll query(int node, int l, int r, int ql, int qr) {
+    if(ql <= l && r <= qr) {
+        return tree[node];
+    }
+    int m = l + (r - l) / 2;
+    if(qr <= m) return query(lc, l, m, ql, qr);
+    else if(ql > m) return query(rc, m + 1, r, ql, qr);
+    ll rsL = query(lc, l, m, ql, qr);
+    ll rsR = query(rc, m + 1, r, ql, qr);
+    return merge(rsL, rsR);
+}
+/*
+usage:
+build(1, 0, n - 1);
+update(1, 0, n - 1, i, val)
+query(1, 0, n - 1, ql, qr)
+*/
+
+```
 
 ## Lazy tag(懶標記)
 
