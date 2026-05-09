@@ -392,7 +392,7 @@ usage:
 build(1, 0, n - 1)
 update(1, 0, n - 1, ql, qr, val)
 query(1, 0, n - 1, ql, qr)
-*/z
+*/
 ```
 
 #### <span style="color:red"> 懶標記的意義是目前已經應用在 val 上的操作。</span>
