@@ -314,6 +314,87 @@ int main() {
 }
 ```
 
+* 常數小的實作
+
+```cpp
+#define lc ((node) << 1)
+#define rc ((node) << 1 | 1)
+
+const int MAXN = 1'000'000 + 5;
+const ll INIT_TAG = 0;
+ll tree[MAXN << 2], tag[MAXN << 2];
+ll a[MAXN];
+
+ll merge(ll &a, ll &b) {
+    return a + b;
+}
+
+ll merge_tag(ll &a, ll &b) {
+    return a + b;
+}
+
+void apply(int node, int l, int r, ll &val) {
+    tree[node] += val * (r - l + 1);
+    tag[node] += val;
+}
+
+void spread(int node, int l, int r)  {
+    ll &t = tag[node];
+    if(t == INIT_TAG) return;
+    int m = l + (r - l) / 2;
+    apply(lc, l, m, t);
+    apply(rc, m + 1, r, t);
+    t = INIT_TAG;
+}
+
+void maintain(int node) {
+    tree[node] = merge(tree[lc], tree[rc]);
+}
+
+void build(int node, int l, int r) {
+    tag[node] = INIT_TAG;
+    if(l == r) {
+        tree[node] = a[l];
+        return;
+    }
+    int m = l + (r - l) / 2;
+    build(lc, l, m);
+    build(rc, m + 1, r);
+    maintain(node);
+}
+
+void update(int node, int l, int r, int ql, int qr, ll val) {
+    if(ql <= l && r <= qr) {
+        apply(node, l, r, val);
+        return;
+    }
+    spread(node, l, r);
+    int m = l + (r - l) / 2;
+    if(ql <= m) update(lc, l, m, ql, qr, val);
+    if(qr > m) update(rc, m + 1, r, ql, qr, val);
+    maintain(node);
+}
+
+ll query(int node, int l, int r, int ql, int qr) {
+    if(ql <= l && r <= qr) {
+        return tree[node];
+    }
+    spread(node, l, r);
+    int m = l + (r - l) / 2;
+    if(qr <= m) return query(lc, l, m, ql, qr);
+    if(ql > m) return query(rc, m + 1, r, ql, qr);
+    ll rsL = query(lc, l, m, ql, qr);
+    ll rsR = query(rc, m + 1, r, ql, qr);
+    return merge(rsL, rsR);
+}
+/*
+usage:
+build(1, 0, n - 1)
+update(1, 0, n - 1, ql, qr, val)
+query(1, 0, n - 1, ql, qr)
+*/z
+```
+
 #### <span style="color:red"> 懶標記的意義是目前已經應用在 val 上的操作。</span>
 
 
