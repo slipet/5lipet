@@ -159,3 +159,43 @@ public:
 
 
 $$L \le n - k \le R \rightarrow n - R \le k \le n - L$$
+
+
+### Grid/網格圖
+
+網格圖的一小結論
+
+* 原點到反斜線上的距離 $d$ 都會是相等:
+
+    可以利用這個性質把多個點的資訊進行壓縮，$(r0, c0), (r1, c1) ...\rightarrow (d - c0, c0), (d - c1, c1) ...$
+    * [leetcode #741](https://slipet.github.io/5lipet/problems/leetcode/2026_S2/#741-cherry-pickup)
+
+    這也就是說在反對角線上的座標 $(r, c)$ 會有 $d = r + c$
+
+```
+id: for 4 x 4
+0 1 2 3
+1 2 3 4
+2 3 4 5
+3 4 5 6
+```
+
+* 平行於對角線的斜線上的座標 $(r, c)$ 有 $r - c = t$ 為一定值
+
+    * 對於 r < c 也就是在對角線右上方的斜線，有 $r - c = t, t < 0$
+
+    * 對於 r == c 對角線上的點，有 $r - c = 0$
+
+    * 對於 r > c 也就是在對角線左下方的斜線，有 $r - c = t, t > 0$
+
+    枚舉對角線的通常會加一個 offset，設 $n \times n$ 的網格圖:
+
+    $$id = r - c + (n - 1)$$
+
+```
+id: for 4 x 4
+3 2 1 0
+4 3 2 1
+5 4 3 2
+6 5 4 3
+```
