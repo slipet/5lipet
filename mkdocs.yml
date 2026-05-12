@@ -295,6 +295,7 @@ nav:
     - Order theory: "./math/order_theory.md"
     - Reservoir Sampling: "./math/reservoir_sampling.md"
     - GCD/LCM: "./math/GCD_LCM.md"
+    - Jeep Problem: "./math/jeep.md"
   - Conclusion:
     - Conclusion: "./conclusion/conclusion.md"
     - Circular Problem: "./conclusion/circular.md"
