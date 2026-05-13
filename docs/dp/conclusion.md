@@ -25,4 +25,9 @@
 
     值域的打家劫舍只能取間隔超過 2 的元素。$f(i - 1)$ 的值同時也隱含著 $f(i - 2)$ 為最優的可能性。而 j 則是剛好 $< x - 2$ 的位置。
     
+## 利用剩餘最優結果進行優化
 
+也就是假設剩餘"最優"結果都沒辦法使當前結果更好，那就不繼續下去。
+
+* [leetcode #3459. 最长 V 形对角线段的长度](https://leetcode.cn/problems/length-of-longest-v-shaped-diagonal-segment/description/)
+    因為網格的大小固定，透過剩下路徑可能的長度進行減枝。
