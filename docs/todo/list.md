@@ -11,6 +11,14 @@
 
 ### urgent
 
+- [ ] jeep problem
+
+- [ ] leetcode weekly
+
+- [ ] abc 443
+
+- [ ] SegmentTree, LazySegmentTree/zkw
+
 - [ ] 組合數預處理
 
 - [ ] 帶權並查集
@@ -32,8 +40,6 @@
 - [ ] atcoder abc #445-(C 基環樹森林, 倍增, DSU解法)
 
 - [ ] atcoder abc #444-F
-
-- [ ] SegmentTree, LazySegmentTree
 
 - [ ] SCC
 
