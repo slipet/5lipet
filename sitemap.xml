@@ -223,6 +223,12 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/math/GCD_LCM/"/>
     </url>
     <url>
+        <loc>https://localhost:8000/math/combination/</loc>
+        <lastmod>2026-05-14</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/math/combination/"/>
+    </url>
+    <url>
         <loc>https://localhost:8000/math/jeep/</loc>
         <lastmod>2026-05-14</lastmod>
         <changefreq>daily</changefreq>
