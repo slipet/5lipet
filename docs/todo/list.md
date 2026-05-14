@@ -19,8 +19,6 @@
 
 - [ ] SegmentTree, LazySegmentTree/zkw
 
-- [ ] 組合數預處理
-
 - [ ] 帶權並查集
 
 - [ ] logtrick 練習
