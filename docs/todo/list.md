@@ -13,8 +13,6 @@
 
 - [ ] jeep problem
 
-- [ ] leetcode weekly
-
 - [ ] abc 443
 
 - [ ] SegmentTree, LazySegmentTree/zkw
