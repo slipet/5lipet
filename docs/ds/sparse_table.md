@@ -85,11 +85,11 @@ class SparseTable2D {
     vec4D st;
     int m, n;
 public:
-    // 时间复杂度 O(n * log n)
+    // 时间复杂度 O(mn * log m * log n)
     inline int op(const int &a, const int &b) const {
         return max(a, b);
     }
-    inline int op_range(const int &a, const int &b, const int &c, const int &d) const {
+    inline int op(const int &a, const int &b, const int &c, const int &d) const {
         return max({a, b, c, d});
     }
     SparseTable2D(const vector<vector<int>>& matrix) {
