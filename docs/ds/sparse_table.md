@@ -89,6 +89,9 @@ public:
     inline int op(const int &a, const int &b) const {
         return max(a, b);
     }
+    inline int op_range(const int &a, const int &b, const int &c, const int &d) const {
+        return max({a, b, c, d});
+    }
     SparseTable2D(const vector<vector<int>>& matrix) {
         m = matrix.size(), n = matrix[0].size();
         int wm = bit_width((uint32_t) m), wn = bit_width((uint32_t) n);
@@ -127,12 +130,12 @@ public:
         int kr = bit_width(1u * (r1 - r0)) - 1;
         int kc = bit_width(1u * (c1 - c0)) - 1;
         
-        return max({
-            st[kr][kc][r0][c0],//左上
-            st[kr][kc][r1 - (1 << kr)][c0],//右上
-            st[kr][kc][r0][c1 - (1 << kc)],//左下
-            st[kr][kc][r1 - (1 << kr)][c1 - (1 << kc)],//右下
-        });
+        return op_range(
+            st[kr][kc][r0][c0], //左上 
+            st[kr][kc][r1 - (1 << kr)][c0], //右上
+            st[kr][kc][r0][c1 - (1 << kc)], //左下
+            st[kr][kc][r1 - (1 << kr)][c1 - (1 << kc)] //右下
+        );
     }
 };
 ```
