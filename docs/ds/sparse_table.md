@@ -38,26 +38,25 @@ ST 表基於"倍增"的思想，預處理 $O(n\log{n})$，回答詢問 $O(1)$。
 ```cpp
 //ref. https://leetcode.cn/circle/discuss/mOr1u6/
 class SparseTable {
-    vector<vector<int>> st_min;
-    vector<vector<int>> st_max;
+    vector<vector<int>> st;
 
 public:
     // 时间复杂度 O(n * log n)
+    inline int op(const int &a, const int &b) const {
+        return max(a, b);
+    }
     SparseTable(const vector<int>& nums) {
         int n = nums.size();
         int w = bit_width((uint32_t) n);
-        st_min.resize(w, vector<int>(n));
-        st_max.resize(w, vector<int>(n));
+        st.resize(w, vector<int>(n));
 
         for (int j = 0; j < n; j++) {
-            st_min[0][j] = nums[j];
-            st_max[0][j] = nums[j];
+            st[0][j] = nums[j];
         }
 
         for (int i = 1; i < w; i++) {
             for (int j = 0; j + (1 << i) <= n; j++) {
-                st_min[i][j] = min(st_min[i - 1][j], st_min[i - 1][j + (1 << (i - 1))]);
-                st_max[i][j] = max(st_max[i - 1][j], st_max[i - 1][j + (1 << (i - 1))]);
+                st[i][j] = op(st_min[i - 1][j], st_min[i - 1][j + (1 << (i - 1))]);
             }
         }
     }
@@ -65,19 +64,75 @@ public:
     // [l, r) 左闭右开，下标从 0 开始
     // 必须保证 l < r
     // 时间复杂度 O(1)
-    int query_min(int l, int r) const {
+    int query(int l, int r) const {
         int k = bit_width((uint32_t) r - l) - 1;
-        return min(st_min[k][l], st_min[k][r - (1 << k)]);
-    }
-
-    // [l, r) 左闭右开，下标从 0 开始
-    // 必须保证 l < r
-    // 时间复杂度 O(1)
-    int query_max(int l, int r) const {
-        int k = bit_width((uint32_t) r - l) - 1;
-        return max(st_max[k][l], st_max[k][r - (1 << k)]);
+        return op(st_min[k][l], st_min[k][r - (1 << k)]);
     }
 };
 ```
 
 * 預處理 ST 表時通常需要建立一個一維大小為 $\log{n}$，另一維大小為 $n$ 的數組，此時應優先讓大小為 $\log{n}$ 的維度作為第一維，以提升 cache locality。
+
+## 二維 ST 表
+
+[講解](https://blog.nowcoder.net/n/3eccd1386a8846398d3bee62b485309b)
+
+* [3933. 矩阵中的局部最大值 II](https://leetcode.cn/problems/largest-local-values-in-a-matrix-ii/solutions/3969719/mo-ban-er-wei-st-biao-pythonjavacgo-by-e-hw5t/)
+
+```cpp
+using vec4D = vector<vector<vector<vector<int>>>>;
+class SparseTable2D {
+    vec4D st;
+    int m, n;
+public:
+    // 时间复杂度 O(n * log n)
+    inline int op(const int &a, const int &b) const {
+        return max(a, b);
+    }
+    SparseTable2D(const vector<vector<int>>& matrix) {
+        m = matrix.size(), n = matrix[0].size();
+        int wm = bit_width((uint32_t) m), wn = bit_width((uint32_t) n);
+        
+        st = vector(wm, vector(wn, vector(m, vector<int>(n))));
+
+        st[0][0] = matrix;
+        
+        for (int kc = 1; kc < wn; ++kc) {
+            for (int r = 0; r < m; ++r) {
+                for (int c = 0; c + (1 << kc) <= n; ++c) {
+                    st[0][kc][r][c] = op(st[0][kc - 1][r][c], st[0][kc - 1][r][c + (1 << (kc - 1))]);
+                }
+            }
+        }
+        for (int kr = 1; kr < wm; ++kr) {
+            for (int kc = 0; kc < wn; ++kc) {
+                for (int r = 0; r + (1 << kr) <= m; ++r) {
+                    for (int c = 0; c + (1 << kc) <= n; ++c) {
+                        st[kr][kc][r][c] = op(st[kr - 1][kc][r][c], st[kr - 1][kc][r + (1 << (kr - 1))][c]);
+                    }
+                }
+            }
+        }
+    }
+
+
+    // 返回子矩阵最大值
+    // 傳入閉區間 [r0, r1], [c0, c1]
+    int query(int r0, int c0, int r1, int c1) const {
+        r0 = max(0, r0);
+        c0 = max(0, c0);
+        r1 = min(m - 1, r1);
+        c1 = min(n - 1, c1);
+        r1++, c1++;//使用閉區間
+        int kr = bit_width(1u * (r1 - r0)) - 1;
+        int kc = bit_width(1u * (c1 - c0)) - 1;
+        
+        return max({
+            st[kr][kc][r0][c0],//左上
+            st[kr][kc][r1 - (1 << kr)][c0],//右上
+            st[kr][kc][r0][c1 - (1 << kc)],//左下
+            st[kr][kc][r1 - (1 << kr)][c1 - (1 << kc)],//右下
+        });
+    }
+};
+```
