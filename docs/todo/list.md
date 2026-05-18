@@ -13,7 +13,7 @@
 
 - [ ] jeep problem
 
-- [ ] abc 458,443
+- [ ] abc 458
 
 - [ ] SegmentTree, LazySegmentTree/zkw
 
