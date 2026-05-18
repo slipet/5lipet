@@ -1,8 +1,12 @@
 # Matrix Exponentiation
 
-矩陣快速冪
+## 矩陣快速冪
+
+* **一般快速冪**
 
 時間複雜度 $O(m^3\log{(n)})$
+
+使用一般快速冪得到矩陣轉移後的結果，可以將矩陣乘法改成其他符合結合律的運算。
 
 ```cpp
 const int MOD = 1'000'000'000 + 7;
@@ -49,6 +53,14 @@ public:
     }
 };
 ```
+
+* **線段樹維護矩陣**
+
+透過線段樹，可以在 $O(\log{n})$ 的時間下得到 $[L, R]$ 的矩陣轉移結果。
+
+要注意矩陣乘法的順序
+
+* [atcoder abc#456 - F](https://slipet.github.io/5lipet/contest/atcoder/2026_S2/#atcoder-beginner-contest-456)
 
 ## Kitamasa
 
