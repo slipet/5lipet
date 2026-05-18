@@ -53,6 +53,7 @@ int query(int ql, int qr) {
     return merge(rsL, rsR);
 }
 
+//range update
 void update(int ql, int qr, int d) {
     int len = 1, lcnt = 0, rcnt = 0;
     for(ql += base - 1, qr += base + 1; ql ^ qr ^ 1; ql >>= 1, qr >>= 1, len <<= 1) {
@@ -66,6 +67,23 @@ void update(int ql, int qr, int d) {
     for(; ql; ql >>= 1, qr >>= 1) {
         tree[ql] += lcnt * d;
         tree[qr] += rcnt * d;
+    }
+}
+//range query
+
+int query(int ql, int qr) {
+    int len = 1, lcnt = 0, rcnt = 0;
+    int ans = 0;
+    for(ql += base - 1, qr += base + 1; ql ^ qr ^ 1; ql >>= 1, qr >>= 1, len <<= 1) {
+        if(tag[ql]) ans += lcnt * tag[ql];
+        if(tag[qr]) ans += rcnt * tag[qr];
+
+        if(~ql & 1) ans += tree[ql ^ 1], lcnt += len;
+        if(qr & 1) ans += tree[qr ^ 1], rcnt += len;
+    }
+    for(; ql; ql >>= 1, qr >>= 1) {
+        ans += lcnt * tag[ql];
+        ans += rcnt * tag[qr];
     }
 }
 
