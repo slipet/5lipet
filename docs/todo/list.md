@@ -17,6 +17,12 @@
 
 - [ ] SegmentTree, LazySegmentTree/zkw
 
+- [ ] Review string algo
+
+- [ ] vp cf1097
+
+- [ ] Suffix array
+
 - [ ] 帶權並查集
 
 - [ ] logtrick 練習
@@ -29,7 +35,7 @@
 
 - [ ] codeforces #1086,D1,D2
 
-- [ ] atcoder abc F #451,452,453,454,455,456,457
+- [ ] atcoder abc F #451,452,453,454,455,456,457,458
 
 - [ ] atcoder abc #448-F(莫隊)
 
