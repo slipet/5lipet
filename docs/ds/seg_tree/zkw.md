@@ -56,7 +56,7 @@ int query(int ql, int qr) {
 void update(int ql, int qr, int d) {
     int len = 1, lcnt = 0, rcnt = 0;
     for(ql += base - 1, qr += base + 1; ql ^ qr ^ 1; ql >>= 1, qr >>= 1, len <<= 1) {
-        tree[ql] += len * d, tree[qr] += len * d;
+        tree[ql] += lcnt * d, tree[qr] += rcnt * d;
         if(~ql & 1) tree[ql ^ 1] += len * d, lcnt += len, tag[ql ^ 1] += d;
         if(qr & 1) tree[qr ^ 1] += len * d, rcnt += len, tag[qr ^ 1] += d;
     }
