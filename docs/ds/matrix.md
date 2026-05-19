@@ -2,6 +2,26 @@
 
 矩陣運算
 
+### 快速實作
+
+```cpp
+struct Matrix {
+    ll a[2][2];
+    Matrix operator*(const Matrix &t) const {
+        Matrix res;
+        for(int i = 0; i < 2; ++i) {
+            for(int j = 0; j < 2; ++j) {
+                res.a[i][j] = infll;
+                for(int k = 0; k < 2; ++k) {
+                    chmin(res.a[i][j], a[i][k] + t.a[k][j]);
+                }
+            }
+        }
+        return res;
+    }
+};
+```
+
 ### 變動大小
 
 ```cpp
