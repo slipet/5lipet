@@ -65,12 +65,13 @@ vector<int> topologicalSort(int n, vector<vector<int>> &edges) {
 }
 ```
 
-* wait to organize
-順序拓樸排序的時候刪除非起始點開始的邊 同時可以考慮使用dfs 達到只從單一起點開始
+* 順序拓樸排序的時候刪除非起始點開始的邊，同時可以考慮使用 dfs 達到只從單一起點開始
+
 ```cpp
 // 先清理无法从 0 到达的边
-//   紅色的地方是要注意的地方，尤其是可能經過 原點的時候必須小心不能加入對列
+// 可能經過原點的時候必須小心不能加入佇列
 queue<int> q;
+//不能將原點加入佇列
 for (int i = 1; i < n; i++) {
     if (deg[i] == 0) {
         q.push(i);
@@ -80,6 +81,7 @@ while (!q.empty()) {
     int x = q.front();
     q.pop();
     for (auto& [y, _] : g[x]) {
+        //不能將原點加入佇列
         if (--deg[y] == 0 && y) {
             q.push(y);
         }
