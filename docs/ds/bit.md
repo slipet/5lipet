@@ -15,10 +15,7 @@ i & -i = 00010
 	
 * update
 要往前更新 = 減去lowbit: $i -= (i \& -i)$
-i &= (i - 1)
-相當於 i = 10010
-i - 1 = 10001
-i &= (i - 1) = 10000
+    * i &= (i - 1)，相當於 i = 10010，i - 1 = 10001，i &= (i - 1) = 10000
 
 ```cpp
 // 模板来源 https://leetcode.cn/circle/discuss/mOr1u6/
