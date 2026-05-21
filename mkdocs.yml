@@ -280,6 +280,7 @@ nav:
     - KMP: "./string/kmp.md"
     - Z-algorithm: "./string/z_algorithm.md"
     - Subseq automation: "./string/subseq_automation.md"
+    - ACAM: "./string/acam.md"
   - DP:
     - Conclusion: "./dp/conclusion.md"
     - Digits counting: "./dp/digits_counting.md"
