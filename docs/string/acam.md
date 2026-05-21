@@ -58,3 +58,5 @@ int query(string &s) {
 }
 
 ```
+
+* [P3808](https://www.luogu.com.cn/problem/P3808)
