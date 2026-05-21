@@ -48,7 +48,7 @@ ll comb(int m, int n) {
 }
 ```
 
-#### 疊代
+#### 疊代計算
 
 $$C(m, n) = \binom{m - 1}{n} + \binom{m - 1}{n - 1}$$
 
@@ -89,6 +89,35 @@ ll comb(int m, int n) {
 }
 
 ```
+
+#### Hockey-stick identity
+
+計算:
+
+$$\binom{m}{n} + \binom{m + 1}{n} + ... + \binom{m + k}{n} = \sum_{i = 0}^{k} \binom{m + i}{n}$$
+
+由上面可以知道:
+
+\[
+\begin{array}{ll}
+    \binom{m}{n} = \binom{m - 1}{n} + \binom{m - 1}{n - 1}\\
+    \rightarrow \binom{m - 1}{n - 1} = \binom{m}{n} - \binom{m - 1}{n} \\
+    \rightarrow \binom{m}{n} = \binom{m + 1}{n + 1} - \binom{m}{n + 1}
+\end{array}
+\]
+
+所以對於 $\sum_{i = 0}^{k} \binom{m + i}{n}$ 可以寫成:
+
+\[
+\begin{array}{ll}
+    \binom{m}{n} &= \binom{m + 1}{n + 1} - \binom{m}{n + 1} \\
+    \binom{m + 1}{n} &= \binom{m + 2}{n + 1} - \binom{m + 1}{n + 1} \\
+    ...
+    \binom{m + k}{n} &= \binom{m + k + 1}{n + 1} - \binom{m + k}{n + 1} \\
+    \sum_{i = 0}^{k} \binom{m + i}{n} &= \binom{m + 1}{n + 1} - \binom{m}{n + 1} + \binom{m + 2}{n + 1} - \binom{m + 1}{n + 1} + ... + \binom{m + k + 1}{n + 1} - \binom{m + k}{n + 1} \\
+    &= \binom{m + k + 1}{n + 1} - \binom{m}{n + 1}
+\end{array}
+\]
 
 ### Permutation
 
