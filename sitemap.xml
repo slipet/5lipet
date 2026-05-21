@@ -343,6 +343,12 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/stat/mixed/"/>
     </url>
     <url>
+        <loc>https://localhost:8000/string/acam/</loc>
+        <lastmod>2026-05-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/string/acam/"/>
+    </url>
+    <url>
         <loc>https://localhost:8000/string/kmp/</loc>
         <lastmod>2026-05-21</lastmod>
         <changefreq>daily</changefreq>
