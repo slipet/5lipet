@@ -53,11 +53,11 @@
 
 * [879. 盈利计划](https://leetcode.cn/problems/profitable-schemes/description/)
 
-    這題是二維背包問題，同時考了最多上限 n 下的最少 m 的方案數。
+    這題是二維背包問題，同時考了最多上限 n 下的最少 m 的方案數，$f(n, m)$ 表示 n 個人產生 m 利潤的方案數。
     
     * 對於最少 m 的限制很好處理 $max(0, c - x)$ 就可以了
 
-    * 對於最多 n 的限制，我原本是
+    * 對於最多 n 的限制，我原本用 $f(0,0) = 1$ 初始化，但是這樣要在最後把 $\sum_{i = 0}^{n} f(i, m)$ 的方案加總。因此另一種想法 $f(i, j)$ 表示使用 $n - i$ 個人時產生的利潤，此時 $f(0, 0) = f(1, 0) ... = f(n, 0) = 1$
 
 
 * [956. 最高的广告牌](https://leetcode.cn/problems/tallest-billboard/)
