@@ -31,3 +31,20 @@
 
 * [leetcode #3459. 最长 V 形对角线段的长度](https://leetcode.cn/problems/length-of-longest-v-shaped-diagonal-segment/description/)
     因為網格的大小固定，透過剩下路徑可能的長度進行減枝。
+
+## 背包問題
+
+* 背包問題的時間複雜度很關鍵，背包大小，物品個數
+				
+* 求能否構成target(true or false):
+    f[i][c - w] || f[i][c] -> 可以用bitset加速
+				
+* 求方案數:
+    f[c] + f[c - w]
+
+* 種類
+    1. 至少capacity: 方案數/最小價值和
+        f[c] = (f[c] + f[max(c - w, 0)]) -> 求至少cap ，因為所有 < 0 的部分都是解，所以使用max將所有 < 0 的都當成f[0]
+    2. 恰好capacity 方案數/最大/最小價值和
+    3. 最多capacity	方案數/最大價值和:
+        max(f[c], f[c - w] + val/1)
