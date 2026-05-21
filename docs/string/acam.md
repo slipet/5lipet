@@ -10,7 +10,7 @@ struct Node {
     int end;
 } trie[MAXN];
 int root = 1;
-int empty = 0;
+int dummy = 0;
 int cnt = 1;
 void build(string &s) {
     int pos = root;
@@ -25,8 +25,8 @@ void build(string &s) {
 
 void build_fail() {
     queue<int> q;
-    for(int i = 0; i < 26; ++i) trie[empty].ch[i] = root;
-    trie[root].fail = empty;
+    for(int i = 0; i < 26; ++i) trie[dummy].ch[i] = root;
+    trie[root].fail = dummy;
     q.push(root);
     while(!q.empty()) {
         int cur = q.front();
@@ -43,17 +43,18 @@ void build_fail() {
 }
 
 int query(string &s) {
+    int res = 0;
     int pos = root;
     for(auto &c: s) {
-        pos = trie[root].ch[c - 'a'];
+        pos = trie[pos].ch[c - 'a'];
         int k = pos;
-        while(!vis[k]) {
-            ans += trie[k].end;
+        while(!vis[k]) {//跳fail
+            res += trie[k].end;
             vis[k] = 1;
             k = trie[k].fail;
-        }
+        }        
     }
-    return ans;
+    return res;
 }
 
 ```
