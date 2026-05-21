@@ -51,6 +51,15 @@
         max(f[c], f[c - w] + val/1)
         初始化的時候 $f(< 0)$ 為不合法，因為跟 c 的距離位置最多只到 0 ，$ < 0 $ 都是不合法的，而 $f(>= 0)$ 都會是合法的
 
+* [879. 盈利计划](https://leetcode.cn/problems/profitable-schemes/description/)
+
+    這題是二維背包問題，同時考了最多上限 n 下的最少 m 的方案數。
+    
+    * 對於最少 m 的限制很好處理 $max(0, c - x)$ 就可以了
+
+    * 對於最多 n 的限制，我原本是
+
+
 * [956. 最高的广告牌](https://leetcode.cn/problems/tallest-billboard/)
 
     相當於我們要從rods中選出兩個集合A和B，其中rods中的每一個元素，有三種選擇：
