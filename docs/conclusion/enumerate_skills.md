@@ -36,3 +36,8 @@ $$ G = max_{j = 1}^{n}(gain_j) = max_{j = 1}^{n}max_{i = 1}^{n}(a_i + |j - i|)$$
 1. 枚舉其中一個集合的元素 $k = 0, 1, 2, .. , n$ ，則另一個集合則是 $n - k = n, n - 1, ... , 1, 0$。
     
     接著再利用 k 去計算符合題目限制的要求。
+
+
+### 逆向思維/正難則反
+
+* [3685. 含上限元素的子序列和](https://leetcode.cn/problems/number-of-great-partitions/solutions/2032009/ni-xiang-si-wei-01-bei-bao-fang-an-shu-p-v47x/)
