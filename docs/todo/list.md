@@ -11,6 +11,10 @@
 
 ### urgent
 
+- [ ] ACAM atcoder
+
+- [ ] leetcode weekly #502-Q4 suffix array
+
 - [ ] jeep problem
 
 - [ ] abc 458
