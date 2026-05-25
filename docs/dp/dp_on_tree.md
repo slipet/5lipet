@@ -35,6 +35,8 @@ public:
             vector<ll> f0(k);
             vector<ll> f1(k);
             int &x = nums[u];
+            //透過初始化，將選和不選的結果轉移到 nf0, nf1，把 i + j + x 邏輯合併，
+            // 所以經過第一次轉移後，i' 的下標意義為 i + x 的方案數
             f0[0] = 1;
             f1[x % k] = 1;
             for(auto &v: g[u]) {
