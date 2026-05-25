@@ -1,5 +1,11 @@
 # Others
 
+## BFS/DFS
+
+先放這
+
+[模板](https://github.com/doongz/notes/blob/main/Algorithm/4-%E5%9B%BE%E8%AE%BA/04-BFS.md)
+
 ## Topological Sort/拓樸排序
 
 做拓樸排序首先要確定有<span style="color:red">多少起點多少終點，以及邊的連通性質</span>:
