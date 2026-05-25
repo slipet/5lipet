@@ -41,6 +41,7 @@ public:
                 auto [fy0, fy1] = dfs(v);
                 vector<ll> nf0(k), nf1(k);
                 for(int i = 0; i < k; ++i) {
+                    //不選parent，可以選或不選子節點
                     ll v = fy0[i] + fy1[i];
                     if(v == 0) continue;
                     for(int j = 0; j < k; ++j) {
@@ -49,6 +50,7 @@ public:
                     }
                 }
                 for(int i = 0; i < k; ++i) {
+                    //選parent，不選子節點
                     ll v = fy0[i];
                     if(v == 0) continue;
                     for(int j = 0; j < k; ++j) {
