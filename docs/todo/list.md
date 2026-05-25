@@ -11,6 +11,8 @@
 
 ### urgent
 
+- [ ] 二維偏序關係整理
+
 - [ ] ACAM atcoder
 
 - [ ] leetcode weekly #502-Q4 suffix array
