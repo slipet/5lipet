@@ -56,6 +56,7 @@ public:
                     ll v = fy0[i];
                     if(v == 0) continue;
                     for(int j = 0; j < k; ++j) {
+                        //經過第一次轉移後，已經包含 x
                         int s = (i + j) % k;
                         nf1[s] = (nf1[s] + v * f1[j]) % mod;
                     }
