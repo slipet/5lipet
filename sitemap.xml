@@ -121,6 +121,12 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/dp/digits_counting/"/>
     </url>
     <url>
+        <loc>https://localhost:8000/dp/dp_on_tree/</loc>
+        <lastmod>2026-05-25</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/dp/dp_on_tree/"/>
+    </url>
+    <url>
         <loc>https://localhost:8000/dp/matrix_exponentiation/</loc>
         <lastmod>2026-05-25</lastmod>
         <changefreq>daily</changefreq>
