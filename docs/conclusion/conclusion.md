@@ -10,6 +10,12 @@
 
 ## Others
 
+### Indirect
+
+有時候不一定要直接求答案，因為直接從原點出發到達案的複雜度會太高，可以透過求複雜度比較小的中間點搭一座橋抵達答案。
+
+* [1449. 数位成本和为目标值的最大数字](https://leetcode.cn/problems/form-largest-integer-with-digits-that-add-up-to-target/description/)
+
 ### 找中位數
 
 樸素的作法
