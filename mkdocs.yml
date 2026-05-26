@@ -285,6 +285,7 @@ nav:
     - ACAM: "./string/acam.md"
   - DP:
     - Conclusion: "./dp/conclusion.md"
+    - Knapack: "./dp/knapack.md"
     - Digits counting: "./dp/digits_counting.md"
     - Matrix Exponentiation: "./dp/matrix_exponentiation.md"
     - Convex Hull Trick: "./dp/convex_hull_trick.md"
