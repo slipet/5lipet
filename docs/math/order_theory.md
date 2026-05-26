@@ -85,7 +85,8 @@ $$(a_j, b_j) \prec (a_i, b_i) \overset{def}{=} a_j \lesseqgtr a_i \text{ and } b
 
 #### 找區間內的一個區間/點
 
-雖然同樣可以使用 BIT 解決，但是對於求一點/或是
+雖然同樣可以使用 BIT 解決，但是對於不是數點的題目，可以透過特定順序遍歷紀錄所需資訊，數點的題目通常會需要前綴和才能得到，因此會需要 BIT 這種資料結構維護。
 
 * [atcoder #457-E Crossing Table Cloth](https://atcoder.jp/contests/abc457/tasks/abc457_e)
 
+    使用後綴陣列表示 $<= L$ 的最靠近右端點 $R$
