@@ -127,6 +127,12 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/dp/dp_on_tree/"/>
     </url>
     <url>
+        <loc>https://localhost:8000/dp/knapack/</loc>
+        <lastmod>2026-05-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/dp/knapack/"/>
+    </url>
+    <url>
         <loc>https://localhost:8000/dp/matrix_exponentiation/</loc>
         <lastmod>2026-05-26</lastmod>
         <changefreq>daily</changefreq>
