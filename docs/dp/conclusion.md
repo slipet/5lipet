@@ -78,3 +78,9 @@
     2. 選到A中: $f(i,j) = rods[i]+ f(i−1,rods[i]+j)$
     3. 選到B中： $f(i,j)=f(i−1,j−rods[i])$
     最後三種情況取最大即可
+
+* [1449. 数位成本和为目标值的最大数字](https://leetcode.cn/problems/form-largest-integer-with-digits-that-add-up-to-target/description/)
+
+    一眼背包，但是要構造出具體方案，一開始我想直接將 dp 陣列使用字串直接比較大小，雖然這題這樣可以通過，但是如果 n 變大那就會有問題，因為字串比較最多會需要 n 的複雜度。
+
+    接著考慮到我們要找的是能構造出的最長字串，因此
