@@ -82,3 +82,10 @@ $$(a_j, b_j) \prec (a_i, b_i) \overset{def}{=} a_j \lesseqgtr a_i \text{ and } b
 
 * [CF1311F Moving Points](https://codeforces.com/problemset/problem/1311/F)
 
+
+#### 找區間內的一個區間/點
+
+雖然同樣可以使用 BIT 解決，但是對於求一點/或是
+
+* [atcoder #457-E Crossing Table Cloth](https://atcoder.jp/contests/abc457/tasks/abc457_e)
+
