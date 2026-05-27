@@ -12,7 +12,7 @@ struct Node {
 int root = 1;
 int dummy = 0;
 int cnt = 1;
-void build(string &s) {
+void insert(string &s) {
     int pos = root;
     for(auto &c: s) {
         if(!trie[pos].ch[c - 'a']) {
@@ -23,7 +23,7 @@ void build(string &s) {
     trie[pos].end++;
 }
 
-void build_fail() {
+void build() {
     queue<int> q;
     for(int i = 0; i < 26; ++i) trie[dummy].ch[i] = root;
     trie[root].fail = dummy;
