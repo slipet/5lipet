@@ -6,7 +6,8 @@
 
 ```cpp
 struct Matrix {
-    ll a[2][2];
+    //need initialize
+    ll a[2][2]{};
     Matrix operator*(const Matrix &t) const {
         Matrix res;
         for(int i = 0; i < 2; ++i) {
