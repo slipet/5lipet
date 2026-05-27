@@ -2,6 +2,17 @@
 
 核心思想是 KMP ，簡單來說就是在 Trie 上做 KMP。
 
+Trie 的邊代表選擇的字母。
+節點為由 root 到當前節點的前綴
+
+```
+           root
+    /a      |b   \c
+   a        b      c
+ /a \b    /d  \e
+aa   ab  bd    be
+```
+
 ```cpp
 const int MAXN = 1'000'000;
 struct Node {
