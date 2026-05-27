@@ -71,3 +71,9 @@ int query(string &s) {
 ```
 
 * [P3808](https://www.luogu.com.cn/problem/P3808)
+
+* [P9613 [CERC2019] K==S](https://www.luogu.com.cn/problem/P9613)
+
+* [P3715 [BJOI2017] 魔法咒语](https://www.luogu.com.cn/problem/P3715)
+
+* [abc #458F - Critical Misread](https://atcoder.jp/contests/abc458/tasks/abc458_f)
