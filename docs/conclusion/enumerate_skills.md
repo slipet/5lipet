@@ -40,4 +40,10 @@ $$ G = max_{j = 1}^{n}(gain_j) = max_{j = 1}^{n}max_{i = 1}^{n}(a_i + |j - i|)$$
 
 ### 逆向思維/正難則反
 
+#### 背包求 $\ge k$
+
+背包求 $\ge k$ 不一定很好得到，透過 $all - (< k)$ 可以間接得到。
+
 * [3685. 含上限元素的子序列和](https://leetcode.cn/problems/number-of-great-partitions/solutions/2032009/ni-xiang-si-wei-01-bei-bao-fang-an-shu-p-v47x/)
+
+* [3333. 找到初始输入字符串 II](https://leetcode.cn/problems/find-the-original-typed-string-ii/solutions/2966856/zheng-nan-ze-fan-qian-zhui-he-you-hua-dp-5mi9/)
