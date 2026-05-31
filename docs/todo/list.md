@@ -9,6 +9,8 @@
 - [ ] clist random 5% ~ 40%
 - [ ] luogu template
 
+- [ ] Review algo template
+
 ### urgent
 
 - [ ] 二維偏序關係整理
@@ -19,24 +21,6 @@
 
 - [ ] abc 458
 
-- [ ] Review string algo
-
-- [ ] vp cf1097
-
-- [ ] Suffix array
-
-- [ ] 帶權並查集
-
-- [ ] logtrick 練習
-
-- [ ] Circular array
-
-- [ ] codeforces #1094
-
-- [ ] codeforces #1089-C2,D,E
-
-- [ ] codeforces #1086,D1,D2
-
 - [ ] atcoder abc F #451,452,453,454,455,456,457
 
 - [ ] atcoder abc #448-F(莫隊)
@@ -45,13 +29,29 @@
 
 - [ ] atcoder abc #444-F
 
-- [ ] SCC
+- [ ] vp cf1097
 
-- [ ] leetcode weekly #502-Q4 suffix array
+- [ ] codeforces #1094
+
+- [ ] codeforces #1089-C2,D,E
+
+- [ ] codeforces #1086,D1,D2
 
 - [ ] 標記永久化的常數小實作
 
+- [ ] Circular array
+
+### 知識點
+
 - [ ] ACAM atcoder
+
+- [ ] Suffix array: leetcode weekly #502-Q4 suffix array
+
+- [ ] SCC
+  
+- [ ] 帶權並查集
+
+- [ ] logtrick 練習
 
 ### Leetcode
 
