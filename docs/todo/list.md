@@ -13,15 +13,11 @@
 
 - [ ] 二維偏序關係整理
 
-- [ ] ACAM atcoder
-
-- [ ] leetcode weekly #502-Q4 suffix array
-
 - [ ] jeep problem
 
-- [ ] abc 458
+- [ ] rolling hash
 
-- [ ] SegmentTree, LazySegmentTree/zkw
+- [ ] abc 458
 
 - [ ] Review string algo
 
@@ -51,7 +47,11 @@
 
 - [ ] SCC
 
+- [ ] leetcode weekly #502-Q4 suffix array
+
 - [ ] 標記永久化的常數小實作
+
+- [ ] ACAM atcoder
 
 ### Leetcode
 
