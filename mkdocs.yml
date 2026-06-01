@@ -279,6 +279,7 @@ nav:
   # - Binary search:
   - String:
     - Palindrome: "./string/palindrome.md"
+    - LCP: "./string/lcp.md"
     - KMP: "./string/kmp.md"
     - Z-algorithm: "./string/z_algorithm.md"
     - Subseq automation: "./string/subseq_automation.md"
