@@ -379,6 +379,12 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/string/kmp/"/>
     </url>
     <url>
+        <loc>https://localhost:8000/string/lcp/</loc>
+        <lastmod>2026-06-01</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/string/lcp/"/>
+    </url>
+    <url>
         <loc>https://localhost:8000/string/palindrome/</loc>
         <lastmod>2026-06-01</lastmod>
         <changefreq>daily</changefreq>
