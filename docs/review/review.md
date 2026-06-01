@@ -13,8 +13,8 @@
 
 ## String
 
-- [KMP](https://www.notion.so/String-bfc978dc843c4dcead26286647d01014?pvs=21)
-- [Z function](https://www.notion.so/String-bfc978dc843c4dcead26286647d01014?pvs=21)
+- [KMP](https://slipet.github.io/5lipet/string/kmp/)
+- [Z function](https://slipet.github.io/5lipet/string/z_algorithm/)
 - [Palindrome](https://www.notion.so/String-bfc978dc843c4dcead26286647d01014?pvs=21)
 - [LCP](https://www.notion.so/String-bfc978dc843c4dcead26286647d01014?pvs=21)
 - [Subsequence Automata](https://www.notion.so/String-bfc978dc843c4dcead26286647d01014?pvs=21)
