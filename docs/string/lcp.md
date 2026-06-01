@@ -1,4 +1,4 @@
-# LCP
+# Longest Common Prefix/Suffix
 
 最常公共前綴數組，通常用來當作預處理資訊。
 
