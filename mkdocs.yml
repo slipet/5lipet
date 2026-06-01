@@ -343,6 +343,8 @@ nav:
       - 2026:
         - S1: "./contest/atcoder/2026_S1.md"
         - S2: "./contest/atcoder/2026_S2.md"
+    - Virtual:
+      - leetcode: "./contest/vp/leetcode.md"
   - CPP:
     - CPP: "./cpp/function.md"
     
