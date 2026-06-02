@@ -32,3 +32,17 @@ $$gcd(x_1, x_2) \ge gcd(x_1, x_2, x_3) \ge gcd(x_1, x_2, x_3, ...)$$
     lcm 是每個質因數取最大的次方項。通常來說可以維護最大和次大的次方項，也可以維護次方項的陣列。
 
     * [abc #445 E - Many LCMs](https://atcoder.jp/contests/abc445/tasks/abc445_e)
+
+## Others
+
+### $\prod{x_i} = \gcd(x_i) \times \operatorname{lcm}(x_i)$ 最長長度
+
+$\prod{x_i}$ 會使得數字非常大，所以要透過特殊的性質得到。
+
+考慮 $x_i$ 的質因數 $p$ 有 $p^{e_i}$。
+
+1. 對於 $\gcd(x_i) = \min(e_1, e_2, ... e_k)$
+2. 對於 $\operatorname{lcm}(x_i) = \max(e_1, e_2, ... e_k)$
+3. 對於 $\prod{p^{e_i}} = e_1 + e_2 + ... + e_k$
+
+因此最後會得到 $e_1 + e_2 ... + e_k = \min(e_1, e_2, ... e_k) + \max(e_1, e_2, ... e_k)$
