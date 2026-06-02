@@ -19,6 +19,7 @@
 - [LCP](https://www.notion.so/String-bfc978dc843c4dcead26286647d01014?pvs=21)
 - [Subsequence Automata](https://www.notion.so/String-bfc978dc843c4dcead26286647d01014?pvs=21)
 - String Hash
+- ACAM
 
 ## Graph
 
