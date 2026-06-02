@@ -10,6 +10,19 @@ ex.
 
 **z 数组，其中 z[i] = |LCP(s[i:], s)|**
 
+定義 [l, r] 為 s 的前綴。
+
+```
+s[l, r] = s[i - l, r - l]
+
+s = _ _ _# # # _[l_ _i# # # r]
+        ^
+       i-l => z[i - l]
+
+z[i] >= min(z[i-l], r - l + 1)
+z[i] 的長度不能超過 r - l + 1 或是 z[i-l]
+```
+
 ```cpp
 vector<int> zfunc(string &s) {
     const int n = s.length();
