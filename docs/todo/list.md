@@ -11,7 +11,6 @@
 
 - [ ] Review algo template
 
-- [ ] #3455
 ### urgent
 
 - [ ] 二維偏序關係整理
