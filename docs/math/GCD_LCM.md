@@ -35,6 +35,26 @@ $$gcd(x_1, x_2) \ge gcd(x_1, x_2, x_3) \ge gcd(x_1, x_2, x_3, ...)$$
 
 ## Others
 
+### 求滿足 $xy \equiv 0 (\mod M)$ 且 $1 \le x \le n$ 的個數
+
+\[
+\boxed{
+M \mid xy
+\iff
+\frac{M}{\gcd(M,y)} \mid x
+}
+\]
+
+\[
+\boxed{
+\#\{1\le x\le n : M\mid xy\}
+=
+\left\lfloor
+\frac{n}{\frac{M}{\gcd(M,y)}}
+\right\rfloor
+}
+\]
+
 ### $\prod{x_i} = \gcd(x_i) \times \operatorname{lcm}(x_i)$ 最長長度
 
 $\prod{x_i}$ 會使得數字非常大，所以要透過特殊的性質得到。
