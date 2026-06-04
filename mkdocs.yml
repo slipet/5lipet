@@ -296,6 +296,7 @@ nav:
     - Shortest Path: "./graph/shortest_path.md"
     - MST: "./graph/mst.md"
     - Connected Components: "./graph/connected_components.md"
+    - Sliding window on Trees: "./graph/sliding_window_on_trees.md"
   - Math:
     - Permutation/Combination: "./math/combination.md"
     - Number theory: "./math/number_theory.md"
