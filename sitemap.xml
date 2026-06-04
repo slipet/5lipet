@@ -229,6 +229,12 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/graph/shortest_path/"/>
     </url>
     <url>
+        <loc>https://localhost:8000/graph/sliding_window_on_trees/</loc>
+        <lastmod>2026-06-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/graph/sliding_window_on_trees/"/>
+    </url>
+    <url>
         <loc>https://localhost:8000/greedy/bitmask/</loc>
         <lastmod>2026-06-04</lastmod>
         <changefreq>daily</changefreq>
