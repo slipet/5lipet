@@ -56,6 +56,17 @@ a \mid bc
 }
 \]
 
+證明:
+
+設 $g = \gcd(a, b) \rightarrow a = ga', b = gb'$ 代回原式:
+
+$$ga' \mid gb'c$$
+
+同除 $g$ 得到 $a' \mid b'c$，由於 $\gcd(a', b') = 1$，則
+
+$$a' \mid c$$
+
+
 ### 求滿足 $xy \equiv 0(\mod{M})$ 且 $1 \le x \le n$ 的個數
 
 歐幾里得引理得知:
