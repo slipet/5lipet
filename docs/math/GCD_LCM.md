@@ -48,8 +48,7 @@ M \mid xy
 \[
 \boxed{
 \#\{1\le x\le n : M\mid xy\}
-=
-\left\lfloor
+= \left\lfloor
 \frac{n}{\frac{M}{\gcd(M,y)}}
 \right\rfloor
 }
