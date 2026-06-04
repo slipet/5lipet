@@ -35,15 +35,40 @@ $$gcd(x_1, x_2) \ge gcd(x_1, x_2, x_3) \ge gcd(x_1, x_2, x_3, ...)$$
 
 ## Others
 
-### 求滿足 $xy \equiv 0 (\mod M)$ 且 $1 \le x \le n$ 的個數
+
+### Euclid's Lemma(歐幾里得引理)
+
+若:
+
+$$a | bc, \text{ and } gcd(a, b) = 1$$
+
+則:
+
+$$a | c$$
+
+推廣
 
 \[
 \boxed{
-M \mid xy
+a \mid bc
 \iff
-\frac{M}{\gcd(M,y)} \mid x
+\frac{a}{\gcd(a,b)} \mid c
 }
 \]
+
+### 求滿足 $xy \equiv 0(\mod{M})$ 且 $1 \le x \le n$ 的個數
+
+歐幾里得引理得知:
+
+\[
+\boxed{
+a \mid bc
+\iff
+\frac{a}{\gcd(a,b)} \mid c
+}
+\]
+
+所以有:
 
 \[
 \boxed{
@@ -53,6 +78,8 @@ M \mid xy
 \right\rfloor
 }
 \]
+
+
 
 ### $\prod{x_i} = \gcd(x_i) \times \operatorname{lcm}(x_i)$ 最長長度
 
