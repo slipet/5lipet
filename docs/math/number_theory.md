@@ -176,6 +176,41 @@ int init = [] {
 }();
 ```
 
+## Möbius function/莫比烏斯函數
+
+[ref](https://leetcode.cn/problems/maximum-score-with-co-prime-element/solutions/3980240/rong-chi-fen-lei-tao-lun-pythonjavacgo-b-avg9/)
+
+**不考慮平方因子**
+
+```cpp
+constexpr int MX = 100'001;
+int8_t mu[MX];
+vector<int> divisors[MX];
+
+int init = [] {
+    // 预处理莫比乌斯函数
+    // 当 n > 1 时，sum_{d|n} mu[d] = 0
+    // 所以 mu[n] = -sum_{d|n ∧ d<n} mu[d]
+    mu[1] = 1;
+    for (int i = 1; i < MX; i++) {
+        for (int j = i * 2; j < MX; j += i) {
+            mu[j] -= mu[i]; // i 是 j 的真因子
+        }
+    }
+
+    // 预处理不含"平方因子"的因子列表
+    // 本题不需要因子 1
+    for (int i = 2; i < MX; i++) {
+        if (mu[i]) {
+            for (int j = i; j < MX; j += i) {
+                divisors[j].push_back(i); // i 是 j 的因子，且 mu[i] != 0
+            }
+        }
+    }
+    return 0;
+}();
+```
+
 #### 高度合成數
 
 * 高度合成數 (Highly Composite Numbers, HCN)** ——就是在所有比它小的正整數裡，它擁有最多的因子數。
