@@ -182,6 +182,15 @@ int init = [] {
 
 **不考慮平方因子**
 
+\[
+\mu(n)=
+\begin{cases}
+1, & n=1,\\[6pt]
+(-1)^k, & n=p_1p_2\cdots p_k \text{ where } p_i \text{ are distinct primes},\\[6pt]
+0, & \exists\, p \text{ prime},\ p^2\mid n.
+\end{cases}
+\]
+
 ```cpp
 constexpr int MX = 100'001;
 int8_t mu[MX];
