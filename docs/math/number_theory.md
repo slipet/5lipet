@@ -178,6 +178,8 @@ int init = [] {
 
 ## Möbius function/莫比烏斯函數
 
+核心思想是容斥原理(inclusion-exclusion principle)。
+
 [ref](https://leetcode.cn/problems/maximum-score-with-co-prime-element/solutions/3980240/rong-chi-fen-lei-tao-lun-pythonjavacgo-b-avg9/)
 
 **不考慮平方因子**
