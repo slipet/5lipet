@@ -2,6 +2,63 @@
 
 這裡放一些枚舉技巧
 
+### 枚舉對角線
+
+**對角線**
+
+對於每條對角線上的網格 $(r,c)$ 其 $r - c$ 為一定值。
+
+設 k = r - c + n，則可以知道右上角的對角線為 $k = 0 - (n - 1) + n = 1$，而左下角的對角線為 $k = m - 1 - 0 + n = m + n - 1$
+
+透過枚舉 $k = 1, 2, ... + m + n - 1$ 可以枚舉每條對角線。
+
+因此可以知道透過 $r \in [0, m - 1]$ 的極值得到 $c$ 的上下限:
+
+\[
+\begin{array}{ll}
+    k = 1, 2, ... + m + n - 1\\
+    \min_c = max(n - k, 0) \\
+    \max_c = min(m + n + 1 - k, n - 1) \\
+    r = k + c - n
+\end{array}
+\]
+
+```cpp
+// k = r - c + n
+for(int k = 1; k < m + n; ++k) {
+    int mnc = max(n - k, 0);
+    int mxc = min(m + n + 1 - k, n - 1);
+    for(int c = mnc; c <= mxc; ++c) {
+        int r = k + c - n;
+    }
+}
+```
+
+**反對角線**
+
+同上設 $k = r + c + 1, k = 1, 2, ...., m + n - 1$
+
+透過 $r \in [0, m - 1]$ 的極值得到 $c$ 的上下限:
+
+\[
+\begin{array}{ll}
+    k = 1, 2, ... + m + n - 1\\
+    \min_c = max(k - m, 0) \\
+    \max_c = min(k - 1, n - 1) \\
+    r = k - c - 1
+\end{array}
+\]
+
+```cpp
+// k = r + c + 1
+for(int k = 1; k < m + n; ++k) {
+    int mnc = max(k - m, 0);
+    int mxc = min(k - 1, n - 1);
+    for(int c = mnc; c <= mxc; ++c) {
+        int r = k - c - 1;
+    }
+}
+```
 
 ### 求移動絕對值貢獻
 
