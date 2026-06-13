@@ -50,3 +50,25 @@ for(int i = 0; i < 2 * n - 1; ++i) {
 
 #### DP 預處理數組
 
+* 記憶化搜索
+
+```cpp
+vector is_pal(n, vector<int>(n, -1));
+auto dfs = [&](this auto &&dfs, int l, int r) -> int {
+    if(l >= r) return true;
+    int &res = is_pal[l][r];
+    if(is_pal[l][r] != -1) return is_pal[l][r];
+    res = (s[l] == s[r]) && dfs(l + 1, r - 1);
+    return res;
+};
+```
+* 迭代
+  
+```cpp
+vector is_pal(n, vector<int>(n, 1));
+for(int l = n - 1; l >= 0; --l) {
+    for(int r = l + 1; r < n; ++r) {
+        is_pal[l][r] = s[l] == s[r] && is_pal[l + 1][r - 1];
+    }
+}
+```
