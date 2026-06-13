@@ -33,3 +33,7 @@ for (auto token : s | views::split_if(isspace)) {
     ...
 }
 ```
+
+### sstream
+
+### binary search
