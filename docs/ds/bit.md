@@ -1,7 +1,9 @@
 # Fenwick Tree/Binary Indexed Tree
 
-	
+
 區間拆分是將 $[1, n]$ 中的下標 $i$ 做二進制分解，使用不同的關鍵區間維護前綴資訊，ex: $13 \rightarrow 1101 \rightarrow 8 + 4 + 1$，下標 $i$ 表示維護每個關鍵區間的區間和/最大/最小值
+
+* tree[x] 管的是長度 **lowbit(x)** 的區間，右端點是 x。
 
 * 取 lowbit = $i \& -i$
 ```
@@ -26,11 +28,12 @@ i & -i = 00010
 template<typename T>
 class FenwickTree {
     vector<T> tree;
-
+    int n;
 public:
     // input range [0, n - 1]，size = n
+    // 如果要開值域為 mx 的 BIT，宣告 FenwickTree<> t(bit_idx(mx))
     // 使用下标 1 到 n
-    FenwickTree(int n) : tree(n + 1) {}
+    FenwickTree(int n) : n(n), tree(n + 1) {}
 
     // a[i] 增加 val
     // 1 <= i <= n
@@ -61,6 +64,16 @@ public:
         }
         return pre(r) - pre(l - 1);
     }
-
+    int kth(int k) {
+        int i = 0;
+        for(int b = 1 << __lg(n); b; b >>= 1) {
+            int nxt = i | b;
+            if(i < tree.size() && tree[nxt] < k) {
+                k -= tree[nxt];
+                i = nxt;
+            }
+        }
+        return i + 1;
+    }
 };
 ```
