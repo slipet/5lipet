@@ -1,5 +1,14 @@
 # Others
 
+
+## 思路
+
+**圖論問題都要考慮能否加入超級點使得問題複雜度下降**
+
+將 $n^2$ 的完全圖加一個中間點降成 $2n$ 個邊。
+
+[atcoder E. Roads and Gates](https://atcoder.jp/contests/abc463/tasks/abc463_e)
+
 ## BFS/DFS
 
 先放這
