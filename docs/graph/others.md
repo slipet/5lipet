@@ -9,6 +9,11 @@
 
 [atcoder E. Roads and Gates](https://atcoder.jp/contests/abc463/tasks/abc463_e)
 
+
+**要思考是否可以加點構造出分層圖**
+
+[3970. Shortest Path With At Most K Consecutive Identical Characters](https://leetcode.com/problems/shortest-path-with-at-most-k-consecutive-identical-characters/description/)
+
 ## BFS/DFS
 
 先放這
