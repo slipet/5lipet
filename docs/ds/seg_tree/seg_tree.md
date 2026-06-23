@@ -504,3 +504,7 @@ public:
     }
 };
 ```
+
+## 線段樹二分
+
+[3479. Fruits Into Baskets III](https://leetcode.cn/problems/fruits-into-baskets-iii/description/)
