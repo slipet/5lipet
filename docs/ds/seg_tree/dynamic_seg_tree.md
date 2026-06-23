@@ -417,3 +417,77 @@ void solve() {
     cout<<ans<<endl;
 }
 ```
+
+### 計算未被覆蓋的區塊
+
+支援 lazy tag，離散化
+
+透過標記覆蓋區塊，把未被覆蓋的區塊向上傳遞
+
+```cpp
+template<typename T>
+class SegTree {
+    struct Node {
+        T l, r;
+        T mn_cover = 0;
+        T mn_cover_len = 0;
+        T todo = 0;
+    };
+    vector<Node> tree;
+    int n;
+    void maintain(int node) {
+        Node &lo = tree[lc(node)];
+        Node &ro = tree[rc(node)];
+        T mn = min(lo.mn_cover, ro.mn_cover);
+        tree[node].mn_cover = mn;
+        tree[node].mn_cover_len = (lo.mn_cover == mn ? lo.mn_cover_len : 0) +
+                               (ro.mn_cover == mn ? ro.mn_cover_len : 0);
+    }
+    void apply(int node, T v) {
+        tree[node].mn_cover += v;
+        tree[node].todo += v;
+    }
+    void spread(int node) {
+        T &todo = tree[node].todo;
+        if(todo != 0) {
+            apply(lc(node), todo);
+            apply(rc(node), todo);
+            todo = 0;
+        }
+    }
+    void build(const vector<int>& xs, int o, int l, int r) {
+        tree[o].l = l;
+        tree[o].r = r;
+        if (l == r) {
+            tree[o].mn_cover_len = xs[l + 1] - xs[l];
+            return;
+        }
+        int m = (l + r) / 2;
+        build(xs, o * 2, l, m);
+        build(xs, o * 2 + 1, m + 1, r);
+        maintain(o);
+    }
+
+    void update(int node, int l, int r, T val) {
+        if(l <= tree[node].l && tree[node].r <= r) {
+            apply(node, val);
+            return;
+        }
+        spread(node);
+        int m = tree[node].l + (tree[node].r - tree[node].l) / 2;
+        if(l <= m) update(lc(node), l, r, val);
+        if(r > m) update(rc(node), l, r, val);
+        maintain(node);
+    }
+public:
+    SegTree(const vector<int> &xs): n(xs.size() - 1), tree(vector<Node> (2 << bit_width(1u * xs.size() - 1))) {
+        build(xs, 1, 0, n - 1);
+    }
+    void update(int l, int r, T val) {
+        update(1, l, r, val);
+    }
+    T query_uncover() const {
+        return tree[1].mn_cover ? 0 : tree[1].mn_cover_len;
+    }
+};
+```
