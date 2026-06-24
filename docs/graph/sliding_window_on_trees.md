@@ -34,6 +34,7 @@ void dfs(int u, int fa) {
 ```
 
 * [leetcdoe #3425](https://leetcode.com/problems/longest-special-path/description/)
+* [3486. 最长特殊路径 II](https://leetcode.cn/problems/longest-special-path-ii/description/)
 
     因為題目要求路徑上的節點元素唯一，透過紀錄上一次相同節點位置移動左端點。
 
