@@ -62,3 +62,7 @@ int digitDP(int low, int high, int target) {
         * [contest review](https://slipet.github.io/5lipet/contest/leetcode/2025/#weekly-contest-470)
 
     * [F. Jee, You See?](https://codeforces.com/problemset/problem/1670/F)
+
+* 使用 hash table + encoding 可以處理狀態數有限，但是值域很大的情況
+
+    * [3490. Count Beautiful Numbers](https://leetcode.com/problems/count-beautiful-numbers/description/)
