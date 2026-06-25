@@ -2,6 +2,12 @@
 
 放一些 DP 的心得/小結論
 
+## 狀態設計
+
+* 當狀態數有限，但是值域很大時可以使用 hash table + encoding 
+
+    * [3490. Count Beautiful Numbers](https://leetcode.com/problems/count-beautiful-numbers/description/)
+
 ## 利用 f(i - 1) 將前綴最優狀態轉移
 
 * Leetcode [#2320. 统计放置房子的方式数](https://leetcode.cn/problems/count-number-of-ways-to-place-houses/description/)
