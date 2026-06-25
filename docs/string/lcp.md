@@ -16,3 +16,15 @@ for(int i = n - 1; i >= 0; --i) {
     }
 }
 ```
+
+## 性質
+
+**將一堆字串排序**
+
+假設排序後的字串集合按照順序為 $s_1, s_2, ... s_i, ... , s_j ...$。
+
+1. 相鄰兩個字串的 LCP 是最長的
+2. 假設 $$
+
+
+* [3485. Longest Common Prefix of K Strings After Removal](3485. Longest Common Prefix of K Strings After Removal)
