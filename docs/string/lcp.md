@@ -25,10 +25,7 @@ for(int i = n - 1; i >= 0; --i) {
 
 1. 在大小為 n 有序的字串集合 S 中，全部集合的 $lcp(s_1, s_2, ..., s_i)$ 會等於第一個字串和最後一個字串的 lcp 也就是 $lcp(s_1, s_n)$
    假設集合中有 $S = \{ab, aba, abb\}$， 此時 $|lcp(s_1, s_3)| = m$ ，對於子陣列的 lcp 不會超過 m，如果超過，則表示 $|lcp(s_1, s_3)|$ 也同樣會超過 m ，因此矛盾。此外子陣列的 lcp 也不會小於 m，因為已經事先排序了，所以中間的字串 lcp 至少會是 m。
-2. 
-3. 在有序的字串集合中，兩個字符串相隔越遠，LCP 越短(不會變長)；兩個字符串相隔越近，LCP 越長(不會變短) $\rightarrow$ 相鄰兩個字串的 LCP 是最長的
-4. 
-5. 假設 $$
+2. 在有序的字串集合中，兩個字符串相隔越遠，LCP 越短(不會變長)；兩個字符串相隔越近，LCP 越長(不會變短) $\rightarrow$ 相鄰兩個字串的 LCP 是最長的
 
 
 * [3485. Longest Common Prefix of K Strings After Removal](https://leetcode.cn/problems/longest-common-prefix-of-k-strings-after-removal/)
