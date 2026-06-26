@@ -27,4 +27,4 @@ for(int i = n - 1; i >= 0; --i) {
 2. 假設 $$
 
 
-* [3485. Longest Common Prefix of K Strings After Removal](3485. Longest Common Prefix of K Strings After Removal)
+* [3485. Longest Common Prefix of K Strings After Removal](https://leetcode.cn/problems/longest-common-prefix-of-k-strings-after-removal/)
