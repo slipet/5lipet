@@ -66,4 +66,25 @@ while (getline(ss, s, '/')) {
 }
 ```
 
+### 刪除重複元素
+```cpp
+v.erase(unique(v.begin(),v.end()),v.end());
+s.erase(unique(s.begin(),s.end()),s.end(), \
+				[](char a,char b){return a==' ' && a==b;});
+				
+//1.
+sort( vec.begin(), vec.end() );
+vec.erase( unique( vec.begin(), vec.end() ), vec.end() );
+//2.
+set<int> s( vec.begin(), vec.end() );
+vec.assign( s.begin(), s.end() );
+```
+
+### nth_element
+
+```cpp
+vector<int> arr;
+ranges::nth_element(arr, arr.end() - k); //k ~ end large
+```
+
 ### binary search
