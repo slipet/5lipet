@@ -36,4 +36,34 @@ for (auto token : s | views::split_if(isspace)) {
 
 ### sstream
 
+[ref](https://home.gamer.com.tw/creationDetail.php?sn=4114818)
+
+```cpp
+#include <sstream>
+#include <iostream>
+using namespace std;
+int main()
+{
+    ////////基本的初始化stringstream
+    stringstream s1;
+    s1.str("");
+    s1.clear();
+}
+```
+
+```cpp
+istringstream ss(path);
+string s;
+while (getline(ss, s, '/')) {
+    if (s.empty() || s == ".") {
+        continue;
+    }
+    if (s != "..") {
+        stk.push_back(s);
+    } else if (!stk.empty()) {
+        stk.pop_back();
+    }
+}
+```
+
 ### binary search
