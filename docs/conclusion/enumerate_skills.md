@@ -36,6 +36,40 @@ a & b = a //0101 & 1101 = 0101
 a | b = b //0101 | 1101 = 1101
 ```
 
+#### Gosper's Hack
+
+枚舉大小為k的子集
+
+```cpp
+void GospersHack(int k, int n)
+{
+    int cur = (1 << k) - 1;
+    int limit = (1 << n);
+    while (cur < limit)
+    {
+        // do something
+        int lb = cur & -cur;
+        int r = cur + lb;
+        cur = ((r ^ cur) >> __builtin_ctz(lb) + 2) | r;
+        // 或：cur = (((r ^ cur) >> 2) / lb) | r;
+    }
+}
+//  x     = 0101110
+// -x     = 1010010
+// lb     = 0000010
+//  x     = 0101110
+// x + lb = 0110000 -> left
+// left^x = 0011110 >> (1 + 2 = 3)
+//        = 0000011
+//      r = 0110000  
+
+//  x     = [01]110
+// -x     = 10010
+// lb     = 00010
+// x + lb = [10]000
+// left ^ x = 11110 >> (ctz(lb) >> 2)
+```
+
 ### 枚舉對角線
 
 **對角線**
