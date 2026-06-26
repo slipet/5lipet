@@ -2,6 +2,40 @@
 
 這裡放一些枚舉技巧
 
+### BIT
+
+#### 子集枚舉
+
+```cpp
+for(int sub = s; sub; sub = (sub - 1 & s)) {
+		....
+} 
+//including 0
+sub = s;
+do {
+	sub = (sub - 1 & s);
+} while(sub != s);
+```
+
+#### low bit
+
+```cpp
+low bit = x & -x 
+```
+
+* 移除 low bit
+
+```cpp
+s = s & (s - 1)
+s -= (s & -s)
+```
+
+#### including
+```cpp
+a & b = a //0101 & 1101 = 0101
+a | b = b //0101 | 1101 = 1101
+```
+
 ### 枚舉對角線
 
 **對角線**
@@ -94,6 +128,18 @@ $$ G = max_{j = 1}^{n}(gain_j) = max_{j = 1}^{n}max_{i = 1}^{n}(a_i + |j - i|)$$
     
     接著再利用 k 去計算符合題目限制的要求。
 
+
+### 原地去重（相同或值只保留最左边的）
+
+```cpp
+// 原理见力扣 26. 删除有序数组中的重复项
+int m = 1;
+for (int j = 1; j < or_left.size(); j++) {
+    if (or_left[j].first != or_left[j - 1].first) {
+        or_left[m++] = or_left[j];
+    }
+}
+```
 
 ### 逆向思維/正難則反
 
