@@ -7,6 +7,34 @@
 * 當狀態數有限，但是值域很大時可以使用 hash table + encoding 
 
     * [3490. Count Beautiful Numbers](https://leetcode.com/problems/count-beautiful-numbers/description/)
+  
+* 求 subarray 的問題，或是求多個 subarray 的問題，透過 kadane 的思想，可以定義狀態為 $f_0, f_1, f_2, ...$ ，$f_0$ 表示第一個 subarray **前**的結果，$f_1$ 表示第一個 subarray **中**，$f_2$ 表示第一個 subarray **後**的結果:
+
+    ```cpp
+    |-----f0----|-----f1----|-----f2----|
+    ```
+    
+    以 kadane 為例子，轉移方程為 $f_1 = max(f_1, f_0) + x$，因為 $f_0$ 都為空，所以普通的 kadane $f_0$ 會是 0。
+
+    * [3434. 子数组操作后的最大频率](https://leetcode.cn/problems/maximum-frequency-after-subarray-operation/description/?envType=problem-list-v2&envId=1VhVUpsv)
+
+        這題利用上面的想法，把狀態定義成 $f_0, f_1, f_2$ ，分別表示:
+
+        * $f_0:$ 被修改的子數組的左邊
+        * $f_1:$ 被修改的子數組
+        * $f_2:$ 被修改的子數組的右邊
+
+        轉移方程為:
+
+        \[
+        \begin{array}{ll}
+            f_2 = max(f_2, max(f_1[x])) + (x == k)\\
+            f_1[x] = max(f_1[x], f_0) + 1\\
+            f_0 = f_0 + (x == k)
+        \end{array}
+        \]
+
+    * **利用狀態定義可以推廣到 > 1 以上的 subarray 應用**
 
 ## 利用 f(i - 1) 將前綴最優狀態轉移
 
