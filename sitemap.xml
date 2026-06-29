@@ -247,6 +247,12 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/greedy/greedy/"/>
     </url>
     <url>
+        <loc>https://localhost:8000/math/CRT/</loc>
+        <lastmod>2026-06-29</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/math/CRT/"/>
+    </url>
+    <url>
         <loc>https://localhost:8000/math/GCD_LCM/</loc>
         <lastmod>2026-06-29</lastmod>
         <changefreq>daily</changefreq>
