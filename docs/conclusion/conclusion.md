@@ -24,9 +24,119 @@
 
 插入操作需要 O(log(n))
 
+
+```cpp
+// 对顶堆模板开始，以下模板维护的其实是前 K 小的元素
+struct Magic {
+    int K;
+    priority_queue<int> pq1, del1;
+    priority_queue<int, vector<int>, greater<int>> pq2, del2;
+    int sz1, sz2;
+    long long sm1;
+
+    Magic() {
+        K = 0;
+        sz1 = sz2 = 0;
+        sm1 = 0;
+    }
+
+    int top1() {
+        while (!del1.empty() && pq1.top() == del1.top()) pq1.pop(), del1.pop();
+        return pq1.top();
+    }
+
+    int top2() {
+        while (!del2.empty() && pq2.top() == del2.top()) pq2.pop(), del2.pop();
+        return pq2.top();
+    }
+
+    void adjust() {
+        while (sz2 > 0 && sz1 < K) {
+            int x = top2();
+            pq2.pop(); sz2--;
+            pq1.push(x); sz1++; sm1 += x;
+        }
+        while (sz1 > K) {
+            int x = top1();
+            pq1.pop(); sz1--; sm1 -= x;
+            pq2.push(x); sz2++;
+        }
+    }
+
+    void add(int x) {
+        if (sz2 > 0 && x >= top2()) pq2.push(x), sz2++;
+        else pq1.push(x), sz1++, sm1 += x;
+        adjust();
+    }
+
+    void del(int x) {
+        if (sz1 > 0 && x <= top1()) del1.push(x), sz1--, sm1 -= x;
+        else del2.push(x), sz2--;
+        adjust();
+    }
+};
+```
+
 可以在 O(1) 找到中位數
 
-2. 二分，算 <= x 有幾個
+1. 二分，算 <= x 有幾個
+
+```cpp
+#define id(x) (x + 1)
+
+class FenwickTree {
+    const int high_bit;
+    const vector<int>& sorted;
+    vector<int> cnt;
+    vector<long long> sum;
+
+public:
+    FenwickTree(const vector<int>& sorted) : 
+        cnt(sorted.size() + 1), 
+        sum(sorted.size() + 1), 
+        sorted(sorted), 
+        high_bit(1 << (bit_width(sorted.size()) - 1)) {}
+
+    // 添加 num 个 val，其中 val 离散化后的值为 i（i 从 1 开始）
+    // 如果 num < 0，表示减少 -num 个 val
+    void update(int i, int num, int val) {
+        for (; i < cnt.size(); i += i & -i) {
+            cnt[i] += num;
+            sum[i] += val;
+        }
+    }
+
+    // 返回第 k 小的数（k 从 1 开始）
+    int kth(int k) const {
+        int i = 0;
+        for (int b = high_bit; b > 0; b >>= 1) {
+            int nxt = i | b;
+            if (nxt < cnt.size() && cnt[nxt] < k) {
+                k -= cnt[nxt];
+                i = nxt;
+            }
+        }
+        return sorted[i];
+    }
+
+    // 返回前 k 小的数之和（k 从 1 开始）
+    long long pre_sum(int k) const {
+        long long s = 0;
+        int i = 0;
+        for (int b = high_bit; b > 0; b >>= 1) {
+            int nxt = i | b;
+            if (nxt < cnt.size() && cnt[nxt] < k) {
+                k -= cnt[nxt];
+                s += sum[nxt];
+                i = nxt;
+            }
+        }
+        // 加上等于第 k 小的数
+        return s + 1LL * sorted[i] * k;;
+    }
+};
+
+```
 
 ---
 
