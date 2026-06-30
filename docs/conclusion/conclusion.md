@@ -26,55 +26,121 @@
 
 
 ```cpp
-// 对顶堆模板开始，以下模板维护的其实是前 K 小的元素
-struct Magic {
-    int K;
-    priority_queue<int> pq1, del1;
-    priority_queue<int, vector<int>, greater<int>> pq2, del2;
-    int sz1, sz2;
-    long long sm1;
+template<typename T, typename Compare = less<T>>
+class LazyHeap {
+    priority_queue<T, vector<T>, Compare> pq;
+    unordered_map<T, int> remove_cnt; // 每个元素剩余需要删除的次数
+    size_t sz = 0; // 实际大小
+    long long s = 0; // 堆中元素总和
 
-    Magic() {
-        K = 0;
-        sz1 = sz2 = 0;
-        sm1 = 0;
-    }
-
-    int top1() {
-        while (!del1.empty() && pq1.top() == del1.top()) pq1.pop(), del1.pop();
-        return pq1.top();
-    }
-
-    int top2() {
-        while (!del2.empty() && pq2.top() == del2.top()) pq2.pop(), del2.pop();
-        return pq2.top();
-    }
-
-    void adjust() {
-        while (sz2 > 0 && sz1 < K) {
-            int x = top2();
-            pq2.pop(); sz2--;
-            pq1.push(x); sz1++; sm1 += x;
-        }
-        while (sz1 > K) {
-            int x = top1();
-            pq1.pop(); sz1--; sm1 -= x;
-            pq2.push(x); sz2++;
+    // 正式执行删除操作
+    void apply_remove() {
+        while (!pq.empty() && remove_cnt[pq.top()] > 0) {
+            remove_cnt[pq.top()]--;
+            pq.pop();
         }
     }
 
-    void add(int x) {
-        if (sz2 > 0 && x >= top2()) pq2.push(x), sz2++;
-        else pq1.push(x), sz1++, sm1 += x;
-        adjust();
+public:
+    size_t size() {
+        return sz;
     }
 
-    void del(int x) {
-        if (sz1 > 0 && x <= top1()) del1.push(x), sz1--, sm1 -= x;
-        else del2.push(x), sz2--;
-        adjust();
+    long long sum() {
+        return s;
+    }
+
+    // 删除
+    void remove(T x) {
+        remove_cnt[x]++; // 懒删除
+        sz--;
+        s -= x;
+    }
+
+    // 查看堆顶
+    T top() {
+        apply_remove();
+        return pq.top();
+    }
+
+    // 出堆
+    T pop() {
+        apply_remove();
+        T x = pq.top();
+        pq.pop();
+        sz--;
+        s -= x;
+        return x;
+    }
+
+    // 入堆
+    void push(T x) {
+        if (remove_cnt[x] > 0) {
+            remove_cnt[x]--; // 抵消之前的删除
+        } else {
+            pq.push(x);
+        }
+        sz++;
+        s += x;
+    }
+
+    // push(x) 然后 pop()
+    T push_pop(T x) {
+        apply_remove();
+        pq.push(x);
+        s += x;
+        x = pq.top();
+        pq.pop();
+        s -= x;
+        return x;
     }
 };
+
+// 480. 滑动窗口中位数（有改动）
+// 返回 nums 的所有长为 k 的子数组的（到子数组中位数的）距离和
+vector<long long> medianSlidingWindow(vector<int>& nums, int k) {
+    int n = nums.size();
+    vector<long long> ans(n - k + 1);
+    LazyHeap<int> left; // 最大堆
+    LazyHeap<int, greater<>> right; // 最小堆
+
+    for (int i = 0; i < n; i++) {
+        // 1. 进入窗口
+        int in = nums[i];
+        if (left.size() == right.size()) {
+            left.push(right.push_pop(in));
+        } else {
+            right.push(left.push_pop(in));
+        }
+
+        int l = i + 1 - k;
+        if (l < 0) { // 窗口大小不足 k
+            continue;
+        }
+
+        // 2. 计算答案
+        long long v = left.top();
+        long long s1 = v * left.size() - left.sum();
+        long long s2 = right.sum() - v * right.size();
+        ans[l] = s1 + s2;
+
+        // 3. 离开窗口
+        int out = nums[l];
+        if (out <= left.top()) {
+            left.remove(out);
+            if (left.size() < right.size()) {
+                left.push(right.pop()); // 平衡两个堆的大小
+            }
+        } else {
+            right.remove(out);
+            if (left.size() > right.size() + 1) {
+                right.push(left.pop()); // 平衡两个堆的大小
+            }
+        }
+    }
+    
+    return ans;
+}
 ```
 
 可以在 O(1) 找到中位數
@@ -132,7 +198,7 @@ public:
             }
         }
         // 加上等于第 k 小的数
-        return s + 1LL * sorted[i] * k;;
+        return s + 1LL * sorted[i] * k;
     }
 };
 
