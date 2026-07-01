@@ -88,3 +88,85 @@ ranges::nth_element(arr, arr.end() - k); //k ~ end large
 ```
 
 ### binary search
+
+* binary_search 用來判斷一個元素是否存在於已排序的區間
+  => lower_bound + 檢查是否相等
+
+* 時間複雜度為 O(log n)
+
+**前提：必須排序**
+
+```cpp
+#include <algorithm>
+#include <vector>
+
+vector<int> a = {1, 3, 5, 7, 9};
+
+cout << binary_search(a.begin(), a.end(), 5);  // 1 (true)
+cout << binary_search(a.begin(), a.end(), 6);  // 0 (false)
+```
+
+**C++14**
+```cpp
+vector<pair<int,int>> v = {
+    {1,10},
+    {3,20},
+    {5,30}
+};
+
+bool ok = binary_search(
+    v.begin(), v.end(),
+    3,
+    [](const auto &p, int x){
+        return p.first < x;
+    }
+);
+```
+
+**C++20**
+
+```cpp
+vector<int> a = {1,3,5,7,9};
+
+bool ok = std::ranges::binary_search(a, 5);
+
+vector<pair<int,int>> v = {{1,10}, {3,20}, {5,30}};
+
+bool ok = std::ranges::binary_search(
+    v,
+    3,
+    {},
+    &pair<int,int>::first
+);
+```
+
+
+### deque
+
+* deque 可以看成 random access O(1)
+* 因此可以用 binary search 算距離
+
+```cpp
+auto it = dq.begin();
+it += 3;
+it + k
+it - k
+it1 - it2
+it < it2
+dq[i]
+```
+
+* 跟vector 差別在不是整塊連續，deque 底層通常是很多固定大小的 block：，`dq[i]` 的時候會找到那塊在哪再 access
+
+* 支援STL:
+```cpp
+sort(dq.begin(), dq.end());
+
+nth_element(...);
+
+lower_bound(...);
+
+upper_bound(...);
+
+binary_search(...);
+```
