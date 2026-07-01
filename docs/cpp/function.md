@@ -1,4 +1,56 @@
-## C++17
+### count/count_if
+
+## count
+
+統計某個值出現幾次。
+
+```cpp
+count(first, last, value);
+```
+
+**C++20**
+
+```cpp
+//ranges
+vector<int> a = {1,2,3,2,2};
+cout << ranges::count(a, 2);
+
+//projection
+vector<pair<int,int>> v = {
+    {1,10},
+    {2,20},
+    {1,30}
+};
+
+cout << ranges::count(v, 1, &pair<int,int>::first);
+//等於
+count_if(v.begin(), v.end(),
+    [](auto &p){
+        return p.first == 1;
+    });
+```
+
+## count_if
+
+依照條件統計。
+
+```cpp
+vector<int> a = {1,2,3,4,5,6};
+
+cout << count_if(a.begin(), a.end(),
+    [](int x){
+        return x % 2 == 0;
+    });
+```
+
+**C++20**
+
+```cpp
+cout << ranges::count_if(a,
+    [](int x){
+        return x % 2;
+    });
+```
 
 ### clamp
 
