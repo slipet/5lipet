@@ -52,6 +52,45 @@ cout << ranges::count_if(a,
     });
 ```
 
+### find_if
+
+* find_if 用來找到第一個符合條件的元素。
+
+* 如果找不到，就回傳 last。
+
+* 時間複雜度為 O(n)。
+
+```cpp
+vector<int> a = {1,3,5,8,10};
+
+auto it = find_if(a.begin(), a.end(),
+    [](int x){
+        return x % 2 == 0;
+    });
+
+if (it != a.end())
+    cout << it - a.begin();
+```
+
+* string
+
+使用 <cctype> 的函式（如 isdigit、isalpha）時，建議先轉成 unsigned char，避免 char 為負值時產生未定義行為
+
+```cpp
+string s = "abc123";
+
+auto it = find_if(s.begin(), s.end(),
+    [](char c){
+        return isdigit(static_cast<unsigned char>(c));
+    });
+
+cout << *it;
+```
+
+**C++20**
+
+* ranges 和 projection 同樣可以用
+
 ### clamp
 
 將給定值限制在指定的範圍內。
