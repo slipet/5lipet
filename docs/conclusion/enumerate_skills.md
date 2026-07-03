@@ -226,3 +226,10 @@ a_i
 * [3685. 含上限元素的子序列和](https://leetcode.cn/problems/number-of-great-partitions/solutions/2032009/ni-xiang-si-wei-01-bei-bao-fang-an-shu-p-v47x/)
 
 * [3333. 找到初始输入字符串 II](https://leetcode.cn/problems/find-the-original-typed-string-ii/solutions/2966856/zheng-nan-ze-fan-qian-zhui-he-you-hua-dp-5mi9/)
+
+
+### 四邊形不等式優化
+
+公式化解題
+
+$nums$ 和 $cost$ 均非負 $\rightarrow$ 所以決策點一定單調不降 $\rightarrow$ 這個式子滿足四邊形不等式 $\rightarrow$ 直接上決策單調性 dp
