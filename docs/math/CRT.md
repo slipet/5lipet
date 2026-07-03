@@ -4,6 +4,29 @@
 
 講解: [1](https://www.luogu.com.cn/article/b9vzcrkd) [2](https://zhuanlan.zhihu.com/p/44591114)
 
+目標: 求解同餘方程
+
+設 $a_1, a_2, a_3, ... , a_n$ 兩兩互質
+
+\[
+\left\{
+\begin{array}{ll}
+    x \equiv b_1 \pmod{a_1} \\
+    x \equiv b_2 \pmod{a_2} \\
+    x \equiv b_3 \pmod{a_3} \\
+    ...
+\end{array}
+\right.
+\]
+
+
+設 $M_i = \frac{\prod a_i}{a_i}$，所求為
+
+$$k_1 \times M_1 + k_2 \times M_2 + k_3 \times M_3 + ...$$
+
+且 $k_i \times M_i \equiv b_i \pmod{a_i} \rightarrow k_i \equiv b_i \times M^{-1} \pmod{a_i}$
+
+使用 `exgcd` 計算 $M_i$ 的逆元
 
 ```cpp
 void exgcd(ll a, ll b, ll &x, ll &y) {
