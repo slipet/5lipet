@@ -327,6 +327,9 @@ public:
 
 ### 區間修改子樹(DFS 時間戳)
 
+用 $in, out$ 維護子樹時間區間 $[in, out)$
+
+* [3515. 带权树中的最短路径](https://leetcode.cn/problems/shortest-path-in-a-weighted-tree/description/?envType=problem-list-v2&envId=n91HJ7EL)
 
 ### 維護相鄰元素距離
 
