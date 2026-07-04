@@ -342,10 +342,12 @@ nav:
       - 2026:
         - S1: "./contest/leetcode/2026_S1.md"
         - S2: "./contest/leetcode/2026_S2.md"
+        - S3: "./contest/leetcode/2026_S3.md"
     - Atcoder:
       - 2026:
         - S1: "./contest/atcoder/2026_S1.md"
         - S2: "./contest/atcoder/2026_S2.md"
+        - S3: "./contest/atcoder/2026_S3.md"
     - Virtual:
       - leetcode: "./contest/vp/leetcode.md"
   - CPP:
