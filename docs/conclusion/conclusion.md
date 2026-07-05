@@ -410,3 +410,8 @@ O X O X
 
 可以利用經過的黑白格子數，解決一些問題/得到一些結論。
 
+### 修改一個元素
+
+**前後綴分解的關鍵字**
+
+* [3983. 一次替换后的子序列](https://leetcode.cn/problems/subsequence-after-one-replacement/description/)
