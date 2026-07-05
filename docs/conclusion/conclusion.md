@@ -403,7 +403,7 @@ O X O X
 
 ### 透過中間狀態解決問題
 
-典型套路，想辦法讓 X, Y 到達同樣的中間點/狀態。計算兩個點到中間點/狀態的距離
+典型套路，想辦法讓難處理的狀態到達同樣的中間點/狀態。計算兩個點到中間點/狀態的距離
 
 * [cf1087 D. Ghostfires](https://codeforces.com/contest/2209/problem/D) (類似思想，轉移到好做的狀態)
 * [3901. 好子序列查询](https://leetcode.cn/problems/good-subsequence-queries/description/)(想辦法把其他狀態轉移到可以解決的狀態)
