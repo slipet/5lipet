@@ -36,6 +36,16 @@
 
     * **利用狀態定義可以推廣到 > 1 以上的 subarray 應用**
 
+## Multi-kadane
+
+這是我自己取的名字。
+
+主要的架構是求子數組和，$x_i$ 在符合某個限制下的貢獻為 $+f(x_i)$ 不符合情況時 $-g(x_i)$。
+
+題目通常會有多個限制需要計算其中一個限制作用在同一個陣列上時的子數組和。
+
+* [3984. 可整除游戏](https://leetcode.cn/problems/divisible-game/description/)
+
 ## 利用 f(i - 1) 將前綴最優狀態轉移
 
 * Leetcode [#2320. 统计放置房子的方式数](https://leetcode.cn/problems/count-number-of-ways-to-place-houses/description/)
