@@ -284,6 +284,7 @@ nav:
     - Z-algorithm: "./string/z_algorithm.md"
     - Subseq automation: "./string/subseq_automation.md"
     - ACAM: "./string/acam.md"
+    - Manacher: "./string/manacher.md"
   - DP:
     - Conclusion: "./dp/conclusion.md"
     - Knapack: "./dp/knapack.md"
