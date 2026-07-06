@@ -397,6 +397,12 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/string/acam/"/>
     </url>
     <url>
+        <loc>https://localhost:8000/string/base_conversion/</loc>
+        <lastmod>2026-07-06</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/string/base_conversion/"/>
+    </url>
+    <url>
         <loc>https://localhost:8000/string/kmp/</loc>
         <lastmod>2026-07-06</lastmod>
         <changefreq>daily</changefreq>
