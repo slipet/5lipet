@@ -71,3 +71,6 @@ public:
     }
 };
 ```
+* [5. 最长回文子串](https://leetcode.cn/problems/longest-palindromic-substring/description/)
+* [3985. 回文子数组求和](https://leetcode.cn/problems/palindromic-subarray-sum/description/)
+* [3327. 判断 DFS 字符串是否是回文串](https://leetcode.cn/problems/check-if-dfs-strings-are-palindromes/description/)
