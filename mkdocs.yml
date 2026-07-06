@@ -285,7 +285,6 @@ nav:
     - Subseq automation: "./string/subseq_automation.md"
     - ACAM: "./string/acam.md"
     - Manacher: "./string/manacher.md"
-    - Base Conversion: "./string/base_conversion.md"
   - DP:
     - Conclusion: "./dp/conclusion.md"
     - Knapack: "./dp/knapack.md"
@@ -307,6 +306,7 @@ nav:
     - Reservoir Sampling: "./math/reservoir_sampling.md"
     - GCD/LCM: "./math/GCD_LCM.md"
     - Jeep Problem: "./math/jeep.md"
+    - Base Conversion: "./Math/base_conversion.md"
   - Conclusion:
     - Conclusion: "./conclusion/conclusion.md"
     - Circular Problem: "./conclusion/circular.md"
