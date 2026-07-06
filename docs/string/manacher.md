@@ -7,8 +7,10 @@
 * s 原字串，$s_i$ 為 s 的下標
 * t 修改後的字串，$t_i$ 為子串 t 的下標
 * $t_i = 2\times(s_i + 1)$
-  * $t_i$ 為偶數，對應為奇回文串(下標從 2 開始)
-  * $t_i$ 為奇數，對應為偶回文串(下標從 3 開始)
+
+    * $t_i$ 為偶數，對應為奇回文串(下標從 2 開始)
+    * $t_i$ 為奇數，對應為偶回文串(下標從 3 開始)
+
 * $s_i = \frac{t_i}{2} - 1$
 
 ```cpp
@@ -71,6 +73,7 @@ public:
     }
 };
 ```
+
 * [5. 最长回文子串](https://leetcode.cn/problems/longest-palindromic-substring/description/)
 * [3985. 回文子数组求和](https://leetcode.cn/problems/palindromic-subarray-sum/description/)
 * [3327. 判断 DFS 字符串是否是回文串](https://leetcode.cn/problems/check-if-dfs-strings-are-palindromes/description/)
