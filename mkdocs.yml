@@ -285,6 +285,7 @@ nav:
     - Subseq automation: "./string/subseq_automation.md"
     - ACAM: "./string/acam.md"
     - Manacher: "./string/manacher.md"
+    - Base Conversion: "./string/base_conversion.md"
   - DP:
     - Conclusion: "./dp/conclusion.md"
     - Knapack: "./dp/knapack.md"
