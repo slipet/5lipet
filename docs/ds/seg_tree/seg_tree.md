@@ -505,6 +505,68 @@ public:
 };
 ```
 
+## 線段樹維護最大子數組和
+
+```cpp
+#define lc(node) (node << 1)
+#define rc(node) (node << 1 | 1)
+
+using ll = long long;
+const ll inf = LLONG_MAX / 2;
+template<typename T>
+class SegTree {
+    struct Node {
+        T mx, sum, pre, suf;
+    };
+    vector<Node> tree;
+    int n;
+    void maintain(int node) {
+        tree[node] = {
+            max({tree[lc(node)].mx, tree[rc(node)].mx, tree[lc(node)].suf + tree[rc(node)].pre}),
+            tree[lc(node)].sum + tree[rc(node)].sum,
+            max(tree[lc(node)].pre, tree[lc(node)].sum + tree[rc(node)].pre),
+            max(tree[rc(node)].suf, tree[lc(node)].suf + tree[rc(node)].sum)
+        };
+    }
+    void set(int node, T val) {
+        tree[node] = {val, val, val, val};
+    }
+    void build(const vector<int> &a, int node, int l, int r) {
+        if(l == r) {
+            set(node, a[l]);
+            return;
+        }
+        int m = l + (r - l) / 2;
+        build(a, lc(node), l, m);
+        build(a, rc(node), m + 1, r);
+        maintain(node);
+    }
+    void update(int node, int l, int r, int i, T val) {
+        if(l == r) {
+            set(node, val);
+            return;
+        }
+        int m = l + (r - l) / 2;
+        if(i <= m) update(lc(node), l, m, i, val);
+        else if(i > m) update(rc(node), m + 1, r, i, val);
+        maintain(node);
+    }
+public:
+    SegTree(const vector<int> &a) : n(a.size()), tree(2 << bit_width(1u * a.size() - 1)) {
+        build(a, 1, 0, n - 1);
+    }
+    void update(int i, T val) {
+        update(1, 0, n - 1, i, val);
+    }
+    T query() {
+        return tree[1].mx;
+    }
+};
+```
+
+* [3410. 删除所有值为某个元素后的最大子数组和](https://leetcode.cn/problems/maximize-subarray-sum-after-removing-all-occurrences-of-one-element/description/)
+* [3525. 求出数组的 X 值 II](https://leetcode.cn/problems/find-x-value-of-array-ii/description/) 類似思想，維護區間資訊
+
 ## 線段樹二分
 
 [3479. Fruits Into Baskets III](https://leetcode.cn/problems/fruits-into-baskets-iii/description/)
