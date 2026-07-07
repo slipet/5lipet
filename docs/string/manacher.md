@@ -137,7 +137,7 @@ long long getSum(vector<int>& s) {
             max_i = i;
         }
     }
-
+    // Manacher 模板 結束
 
     //這裡是子陣列和
     vector<long long> sum(s.size() + 1);
