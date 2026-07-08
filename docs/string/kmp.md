@@ -18,7 +18,7 @@ vector<int> kmp(string &s) {
         while(j > 0 && s[j] != s[i]) {
             j = pi[j - 1];
         }
-        pi[i] = j + s[i] == s[j];
+        pi[i] = j + (s[i] == s[j]);
     }
     return pi;
 }
