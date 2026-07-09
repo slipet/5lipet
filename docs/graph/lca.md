@@ -84,6 +84,8 @@ public:
 
 需要開的空間為 $\log{D}$，$D$ 為最遠距離。
 
+最後要計算答案的時候，每次都要跳 $< limit$ 的距離，最後再看跳一步的距離能否到達目標。
+
 ```cpp
 
 //**step 1: init ** 
@@ -120,4 +122,7 @@ for(int k = mx - 1; k >= 0; k--) {
         l = pa[l][k];
     }
 }
+//check pa[l][0]
 ```
+
+* [3534. 针对图的路径存在性查询 II](https://leetcode.cn/problems/path-existence-queries-in-a-graph-ii/description/)
