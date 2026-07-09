@@ -56,7 +56,7 @@ public:
 
         for (int i = 1; i < w; i++) {
             for (int j = 0; j + (1 << i) <= n; j++) {
-                st[i][j] = op(st_min[i - 1][j], st_min[i - 1][j + (1 << (i - 1))]);
+                st[i][j] = op(st_min[i - 1][j], st[i - 1][j + (1 << (i - 1))]);
             }
         }
     }
@@ -66,7 +66,7 @@ public:
     // 时间复杂度 O(1)
     int query(int l, int r) const {
         int k = bit_width((uint32_t) r - l) - 1;
-        return op(st_min[k][l], st_min[k][r - (1 << k)]);
+        return op(st[k][l], st[k][r - (1 << k)]);
     }
 };
 ```
