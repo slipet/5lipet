@@ -76,3 +76,48 @@ public:
     }
 };
 ```
+
+
+## 其他倍增的模板
+
+先得到跳 $2^0$ 步的距離，再求跳 $2^k$ 的距離
+
+需要開的空間為 $\log{D}$，$D$ 為最遠距離。
+
+```cpp
+
+//**step 1: init ** 
+int mx = bit_width((uint32_t) n);//算最多跳幾步
+
+
+//**step 2: init 2^0* 
+// 双指针，从第 i 小的数开始，向左一步，最远能跳到第 left 小的数
+vector pa(n, vector<int>(mx));
+int left = 0;
+for (int i = 0; i < n; i++) {
+    while (nums[idx[i]] - nums[idx[left]] > maxDiff) {
+        left++;
+    }
+    pa[i][0] = left;
+}
+
+//**step 3: cal [2^1, 2^k]* 
+// 倍增
+for (int i = 0; i < mx - 1; i++) {
+    for (int x = 0; x < n; x++) {
+        int p = pa[x][i];
+        pa[x][i + 1] = pa[p][i];
+    }
+}
+
+
+//**step 4: cal [2^1, 2^k]* 
+///cal ans
+int res = 0;
+for(int k = mx - 1; k >= 0; k--) {
+    if(pa[l][k] < r) {
+        res |= 1 << k;
+        l = pa[l][k];
+    }
+}
+```
