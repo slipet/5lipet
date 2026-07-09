@@ -143,7 +143,7 @@ int main()
 ```
 
 ```cpp
-istringstream ss(path);
+stringstream ss(path);
 string s;
 while (getline(ss, s, '/')) {
     if (s.empty() || s == ".") {
