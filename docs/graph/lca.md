@@ -117,12 +117,12 @@ for (int i = 0; i < mx - 1; i++) {
 ///cal ans
 int res = 0;
 for(int k = mx - 1; k >= 0; k--) {
-    if(pa[l][k] < r) {
+    if(pa[r][k] > l) {
         res |= 1 << k;
-        l = pa[l][k];
+        r = pa[l][k];
     }
 }
-//check pa[l][0]
+//check pa[r][0]
 ```
 
 * [3534. 针对图的路径存在性查询 II](https://leetcode.cn/problems/path-existence-queries-in-a-graph-ii/description/)
