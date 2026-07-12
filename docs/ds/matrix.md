@@ -2,6 +2,87 @@
 
 矩陣運算
 
+### 旋轉/翻轉
+
+#### 翻轉
+
+* 上下翻轉: $(r, c) \rightarrow (m - 1 - r, c)$
+* 左右翻轉: $(r, c) \rightarrow (r, n - 1 - c)$
+
+```cpp
+vector<vector<int>> mat;
+
+//上下翻轉
+ranges::reverse(mat.begin(), mat.end());
+
+//左右翻轉
+for(auto &row: mat) ranges::reverse(row.begin(), row.end());
+```
+
+#### 旋轉
+
+* **順時針 $90\degree$**: $(r, c) \rightarrow (c, m - 1 - r)$
+  
+```cpp
+//a: m x n -> b: n x m
+vector a(m, vector<int>(n));
+vector b(n, vector<int>(m));
+
+for(int r = 0; r < m; ++r)
+    for(int c = 0; c < n; ++c)
+        b[c][m - 1 - r] = a[r][c];
+
+```
+
+* **逆時針 $90\degree$**: $(r, c) \rightarrow (n - 1 - c, r)$
+
+```cpp
+//a: m x n -> b: n x m
+vector a(m, vector<int>(n));
+vector b(n, vector<int>(m));
+
+for(int r = 0; r < m; ++r)
+    for(int c = 0; c < n; ++c)
+        b[n - 1 - c][r] = a[r][c];
+```
+
+#### 轉置
+
+* **主對角線轉置**: $(r, c) \rightarrow (c, r)$
+
+```cpp
+//a: n x n
+vector a(n, vector<int>(n));
+
+for(int r = 0; r < n; ++r)
+    for(int c = r + 1; c < n; ++c)
+        swap(a[r][c], a[c][r]);
+
+//a: m x n -> b: n x m
+vector a(m, vector<int>(n));
+vector b(n, vector<int>(m));
+
+for(int r = 0; r < n; ++r)
+    for(int c = r + 1; c < n; ++c)
+        b[c][r] = a[r][c];
+```
+
+* **副對角線轉置**: $(r, c) \rightarrow (n - 1 - c, m - 1 - r)$
+
+```
+1 2 3
+4 5 6
+7 8 9
+
+↓
+
+9 6 3
+8 5 2
+7 4 1
+```
+
+* 主對角線轉置 + 水平翻轉
+
 ### 快速實作
 
 ```cpp
