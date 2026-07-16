@@ -322,6 +322,55 @@ public:
 };
 ```
 
+* [3574. 最大子数组 GCD 分数](https://leetcode.cn/problems/maximize-subarray-gcd-score/description/)
+    
+    * 注意去重的方式，用前後兩個判斷是否重複，更新區間右端點
+    * 假設固定右端點 $i$ ...
+
+```cpp
+long long maxGCDScore(vector<int>& nums, int k) {
+    const int n = nums.size();
+    int mx = bit_width((uint32_t) ranges::max(nums));
+    vector<vector<int>> lowbit_pos(mx);
+    ll ans = 0;
+
+    //(l, r]
+    struct Interval { int g, l, r; };
+    vector<Interval> intervals;
+    for(int i = 0; i < n; ++i) {
+        int &x = nums[i];
+        int tz = countr_zero(1u * x);
+        lowbit_pos[tz].push_back(i);
+        for(auto &p: intervals) {
+            p.g = gcd(p.g, x);
+        }
+        intervals.emplace_back(x, i - 1, i);
+        int idx = 1;
+        // 去重（合并 g 相同的区间）
+        for(int j = 1; j < intervals.size(); ++j) {
+            if(intervals[j].g != intervals[j - 1].g) {
+                intervals[idx++] = intervals[j];
+            } else {// 因為需要合併區間，所以用前後判斷是否要合併
+                intervals[idx - 1].r = intervals[j].r;
+            }
+        }
+        intervals.resize(idx);
+        // 此时我们将区间 [0,i] 划分成了 len(intervals) 个左开右闭区间
+        // 对于 intervals 中的 (l,r]，对于任意 j∈(l,r]，gcd(区间[j,i]) 的计算结果均为 g
+        for(auto &[g, l, r]: intervals) {
+            ans = max(ans, 1LL * g * (i - l));
+            int tz = countr_zero(1u * g);
+            auto &pos = lowbit_pos[tz];
+            int minL = pos.size() > k ? max(l, pos[pos.size() - (k + 1)]) : l;
+            if(minL < r) {
+                ans = max(ans, 2LL * g * (i - minL));
+            }
+        }
+    }
+    return ans;
+}
+```
+
 ---
 
 ## Other
