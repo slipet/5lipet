@@ -68,7 +68,7 @@ public:
         int i = 0;
         for(int b = 1 << __lg(n); b; b >>= 1) {
             int nxt = i | b;
-            if(i < tree.size() && tree[nxt] < k) {
+            if(nxt < tree.size() && tree[nxt] < k) {
                 k -= tree[nxt];
                 i = nxt;
             }
