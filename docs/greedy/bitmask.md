@@ -325,7 +325,12 @@ public:
 * [3574. 最大子数组 GCD 分数](https://leetcode.cn/problems/maximize-subarray-gcd-score/description/)
     
     * 注意去重的方式，用前後兩個判斷是否重複，更新區間右端點
-    * 假設固定右端點 $i$ ...
+    * 這題的重點:
+        1. $\gcd$ 越多次，$\gcd$ 越小
+        2. $\gcd(x, y) = g$ 的最小公因子 $2^k$ 為 $lowbit(g)$。
+    * 假設固定右端點 $i$ ，往左移動左端點 $g$ 的值只會非嚴格的單調遞減，因此我們要考慮的是每個 $g_j$ 構成的區間 $(L_j, R_j]$ 能構造出的最大答案。
+    * 假設 $g_j$ 的對應區間為 $(L_j, R_j]$，由 2. 可以知道在 $(L_j, i]$ 中的元素 x 的 $lowbit(x)$ 不會比 $lowbit(g_j)$ 還要小，否則與 $g_j$ 矛盾。
+    * 因此考慮 $(L_j, i]$ 中的 $lowbit(g_j)$ 出現位置 $pos$，若是合法的左端點會是 $max(L_j, pos[sz - (k + 1)])$，$pos[sz - (k + 1)]$ 表示最多操作 k 次的合法左端點。
 
 ```cpp
 long long maxGCDScore(vector<int>& nums, int k) {
