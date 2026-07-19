@@ -427,6 +427,12 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/string/manacher/"/>
     </url>
     <url>
+        <loc>https://localhost:8000/string/minimal_string/</loc>
+        <lastmod>2026-07-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/string/minimal_string/"/>
+    </url>
+    <url>
         <loc>https://localhost:8000/string/palindrome/</loc>
         <lastmod>2026-07-19</lastmod>
         <changefreq>daily</changefreq>
