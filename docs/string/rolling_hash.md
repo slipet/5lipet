@@ -12,6 +12,7 @@ const long long MOD = 1e18 + rnd(0, 1e18);
 const int BASE = 233 + rnd(0, 1e3);
 
 struct HashSeq {
+    //__int128非常大，如果tle考慮把mod和__int128改小
     vector<__int128> P, H;
 
     HashSeq(vector<int> &s) {
