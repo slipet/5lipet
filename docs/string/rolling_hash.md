@@ -1,5 +1,8 @@
 # Rolling hash
 
+
+* **字串哈希** 如果要比較字串哈希的大小，透過二分 LCP(longest common prefix) 的長度，比較長度 + 1 位置的字符就能得到大小關係。
+
 ```cpp
 
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
@@ -31,3 +34,24 @@ struct HashSeq {
 };
 
 ```
+
+* [3934. 最短唯一子数组](https://leetcode.cn/problems/smallest-unique-subarray/description/)
+
+
+## 比較大小
+
+```cpp
+auto check = [&](int len, int i, int j) -> int {
+    return rs.query(i + 1, i + len) == rs.query(j + 1, j + len);
+};
+int l = -1, r = n;
+while(l + 1 < r) {
+    int m = l + (r - l) / 2;
+    (check(m, i, mnidx) ? l : r) = m;
+}
+if(l < n && t[i + l] <= t[mnidx + l]) {
+    mnidx = i;
+}
+```
+
+* [3999. 字符串变换后的最少分组数](https://leetcode.cn/problems/minimum-number-of-string-groups-through-transformations/description/)
