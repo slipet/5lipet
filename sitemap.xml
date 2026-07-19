@@ -433,6 +433,12 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/string/palindrome/"/>
     </url>
     <url>
+        <loc>https://localhost:8000/string/rolling_hash/</loc>
+        <lastmod>2026-07-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/string/rolling_hash/"/>
+    </url>
+    <url>
         <loc>https://localhost:8000/string/subseq_automation/</loc>
         <lastmod>2026-07-19</lastmod>
         <changefreq>daily</changefreq>
