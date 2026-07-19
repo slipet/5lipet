@@ -3,7 +3,7 @@
 * 最小表示法
 
 ```cpp
-ref.
+ref. https://leetcode.cn/discuss/post/SJFwQI/
 // 返回 s 的字典序最小的循环同构串
 // 时间复杂度 O(n)，证明见代码末尾的注释
 string smallestRepresentation(string s) {
