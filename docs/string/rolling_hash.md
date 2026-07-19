@@ -27,7 +27,7 @@ struct HashSeq {
         H[0] = 0;
         for (int i = 1; i <= n; i++) H[i] = (H[i - 1] * BASE + s[i - 1]) % MOD;
     }
-    //[l, r] -> query(l + 1, r + 1)
+    //usage [l, r] -> query(l + 1, r + 1)
     long long query(int l, int r) {
         return (H[r] - H[l - 1] * P[r - l + 1] % MOD + MOD) % MOD;
     }
