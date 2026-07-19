@@ -1,8 +1,5 @@
 # Rolling hash
 
-
-* **字串哈希** 如果要比較字串哈希的大小，透過二分 LCP(longest common prefix) 的長度，比較長度 + 1 位置的字符就能得到大小關係。
-
 ```cpp
 
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
@@ -27,9 +24,9 @@ struct HashSeq {
         H[0] = 0;
         for (int i = 1; i <= n; i++) H[i] = (H[i - 1] * BASE + s[i - 1]) % MOD;
     }
-    //usage [l, r] -> query(l + 1, r + 1)
+    //usage [l, r] -> query(l, r)
     long long query(int l, int r) {
-        return (H[r] - H[l - 1] * P[r - l + 1] % MOD + MOD) % MOD;
+        return (H[r + 1] - H[l] * P[r - l + 1] % MOD + MOD) % MOD;
     }
 };
 
@@ -40,9 +37,11 @@ struct HashSeq {
 
 ## 比較大小
 
+* **字串哈希** 如果要比較字串哈希的大小，透過二分 LCP(longest common prefix) 的長度，比較長度 + 1 位置的字符就能得到大小關係。
+
 ```cpp
 auto check = [&](int len, int i, int j) -> int {
-    return rs.query(i + 1, i + len) == rs.query(j + 1, j + len);
+    return rs.query(i, i + len - 1) == rs.query(j, j + len - 1);
 };
 int l = -1, r = n;
 while(l + 1 < r) {
