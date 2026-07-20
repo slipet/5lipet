@@ -77,7 +77,7 @@ vector<int> Prim(const vector<vector<int>> &adj) {
         done[x] = true;
         cnt++;//check how many nodes processed
         for(int y = 0; y < n; ++y) {
-            if (!done[y] && adj[x][y] < dis[y]) {
+            if (!done[y] && dis[x] + adj[x][y] < dis[y]) {
                 dis[y] = adj[x][y];
                 parent[y] = x;
             }
