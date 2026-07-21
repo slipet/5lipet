@@ -35,21 +35,27 @@ bool isPrimes(int n){
 * $O(n\log{\log{(n)}})$
 
 ```cpp
-// Find all primes <= n.
+// Find all primes <= MX.
+const int MX = 1'000'000;
 vector<int> prime;
-bool is_prime[N];
-vector<int>Eratosthenes(int n)
-{
-		is_prime[0] = is_prime[1] = false;
-	  for(int i = 2; i <= n; ++i) is_prime[i] = true;
-	  
-    for(int i = 2; i <= n; ++i) {
-		    if(is_prime[i])
-			      for (int j = i * i; j <= n; j += i) is_prime[j] = false;
-	  }       
-	  for(int i = 2; i <= n; ++i)
+bool is_prime[MX + 1];
+
+auto init = []{
+    is_prime[0] = is_prime[1] = false;
+    for(int i = 2; i <= MX; ++i) is_prime[i] = true;
+
+    for(int i = 2; i <= MX; ++i) {
+        if(is_prime[i]) {
+            for(int j = i * 2; j <= MX; j += i) {
+                is_prime[j] = false;
+            }
+        }
+    }
+    for(int i = 2; i <= MX; ++i)
 	     if (is_prime[i]) prime.push_back(i);
-}
+    return 0;
+}();
+
 ```
 
 * 根號優化
@@ -57,20 +63,25 @@ vector<int>Eratosthenes(int n)
 * $O(n\ln{\ln{\sqrt{n}}})$
 
 ```cpp
+const int MX = 1'000'000;
 vector<int> prime;
-bool is_prime[N];
+bool is_prime[MX + 1];
 
-void Eratosthenes(int n) {
-  is_prime[0] = is_prime[1] = false;
-  for (int i = 2; i <= n; ++i) is_prime[i] = true;
-  // i * i <= n 说明 i <= sqrt(n)
-  for (int i = 2; i * i <= n; ++i) {
-    if (is_prime[i])
-      for (int j = i * i; j <= n; j += i) is_prime[j] = false;
-  }
-  for (int i = 2; i <= n; ++i)
-    if (is_prime[i]) prime.push_back(i);
-}
+auto init = []{
+    is_prime[0] = is_prime[1] = false;
+    for(int i = 2; i <= MX; ++i) is_prime[i] = true;
+    // i * i <= n 说明 i <= sqrt(n)
+    for(int i = 2; i <= MX; ++i) {
+        if(is_prime[i]) {
+            for(int j = i * i; j <= MX; j += i) {
+                is_prime[j] = false;
+            }
+        }
+    }
+    for(int i = 2; i <= MX; ++i)
+	     if (is_prime[i]) prime.push_back(i);
+    return 0
+}();
 ```
 
 ## 質因數分解預處理(Prim factorization)
