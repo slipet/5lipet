@@ -234,6 +234,13 @@ $$(a_{i+1} - a_i) \times S_i$$
     相當於在求累加後綴和。
 
 
+### 乘積非常大時的處理
+
+* 如果乘積有上限 limit ，那就把超過上限時設為 limit + 1 處理，因為我們不關心超過上限時的值
+
+  * [3509. 最大化交错和为 K 的子序列乘积](https://leetcode.cn/problems/maximum-product-of-subsequences-with-an-alternating-sum-equal-to-k/description/)
+  * [3470. 全排列 IV](https://leetcode.cn/problems/permutations-iv/description/)
+
 ### 逆向思維/正難則反
 
 #### 背包求 $\ge k$
