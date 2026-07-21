@@ -89,3 +89,81 @@ $$B = \sqrt{n}$$
         return ans;
     }
 ```
+
+## Mo's Algo
+
+```cpp
+class Solution {
+public:
+    vector<int> subarrayMajority(vector<int>& nums, vector<vector<int>>& queries) {
+        const int n = nums.size(), m = queries.size();
+        int max_cnt = 0, min_val = 0;
+        unordered_map<int, int> cnt;
+
+        auto add = [&](int x) -> void {
+            int c = ++cnt[x];
+            if(c > max_cnt) {
+                max_cnt = c;
+                min_val = x;
+            } else if(c == max_cnt) {
+                min_val = min(min_val, x);
+            }
+        };
+        struct Query {
+            int bid;
+            int l;
+            int r;
+            int threshold;
+            int qid;
+        };
+        int block_size = ceil(n / sqrt(m));
+        vector<Query> qs;
+        vector<int> ans(m, -1);
+        for(int i = 0; i < m; ++i) {
+            auto &q = queries[i];
+            int l = q[0], r = q[1] + 1, threshold = q[2];
+            
+            if(r - l > block_size) {
+                qs.emplace_back(l / block_size, l, r, threshold, i);
+                continue;
+            }
+
+            for(int j = l; j < r; ++j) {
+                add(nums[j]);
+            }
+            if(max_cnt >= threshold) {
+                ans[i] = min_val;
+            }
+            cnt.clear();
+            max_cnt = 0;
+        }
+        ranges::sort(qs, {}, [](auto &q){ return pair(q.bid, q.r);});
+        int r;
+        for(int i = 0; i < qs.size(); ++i) {
+            auto &q = qs[i];
+            int l0 = (q.bid + 1) * block_size;
+            if(i == 0 || q.bid > qs[i - 1].bid) {
+                r = l0;
+                cnt.clear();
+                max_cnt = 0;
+            }
+            for(; r < q.r; ++r) {
+                add(nums[r]);
+            }
+            int tmp_max_cnt = max_cnt, tmp_min_val = min_val;
+            for(int j = q.l; j < l0; ++j) {
+                add(nums[j]);
+            }
+            if(max_cnt >= q.threshold) {
+                ans[q.qid] = min_val;
+            }
+            max_cnt = tmp_max_cnt;
+            min_val = tmp_min_val;
+            for(int j = q.l; j < l0; ++j) {
+                cnt[nums[j]]--;
+            }
+        }
+        return ans;
+    }
+};
+```
