@@ -69,6 +69,7 @@ public:
         return pre(r) - pre(l - 1);
     }
     // 返回第 k 小的数（k 从 1 开始）
+    // k > total，回傳 n，代表找不到合法位置
     int kth(int k) const {
         int i = 0;
         for (int b = high_bit; b > 0; b >>= 1) {
