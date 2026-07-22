@@ -28,13 +28,17 @@ i & -i = 00010
 template<typename T>
 class FenwickTree {
     vector<T> tree;
+    const int high_bit;
     int n;
 public:
     // input range [0, n - 1]，size = n
     // 如果要開值域為 mx 的 BIT，宣告 FenwickTree<> t(bit_idx(mx))
     // 使用下标 1 到 n
-    FenwickTree(int n) : n(n), tree(n + 1) {}
-
+    FenwickTree(int n) : 
+        n(n), 
+        tree(n + 1), 
+        high_bit(1 << (bit_width(1u * n) - 1)) {}
+    
     // a[i] 增加 val
     // 1 <= i <= n
     // 时间复杂度 O(log n)
@@ -64,11 +68,12 @@ public:
         }
         return pre(r) - pre(l - 1);
     }
-    int kth(int k) {
+    // 返回第 k 小的数（k 从 1 开始）
+    int kth(int k) const {
         int i = 0;
-        for(int b = 1 << __lg(n); b; b >>= 1) {
+        for (int b = high_bit; b > 0; b >>= 1) {
             int nxt = i | b;
-            if(nxt < tree.size() && tree[nxt] < k) {
+            if (nxt < tree.size() && tree[nxt] < k) {
                 k -= tree[nxt];
                 i = nxt;
             }
