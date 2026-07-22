@@ -116,7 +116,7 @@ public:
             int threshold;
             int qid;
         };
-        int block_size = ceil(n / sqrt(m));
+        int block_size = ceil(n / sqrt(m * 2));
         vector<Query> qs;
         vector<int> ans(m, -1);
         for(int i = 0; i < m; ++i) {
@@ -167,3 +167,5 @@ public:
     }
 };
 ```
+
+* [3590. 第 K 小的路径异或和](https://leetcode.cn/problems/kth-smallest-path-xor-sum/description/)
