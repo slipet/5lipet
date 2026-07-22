@@ -69,6 +69,7 @@ public:
         return pre(r) - pre(l - 1);
     }
     // 返回第 k 小的数（k 从 1 开始）
+    // 二分前綴和小於 k 的位置，回傳 i + 1
     // 找不到第 k 小，回傳 n + 1
     int kth(int k) const {
         int i = 0;
