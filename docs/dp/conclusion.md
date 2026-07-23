@@ -25,6 +25,25 @@
 
 只有在 $f(\le 0)$ 的時候是合法值
 
+* 假設 $f(k, i)$ 要在前 i 個中操作 **至少 k** 可以初始化成
+
+    ```cpp
+    //1.
+    f[0][0] = 0;
+    for(int k = 0; k <= K; ++k) {
+        ...
+        for(int i = 0; i < n; ++i) {
+            //1-1
+            f[k][i + 1] = op(f[k][i], f[max(0, k - 1)][max(0, j')] + cost());
+            //1-2
+            f[k][i + 1] = f[k][i];//
+            if(k > 0) //do....other
+        }
+    }
+    //2.
+    ranges::fill(f[0], 0);
+    ```
+* [3505. 使 K 个子数组内元素相等的最少操作数](https://leetcode.cn/problems/minimum-operations-to-make-elements-within-k-subarrays-equal/description/)
 
 ## Multi-kadane
 
