@@ -34,14 +34,19 @@
         ...
         for(int i = 0; i < n; ++i) {
             //1-1
-            f[k][i + 1] = op(f[k][i], f[max(0, k - 1)][max(0, j')] + cost());
+            f[k][i + 1] = op(f[k][i], f[max(0, k - 1)][max(0, p)] + cost());
             //1-2
-            f[k][i + 1] = f[k][i];//
-            if(k > 0) //do....other
+            f[k][i + 1] = f[k][i];
+            if(k > 0) {/*do....other*/}
         }
     }
+
     //2.
     ranges::fill(f[0], 0);
+    //start at k = 1
+    for(int k = 1; k <= K; ++k) {
+        ....
+    }
     ```
 * [3505. 使 K 个子数组内元素相等的最少操作数](https://leetcode.cn/problems/minimum-operations-to-make-elements-within-k-subarrays-equal/description/)
 
