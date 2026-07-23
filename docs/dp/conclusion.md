@@ -8,6 +8,32 @@
 
     * [3490. Count Beautiful Numbers](https://leetcode.com/problems/count-beautiful-numbers/description/)
   
+
+### 至多/恰好/至少
+
+#### 至多
+
+只有在 $f(\ge 0)$ 的時候都是合法值
+
+* 可以利用 **恰好** 轉換
+
+#### 恰好
+
+只有在 $f(0)$ 的時候會是合法值
+
+#### 至少
+
+只有在 $f(\le 0)$ 的時候是合法值
+
+
+## Multi-kadane
+
+這是我自己取的名字。
+
+主要的架構是求子數組和，$x_i$ 在符合某個限制下的貢獻為 $+f(x_i)$ 不符合情況時 $-g(x_i)$。
+
+題目通常會有多個限制需要計算其中一個限制作用在同一個陣列上時的子數組和。
+
 * 求 subarray 的問題，或是求多個 subarray 的問題，透過 kadane 的思想，可以定義狀態為 $f_0, f_1, f_2, ...$ ，$f_0$ 表示第一個 subarray **前**的結果，$f_1$ 表示第一個 subarray **中**，$f_2$ 表示第一個 subarray **後**的結果:
 
     ```cpp
@@ -35,14 +61,6 @@
         \]
 
     * **利用狀態定義可以推廣到 > 1 以上的 subarray 應用**
-
-## Multi-kadane
-
-這是我自己取的名字。
-
-主要的架構是求子數組和，$x_i$ 在符合某個限制下的貢獻為 $+f(x_i)$ 不符合情況時 $-g(x_i)$。
-
-題目通常會有多個限制需要計算其中一個限制作用在同一個陣列上時的子數組和。
 
 * [3984. 可整除游戏](https://leetcode.cn/problems/divisible-game/description/)
 
