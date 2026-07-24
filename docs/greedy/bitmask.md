@@ -331,6 +331,8 @@ public:
     * 假設固定右端點 $i$ ，往左移動左端點 $g$ 的值只會非嚴格的單調遞減，因此我們要考慮的是每個 $g_j$ 構成的區間 $(L_j, R_j]$ 能構造出的最大答案。
     * 假設 $g_j$ 的對應區間為 $(L_j, R_j]$，由 2. 可以知道在 $(L_j, i]$ 中的元素 x 的 $lowbit(x)$ 不會比 $lowbit(g_j)$ 還要小，否則與 $g_j$ 矛盾。
     * 因此考慮 $(L_j, i]$ 中的 $lowbit(g_j)$ 出現位置 $pos$，若是合法的左端點會是 $max(L_j, pos[sz - (k + 1)])$，$pos[sz - (k + 1)]$ 表示最多操作 k 次的合法左端點。
+* [3605. 数组的最小稳定性因子](https://leetcode.cn/problems/minimum-stability-factor-of-array/description/)
+    關鍵字: **子數組GCD**，貪心，一旦超過 limit 就進行操作變成 1，後面的 gcd 也會跟著變成 1，因此只要判斷 intervals 第一個就可以。
 
 ```cpp
 long long maxGCDScore(vector<int>& nums, int k) {
@@ -391,6 +393,5 @@ need to practice:
 leetcode 3106. 满足距离约束且字典序最小的字符串
 leetcode 3720. 大于目标字符串的最小字典序排列
 leetcode 3734. 大于目标字符串的最小字典序回文排列
-leetcode 3470. 全排列 IV
 leetcode 3022. 给定操作次数内使剩余元素的或值最小
 leetcode 3518. 最小回文排列 II
