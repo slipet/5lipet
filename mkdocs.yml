@@ -276,6 +276,7 @@ nav:
   - Greedy:
     - Greedy: "./greedy/greedy.md"
     - Bitmask: "./greedy/bitmask.md"
+    - Logtrick: "./greedy/logtrick.md"
   # - Binary search:
   - String:
     - Palindrome: "./string/palindrome.md"
