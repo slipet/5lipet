@@ -264,6 +264,8 @@ x = k * y + t
 
 ### Interval(區間問題)
 
+* ref. [[Tutorial] Solving Interval Problems with Geometry](http://codeforces.com/blog/entry/98629)
+
 對於區間 $[l_1, r_1]$ 其關係可以如下:
 
 ![range](https://codeforces.com/predownloaded/f0/bc/f0bc055b37bc44373c14a2fd0b8c09492d63c46a.png)
@@ -271,11 +273,15 @@ x = k * y + t
 
 #### 區間合併
 
+* 普通區間合併(**左端點排序**)
+
+由左往右合併，想像搭一座橋，不斷擴張右端點直到沒辦法碰到左端點。
+
 * Monotonic Stack + Binary Search 模板
 
 暴力的做法是將所有點都放進一個有序陣列中維護，進階作法是利用單調 stack 作區間合併。
 
-由於每次都是從右到左新增時間點，如果把連續的時間點看成閉區間，那麽從右到左新增時間點，會把若幹右側的區間合並成一個大區間，也就是從 end 倒著開始，先合並右邊，再合並左邊，因此可以用棧來優化
+由於每次都是從右到左新增時間點(固定右端點往左合併，因此要使用**右端點排序**)，如果把連續的時間點看成閉區間，那麽從右到左新增時間點，會把若干右側的區間合並成一個大區間，也就是從 end 倒著開始，先合並右邊，再合並左邊，因此可以用棧來優化
 
 * Leetcode
   * [#757. 设置交集大小至少为2](https://leetcode.cn/problems/set-intersection-size-at-least-two/)
