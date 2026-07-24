@@ -56,7 +56,7 @@ public:
 
         for (int i = 1; i < w; i++) {
             for (int j = 0; j + (1 << i) <= n; j++) {
-                st[i][j] = op(st_min[i - 1][j], st[i - 1][j + (1 << (i - 1))]);
+                st[i][j] = op(st[i - 1][j], st[i - 1][j + (1 << (i - 1))]);
             }
         }
     }
