@@ -270,6 +270,8 @@ x = k * y + t
 
 ![range](https://codeforces.com/predownloaded/f0/bc/f0bc055b37bc44373c14a2fd0b8c09492d63c46a.png)
 
+透過想像投影在 $y=x$ 上的區間可以快速判斷相交情形
+
 
 #### 區間合併
 
