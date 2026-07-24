@@ -385,6 +385,8 @@ long long maxGCDScore(vector<int>& nums, int k) {
 }
 ```
 
+* [和与乘积](https://www.dotcpp.com/oj/problem2622.html)
+
 ---
 
 ## Other
