@@ -265,6 +265,12 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/greedy/greedy/"/>
     </url>
     <url>
+        <loc>https://localhost:8000/greedy/logtrick/</loc>
+        <lastmod>2026-07-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/greedy/logtrick/"/>
+    </url>
+    <url>
         <loc>https://localhost:8000/math/CRT/</loc>
         <lastmod>2026-07-24</lastmod>
         <changefreq>daily</changefreq>
