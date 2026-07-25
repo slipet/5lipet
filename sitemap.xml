@@ -115,6 +115,12 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/contest/vp/leetcode/"/>
     </url>
     <url>
+        <loc>https://localhost:8000/cpp/aclib/</loc>
+        <lastmod>2026-07-25</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/cpp/aclib/"/>
+    </url>
+    <url>
         <loc>https://localhost:8000/cpp/function/</loc>
         <lastmod>2026-07-25</lastmod>
         <changefreq>daily</changefreq>
