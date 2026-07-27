@@ -113,6 +113,13 @@ auto init = []() {
 時間複雜度: $O(n\log{n})$
 空間複雜度: $O(n)$
 
+* 計算 $x$ 的**不同質因數**個數複雜度: $O(\log{x})$
+* 計算一個數 $x$ 的各質因數指數: $O(\log{x})$
+  * 每次至少除二，因此最壞情況是 $2^k$。
+* 對所有 $x = 2, 3, ..., N$ 都分解並記錄指數：
+  * 簡單上界: $O(N\log{N})$
+  * 平均總量: $O(N\log\log{N})$
+
 ```cpp
 const int MAXN = 1e7;
 int spf[MAXN+1];
@@ -133,6 +140,26 @@ while (x > 1) {
     int p = spf[x];
     while (x % p == 0) x /= p;
 }
+
+//O(n * sqrt(n))
+vector<int> EXP[MAXN + 1];
+auto init = []{
+    for (int x = 2; x <= MAXN; x++) {
+        int t = x;
+        for (int i = 2; i * i <= t; i++) {
+            int e = 0;
+            for (; t % i == 0; t /= i) {
+                e++;
+            }
+            if (e) {
+                EXP[x].push_back(e);
+            }
+        }
+        if (t > 1) {
+            EXP[x].push_back(1);
+        }
+    }
+}();
 ```
 
 ####  質因數分解方案數
