@@ -14,6 +14,7 @@ $$C(m, n) = \frac{m!}{n!(m -n)!} = \binom{m - 1}{n} + \binom{m - 1}{n - 1} = \bi
 #### 模逆元/Modular Multiplicative Inverse
 
 ```cpp
+using ll = long long;
 const int mod = 1'000'000'000 + 7;
 const int MX = 1'000'00;
 
@@ -44,7 +45,7 @@ auto init = [] {
 
 //從 m 個數中選 n 個數的方案數
 ll comb(int m, int n) {
-    return n < 0 || n > m ? 0 : F[m] * INV_F[n] % MOD * INV_F[m - n] % MOD;
+    return n < 0 || n > m ? 0 : F[m] * INV_F[n] % mod * INV_F[m - n] % mod;
 }
 ```
 
@@ -118,6 +119,24 @@ $$\binom{m}{n} + \binom{m + 1}{n} + ... + \binom{m + k}{n} = \sum_{i = 0}^{k} \b
     &= \binom{m + k + 1}{n + 1} - \binom{m}{n + 1}
 \end{array}
 \]
+
+#### 放球問題
+
+* 隔板法
+
+[ref.](https://leetcode.cn/problems/count-ways-to-make-array-with-product/solutions/2713481/tu-jie-zhi-yin-zi-fen-jie-fang-qiu-wen-t-fboo/)
+
+1. $x_0 + x_1 + x_2 ... + x_n = m, \text{ and } x_i > 0$
+
+    有 m 個小球放入 n 個空盒，不允許有空。把 m - 1 個間隙插入 n - 1 個隔板
+
+    $$\binom{m - 1}{n - 1}$$
+
+2. $x_0 + x_1 + x_2 ... + x_n = m, \text{ and } x_i \ge 0$
+   
+    有 m 個小球放入 n 個空盒，允許有空。
+
+    $$\binom{m + n - 1}{n - 1} = \binom{m + n - 1}{ m }$$
 
 ### Permutation
 
