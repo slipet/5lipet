@@ -14,7 +14,7 @@ $$C(m, n) = \frac{m!}{n!(m -n)!} = \binom{m - 1}{n} + \binom{m - 1}{n - 1} = \bi
 #### 模逆元/Modular Multiplicative Inverse
 
 ```cpp
-const int MOD = 1'000'000'000 + 7;
+const int mod = 1'000'000'000 + 7;
 const int MX = 1'000'00;
 
 ll F[MX + 1];
@@ -23,8 +23,8 @@ ll INV_F[MX + 1];
 ll qpow(ll x, int n) {
     ll res = 1;
     while(n) {
-        if(n & 1) res = (res * x) % MOD;
-        x = (x * x) % MOD;
+        if(n & 1) res = (res * x) % mod;
+        x = (x * x) % mod;
         n >>= 1;
     }
     return res;
@@ -33,11 +33,11 @@ ll qpow(ll x, int n) {
 auto init = [] {
     F[0] = 1;
     for(int i = 1; i <= MX; ++i) {
-        F[i] = (F[i - 1] * i) % MOD;
+        F[i] = (F[i - 1] * i) % mod;
     }
-    INV_F[MX] = qpow(F[MX], MOD - 2);
+    INV_F[MX] = qpow(F[MX], mod - 2);
     for(int i = MX; i; --i) {
-        INV_F[i - 1] = (INV_F[i] * i) % MOD;
+        INV_F[i - 1] = (INV_F[i] * i) % mod;
     }
     return 0;
 }();
