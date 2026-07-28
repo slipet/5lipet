@@ -313,6 +313,12 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/math/number_theory/"/>
     </url>
     <url>
+        <loc>https://localhost:8000/math/order_conversion/</loc>
+        <lastmod>2026-07-28</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://localhost:8000/math/order_conversion/"/>
+    </url>
+    <url>
         <loc>https://localhost:8000/math/order_theory/</loc>
         <lastmod>2026-07-28</lastmod>
         <changefreq>daily</changefreq>
