@@ -66,6 +66,7 @@ for(int i = hi; i >= 0; --i) {
     * 或者假設這一位是 1，計算左邊和右邊可以產生多少貢獻 x x x 1 o o .. ，如果 $\le k$ 那就把這位設為 1 並扣掉貢獻。
 
     * 核心想法: <span style="color:red">利用整數的連續性</span>，不斷縮小規模從而確定答案。
+    * 技巧: 找比 $limit$ 大的第 k 小，可以先計算 $limit$ 的 rank 是多少，將問題轉換成找 rank + k 大。
 
 1. [3007. 价值和小于等于 K 的最大数字](https://leetcode.cn/problems/maximum-number-that-sum-of-the-prices-is-less-than-or-equal-to-k/description/)
 
@@ -94,6 +95,46 @@ for(int i = hi; i >= 0; --i) {
     可以發現 0, 1 在 [0, n - 1] 中是週期性出現的，所以 Z(n, m) 可以利用這個性質很容易的求出，我們可以利用二分的方式得到 $O(\log^2{n})$ 的方法。
 
     可以發現我們要計算的整數範圍是 [0, n - 1]，由整數的連續性可以知道可以透過逐位確定不斷縮小問題規模。
+
+5. [1850. 邻位交换的最小次数](https://leetcode.cn/problems/minimum-adjacent-swaps-to-reach-the-kth-smallest-number/description/)
+
+    ```cpp
+    string nxtk(string s, int k) {
+        const int n = s.size();
+        int perm = 1;
+        int rank = 1;
+        int i = n - 1;
+        array<int, 10> cnt{};
+        for(; i >= 0 && perm - rank < k; --i) {
+            int digit = s[i] - '0';
+            cnt[digit]++;
+            perm = perm * (n - i) / cnt[digit];
+            for(int d = 0; d < digit; ++d) {
+                int p = perm * cnt[d] / (n - i);
+                rank += p;
+            }
+        }
+        k += rank;
+        if(perm < k) return "";
+        string res(n, '0');
+        
+        for(int j = 0; j <= i; ++j) res[j] = s[j];
+        for(++i; i < n; ++i) {
+            for(int d = 0; d < 10; ++d) {
+                if(cnt[d] == 0) continue;
+                int p = perm * cnt[d] / (n - i);
+                if(p >= k) {
+                    res[i] = d + '0';
+                    cnt[d]--;
+                    perm = p;
+                    break;
+                }
+                k -= p;
+            }
+        }
+        return res;
+    }
+    ```
 
     ---
 
