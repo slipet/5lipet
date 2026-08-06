@@ -73,6 +73,71 @@ public:
 };
 ```
 
+# Hash Table
+
+```cpp
+class UnionFind {
+    unordered_map<int, int> fa; // 代表元
+    unordered_map<int, int> sz; // 集合大小
+
+public:
+    int cc = 0; // 目前已加入節點形成的連通塊個數
+
+    UnionFind() = default;
+
+    // 加入一個新節點
+    // 返回是否成功加入
+    bool add(int x) {
+        if (fa.contains(x)) {
+            return false;
+        }
+
+        fa[x] = x;
+        sz[x] = 1;
+        cc++;
+        return true;
+    }
+
+    // 返回 x 所在集合的代表元
+    // 如果 x 尚未出現，則自動建立集合 {x}
+    int find(int x) {
+        add(x);
+
+        auto it = fa.find(x);
+        auto& fx = it->second;
+        if (fx != x) {
+            fx = find(fx); // 路徑壓縮
+        }
+        return fx ;
+    }
+
+    // 判斷 x 和 y 是否在同一個集合
+    bool is_same(int x, int y) {
+        return find(x) == find(y);
+    }
+
+    // 把 from 所在集合合併到 to 所在集合
+    bool merge(int from, int to) {
+        int x = find(from);
+        int y = find(to);
+
+        if (x == y) {
+            return false;
+        }
+
+        fa[x] = y;
+        sz[y] += sz[x];
+        cc--;
+        return true;
+    }
+
+    // 返回 x 所在集合的大小
+    int get_size(int x) {
+        return sz[find(x)];
+    }
+};
+```
+
 ### 帶權並查集(Weighted DSU)
 
 
