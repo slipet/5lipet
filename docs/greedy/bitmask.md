@@ -135,6 +135,28 @@ for(int i = hi; i >= 0; --i) {
 
 5. [1850. 邻位交换的最小次数](https://leetcode.cn/problems/minimum-adjacent-swaps-to-reach-the-kth-smallest-number/description/)
 
+    * 這題是找字典序 **大於 target 的第 $k$ 小**，假設 target 是字典序第 $k_t$ 小，那麼所求其實字典序是第 $k_t + k$ 小，因此可以先找到 target 的 rank，再計算目標。
+
+    * 當要計算小於 target 的 rank 時，因為由左至右會很難枚舉小於的方案數，但是由右至左可以容易的計算方案數
+    ```cpp
+    int perm = 1;
+    int rank = 1;
+    int i = n - 1;
+    array<int, 10> cnt{};
+    for(; i >= 0 && perm - rank < k; --i) {
+        int digit = s[i] - '0';
+        cnt[digit]++;
+        perm = perm * (n - i) / cnt[digit];
+        for(int d = 0; d < digit; ++d) {
+            int p = perm * cnt[d] / (n - i);
+            rank += p;
+        }
+    }
+    k += rank;
+    ```
+
+    * 算出正確的 rank 後就可以簡單的利用試填法確定答案
+
     ```cpp
     string nxtk(string s, int k) {
         const int n = s.size();
