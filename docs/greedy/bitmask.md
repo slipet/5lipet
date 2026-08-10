@@ -84,6 +84,26 @@ for(int i = hi; i >= 0; --i) {
 
     * 核心想法: <span style="color:red">利用整數的連續性</span>，不斷縮小規模從而確定答案。
     * 技巧: 找比 $limit$ 大的第 k 小，可以先計算 $limit$ 的 rank 是多少，將問題轉換成找 rank + k 大。
+        * [3109. Find the Index of Permutation](https://leetcode.com/problems/find-the-index-of-permutation/description/)
+        
+            計算 rank 要從反方向開始，從右邊開始的話會很難計算右方比當前小的方案數，由左邊開始的話會容易很多
+
+        ```cpp
+            int getPermutationIndex(vector<int>& nums) {
+                const int n = nums.size();
+                ll rk = 0, perm = 1;
+                Fenwick t(n + 1);
+
+                for(int i = n - 1; i >= 0; --i) {
+                    int d = nums[i];
+                    ll less = t.pre(d);
+                    rk = (rk + less * perm) % mod;
+                    t.update(d + 1, 1);
+                    perm = perm * (n - i) % mod;
+                }
+                return rk;
+            }
+        ```
 
 1. [3007. 价值和小于等于 K 的最大数字](https://leetcode.cn/problems/maximum-number-that-sum-of-the-prices-is-less-than-or-equal-to-k/description/)
 
