@@ -7,4 +7,7 @@
 
 
 
-[3892. 产生至少 K 个峰值的最少操作次数](https://leetcode.cn/problems/minimum-operations-to-achieve-at-least-k-peaks/description/)
+* [3892. 产生至少 K 个峰值的最少操作次数](https://leetcode.cn/problems/minimum-operations-to-achieve-at-least-k-peaks/description/)
+
+* [2659. 将数组清空](https://leetcode.cn/problems/make-array-empty/description/)
+    本質上是在一個環形數組上操作
