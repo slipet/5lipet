@@ -162,7 +162,7 @@ public:
         ranges::sort(qs, {}, [](auto &q) { return pair(q.bid, q.r); });
         
         
-        int l = 0, r = 0;
+        int l = 0, r = 0;//[l, r)
         for(auto &[_, ql, qr, qid]: qs) {
             //注意++, -- 的位置
             
