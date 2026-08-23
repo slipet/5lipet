@@ -100,6 +100,8 @@ $$B = \sqrt{n}$$
 
 * 盡量不要用 unordered_map 的 clear
 
+* 如果用了奇偶化排序，就不要再有**r 只往右**的假設
+
 ```cpp
 class Solution {
 public:
@@ -159,8 +161,21 @@ public:
                 move(j, -1);
             }
         }
+
+        //普通 r 為遞增的排序
         ranges::sort(qs, {}, [](auto &q) { return pair(q.bid, q.r); });
-        
+        //奇偶化排序
+        ranges::sort(qs, [&](const Query& a, const Query& b) {
+            if(a.bid != b.bid) {
+                return a.bid < b.bid;
+            }
+
+            if(a.bid & 1) {
+                return a.r > b.r;
+            } else {
+                return a.r < b.r;
+            }
+        });
         
         int l = 0, r = 0;//[l, r)
         for(auto &[_, ql, qr, qid]: qs) {
