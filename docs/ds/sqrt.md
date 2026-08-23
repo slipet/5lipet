@@ -95,81 +95,81 @@ $$B = \sqrt{n}$$
 * [莫队算法：块大小取多少合适？](https://zhuanlan.zhihu.com/p/1920472309522740969)
     $$B = \frac{n}{\sqrt{2q}}$$
 
+* 注意 r 的遍歷
+
 ```cpp
 class Solution {
 public:
-    vector<int> kthSmallest(vector<int>& par, vector<int>& vals, vector<vector<int>>& queries) {
-        const int n = vals.size(), m = queries.size();
-        vector<vector<int>> g(n);
-        vector<int> xor_sum(vals.begin(), vals.end());
-        vector<int> in(n), out(n), order;
-        for(int i = 1; i < n; ++i) {
-            g[par[i]].push_back(i);
-        }
-        int dfn = 0;
-        auto dfs = [&](auto &&self, int x, int fa) -> void {
-            in[x] = dfn++;
-            order.push_back(x);
-            for(auto &y: g[x]) {
-                if(y == fa) continue;
-                xor_sum[y] ^= xor_sum[x];
-                self(self, y, x);
-            }
-            out[x] = dfn;
-        };
-        dfs(dfs, 0, -1);
-        
-        vector<int> sorted(xor_sum.begin(), xor_sum.end());
-        vector<int> ranks(n);
+    vector<bool> validSubarrays(vector<int>& nums, int k, vector<vector<int>>& queries) {
+        const int n = nums.size(), m = queries.size();
+        vector<int> sorted = nums;
         ranges::sort(sorted);
         sorted.erase(ranges::unique(sorted).begin(), sorted.end());
-        for(auto &x: xor_sum) {
+        for(auto &x: nums) {
             x = ranges::lower_bound(sorted, x) - sorted.begin();
         }
+        vector<int> cnt(sorted.size());
+        int valid = 0;
+        int sz = 0;
+        auto move = [&] (int i, int op) -> void {
+            int &x = nums[i];
+            int &fq = cnt[x];
+            if(op == 1) {
+                sz += (fq == 0);
+                fq++;
+                if(fq & 1) valid++;
+                else valid--;
+                
+            } else {
+                if(fq & 1) valid--;
+                else valid++;
+                fq--;
+                sz -= (fq == 0);
+            }
+        };
         struct Query {
             int bid;
             int l;
             int r;
-            int k;
             int qid;
         };
-        int sz = sorted.size();
-        vector<int> ans(m, -1);
-        vector<Query> qs;
-        FenwickTree t(sz);
-        vector<int> dict(sz + 1);
-
         int block_size = ceil(n / sqrt(m * 2));
+        vector<Query> qs;
+        vector<bool> ans(m, false);
         for(int i = 0; i < m; ++i) {
             auto &q = queries[i];
-            int u = q[0];
-            int l = in[u], r = out[u], k = q[1];
-            qs.emplace_back(l / block_size, l, r, k, i);
-        }
-        ranges::sort(qs, {}, [&](const auto &q) {
-            return pair(q.bid, q.r);
-        });
-        
-        auto move = [&] (int i, int delta) -> void {
-            int rk = xor_sum[order[i]];
-            if(delta > 0) {
-                if(dict[rk] == 0) t.update(bit_idx(rk), 1);
-                dict[rk]++;
-            } else {
-                dict[rk]--;
-                if(dict[rk] == 0) t.update(bit_idx(rk), -1);
+            int l = q[0], r = q[1] + 1;
+            if(r - l > block_size) {
+                qs.emplace_back(l / block_size, l, r, i);
+                continue;
             }
-        };
+            if(k * 2 > r - l) {
+                continue;
+            }
+            for(int j = l; j < r; ++j) {
+                move(j, 1);
+            }
+            if(sz == k && valid == 0) {
+                ans[i] = true;
+            }
+            for(int j = l; j < r; ++j) {
+                move(j, -1);
+            }
+        }
+        ranges::sort(qs, {}, [](auto &q) { return pair(q.bid, q.r); });
+        
+        
         int l = 0, r = 0;
-        for(auto &[_, ql, qr, k, qid]: qs) {
+        for(auto &[_, ql, qr, qid]: qs) {
             //注意++, -- 的位置
+            
             while (l < ql) move(l++, -1);
             while (l > ql) move(--l, 1);
             while (r < qr) move(r++, 1);
             while (r > qr) move(--r, -1);
-            int res = t.kth(k) - 1;
-            if(res < sz) ans[qid] = sorted[res];
+            if(sz == k && valid == 0) ans[qid] = true;
         }
+    
         return ans;
     }
 };
@@ -177,6 +177,7 @@ public:
 
 
 * [3590. 第 K 小的路径异或和](https://leetcode.cn/problems/kth-smallest-path-xor-sum/description/)
+* [4033. 有效 K 个不同元素子数组 I](https://leetcode.cn/problems/valid-k-unique-subarrays-i/description/)
 
 ### 回滾莫隊
 
