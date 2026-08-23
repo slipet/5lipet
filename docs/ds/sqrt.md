@@ -98,6 +98,8 @@ $$B = \sqrt{n}$$
 
 * 注意 r 的遍歷
 
+* 盡量不要用 unordered_map 的 clear
+
 ```cpp
 class Solution {
 public:
