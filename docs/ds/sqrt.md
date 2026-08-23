@@ -93,6 +93,7 @@ $$B = \sqrt{n}$$
 ## Mo's Algo
 
 * [莫队算法：块大小取多少合适？](https://zhuanlan.zhihu.com/p/1920472309522740969)
+
     $$B = \frac{n}{\sqrt{2q}}$$
 
 * 注意 r 的遍歷
