@@ -166,9 +166,9 @@ public:
         for(auto &[_, ql, qr, qid]: qs) {
             //注意++, -- 的位置
             
-            while (l < ql) move(l++, -1);
             while (l > ql) move(--l, 1);
             while (r < qr) move(r++, 1);
+            while (l < ql) move(l++, -1);
             while (r > qr) move(--r, -1);
             if(sz == k && valid == 0) ans[qid] = true;
         }
