@@ -1,5 +1,9 @@
 # Todo list
 
+* 問題:
+  * 式子變形
+    * [3077. K 个不相交子数组的最大能量值](https://leetcode.cn/problems/maximum-strength-of-k-disjoint-subarrays/description/)
+    * [3473. 长度至少为 M 的 K 个子数组之和](https://leetcode.cn/problems/sum-of-k-subarrays-with-length-at-least-m/description/)
 
 ### Weekly
 
