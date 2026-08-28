@@ -21,7 +21,7 @@ for(auto &row: mat) ranges::reverse(row.begin(), row.end());
 
 #### 旋轉
 
-* **順時針 $90\degree$**: $(r, c) \rightarrow (c, m - 1 - r)$
+* **順時針** $90\degree$ : $(r, c) \rightarrow (c, m - 1 - r)$
   
 ```cpp
 //a: m x n -> b: n x m
@@ -34,7 +34,7 @@ for(int r = 0; r < m; ++r)
 
 ```
 
-* **逆時針 $90\degree$**: $(r, c) \rightarrow (n - 1 - c, r)$
+* **逆時針** $90\degree$: $(r, c) \rightarrow (n - 1 - c, r)$
 
 ```cpp
 //a: m x n -> b: n x m
