@@ -272,6 +272,40 @@ $x = k * y + t$
 
 透過想像投影在 $y=x$ 上的區間可以快速判斷相交情形
 
+#### 區間選點
+
+概念上跟選不相交區間是一樣的，但是因為需要選點，可以透過 stack 維護區間資訊。
+
+```cpp
+class Solution {
+public:
+    int findMinimumTime(vector<vector<int>>& tasks) {
+        ranges::sort(tasks, {}, [](const auto &t) { return t[1]; });
+        vector<array<int, 3>> st = {{-2, -2, 0}};
+        for(auto &t: tasks) {
+            int start = t[0], end = t[1], d = t[2];
+            auto [_, r, s] = *--ranges::lower_bound(st, start, {}, [](const auto &t) { return t[0]; });
+            d -= (st.back()[2] - s);
+            if(start <= r) {
+                d -= (r - start + 1);
+            }
+            if(d <= 0) continue;
+            while(end - st.back()[1] <= d) {
+                auto [l, r, _] = st.back();
+                st.pop_back();
+                d += r - l + 1;
+            }
+            st.emplace_back(end - d + 1, end st.back()[2] + d);
+        }
+        return st.back()[2];
+    }
+};
+```
+
+* [757. 设置交集大小至少为2](https://leetcode.cn/problems/set-intersection-size-at-least-two/description/)
+* [2589. 完成所有任务的最少时间](https://leetcode.cn/problems/minimum-time-to-complete-all-tasks/)
+* [LCP 32. 批量处理任务](https://leetcode.cn/problems/t3fKg1/description/)
+* [P10934 西瓜种植](https://www.luogu.com.cn/problem/P10934)
 
 #### 區間合併
 
