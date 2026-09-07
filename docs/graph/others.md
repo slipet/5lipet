@@ -112,37 +112,54 @@ while (!q.empty()) {
 
 ```cpp
 /*
-"模板:
-先確認歐拉圖的性質
-1. indeg == outdeg
-2. 點之間的連通性質
+Hierholzer:
 
-ans.push_back(init);"	"每經過一條邊就要刪一條邊
+1. 先確認 Euler path / circuit 的 degree 條件
+2. 確認所有有邊的點在同一個有效連通部分
+3. 每條 edge 只能走一次
+4. dfs(x):
+       while (x 還有沒走過的 edge) {
+           取出 edge x -> y
+           刪除 / 標記 edge
+           dfs(y)
+       }
 
-沒路可走就加入答案
+       // x 沒有 edge 可以走
+       ans.push_back(x)
 
-最後reverse順序"
+5. dfs(start)
+6. reverse(ans)
+7. ans.size() == E + 1
 */
 
 auto dfs = [&](this auto&& dfs, string x) -> void {
-    while(g[x].size() > 0) {
-        auto &y = g[x].back();
+    while(!g[x].empty()) {
+        auto y = g[x].back();
         g[x].pop_back();
         dfs(y);
     }
-    ans.push_back(y);
+    ans.push_back(x);
     return;
 };
 dfs(start);
 //用 vis 剔除路徑
-dfs(x) {
-    for(int y: g[x]) {
-        if(vis[y]) {
-            vis.insert(y);
-            dfs(y);
-        }
+vector<int> cur(n);
+vector<bool> vis(m);
+
+auto dfs = [&](this auto&& dfs, int x) -> void {
+    while(cur[x] < g[x].size()) {
+        auto [y, id] = g[x][cur[x]++];
+
+        if(vis[id])
+            continue;
+
+        vis[id] = true;
+        dfs(y);
     }
-    ans.push_back(y);
-} 
-dfs(init);
+
+    ans.push_back(x);
+};
+
+dfs(start);
+ranges::reverse(ans);
 ```
