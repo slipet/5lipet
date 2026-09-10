@@ -86,7 +86,7 @@ void GospersHack(int k, int n)
 \begin{array}{ll}
     k = 1, 2, ... + m + n - 1\\
     \min_c = max(n - k, 0) \\
-    \max_c = min(m + n + 1 - k, n - 1) \\
+    \max_c = min(m + n - 1 - k, n - 1) \\
     r = k + c - n
 \end{array}
 \]
@@ -95,7 +95,7 @@ void GospersHack(int k, int n)
 // k = r - c + n
 for(int k = 1; k < m + n; ++k) {
     int mnc = max(n - k, 0);
-    int mxc = min(m + n + 1 - k, n - 1);
+    int mxc = min(m + n - 1 - k, n - 1);
     for(int c = mnc; c <= mxc; ++c) {
         int r = k + c - n;
     }
