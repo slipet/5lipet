@@ -286,8 +286,8 @@ nav:
     - Subseq automation: "./string/subseq_automation.md"
     - ACAM: "./string/acam.md"
     - Manacher: "./string/manacher.md"
-    - Rolling Hash: "./string/rolling_hash.md
-    - Minimal String: "./string/minimal_string.md
+    - Rolling Hash: "./string/rolling_hash.md"
+    - Minimal String: "./string/minimal_string.md"
   - DP:
     - Conclusion: "./dp/conclusion.md"
     - Knapack: "./dp/knapack.md"
