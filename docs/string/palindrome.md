@@ -102,3 +102,4 @@ auto init = [] {
     return 0;
 }();
 ```
+* [4053. 使每个元素变为回文数的最少操作次数](https://leetcode.cn/problems/minimum-operations-to-make-every-element-palindromic/description/)
