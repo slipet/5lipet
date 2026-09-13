@@ -72,3 +72,33 @@ for(int l = n - 1; l >= 0; --l) {
     }
 }
 ```
+
+#### 枚舉所有palindrome
+
+```cpp
+using ll = long long;
+vector<ll> pal;
+auto init = [] {
+    for (int base = 1; base <= 10000; base *= 10) {
+        for (int i = base; i < base * 10; i++) {
+            int x = i;
+            for (int t = i / 10; t; t /= 10) {
+                x = x * 10 + t % 10;
+            }
+            pal.push_back(x);
+        }
+        if (base <= 1000) {
+            for (int i = base; i < base * 10; i++) {
+                int x = i;
+                for (int t = i; t; t /= 10) {
+                    x = x * 10 + t % 10;
+                }
+                pal.push_back(x);
+            }
+        }
+    }
+    pal.push_back(1'000'000'001);
+    
+    return 0;
+}();
+```
