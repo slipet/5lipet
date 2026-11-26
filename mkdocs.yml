@@ -296,6 +296,7 @@ nav:
     - Matrix Exponentiation: "./dp/matrix_exponentiation.md"
     - Convex Hull Trick: "./dp/convex_hull_trick.md"
     - DP on tree: "./dp/dp_on_tree.md"
+    - SOS DP: "./dp/sos_dp.md"
   - Graph:
     - Others: "./graph/others.md"
     - Shortest Path: "./graph/shortest_path.md"
