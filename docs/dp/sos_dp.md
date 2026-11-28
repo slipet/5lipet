@@ -80,10 +80,46 @@ for (int i = 0; i < n; ++i)
             g[mask] += g[mask | (1 << i)];
 ```
 
+### 應用
+
+#### s 的子集中有沒有某個 x
+
+給定一堆數 X，對每個 s 問: <span style="color:red">s 的子集中有沒有某個 x?</span>
+
+$$f[s] = \text{true} \iff \exists\, x \in X,\ x \subseteq s$$
+
+做法: 每個 x 設 $f[x] = \text{true}$，再做 SOS DP，op 取 OR。
+
+例: $X = \{011, 100\}$
+
+| s | 000 | 001 | 010 | 011 | 100 | 101 | 110 | 111 |
+|---|---|---|---|---|---|---|---|---|
+| f[s] | 0 | 0 | 0 | 1 | 1 | 1 | 1 | 1 |
+
+* $f[101] = 1$: 101 的子集中有 100
+* $f[010] = 0$: 010 的子集只有 000、010，都不在 X 中
+
+##### 用來判斷不合法
+
+[Leetcode 4119. 有效整数中最少置位数目](https://leetcode.cn/problems/minimum-set-bits-in-a-valid-integer/)
+
+題目關鍵: y 要和每個 x 都有共同的 bit($y \,\&\, x \ne 0$)，求 y 最少有幾個 1。
+
+應用:
+
+* 只要有一個 x 使 $y \,\&\, x = 0$，y 就不合法，而 $y \,\&\, x = 0 \iff x \subseteq \complement_U y$
+* 所以 y 合法 $\iff$「$\complement_U y$ 的子集中沒有任何 x」$\iff f[\complement_U y] = \text{false}$
+* 上例中 $f[s] = 0$ 的 s 為 000、001、010，對應合法的 y 為 111、110、101
+* $\text{popcount}(y) = w - \text{popcount}(s)$，取 $f[s] = 0$ 中 1 最多的 s，答案為 $3 - 1 = 2$
+
 練習:
 
 * [Leetcode 3670. 没有公共位的整数最大乘积](https://leetcode.cn/problems/maximum-product-of-two-integers-with-no-common-bits/)
+* [Leetcode 4119. 有效整数中最少置位数目](https://leetcode.cn/problems/minimum-set-bits-in-a-valid-integer/)
 * [CSES 1654. Bit Problem](https://cses.fi/problemset/task/1654)
 * [CF 165E. Compatible Numbers](https://codeforces.com/problemset/problem/165/E)
 
-參考: [两种方法：普通状压 DP / 高维前缀和（SOS DP）](https://leetcode.cn/problems/maximum-product-of-two-integers-with-no-common-bits/solutions/3768219/mo-ban-gao-wei-qian-zhui-he-sos-dppython-78fz/)
+參考:
+
+* [两种方法：普通状压 DP / 高维前缀和（SOS DP）](https://leetcode.cn/problems/maximum-product-of-two-integers-with-no-common-bits/solutions/3768219/mo-ban-gao-wei-qian-zhui-he-sos-dppython-78fz/)
+* [4119 滑动窗口 + SOS DP](https://leetcode.cn/problems/minimum-set-bits-in-a-valid-integer/solutions/4059551/hua-dong-chuang-kou-sos-dppythonjavacgo-zzbi4/)
